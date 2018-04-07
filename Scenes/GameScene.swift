@@ -9,6 +9,13 @@
 import SpriteKit
 import GameplayKit
 
+enum GameState {
+    case none
+    case waiting
+    case inGame
+    case gameOver
+}
+
 class GameScene: SKScene {
     
 
