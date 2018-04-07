@@ -13,12 +13,19 @@ import GameplayKit
 
 class MainMenuScene: SKScene{
     
+    let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
     
     override func didMove(to view: SKView) {
-        print("hello")
-        titleImage.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        titleImage.zPosition = 0
+        
+        backgroundImage.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        backgroundImage.zPosition = 0
+        self.addChild(backgroundImage)
+        
+        
+        titleImage.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.8)
+        titleImage.zPosition = 1
+        titleImage.setScale(0.9)
         self.addChild(titleImage)
     }
     
