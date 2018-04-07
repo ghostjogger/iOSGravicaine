@@ -1,0 +1,383 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357AE2079072400F86F84 /* MainMenuScene.swift */; };
+		99A357B12079073400F86F84 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357B02079073400F86F84 /* GameOverScene.swift */; };
+		99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99A357B22079082F00F86F84 /* introGravicaine.wav */; };
+		99A357B52079088E00F86F84 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99A357B42079088E00F86F84 /* explosion.wav */; };
+		99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A40D4720754BE0000D5DD9 /* AppDelegate.swift */; };
+		99A40D4A20754BE0000D5DD9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D4920754BE0000D5DD9 /* GameScene.sks */; };
+		99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D4B20754BE0000D5DD9 /* Actions.sks */; };
+		99A40D4E20754BE0000D5DD9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A40D4D20754BE0000D5DD9 /* GameScene.swift */; };
+		99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A40D4F20754BE0000D5DD9 /* GameViewController.swift */; };
+		99A40D5320754BE0000D5DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5120754BE0000D5DD9 /* Main.storyboard */; };
+		99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5420754BE1000D5DD9 /* Assets.xcassets */; };
+		99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		99A357AE2079072400F86F84 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		99A357B02079073400F86F84 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		99A357B22079082F00F86F84 /* introGravicaine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = introGravicaine.wav; sourceTree = "<group>"; };
+		99A357B42079088E00F86F84 /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		99A40D4420754BE0000D5DD9 /* Gravicaine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gravicaine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		99A40D4720754BE0000D5DD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		99A40D4920754BE0000D5DD9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		99A40D4B20754BE0000D5DD9 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		99A40D4D20754BE0000D5DD9 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		99A40D4F20754BE0000D5DD9 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		99A40D5220754BE0000D5DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		99A40D5420754BE1000D5DD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		99A40D5720754BE1000D5DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		99A40D5920754BE1000D5DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		99A40D4120754BE0000D5DD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		99A357AC2079015700F86F84 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				99A40D4D20754BE0000D5DD9 /* GameScene.swift */,
+				99A357AE2079072400F86F84 /* MainMenuScene.swift */,
+				99A357B02079073400F86F84 /* GameOverScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		99A357AD2079018C00F86F84 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				99A357B22079082F00F86F84 /* introGravicaine.wav */,
+				99A357B42079088E00F86F84 /* explosion.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		99A40D3B20754BE0000D5DD9 = {
+			isa = PBXGroup;
+			children = (
+				99A357AD2079018C00F86F84 /* Sounds */,
+				99A357AC2079015700F86F84 /* Scenes */,
+				99A40D4620754BE0000D5DD9 /* Gravicaine */,
+				99A40D4520754BE0000D5DD9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		99A40D4520754BE0000D5DD9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				99A40D4420754BE0000D5DD9 /* Gravicaine.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		99A40D4620754BE0000D5DD9 /* Gravicaine */ = {
+			isa = PBXGroup;
+			children = (
+				99A40D4720754BE0000D5DD9 /* AppDelegate.swift */,
+				99A40D4920754BE0000D5DD9 /* GameScene.sks */,
+				99A40D4B20754BE0000D5DD9 /* Actions.sks */,
+				99A40D4F20754BE0000D5DD9 /* GameViewController.swift */,
+				99A40D5120754BE0000D5DD9 /* Main.storyboard */,
+				99A40D5420754BE1000D5DD9 /* Assets.xcassets */,
+				99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */,
+				99A40D5920754BE1000D5DD9 /* Info.plist */,
+			);
+			path = Gravicaine;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		99A40D4320754BE0000D5DD9 /* Gravicaine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99A40D5C20754BE1000D5DD9 /* Build configuration list for PBXNativeTarget "Gravicaine" */;
+			buildPhases = (
+				99A40D4020754BE0000D5DD9 /* Sources */,
+				99A40D4120754BE0000D5DD9 /* Frameworks */,
+				99A40D4220754BE0000D5DD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gravicaine;
+			productName = Gravicaine;
+			productReference = 99A40D4420754BE0000D5DD9 /* Gravicaine.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		99A40D3C20754BE0000D5DD9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Stephen Ball";
+				TargetAttributes = {
+					99A40D4320754BE0000D5DD9 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = 99A40D3F20754BE0000D5DD9 /* Build configuration list for PBXProject "Gravicaine" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 99A40D3B20754BE0000D5DD9;
+			productRefGroup = 99A40D4520754BE0000D5DD9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				99A40D4320754BE0000D5DD9 /* Gravicaine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		99A40D4220754BE0000D5DD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99A40D5320754BE0000D5DD9 /* Main.storyboard in Resources */,
+				99A40D4A20754BE0000D5DD9 /* GameScene.sks in Resources */,
+				99A357B52079088E00F86F84 /* explosion.wav in Resources */,
+				99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */,
+				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
+				99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */,
+				99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99A40D4020754BE0000D5DD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99A357B12079073400F86F84 /* GameOverScene.swift in Sources */,
+				99A40D4E20754BE0000D5DD9 /* GameScene.swift in Sources */,
+				99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */,
+				99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */,
+				99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		99A40D5120754BE0000D5DD9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99A40D5220754BE0000D5DD9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99A40D5720754BE1000D5DD9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		99A40D5A20754BE1000D5DD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: stephen ball (LESKCU2UN4)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		99A40D5B20754BE1000D5DD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: stephen ball (LESKCU2UN4)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		99A40D5D20754BE1000D5DD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T3693KQ6ZX;
+				INFOPLIST_FILE = Gravicaine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SDB.Gravicaine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		99A40D5E20754BE1000D5DD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T3693KQ6ZX;
+				INFOPLIST_FILE = Gravicaine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SDB.Gravicaine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		99A40D3F20754BE0000D5DD9 /* Build configuration list for PBXProject "Gravicaine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99A40D5A20754BE1000D5DD9 /* Debug */,
+				99A40D5B20754BE1000D5DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99A40D5C20754BE1000D5DD9 /* Build configuration list for PBXNativeTarget "Gravicaine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99A40D5D20754BE1000D5DD9 /* Debug */,
+				99A40D5E20754BE1000D5DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 99A40D3C20754BE0000D5DD9 /* Project object */;
+}
