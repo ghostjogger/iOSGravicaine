@@ -16,12 +16,33 @@ enum GameState {
     case gameOver
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene, GameLogicDelegate {
     
 
     let startLabel = SKLabelNode(text: "Main Menu")
     let player = SpaceShip()
     let gameArea: CGRect
+    
+    // game data
+    
+    private let gameLogic: GameLogic = GameLogic()
+    private var gameState: GameState = .none {
+        didSet {
+            switch gameState {
+            case .waiting:
+                self.setWaitingGameState()
+                break
+            case .inGame:
+                self.setInGameState()
+                break
+            case .gameOver:
+                self.setGameOverState()
+                break
+            default: break
+            }
+        }
+        
+    }
     
     override init(size:CGSize) {
         
@@ -37,7 +58,26 @@ class GameScene: SKScene {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    // MARK: - game state
     
+    private func setWaitingGameState() {
+        
+      
+        
+    }
+    
+    private func setInGameState() {
+        
+        gameLogic.gameDidStart()
+        
+
+        
+    }
+    
+    private func setGameOverState() {
+        gameLogic.gameDidStop()
+        self.setWaitingGameState()
+    }
     
     override func didMove(to view: SKView) {
         
@@ -146,6 +186,48 @@ class GameScene: SKScene {
         }
         
     }
+    
+    // MARK: - game logic delegate
+    
+    func scoreDidChange(_ newScore: Int, text: String!) {
+        
+
+        
+    }
+    
+    func livesDidChange(oldLives: Int, newLives: Int) {
+        
+
+        
+    }
+    
+    func playerDidLose(destroyed: Bool) {
+        
+
+        
+    }
+    
+    func shouldSpawnEnemy(enemySpeedMultiplier: CGFloat) {
+        
+ 
+        
+    }
+    
+    func shouldSpawnBonus() {
+        
+
+        
+    }
+    
+    func shouldExplodeNode(_ node: SKNode) -> Bool {
+
+        return true
+    }
+    
+    func shouldIncreaseSpeed() {
+        
+    }
+    
  
     
 }
