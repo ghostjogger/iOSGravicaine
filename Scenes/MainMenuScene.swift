@@ -52,6 +52,8 @@ class MainMenuScene: SKScene{
         signatureLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.9)
         self.addChild(signatureLabel)
         
+        print("hello")
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
