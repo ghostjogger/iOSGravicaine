@@ -30,7 +30,7 @@ class GameScene: SKScene {
         startLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
         self.addChild(startLabel)
         
-        print("hello there!")
+       
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
