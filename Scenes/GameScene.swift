@@ -19,7 +19,7 @@ enum GameState {
 class GameScene: SKScene {
     
 
-    let startLabel = SKLabelNode(text: "Start")
+    let startLabel = SKLabelNode(text: "Main Menu")
     
     
     override func didMove(to view: SKView) {

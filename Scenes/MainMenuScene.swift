@@ -19,6 +19,7 @@ class MainMenuScene: SKScene{
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
     let ship = SKSpriteNode(imageNamed: "playerShip")
     let emitter = SKEmitterNode(fileNamed: "ship-fire")
+
     
     override func didMove(to view: SKView) {
         
@@ -55,6 +56,8 @@ class MainMenuScene: SKScene{
 
         
     }
+    
+ 
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
