@@ -17,8 +17,7 @@ class MainMenuScene: SKScene{
     let signatureLabel = SKLabelNode(text: "Stephen Ball's")
     let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
-    let ship = SKSpriteNode(imageNamed: "playerShip")
-    let emitter = SKEmitterNode(fileNamed: "ship-fire")
+    let ship = SpaceShip()
 
     
     override func didMove(to view: SKView) {
@@ -36,10 +35,7 @@ class MainMenuScene: SKScene{
         ship.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.3)
         ship.zPosition = 2
         self.addChild(ship)
-        
-        emitter?.position = CGPoint(x: ship.position.x, y: ship.position.y - 60.0)
-        emitter?.targetNode = ship
-        self.addChild(emitter!)
+
         
         startLabel.fontName = "Jellee-Roman"
         startLabel.fontColor = UIColor.white

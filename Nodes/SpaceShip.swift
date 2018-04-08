@@ -23,6 +23,7 @@ class SpaceShip: SKSpriteNode {
         
         super.init(texture: texture, color: UIColor.clear, size: size)
         
+        self.zPosition = 2
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody!.affectedByGravity = false
         self.physicsBody!.categoryBitMask = PhysicsCategories.Player

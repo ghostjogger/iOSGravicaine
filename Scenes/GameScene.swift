@@ -41,6 +41,19 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        for i in 0...1{
+            
+            let background = SKSpriteNode(imageNamed: "starBackground")
+            background.size = self.size
+            background.anchorPoint = CGPoint(x: 0.5, y: 0)
+            background.position = CGPoint(x: self.size.width/2,
+                                          y: self.size.height * CGFloat(i))
+            background.zPosition = 0
+            background.name = "background"
+            self.addChild(background)
+            
+        }
+        
         player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
         self.addChild(player)
         
@@ -51,6 +64,40 @@ class GameScene: SKScene {
         self.addChild(startLabel)
         
        
+    }
+    
+    var lastUpdateTime:TimeInterval = 0
+    var deltaFrameTime:TimeInterval = 0
+    var speedToMove:CGFloat = 200.0
+    
+    
+    override func update(_ currentTime: TimeInterval) {
+        
+        if lastUpdateTime == 0
+        {
+            lastUpdateTime = currentTime
+        }
+        else
+        {
+            deltaFrameTime = currentTime - lastUpdateTime
+            lastUpdateTime = currentTime
+        }
+        
+        let amountToMoveBackground = speedToMove * CGFloat(deltaFrameTime)
+        
+        self.enumerateChildNodes(withName: "background") {
+            (node, stop) in
+            
+            node.position.y -= amountToMoveBackground
+            
+            if node.position.y < -self.size.height{
+                node.position.y += self.size.height * 2
+            }
+            
+           
+        }
+        
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
