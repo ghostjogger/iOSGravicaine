@@ -14,6 +14,9 @@
 		99A357B820791BAE00F86F84 /* ship-fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 99A357B720791BAD00F86F84 /* ship-fire.sks */; };
 		99A357BA20791F4000F86F84 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 99A357B920791F4000F86F84 /* spark.png */; };
 		99A357BC207935E800F86F84 /* Jellee-Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99A357BB207934C800F86F84 /* Jellee-Roman.ttf */; };
+		99A357BE207A578700F86F84 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357BD207A578700F86F84 /* Utils.swift */; };
+		99A357C1207A587700F86F84 /* SpaceShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357C0207A587700F86F84 /* SpaceShip.swift */; };
+		99A357C3207A595000F86F84 /* laser.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99A357C2207A595000F86F84 /* laser.mp3 */; };
 		99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A40D4720754BE0000D5DD9 /* AppDelegate.swift */; };
 		99A40D4A20754BE0000D5DD9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D4920754BE0000D5DD9 /* GameScene.sks */; };
 		99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D4B20754BE0000D5DD9 /* Actions.sks */; };
@@ -32,6 +35,9 @@
 		99A357B720791BAD00F86F84 /* ship-fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "ship-fire.sks"; sourceTree = "<group>"; };
 		99A357B920791F4000F86F84 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		99A357BB207934C800F86F84 /* Jellee-Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jellee-Roman.ttf"; sourceTree = "<group>"; };
+		99A357BD207A578700F86F84 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		99A357C0207A587700F86F84 /* SpaceShip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceShip.swift; sourceTree = "<group>"; };
+		99A357C2207A595000F86F84 /* laser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laser.mp3; sourceTree = "<group>"; };
 		99A40D4420754BE0000D5DD9 /* Gravicaine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gravicaine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A40D4720754BE0000D5DD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99A40D4920754BE0000D5DD9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -69,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				99A357B22079082F00F86F84 /* introGravicaine.wav */,
+				99A357C2207A595000F86F84 /* laser.mp3 */,
 				99A357B42079088E00F86F84 /* explosion.wav */,
 			);
 			path = Sounds;
@@ -83,9 +90,18 @@
 			path = Particles;
 			sourceTree = "<group>";
 		};
+		99A357BF207A585500F86F84 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				99A357C0207A587700F86F84 /* SpaceShip.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
 		99A40D3B20754BE0000D5DD9 = {
 			isa = PBXGroup;
 			children = (
+				99A357BF207A585500F86F84 /* Nodes */,
 				99A357B620791B9900F86F84 /* Particles */,
 				99A357AD2079018C00F86F84 /* Sounds */,
 				99A357AC2079015700F86F84 /* Scenes */,
@@ -106,6 +122,7 @@
 		99A40D4620754BE0000D5DD9 /* Gravicaine */ = {
 			isa = PBXGroup;
 			children = (
+				99A357BD207A578700F86F84 /* Utils.swift */,
 				99A40D4720754BE0000D5DD9 /* AppDelegate.swift */,
 				99A40D4920754BE0000D5DD9 /* GameScene.sks */,
 				99A40D4B20754BE0000D5DD9 /* Actions.sks */,
@@ -184,6 +201,7 @@
 				99A357B820791BAE00F86F84 /* ship-fire.sks in Resources */,
 				99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
+				99A357C3207A595000F86F84 /* laser.mp3 in Resources */,
 				99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */,
 				99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */,
 			);
@@ -198,9 +216,11 @@
 			files = (
 				99A357B12079073400F86F84 /* GameOverScene.swift in Sources */,
 				99A40D4E20754BE0000D5DD9 /* GameScene.swift in Sources */,
+				99A357C1207A587700F86F84 /* SpaceShip.swift in Sources */,
 				99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */,
 				99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */,
 				99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */,
+				99A357BE207A578700F86F84 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

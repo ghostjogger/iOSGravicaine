@@ -20,12 +20,12 @@ class GameScene: SKScene {
     
 
     let startLabel = SKLabelNode(text: "Main Menu")
-    
+    let player = SpaceShip()
     let gameArea: CGRect
     
     override init(size:CGSize) {
         
-        //setup screen area 
+        //setup screen area
         let maxAspectRatio:CGFloat = 16.0/9.0
         let playableWidth = size.height / maxAspectRatio
         let margin = (size.width - playableWidth) / 2
@@ -41,10 +41,13 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
+        self.addChild(player)
+        
         startLabel.fontName = "Jellee-Roman"
         startLabel.fontColor = UIColor.white
         startLabel.fontSize = 100
-        startLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
+        startLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.9)
         self.addChild(startLabel)
         
        
@@ -53,16 +56,45 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch: AnyObject in touches{
-            
+
             let pointOfTouch = touch.location(in: self)
-            
+
             if startLabel.contains(pointOfTouch){
-                
+
                 let sceneToMoveTo = MainMenuScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.fade(withDuration: 0.5)
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
             }
+
+        }
+        
+        player.fireBullet(destinationY: self.size.height)
+        
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+
+        for touch: AnyObject in touches {
+            
+            let pointOfTouch = touch.location(in: self)
+            let previous = touch.previousLocation(in: self)
+            let amountDraggedX = pointOfTouch.x - previous.x
+            
+            player.position.x += amountDraggedX
+            
+            if player.position.x > gameArea.maxX - player.size.width/2
+            {
+                player.position.x = gameArea.maxX - player.size.width/2
+            }
+
+            if player.position.x < gameArea.minX + player.size.width/2
+            {
+                player.position.x = gameArea.minX + player.size.width/2
+            }
+            
+
             
         }
         
