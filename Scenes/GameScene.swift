@@ -29,6 +29,8 @@ class GameScene: SKScene {
         startLabel.fontSize = 100
         startLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
         self.addChild(startLabel)
+        
+        print("hello")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
