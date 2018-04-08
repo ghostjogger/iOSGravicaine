@@ -1,9 +1,5 @@
 //
 //  GameLogic.swift
-//  solo-mission
-//
-//  Created by Romain ROCHE on 05/07/2016.
-//  Copyright © 2016 Romain ROCHE. All rights reserved.
 //
 
 import SpriteKit
@@ -173,39 +169,47 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         
         score = GameLogic.DefaultScore
         lives = GameLogic.DefaultNumberOfLives
-        spawnEnemiesInterval = GameLogic.DefaultEnemiesSpawnInterval
-        enemiesSpeedMultiplier = GameLogic.DefaultEnemiesSpeedMultiplier
         
-        self.stopSpawningEnemies()
-        self.startSpawningEnemies()
         
-        self.stopSpawningBonus()
-        self.startSpawningBonus()
+//        spawnEnemiesInterval = GameLogic.DefaultEnemiesSpawnInterval
+//        enemiesSpeedMultiplier = GameLogic.DefaultEnemiesSpeedMultiplier
+//
+//        self.stopSpawningEnemies()
+//        self.startSpawningEnemies()
+//
+//        self.stopSpawningBonus()
+//        self.startSpawningBonus()
         
     }
     
     func gameDidStop() {
-        self.stopSpawningEnemies()
-        self.stopSpawningBonus()
+        
+//        self.stopSpawningEnemies()
+//        self.stopSpawningBonus()
+        
     }
     
     func gameDidRestart() {
-        self.stopSpawningEnemies()
-        self.startSpawningEnemies()
-        self.stopSpawningBonus()
-        self.startSpawningBonus()
+        
+        
+//        self.stopSpawningEnemies()
+//        self.startSpawningEnemies()
+//        self.stopSpawningBonus()
+//        self.startSpawningBonus()
+        
+        
     }
     
     func enemyKilled() {
-        self.score += 100
+        //self.score += 100
     }
     
     func enemyEscaped() {
-        self.lives -= 1
+        //self.lives -= 1
     }
     
     func bonusKilled() {
-        self.lives += 1
+        //self.lives += 1
     }
     
     func enemyTouchesPlayer() {
