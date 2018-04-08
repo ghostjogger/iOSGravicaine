@@ -20,6 +20,7 @@ class Barrier {
             
             var node = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: i * Barrier.widthFraction, height: Barrier.barrierHeight))
             node.zPosition = 10
+            node.name = "barrier"
             Barrier.Barriers.append(node)
             
         }
