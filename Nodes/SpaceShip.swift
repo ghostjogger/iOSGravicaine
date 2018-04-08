@@ -31,7 +31,7 @@ class SpaceShip: SKSpriteNode {
         
         if let emitter = SKEmitterNode(fileNamed: "ship-fire") {
             fireEmitter = emitter
-            fireEmitter?.position = CGPoint(x: 0.0, y: -(self.size.height/2) + 50.0)
+            fireEmitter?.position = CGPoint(x: self.position.x, y: self.position.y - 60.0)
             fireEmitter?.targetNode = self
             self.addChild(fireEmitter!)
         }
