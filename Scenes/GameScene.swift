@@ -21,6 +21,23 @@ class GameScene: SKScene {
 
     let startLabel = SKLabelNode(text: "Main Menu")
     
+    let gameArea: CGRect
+    
+    override init(size:CGSize) {
+        
+        //setup screen area 
+        let maxAspectRatio:CGFloat = 16.0/9.0
+        let playableWidth = size.height / maxAspectRatio
+        let margin = (size.width - playableWidth) / 2
+        gameArea = CGRect(x: margin, y: 0, width: playableWidth, height: size.height)
+        
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func didMove(to view: SKView) {
         
