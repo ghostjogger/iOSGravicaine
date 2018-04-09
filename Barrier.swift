@@ -18,6 +18,9 @@ class Barrier {
     static let widthFraction = 1536/6
     static let barrierHeight = 75
     
+    //test
+    
+    
     init() {
         
         // setup barrier nodes from 1 segment width to 4
