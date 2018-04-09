@@ -24,14 +24,7 @@ class GameScene: SKScene, GameLogicDelegate {
     let player = SpaceShip()
     let gameArea: CGRect
     let barrierCurrentCount = 0
-    let barrierCountToFinish = 300
-    var barrierStoredCodes = [Int]()
-    let barrierFrequency: TimeInterval = 1.0
-    let barriers = Barrier.Barriers
-   
-    
 
-    
     
     // game data
     
