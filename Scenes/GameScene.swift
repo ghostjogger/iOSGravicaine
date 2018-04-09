@@ -9,6 +9,7 @@
 import SpriteKit
 import GameplayKit
 
+
 enum GameState {
     case none
     case waiting
@@ -22,10 +23,14 @@ class GameScene: SKScene, GameLogicDelegate {
     let startLabel = SKLabelNode(text: "Main Menu")
     let player = SpaceShip()
     let gameArea: CGRect
+    let barrierCurrentCount = 0
     let barrierCountToFinish = 300
-    let barrierStoredCodes = [Int]()
+    var barrierStoredCodes = [Int]()
     let barrierFrequency: TimeInterval = 1.0
     let barriers = Barrier.Barriers
+   
+    
+
     
     
     // game data
@@ -49,6 +54,8 @@ class GameScene: SKScene, GameLogicDelegate {
         
     }
     
+ 
+    
     override init(size:CGSize) {
         
         //setup screen area
@@ -57,17 +64,24 @@ class GameScene: SKScene, GameLogicDelegate {
         let margin = (size.width - playableWidth) / 2
         gameArea = CGRect(x: margin, y: 0, width: playableWidth, height: size.height)
         
+
+        
         super.init(size: size)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    // MARK: - game state
     
+    
+    // MARK: - game state
     private func setWaitingGameState() {
-        
-      
+       
+    //setup barrier sequence
+        for i in 1...barrierCountToFinish{
+            let value = random(min: 0, max: 5)
+            barrierStoredCodes.append(Int(value))
+        }
         
     }
     
@@ -234,6 +248,9 @@ class GameScene: SKScene, GameLogicDelegate {
     }
     
  
+    func random(min: CGFloat, max: CGFloat) -> CGFloat {
+        return Gravicaine.random() * (max - min) + min
+    }
     
 }
     
