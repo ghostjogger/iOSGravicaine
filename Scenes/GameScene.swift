@@ -77,11 +77,7 @@ class GameScene: SKScene, GameLogicDelegate {
     // MARK: - game state
     private func setWaitingGameState() {
        
-    //setup barrier sequence
-        for i in 1...barrierCountToFinish{
-            let value = random(min: 0, max: 5)
-            barrierStoredCodes.append(Int(value))
-        }
+
         
     }
     
@@ -112,6 +108,8 @@ class GameScene: SKScene, GameLogicDelegate {
             self.addChild(background)
             
         }
+        
+ 
         
         player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
         self.addChild(player)
