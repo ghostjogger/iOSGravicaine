@@ -18,7 +18,7 @@ class Barrier {
     static let widthFraction = 1536/6
     static let barrierHeight = 75
     
-    //test the commit
+
     
     
     init() {
