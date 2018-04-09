@@ -25,8 +25,7 @@ class GameScene: SKScene, GameLogicDelegate {
     let gameArea: CGRect
     let barrierCurrentCount = 0
     let barrier = Barrier()
-    //dfdfdf
-    // game data
+
     
     private let gameLogic: GameLogic = GameLogic()
     private var gameState: GameState = .none {
