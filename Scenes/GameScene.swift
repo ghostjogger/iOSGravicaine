@@ -24,7 +24,7 @@ class GameScene: SKScene, GameLogicDelegate {
     let player = SpaceShip()
     let gameArea: CGRect
     let barrierCurrentCount = 0
-
+    let barrier = Barrier()
     
     // game data
     
@@ -100,6 +100,10 @@ class GameScene: SKScene, GameLogicDelegate {
             background.name = "background"
             self.addChild(background)
             
+        }
+        
+        for i in 0...Barrier.barrierStoredCodes.count - 1{
+            print("value: \(Barrier.barrierStoredCodes[i])")
         }
         
  

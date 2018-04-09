@@ -20,18 +20,18 @@ class Barrier {
     
     init() {
         
-        // setup barrier nodes from 1 segment width to 5
+        // setup barrier nodes from 1 segment width to 4
         // segments
-        for i in 1...5{
+        for i in 1...4{
             var node = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: i * Barrier.widthFraction, height: Barrier.barrierHeight))
             node.zPosition = 10
             node.name = "barrier"
             Barrier.Barriers.append(node)
         }
         
-        //setup random ints with left barrier widths
+        //setup random ints with left barrier widths 1 to 4 inc.
         for i in 1...Barrier.barrierCountToFinish{
-            var c = Int(random(min: 0, max: 5.0))
+            var c = Int(random(min: 1.0, max: 5.0))
             Barrier.barrierStoredCodes.append(c)
         }
     }
