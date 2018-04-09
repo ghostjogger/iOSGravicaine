@@ -22,6 +22,11 @@ class GameScene: SKScene, GameLogicDelegate {
     let startLabel = SKLabelNode(text: "Main Menu")
     let player = SpaceShip()
     let gameArea: CGRect
+    let barrierCountToFinish = 300
+    let barrierStoredCodes = [Int]()
+    let barrierFrequency: TimeInterval = 1.0
+    let barriers = Barrier.Barriers
+    
     
     // game data
     
