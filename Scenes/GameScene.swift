@@ -228,38 +228,42 @@ class GameScene: SKScene, GameLogicDelegate {
         
         if barrierCurrentCount < Barrier.barrierStoredCodes.count{
             
-            print("Barrier Produced \(timerAdd , timer, barrierCurrentCount)" )
+          
             
             var i = Barrier.barrierStoredCodes[barrierCurrentCount]
             
-            var leftBarrier = Barrier.Barriers[i]
-            leftBarrier.position = (CGPoint(x: 0, y: self.size.height - 75))
-            var rightBarrier =  SKSpriteNode()
-            
-            switch i {
-                
-            case 1 :
-                rightBarrier = Barrier.Barriers[4]
-                rightBarrier.position = CGPoint(x: 1536 - (1536/6), y: self.size.height - 75)
-            case 2 :
-                rightBarrier = Barrier.Barriers[3]
-                rightBarrier.position = CGPoint(x: 1536 - (2 * 1536/6), y: self.size.height - 75)
-            case 3 :
-                rightBarrier = Barrier.Barriers[2]
-                rightBarrier.position = CGPoint(x: 1536 - (3 * 1536/6), y: self.size.height - 75)
-            case 4 :
-                rightBarrier = Barrier.Barriers[1]
-                rightBarrier.position = CGPoint(x: 1536 - (4 * 1536/6), y: self.size.height - 75)
+            print("Barrier Produced \(timerAdd , timer, barrierCurrentCount, i)" )
 
-                
-            default: break
-                
-            }
-            
-            self.addChild(leftBarrier)
-            self.addChild(rightBarrier)
-            leftBarrier.run(barrierSequence)
-            rightBarrier.run(barrierSequence)
+//            var leftBarrier = SKSpriteNode()
+//            var rightBarrier =  SKSpriteNode()
+//
+//            leftBarrier = Barrier.Barriers[i]
+//            leftBarrier.position = (CGPoint(x: 0, y: self.size.height - 75))
+//
+//            switch i {
+//
+//            case 1 :
+//                rightBarrier = Barrier.Barriers[3]
+//                rightBarrier.position = CGPoint(x: 1536 - (1536/6), y: self.size.height - 75)
+//            case 2 :
+//                rightBarrier = Barrier.Barriers[2]
+//                rightBarrier.position = CGPoint(x: 1536 - (2 * 1536/6), y: self.size.height - 75)
+//            case 3 :
+//                rightBarrier = Barrier.Barriers[1]
+//                rightBarrier.position = CGPoint(x: 1536 - (3 * 1536/6), y: self.size.height - 75)
+//            case 4 :
+//                rightBarrier = Barrier.Barriers[0]
+//                rightBarrier.position = CGPoint(x: 1536 - (4 * 1536/6), y: self.size.height - 75)
+//
+//
+//            default: break
+//
+//            }
+//
+//            self.addChild(leftBarrier)
+//            self.addChild(rightBarrier)
+//            leftBarrier.run(barrierSequence)
+//            rightBarrier.run(barrierSequence)
             barrierCurrentCount += 1
             
         }
