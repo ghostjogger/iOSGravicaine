@@ -217,7 +217,7 @@ class GameScene: SKScene, GameLogicDelegate {
     func produceBarrier(){
         
         // two actions
-        let moveBarrier = SKAction.moveTo(y: 0, duration: 1)
+        let moveBarrier = SKAction.moveTo(y: -150, duration: 1.5)
         let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
         let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
         let deleteBarrier = SKAction.removeFromParent()
@@ -238,28 +238,41 @@ class GameScene: SKScene, GameLogicDelegate {
             var rightBarrier =  SKSpriteNode()
 
             switch i {
+                
+            case 0 :
+                
+                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  256, height: Barrier.barrierHeight))
+                leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
+                leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
+                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 1024, height: Barrier.barrierHeight))
+                rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
+                rightBarrier.position = CGPoint(x: 512, y: self.size.height + 150)
 
             case 1 :
                 
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: (i+1) * Barrier.widthFraction, height: Barrier.barrierHeight))
-                leftBarrier.position = (CGPoint(x: 0, y: self.size.height - 75))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 4 * Barrier.widthFraction, height: Barrier.barrierHeight))
-                rightBarrier.position = CGPoint(x: 1536 - (1536/6), y: self.size.height - 75)
+                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  512, height: Barrier.barrierHeight))
+                leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
+                leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
+                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 768, height: Barrier.barrierHeight))
+                rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
+                rightBarrier.position = CGPoint(x: 768, y: self.size.height + 150)
             case 2 :
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: (i+1) * Barrier.widthFraction, height: Barrier.barrierHeight))
-                leftBarrier.position = (CGPoint(x: 0, y: self.size.height - 75))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  3 * Barrier.widthFraction, height: Barrier.barrierHeight))
-                rightBarrier.position = CGPoint(x: 1536 - (1536/6), y: self.size.height - 75)
+                
+                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  768, height: Barrier.barrierHeight))
+                leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
+                leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
+                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 512, height: Barrier.barrierHeight))
+                rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
+                rightBarrier.position = CGPoint(x: 1024, y: self.size.height + 150)
             case 3 :
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: (i+1) * Barrier.widthFraction, height: Barrier.barrierHeight))
-                leftBarrier.position = (CGPoint(x: 0, y: self.size.height - 75))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 2 * Barrier.widthFraction, height: Barrier.barrierHeight))
-                rightBarrier.position = CGPoint(x: 1536 - (1536/6), y: self.size.height - 75)
-            case 4 :
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: (i+1) * Barrier.widthFraction, height: Barrier.barrierHeight))
-                leftBarrier.position = (CGPoint(x: 0, y: self.size.height - 75))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 1 * Barrier.widthFraction, height: Barrier.barrierHeight))
-                rightBarrier.position = CGPoint(x: 1536 - (1536/6), y: self.size.height - 75)
+
+                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  1024, height: Barrier.barrierHeight))
+                leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
+                leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
+                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 256, height: Barrier.barrierHeight))
+                rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
+                rightBarrier.position = CGPoint(x: 1280, y: self.size.height + 150)
+
 
 
             default: break
