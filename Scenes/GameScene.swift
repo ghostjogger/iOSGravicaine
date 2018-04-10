@@ -132,6 +132,7 @@ class GameScene: SKScene, GameLogicDelegate {
         {
             lastUpdateTime = currentTime
             timer = currentTime
+            timerAdd = currentTime
         }
         else
         {
@@ -139,7 +140,7 @@ class GameScene: SKScene, GameLogicDelegate {
             lastUpdateTime = currentTime
         }
         
-        timerAdd += currentTime
+        timerAdd += (currentTime - timer)
         
         if timerAdd - timer > Barrier.barrierFrequency{
             produceBarrier()
@@ -212,7 +213,7 @@ class GameScene: SKScene, GameLogicDelegate {
     }
     
     func produceBarrier(){
-        print("Barrier Produced")
+        print("Barrier Produced \(timerAdd , timer)" )
     }
     
     // MARK: - game logic delegate
