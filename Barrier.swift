@@ -14,7 +14,7 @@ class Barrier {
     static var Barriers = [SKSpriteNode]()
     static let barrierCountToFinish = 300
     static var barrierStoredCodes = [Int]()
-    static let barrierFrequency: TimeInterval = 1.0
+    static let barrierFrequency: TimeInterval = 60.0
     static let widthFraction = 1536/6
     static let barrierHeight = 75
     

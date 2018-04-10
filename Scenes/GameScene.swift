@@ -101,9 +101,9 @@ class GameScene: SKScene, GameLogicDelegate {
             
         }
         
-        for i in 0...Barrier.barrierStoredCodes.count - 1{
-            print("value: \(Barrier.barrierStoredCodes[i])")
-        }
+//        for i in 0...Barrier.barrierStoredCodes.count - 1{
+//            print("value: \(Barrier.barrierStoredCodes[i])")
+//        }
         
  
         
@@ -121,6 +121,8 @@ class GameScene: SKScene, GameLogicDelegate {
     
     var lastUpdateTime:TimeInterval = 0
     var deltaFrameTime:TimeInterval = 0
+    var timer:TimeInterval = 0
+    var timerAdd:TimeInterval = 0
     var speedToMove:CGFloat = 200.0
     
     
@@ -129,11 +131,20 @@ class GameScene: SKScene, GameLogicDelegate {
         if lastUpdateTime == 0
         {
             lastUpdateTime = currentTime
+            timer = currentTime
         }
         else
         {
             deltaFrameTime = currentTime - lastUpdateTime
             lastUpdateTime = currentTime
+        }
+        
+        timerAdd += currentTime
+        
+        if timerAdd - timer > Barrier.barrierFrequency{
+            produceBarrier()
+            timer = currentTime
+            timerAdd = currentTime
         }
         
         let amountToMoveBackground = speedToMove * CGFloat(deltaFrameTime)
@@ -198,6 +209,10 @@ class GameScene: SKScene, GameLogicDelegate {
             
         }
         
+    }
+    
+    func produceBarrier(){
+        print("Barrier Produced")
     }
     
     // MARK: - game logic delegate
