@@ -125,7 +125,7 @@ class GameScene: SKScene, GameLogicDelegate {
     var deltaFrameTime:TimeInterval = 0
     var timer:TimeInterval = 0
     var timerAdd:TimeInterval = 0
-    var speedToMove:CGFloat = 200.0
+    var speedToMove:CGFloat = 100.0
     
     
     override func update(_ currentTime: TimeInterval) {
@@ -217,7 +217,7 @@ class GameScene: SKScene, GameLogicDelegate {
     func produceBarrier(){
         
         // two actions
-        let moveBarrier = SKAction.moveTo(y: -150, duration: 1.5)
+        let moveBarrier = SKAction.moveTo(y: -150, duration: 2.0)
         let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
         let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
         let deleteBarrier = SKAction.removeFromParent()

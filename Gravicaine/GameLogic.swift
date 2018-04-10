@@ -150,16 +150,16 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
             body1.node?.removeFromParent()
         }
         
-        // bullet hits nyan cat
-        if body1.categoryBitMask == PhysicsCategories.Bullet && body2.categoryBitMask == PhysicsCategories.NyanCat {
-            if let node = body2.node {
-                // otherwise enemy explodes ...
-                let _ = delegate?.shouldExplodeNode(node)
-                self.bonusKilled()
-            }
-            // ... and bullet disappear
-            body1.node?.removeFromParent()
-        }
+//         bullet hits nyan cat
+//        if body1.categoryBitMask == PhysicsCategories.Bullet && body2.categoryBitMask == PhysicsCategories.NyanCat {
+//            if let node = body2.node {
+//                // otherwise enemy explodes ...
+//                let _ = delegate?.shouldExplodeNode(node)
+//                self.bonusKilled()
+//            }
+//             ... and bullet disappear
+//            body1.node?.removeFromParent()
+//        }
         
     }
     
