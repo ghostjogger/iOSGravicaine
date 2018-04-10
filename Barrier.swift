@@ -14,7 +14,7 @@ class Barrier {
     static var Barriers = [SKSpriteNode]()
     static let barrierCountToFinish = 300
     static var barrierStoredCodes = [Int]()
-    static let barrierFrequency: TimeInterval = 5.0
+    static let barrierFrequency: TimeInterval = 25.0
     static let widthFraction = 1536/6
     static let barrierHeight = 75
     
@@ -32,9 +32,9 @@ class Barrier {
             Barrier.Barriers.append(node)
         }
         
-        //setup random ints with left barrier widths 1 to 4 inc.
+        //setup random ints  0 to 3 inc.
         for i in 1...Barrier.barrierCountToFinish{
-            var c = Int(random(min: 1.0, max: 5.0))
+            var c = Int(random(min: 0, max: 4.0))
             Barrier.barrierStoredCodes.append(c)
         }
     }

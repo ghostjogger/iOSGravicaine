@@ -224,7 +224,7 @@ class GameScene: SKScene, GameLogicDelegate {
         
         // sequence of actions
         let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
-        //bullet.run(bulletSequence)
+        
         
         if barrierCurrentCount < Barrier.barrierStoredCodes.count{
             
@@ -262,8 +262,9 @@ class GameScene: SKScene, GameLogicDelegate {
 //
 //            self.addChild(leftBarrier)
 //            self.addChild(rightBarrier)
-//            leftBarrier.run(barrierSequence)
+ //           leftBarrier.run(barrierSequence)
 //            rightBarrier.run(barrierSequence)
+            
             barrierCurrentCount += 1
             
         }
