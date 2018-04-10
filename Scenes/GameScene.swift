@@ -23,7 +23,7 @@ class GameScene: SKScene, GameLogicDelegate {
     let startLabel = SKLabelNode(text: "Main Menu")
     let player = SpaceShip()
     let gameArea: CGRect
-    let barrierCurrentCount = 0
+    var barrierCurrentCount = 0
     let barrier = Barrier()
 
     
@@ -87,6 +87,8 @@ class GameScene: SKScene, GameLogicDelegate {
     }
     
     override func didMove(to view: SKView) {
+        
+        barrierCurrentCount = 0
         
         for i in 0...1{
             
@@ -213,7 +215,59 @@ class GameScene: SKScene, GameLogicDelegate {
     }
     
     func produceBarrier(){
-        print("Barrier Produced \(timerAdd , timer)" )
+        
+        // two actions
+        let moveBarrier = SKAction.moveTo(y: 0, duration: 1)
+        let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
+        let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
+        let deleteBarrier = SKAction.removeFromParent()
+        
+        // sequence of actions
+        let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
+        //bullet.run(bulletSequence)
+        
+        if barrierCurrentCount < Barrier.barrierStoredCodes.count{
+            
+            print("Barrier Produced \(timerAdd , timer, barrierCurrentCount)" )
+            
+            var i = Barrier.barrierStoredCodes[barrierCurrentCount]
+            
+            var leftBarrier = Barrier.Barriers[i]
+            leftBarrier.position = (CGPoint(x: 0, y: self.size.height - 75))
+            var rightBarrier =  SKSpriteNode()
+            
+            switch i {
+                
+            case 1 :
+                rightBarrier = Barrier.Barriers[4]
+                rightBarrier.position = CGPoint(x: 1536 - (1536/6), y: self.size.height - 75)
+            case 2 :
+                rightBarrier = Barrier.Barriers[3]
+                rightBarrier.position = CGPoint(x: 1536 - (2 * 1536/6), y: self.size.height - 75)
+            case 3 :
+                rightBarrier = Barrier.Barriers[2]
+                rightBarrier.position = CGPoint(x: 1536 - (3 * 1536/6), y: self.size.height - 75)
+            case 4 :
+                rightBarrier = Barrier.Barriers[1]
+                rightBarrier.position = CGPoint(x: 1536 - (4 * 1536/6), y: self.size.height - 75)
+
+                
+            default: break
+                
+            }
+            
+            self.addChild(leftBarrier)
+            self.addChild(rightBarrier)
+            leftBarrier.run(barrierSequence)
+            rightBarrier.run(barrierSequence)
+            barrierCurrentCount += 1
+            
+        }
+        
+        else{
+            print("Game over")
+        }
+       
     }
     
     // MARK: - game logic delegate
