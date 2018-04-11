@@ -1,10 +1,8 @@
 //
 //  SpaceShip.swift
-//  Solo Mission
+//  Gravicaine
 //
-//  Created by Romain ROCHE on 24/06/2016.
-//  Copyright © 2016 Romain ROCHE. All rights reserved.
-//
+
 
 import SpriteKit
 import GameplayKit
