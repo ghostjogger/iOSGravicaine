@@ -28,23 +28,7 @@ class GameScene: SKScene, GameLogicDelegate {
 
     
     private let gameLogic: GameLogic = GameLogic()
-    private var gameState: GameState = .none {
-        didSet {
-            switch gameState {
-            case .waiting:
-                self.setWaitingGameState()
-                break
-            case .inGame:
-                self.setInGameState()
-                break
-            case .gameOver:
-                self.setGameOverState()
-                break
-            default: break
-            }
-        }
-        
-    }
+
     
  
     
@@ -65,31 +49,14 @@ class GameScene: SKScene, GameLogicDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    // MARK: - game state
-    private func setWaitingGameState() {
-       
 
-        
-    }
-    
-    private func setInGameState() {
-        
-        gameLogic.gameDidStart()
-        
-
-        
-    }
-    
-    private func setGameOverState() {
-        gameLogic.gameDidStop()
-        self.setWaitingGameState()
-    }
     
     override func didMove(to view: SKView) {
         
+        //initialise start counter for barrier array codes
         barrierCurrentCount = 0
         
+        //set up 2 star backgrounds to scroll
         for i in 0...1{
             
             let background = SKSpriteNode(imageNamed: "starBackground")
@@ -102,16 +69,13 @@ class GameScene: SKScene, GameLogicDelegate {
             self.addChild(background)
             
         }
-        
-//        for i in 0...Barrier.barrierStoredCodes.count - 1{
-//            print("value: \(Barrier.barrierStoredCodes[i])")
-//        }
-        
  
-        
+        //set up player ship
         player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
         self.addChild(player)
         
+        
+        //set up return to main menu button
         startLabel.fontName = "Jellee-Roman"
         startLabel.fontColor = UIColor.white
         startLabel.fontSize = 100
@@ -297,51 +261,7 @@ class GameScene: SKScene, GameLogicDelegate {
     }
     
     // MARK: - game logic delegate
-    
-    func scoreDidChange(_ newScore: Int, text: String!) {
-        
 
-        
-    }
-    
-    func livesDidChange(oldLives: Int, newLives: Int) {
-        
-
-        
-    }
-    
-    func playerDidLose(destroyed: Bool) {
-        
-
-        
-    }
-    
-//    func shouldSpawnEnemy(enemySpeedMultiplier: CGFloat) {
-//        
-// 
-//        
-//    }
-//    
-//    func shouldSpawnBonus() {
-//        
-//
-//        
-//    }
-    
-    func shouldExplodeNode(_ node: SKNode) -> Bool {
-
-        return true
-    }
-    
-//    func shouldIncreaseSpeed() {
-//
-//    }
-    
-
-    
-    func shouldSpawnBarrier(){
-        
-    }
     
 }
     
