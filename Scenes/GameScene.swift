@@ -53,8 +53,7 @@ class GameScene: SKScene, GameLogicDelegate {
     
     override func didMove(to view: SKView) {
         
-        //initialise start counter for barrier array codes
-        barrierCurrentCount = 0
+
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
@@ -190,15 +189,10 @@ class GameScene: SKScene, GameLogicDelegate {
         
         // sequence of actions
         let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
-        
-        
-        if barrierCurrentCount < Barrier.barrierStoredCodes.count{
+
+            var i = Int(random(min: 0, max: 4.0))
             
-          
-            
-            var i = Barrier.barrierStoredCodes[barrierCurrentCount]
-            
-            print("Barrier Produced \(timerAdd , timer, barrierCurrentCount, i)" )
+            print("Barrier Produced \(timerAdd , timer,  i)" )
 
             var leftBarrier = SKSpriteNode()
             var rightBarrier =  SKSpriteNode()
@@ -249,15 +243,7 @@ class GameScene: SKScene, GameLogicDelegate {
             self.addChild(rightBarrier)
             leftBarrier.run(barrierSequence)
             rightBarrier.run(barrierSequence)
-            
-            barrierCurrentCount += 1
-            
-        }
-        
-        else{
-            print("Game over")
-        }
-       
+
     }
     
     // MARK: - game logic delegate
