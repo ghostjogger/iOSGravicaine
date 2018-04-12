@@ -144,6 +144,8 @@ class GameScene: SKScene, GameLogicDelegate {
         
         timerAdd += (currentTime - timer)
         
+        // produce barrier after specific timescale i.e. barrierFrequency
+        
         if timerAdd - timer > Barrier.barrierFrequency{
             produceBarrier()
             timer = currentTime
@@ -314,30 +316,31 @@ class GameScene: SKScene, GameLogicDelegate {
         
     }
     
-    func shouldSpawnEnemy(enemySpeedMultiplier: CGFloat) {
-        
- 
-        
-    }
-    
-    func shouldSpawnBonus() {
-        
-
-        
-    }
+//    func shouldSpawnEnemy(enemySpeedMultiplier: CGFloat) {
+//        
+// 
+//        
+//    }
+//    
+//    func shouldSpawnBonus() {
+//        
+//
+//        
+//    }
     
     func shouldExplodeNode(_ node: SKNode) -> Bool {
 
         return true
     }
     
-    func shouldIncreaseSpeed() {
-        
-    }
+//    func shouldIncreaseSpeed() {
+//
+//    }
     
- 
-    func random(min: CGFloat, max: CGFloat) -> CGFloat {
-        return Gravicaine.random() * (max - min) + min
+
+    
+    func shouldSpawnBarrier(){
+        
     }
     
 }
