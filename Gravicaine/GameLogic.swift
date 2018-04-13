@@ -71,7 +71,8 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         // player hits barrier
         if body1.categoryBitMask == PhysicsCategories.Player && body2.categoryBitMask == PhysicsCategories.Barrier {
 
-            delegate?.barrierTouchesPlayer()
+            print("boom")
+        
         }
 //
 //        // bullet hits enemy
