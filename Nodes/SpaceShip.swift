@@ -42,10 +42,8 @@ class SpaceShip: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func fireBullet(destinationY: CGFloat) -> Bool {
-        
-
-        
+    func fireBullet(destinationY: CGFloat)  {
+  
         let bullet = SKSpriteNode(texture: SpaceShip.bulletTexture)
         bullet.size = CGSize(width: 25, height: 50)
         //bullet.setScale(GameScene.scale)
@@ -68,9 +66,6 @@ class SpaceShip: SKSpriteNode {
         // sequence of actions
         let bulletSequence = SKAction.sequence([SpaceShip.bulletSound, bulletAnimation, deleteBullet])
         bullet.run(bulletSequence)
-        
-    
-        return true
         
     }
     

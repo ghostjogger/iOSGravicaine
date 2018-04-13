@@ -222,7 +222,7 @@ class GameScene: SKScene, GameLogicDelegate {
             // sequence of actions
             let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
             
-            var i = Int(random(min: 0, max: 4.0))
+            let i = Int(random(min: 0, max: 4.0))
             
            
             
