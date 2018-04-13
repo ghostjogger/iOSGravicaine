@@ -47,6 +47,15 @@ class GameScene: SKScene, GameLogicDelegate {
         
     }
     
+    //player explosion animation variables
+    
+    private var playerExplosionFrames: [SKTexture] = []
+    let explosionAnimatedAtlas = SKTextureAtlas(named: "playerExplosion")
+    var explosionFrames: [SKTexture] = []
+    var explosion = SKSpriteNode()
+    
+   
+    
     // MARK: - game state
     
     private func setWaitingGameState() {
@@ -81,6 +90,23 @@ class GameScene: SKScene, GameLogicDelegate {
         
         
         gameLogic.delegate = self
+        
+        //setup player explosion animation
+        let numImages = explosionAnimatedAtlas.textureNames.count
+        for i in 1...numImages {
+            let explosionTextureName = "explosion\(i)"
+            print("\(explosionTextureName)")
+            explosionFrames.append(explosionAnimatedAtlas.textureNamed(explosionTextureName))
+            print("\(explosionAnimatedAtlas.textureNamed(explosionTextureName))")
+        }
+        playerExplosionFrames = explosionFrames
+        explosion = SKSpriteNode(texture: playerExplosionFrames[0])
+
+
+        
+        
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -112,6 +138,8 @@ class GameScene: SKScene, GameLogicDelegate {
         player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
         self.addChild(player)
         
+        explosion.position = CGPoint(x: self.size.width/2 + 100, y: self.size.height * 0.1 + 100)
+        self.addChild(explosion)
         
         //set up return to main menu button
         startLabel.fontName = "Jellee-Roman"
@@ -179,7 +207,7 @@ class GameScene: SKScene, GameLogicDelegate {
         }
         
         player.fireBullet(destinationY: self.size.height)
-        
+        animatePlayerExplosion()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -282,7 +310,19 @@ class GameScene: SKScene, GameLogicDelegate {
         
     }
     
-    
+    func animatePlayerExplosion(){
+        
+//        playerExplosion.position.x = player.position.x
+//        playerExplosion.position.y = player.position.y
+//        let deletePlayer = SKAction.removeFromParent()
+//        let deletePlayerSequence = SKAction.sequence([deletePlayer])
+//        player.run(deletePlayerSequence)
+//        self.addChild(playerExplosion)
+        
+
+        
+        player.run(SKAction.repeat(SKAction.animate(with: playerExplosionFrames, timePerFrame: 0.1, resize: false, restore: true), count: 1), withKey: "playerExplosion")
+    }
 
     
 }
