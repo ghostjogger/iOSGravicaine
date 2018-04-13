@@ -303,7 +303,9 @@ class GameScene: SKScene, GameLogicDelegate {
     func animatePlayerExplosion(){
         
    
+        player.removeAllChildren()
         player.run(SKAction.repeat(SKAction.animate(with: playerExplosionFrames, timePerFrame: 0.12, resize: false, restore: true), count: 1), withKey: "playerExplosion")
+        
     }
 
     

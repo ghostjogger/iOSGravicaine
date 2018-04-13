@@ -42,6 +42,8 @@ class SpaceShip: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+
+    
     func fireBullet(destinationY: CGFloat)  {
   
         let bullet = SKSpriteNode(texture: SpaceShip.bulletTexture)
@@ -69,6 +71,14 @@ class SpaceShip: SKSpriteNode {
         
     }
     
+    func addEmitter(){
+        if let emitter = SKEmitterNode(fileNamed: "ship-fire") {
+            fireEmitter = emitter
+            fireEmitter?.position = CGPoint(x: self.position.x, y: self.position.y - 40.0)
+            fireEmitter?.targetNode = self
+            self.addChild(fireEmitter!)
+        }
+    }
 
     
 }
