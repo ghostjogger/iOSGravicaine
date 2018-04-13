@@ -31,7 +31,7 @@ class SpaceShip: SKSpriteNode {
         
         if let emitter = SKEmitterNode(fileNamed: "ship-fire") {
             fireEmitter = emitter
-            fireEmitter?.position = CGPoint(x: self.position.x, y: self.position.y - 60.0)
+            fireEmitter?.position = CGPoint(x: self.position.x, y: self.position.y - 40.0)
             fireEmitter?.targetNode = self
             self.addChild(fireEmitter!)
         }
@@ -74,14 +74,6 @@ class SpaceShip: SKSpriteNode {
         
     }
     
-    func accelerate(accelerate: CGFloat) {
-        if accelerate > 4.0 {
-            fireEmitter?.particleSpeed = 300.0
-        } else if accelerate < -4.0 {
-            fireEmitter?.particleSpeed = 20.0
-        } else {
-            fireEmitter?.particleSpeed = 100.0
-        }
-    }
+
     
 }
