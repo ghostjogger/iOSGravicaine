@@ -289,14 +289,15 @@ class GameScene: SKScene, GameLogicDelegate {
                 
             }
             
-            leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+            leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
             leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
             leftBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
             leftBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player
             
             
-            rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+            
+            rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false
             rightBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
             rightBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
