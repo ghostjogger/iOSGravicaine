@@ -27,7 +27,7 @@ class SpaceShip: SKSpriteNode {
         self.physicsBody!.categoryBitMask = PhysicsCategories.Player
         self.physicsBody!.collisionBitMask = PhysicsCategories.None
         self.physicsBody!.contactTestBitMask = PhysicsCategories.Barrier
-        self.physicsBody!.contactTestBitMask = PhysicsCategories.Asteroid
+        
         
         if let emitter = SKEmitterNode(fileNamed: "ship-fire") {
             fireEmitter = emitter

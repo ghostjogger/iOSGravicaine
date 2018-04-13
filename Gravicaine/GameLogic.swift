@@ -7,6 +7,7 @@ import SpriteKit
 protocol GameLogicDelegate: class {
     
     func shouldSpawnBarrier()
+    func barrierTouchesPlayer()
 
 }
 
@@ -21,7 +22,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - bonus
     
     private var barrierSpawner: Timer? = nil
-    private let barrierFrequency: TimeInterval = 1.0
+    private let barrierFrequency: TimeInterval = 2.0
     
     @objc private func spawnBarrier(_ timer: Timer) {
         delegate?.shouldSpawnBarrier()
@@ -66,16 +67,12 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
             body1 = contact.bodyB
             body2 = contact.bodyA
         }
-        
-//        // player hits enemy
-//        if body1.categoryBitMask == PhysicsCategories.Player && body2.categoryBitMask == PhysicsCategories.Enemy {
-//            if let node = body2.node { // enemy ship
-//                // explode it
-//                let _ = delegate?.shouldExplodeNode(node)
-//            }
-//            // player did lose
-//            self.enemyTouchesPlayer()
-//        }
+
+        // player hits barrier
+        if body1.categoryBitMask == PhysicsCategories.Player && body2.categoryBitMask == PhysicsCategories.Barrier {
+
+            delegate?.barrierTouchesPlayer()
+        }
 //
 //        // bullet hits enemy
 //        if body1.categoryBitMask == PhysicsCategories.Bullet && body2.categoryBitMask == PhysicsCategories.Enemy {
@@ -96,7 +93,9 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
 
-
+    func barrierTouchesPlayer(){
+        
+    }
 
     
 }

@@ -110,7 +110,7 @@ class GameScene: SKScene, GameLogicDelegate {
     override func didMove(to view: SKView) {
         
 
-        
+        self.physicsWorld.contactDelegate = gameLogic
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
@@ -197,7 +197,7 @@ class GameScene: SKScene, GameLogicDelegate {
         }
         
         player.fireBullet(destinationY: self.size.height)
-        animatePlayerExplosion()
+
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -232,7 +232,7 @@ class GameScene: SKScene, GameLogicDelegate {
         DispatchQueue.global().async {
             
             // two actions
-            let moveBarrier = SKAction.moveTo(y: -150, duration: 2.0)
+            let moveBarrier = SKAction.moveTo(y: -150, duration: 3.0)
             let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
             let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
@@ -289,6 +289,18 @@ class GameScene: SKScene, GameLogicDelegate {
                 
             }
             
+            leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+            leftBarrier.physicsBody!.affectedByGravity = false
+            leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
+            leftBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
+            leftBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player
+            
+            rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+            rightBarrier.physicsBody!.affectedByGravity = false
+            rightBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
+            rightBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
+            rightBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player
+            
             DispatchQueue.main.async(execute: {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
@@ -300,7 +312,7 @@ class GameScene: SKScene, GameLogicDelegate {
         
     }
     
-    func animatePlayerExplosion(){
+    func barrierTouchesPlayer(){
         
    
         player.removeAllChildren()
