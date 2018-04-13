@@ -5,6 +5,8 @@
 import SpriteKit
 
 protocol GameLogicDelegate: class {
+    
+    func shouldSpawnBarrier()
 
 }
 
@@ -16,7 +18,36 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
     weak var delegate: GameLogicDelegate? = nil
     
-
+    // MARK: - bonus
+    
+    private var barrierSpawner: Timer? = nil
+    private let barrierFrequency: TimeInterval = 1.0
+    
+    @objc private func spawnBarrier(_ timer: Timer) {
+        delegate?.shouldSpawnBarrier()
+        self.startSpawningBarrier()
+    }
+    
+    private func startSpawningBarrier() {
+       
+        barrierSpawner = Timer.scheduledTimer(timeInterval: TimeInterval(barrierFrequency),
+                                            target: self,
+                                            selector: #selector(GameLogic.spawnBarrier(_:)),
+                                            userInfo: nil,
+                                            repeats: false)
+    }
+    
+    private func stopSpawningBarrier() {
+        barrierSpawner?.invalidate()
+        barrierSpawner = nil
+    }
+    
+    func gameDidStart() {
+        
+        self.stopSpawningBarrier()
+        self.startSpawningBarrier()
+        
+    }
     
 
     
@@ -56,13 +87,15 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
 //            // ... and bullet disappear
 //            body1.node?.removeFromParent()
 //        }
+   
+        // MARK: - implementation
         
+
 
         
     }
     
 
-    
 
 
     

@@ -23,16 +23,49 @@ class GameScene: SKScene, GameLogicDelegate {
     let startLabel = SKLabelNode(text: "Main Menu")
     let player = SpaceShip()
     let gameArea: CGRect
-    let barrierFrequency: TimeInterval = 10.0
     var barrierwidthFraction = 0
-    let barrierHeight = 150
-  
-
+    var barrierHeight = 150
+    
+    // game data
     
     private let gameLogic: GameLogic = GameLogic()
-
+    private var gameState: GameState = .none {
+        didSet {
+            switch gameState {
+            case .waiting:
+                self.setWaitingGameState()
+                break
+            case .inGame:
+                self.setInGameState()
+                break
+            case .gameOver:
+                self.setGameOverState()
+                break
+            default: break
+            }
+        }
+        
+    }
     
- 
+    // MARK: - game state
+    
+    private func setWaitingGameState() {
+        
+
+        
+    }
+    
+    private func setInGameState() {
+        
+
+        gameLogic.gameDidStart()
+
+        
+    }
+    
+    private func setGameOverState() {
+
+    }
     
     override init(size:CGSize) {
         
@@ -43,9 +76,11 @@ class GameScene: SKScene, GameLogicDelegate {
         gameArea = CGRect(x: margin, y: 0, width: playableWidth, height: size.height)
         barrierwidthFraction = Int(gameArea.width / 6)
         
-
         
         super.init(size: size)
+        
+        
+        gameLogic.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,6 +92,7 @@ class GameScene: SKScene, GameLogicDelegate {
     override func didMove(to view: SKView) {
         
 
+        
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
@@ -84,13 +120,14 @@ class GameScene: SKScene, GameLogicDelegate {
         startLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.9)
         self.addChild(startLabel)
         
+        self.gameState = .inGame
+        
+        
        
     }
     
     var lastUpdateTime:TimeInterval = 0
     var deltaFrameTime:TimeInterval = 0
-    var timer:TimeInterval = 0
-    var timerAdd:TimeInterval = 0
     var speedToMove:CGFloat = 100.0
     
     
@@ -99,8 +136,6 @@ class GameScene: SKScene, GameLogicDelegate {
         if lastUpdateTime == 0
         {
             lastUpdateTime = currentTime
-            timer = currentTime
-            timerAdd = currentTime
         }
         else
         {
@@ -108,15 +143,7 @@ class GameScene: SKScene, GameLogicDelegate {
             lastUpdateTime = currentTime
         }
         
-        timerAdd += (currentTime - timer)
-        
-        // produce barrier after specific timescale i.e. barrierFrequency
-        
-        if timerAdd - timer > barrierFrequency{
-            produceBarrier()
-            timer = currentTime
-            timerAdd = currentTime
-        }
+    
         
         let amountToMoveBackground = speedToMove * CGFloat(deltaFrameTime)
         
@@ -182,74 +209,80 @@ class GameScene: SKScene, GameLogicDelegate {
         
     }
     
-    func produceBarrier(){
+    func shouldSpawnBarrier(){
         
-        // two actions
-        let moveBarrier = SKAction.moveTo(y: -150, duration: 2.0)
-        let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
-        let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
-        let deleteBarrier = SKAction.removeFromParent()
-        
-        // sequence of actions
-        let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
-
+        DispatchQueue.global().async {
+            
+            // two actions
+            let moveBarrier = SKAction.moveTo(y: -150, duration: 2.0)
+            let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
+            let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
+            let deleteBarrier = SKAction.removeFromParent()
+            
+            // sequence of actions
+            let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
+            
             var i = Int(random(min: 0, max: 4.0))
             
-            print("Barrier Produced \(timerAdd , timer,  i)" )
-
+           
+            
             var leftBarrier = SKSpriteNode()
             var rightBarrier =  SKSpriteNode()
-
+            
             switch i {
                 
             case 0 :
                 
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  256, height:barrierHeight))
+                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  256, height:self.barrierHeight))
                 leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 1024, height:barrierHeight))
+                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 1024, height:self.barrierHeight))
                 rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 rightBarrier.position = CGPoint(x: 512, y: self.size.height + 150)
-
+                
             case 1 :
                 
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  512, height:barrierHeight))
+                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  512, height:self.barrierHeight))
                 leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 768, height:barrierHeight))
+                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 768, height:self.barrierHeight))
                 rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 rightBarrier.position = CGPoint(x: 768, y: self.size.height + 150)
             case 2 :
                 
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  768, height:barrierHeight))
+                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  768, height:self.barrierHeight))
                 leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 512, height:barrierHeight))
+                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 512, height:self.barrierHeight))
                 rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 rightBarrier.position = CGPoint(x: 1024, y: self.size.height + 150)
             case 3 :
-
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  1024, height:barrierHeight))
+                
+                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  1024, height:self.barrierHeight))
                 leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 256, height:barrierHeight))
+                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 256, height:self.barrierHeight))
                 rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 rightBarrier.position = CGPoint(x: 1280, y: self.size.height + 150)
-
-
-
+                
+                
+                
             default: break
-
+                
             }
-
-            self.addChild(leftBarrier)
-            self.addChild(rightBarrier)
-            leftBarrier.run(barrierSequence)
-            rightBarrier.run(barrierSequence)
-
+            
+            DispatchQueue.main.async(execute: {
+                self.addChild(leftBarrier)
+                self.addChild(rightBarrier)
+                leftBarrier.run(barrierSequence)
+                rightBarrier.run(barrierSequence)
+            })
+        }
+        
+        
     }
     
-    // MARK: - game logic delegate
+    
 
     
 }
