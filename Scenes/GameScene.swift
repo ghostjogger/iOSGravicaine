@@ -23,8 +23,10 @@ class GameScene: SKScene, GameLogicDelegate {
     let startLabel = SKLabelNode(text: "Main Menu")
     let player = SpaceShip()
     let gameArea: CGRect
-    var barrierCurrentCount = 0
-    let barrier = Barrier()
+    let barrierFrequency: TimeInterval = 10.0
+    var barrierwidthFraction = 0
+    let barrierHeight = 150
+  
 
     
     private let gameLogic: GameLogic = GameLogic()
@@ -39,6 +41,7 @@ class GameScene: SKScene, GameLogicDelegate {
         let playableWidth = size.height / maxAspectRatio
         let margin = (size.width - playableWidth) / 2
         gameArea = CGRect(x: margin, y: 0, width: playableWidth, height: size.height)
+        barrierwidthFraction = Int(gameArea.width / 6)
         
 
         
