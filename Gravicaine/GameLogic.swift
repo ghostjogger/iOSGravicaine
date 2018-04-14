@@ -88,9 +88,13 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         
         self.stopSpawningBarrier()
         self.startSpawningBarrier()
-        self.stopSpawningPlanet()
-        self.startSpawningPlanet()
+        //self.stopSpawningPlanet()
+        //self.startSpawningPlanet()
         
+    }
+    
+    func gameDidStop(){
+        self.stopSpawningBarrier()
     }
     
 

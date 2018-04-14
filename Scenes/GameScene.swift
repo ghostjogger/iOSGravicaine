@@ -49,7 +49,16 @@ class GameScene: SKScene, GameLogicDelegate {
     static let backgroundNodeNameObject = "background-node-0"
 
     
-    let player = SpaceShip()
+    // player
+    
+    private var player: SpaceShip
+    private let playerBaseY: CGFloat = 0.1
+
+
+    
+    private var gameOverTransitioning = false
+    
+    
     let gameArea: CGRect
     var barrierwidthFraction = 0
     var barrierHeight = 300
@@ -107,19 +116,58 @@ class GameScene: SKScene, GameLogicDelegate {
     
     private func setWaitingGameState() {
         
+        
+        player.position = CGPoint(x: self.size.width/2, y:  0 - self.size.height)
+        startPanel?.removeFromParent()
+        startPanel = StartPanelNode(size: self.size)
+        startPanel?.zPosition = 50
+        self.addChild(startPanel!)
+        startPanel?.fadeIn()
 
         
     }
     
     private func setInGameState() {
         
+        self.enumerateChildNodes(withName: "barrier") {
+            (node, stop) in
+            
+           
+            node.removeFromParent()
+            
+            
+        }
 
         gameLogic.gameDidStart()
 
+        startPanel?.fadeOut() {
+            self.startPanel?.removeFromParent()
+            self.startPanel = nil
+        }
+        
+        // player appear
+        player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
+        self.player.isHidden = false
+        let playerAppear = SKAction.moveTo(y: self.size.height * self.playerBaseY, duration: 0.3)
+        self.player.run(playerAppear)
         
     }
     
     private func setGameOverState() {
+
+        gameLogic.gameDidStop()
+        gameOverTransitioning = true
+        
+        self.enumerateChildNodes(withName: "barrier") {
+            (node, stop) in
+            
+            node.removeAllActions()
+
+            
+            
+        }
+        
+        
 
     }
     
@@ -139,8 +187,12 @@ class GameScene: SKScene, GameLogicDelegate {
         scoreLabel?.horizontalAlignmentMode = .left
         scoreLabel?.verticalAlignmentMode = .top
         
+        player = SpaceShip()
+        
         
         super.init(size: size)
+        
+        
         
         
         gameLogic.delegate = self
@@ -184,7 +236,8 @@ class GameScene: SKScene, GameLogicDelegate {
 
  
         //set up player ship
-        player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
+        //player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
+        self.gameState = .waiting
         self.addChild(player)
 
 
@@ -196,8 +249,10 @@ class GameScene: SKScene, GameLogicDelegate {
         scoreLabel?.text = gameLogic.scoreText()
         self.addChild(scoreLabel!)
         
-        self.gameState = .inGame
         
+        if GodMode {
+            player.physicsBody?.categoryBitMask = PhysicsCategories.None
+        }
         
        
     }
@@ -209,6 +264,9 @@ class GameScene: SKScene, GameLogicDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
+
+        
+        if self.gameState == .inGame && !gameOverTransitioning{
         if lastUpdateTime == 0
         {
             lastUpdateTime = currentTime
@@ -235,7 +293,7 @@ class GameScene: SKScene, GameLogicDelegate {
            
         }
         
-        
+        }
     }
     
     
@@ -256,13 +314,29 @@ class GameScene: SKScene, GameLogicDelegate {
 //            }
 //
 //        }
+        if gameOverTransitioning {
+            return
+        }
         
+        if gameState == .waiting || gameState == .gameOver {
+            self.gameState = .inGame
+            return
+        }
+        
+        if self.gameState == .inGame{
         player.fireBullet(destinationY: self.size.height)
-
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
 
+        if gameOverTransitioning {
+            return
+        }
+        
+        if gameState == .waiting || gameState == .gameOver {
+            return
+        }
 
         for touch: AnyObject in touches {
             
@@ -309,6 +383,7 @@ class GameScene: SKScene, GameLogicDelegate {
     
     func shouldSpawnBarrier(){
         
+        if !gameOverTransitioning {
         DispatchQueue.global().async {
             
             // two actions
@@ -331,6 +406,7 @@ class GameScene: SKScene, GameLogicDelegate {
             leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
             leftBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
             leftBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player
+            leftBarrier.name = "barrier"
             
 
             
@@ -342,6 +418,7 @@ class GameScene: SKScene, GameLogicDelegate {
             rightBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
             rightBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
             rightBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player
+            rightBarrier.name = "barrier"
             
             
             
@@ -353,15 +430,24 @@ class GameScene: SKScene, GameLogicDelegate {
             })
         }
         
-        
+        }
     }
     
     func barrierTouchesPlayer(){
-        
-   
+ 
         player.removeAllChildren()
-        player.run(SKAction.repeat(SKAction.animate(with: playerExplosionFrames, timePerFrame: 0.12, resize: false, restore: true), count: 1), withKey: "playerExplosion")
+        let hideAction = SKAction.hide()
+        let waitAction = SKAction.wait(forDuration: 1.0)
+        let animateExplosionAction = SKAction.animate(with: playerExplosionFrames, timePerFrame: 0.1, resize: false, restore: false)
+        let playerExplosionSequence = SKAction.sequence([animateExplosionAction,hideAction,waitAction])
+        player.run(playerExplosionSequence, completion: {
+            let sceneToMoveTo = GameScene(size: self.size)
+            sceneToMoveTo.scaleMode = self.scaleMode
+            let myTransition = SKTransition.fade(withDuration: 1.0)
+            self.view!.presentScene(sceneToMoveTo, transition:myTransition)})
         
+        self.gameState = .gameOver
+       
     }
     
 

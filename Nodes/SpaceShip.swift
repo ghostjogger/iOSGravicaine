@@ -12,6 +12,7 @@ class SpaceShip: SKSpriteNode {
     private static let bulletSound: SKAction = SKAction.playSoundFileNamed("laser.mp3", waitForCompletion: false)
     private static let bulletTexture: SKTexture = SKTexture(imageNamed: "player_bullet")
     private var fireEmitter: SKEmitterNode? = nil
+ 
     
     
     
@@ -28,13 +29,13 @@ class SpaceShip: SKSpriteNode {
         self.physicsBody!.collisionBitMask = PhysicsCategories.None
         self.physicsBody!.contactTestBitMask = PhysicsCategories.Barrier
         
-        
         if let emitter = SKEmitterNode(fileNamed: "ship-fire") {
             fireEmitter = emitter
-            fireEmitter?.position = CGPoint(x: self.position.x, y: self.position.y - 40.0)
+            fireEmitter?.position = CGPoint(x: 0.0, y: -(self.size.height/2) + 40.0)
             fireEmitter?.targetNode = self
             self.addChild(fireEmitter!)
         }
+
         
     }
     
@@ -70,15 +71,7 @@ class SpaceShip: SKSpriteNode {
         bullet.run(bulletSequence)
         
     }
-    
-    func addEmitter(){
-        if let emitter = SKEmitterNode(fileNamed: "ship-fire") {
-            fireEmitter = emitter
-            fireEmitter?.position = CGPoint(x: self.position.x, y: self.position.y - 40.0)
-            fireEmitter?.targetNode = self
-            self.addChild(fireEmitter!)
-        }
-    }
+
 
     
 }
