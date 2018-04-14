@@ -384,6 +384,8 @@ class GameScene: SKScene, GameLogicDelegate {
     func shouldSpawnBarrier(){
         
         if !gameOverTransitioning {
+            
+          
         DispatchQueue.global().async {
             
             // two actions
@@ -425,8 +427,12 @@ class GameScene: SKScene, GameLogicDelegate {
             DispatchQueue.main.async(execute: {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
-                leftBarrier.run(barrierSequence)
-                rightBarrier.run(barrierSequence)
+                leftBarrier.run(barrierSequence, completion: {
+                    self.gameLogic.passBarrier()
+                    })
+                rightBarrier.run(barrierSequence, completion: {
+                    self.gameLogic.passBarrier()
+                })
             })
         }
         

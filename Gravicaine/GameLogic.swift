@@ -36,6 +36,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         return "SCORE : \(score)"
     }
     
+
     
     // MARK: - planet
     
@@ -68,6 +69,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     @objc private func spawnBarrier(_ timer: Timer) {
         delegate?.shouldSpawnBarrier()
         self.startSpawningBarrier()
+       
     }
     
     private func startSpawningBarrier() {
@@ -82,6 +84,10 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     private func stopSpawningBarrier() {
         barrierSpawner?.invalidate()
         barrierSpawner = nil
+    }
+    
+    func passBarrier(){
+        self.score += 10
     }
     
     func gameDidStart() {
@@ -140,11 +146,13 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
 
         
     }
-    
+
 
     func barrierTouchesPlayer(){
-        self.score -= 100
+
     }
+    
+
 
     
 }
