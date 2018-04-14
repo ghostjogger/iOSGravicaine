@@ -49,7 +49,6 @@ class GameScene: SKScene, GameLogicDelegate {
     static let backgroundNodeNameObject = "background-node-0"
 
     
-    let startLabel = SKLabelNode(text: "Main Menu")
     let player = SpaceShip()
     let gameArea: CGRect
     var barrierwidthFraction = 0
@@ -188,13 +187,7 @@ class GameScene: SKScene, GameLogicDelegate {
         player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
         self.addChild(player)
 
-        
-        //set up return to main menu button
-        startLabel.fontName = FontName
-        startLabel.fontColor = UIColor.white
-        startLabel.fontSize = 100
-        startLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.9)
-        self.addChild(startLabel)
+
         
         // score label prep work
         
@@ -250,19 +243,19 @@ class GameScene: SKScene, GameLogicDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        for touch: AnyObject in touches{
-
-            let pointOfTouch = touch.location(in: self)
-
-            if startLabel.contains(pointOfTouch){
-
-                let sceneToMoveTo = MainMenuScene(size: self.size)
-                sceneToMoveTo.scaleMode = self.scaleMode
-                let myTransition = SKTransition.fade(withDuration: 0.5)
-                self.view!.presentScene(sceneToMoveTo, transition:myTransition)
-            }
-
-        }
+//        for touch: AnyObject in touches{
+//
+//            let pointOfTouch = touch.location(in: self)
+//
+//            if startLabel.contains(pointOfTouch){
+//
+//                let sceneToMoveTo = MainMenuScene(size: self.size)
+//                sceneToMoveTo.scaleMode = self.scaleMode
+//                let myTransition = SKTransition.fade(withDuration: 0.5)
+//                self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+//            }
+//
+//        }
         
         player.fireBullet(destinationY: self.size.height)
 
