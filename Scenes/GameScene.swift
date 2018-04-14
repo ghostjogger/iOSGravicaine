@@ -107,6 +107,7 @@ class GameScene: SKScene, GameLogicDelegate {
     //player explosion animation variables
     
     private var playerExplosionFrames: [SKTexture] = []
+    private let playerExplosionSound: SKAction = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
     let explosionAnimatedAtlas = SKTextureAtlas(named: "playerExplosion")
     var explosionFrames: [SKTexture] = []
     
@@ -445,7 +446,7 @@ class GameScene: SKScene, GameLogicDelegate {
         let hideAction = SKAction.hide()
         let waitAction = SKAction.wait(forDuration: 1.0)
         let animateExplosionAction = SKAction.animate(with: playerExplosionFrames, timePerFrame: 0.1, resize: false, restore: false)
-        let playerExplosionSequence = SKAction.sequence([animateExplosionAction,hideAction,waitAction])
+        let playerExplosionSequence = SKAction.sequence([playerExplosionSound, animateExplosionAction,hideAction,waitAction])
         player.run(playerExplosionSequence, completion: {
             let sceneToMoveTo = GameScene(size: self.size)
             sceneToMoveTo.scaleMode = self.scaleMode
