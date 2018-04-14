@@ -264,57 +264,27 @@ class GameScene: SKScene, GameLogicDelegate {
             let i = Int(random(min: 0, max: 4.0))
             
            
-            
-            var leftBarrier = SKSpriteNode()
-            var rightBarrier =  SKSpriteNode()
-            
-            switch i {
-
-            case 0 :
-
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  256, height:self.barrierHeight))
-                leftBarrier.position = (CGPoint(x: leftBarrier.size.width/2 , y: self.size.height + 150))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 1024, height:self.barrierHeight))
-                rightBarrier.position = CGPoint(x: self.size.width - (rightBarrier.size.width/2), y: self.size.height + 150)
-
-            case 1 :
-
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  512, height:self.barrierHeight))
-                leftBarrier.position = (CGPoint(x: leftBarrier.size.width/2, y: self.size.height + 150))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 768, height:self.barrierHeight))
-                rightBarrier.position = CGPoint(x: self.size.width - (rightBarrier.size.width/2), y: self.size.height + 150)
-            case 2 :
-
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  768, height:self.barrierHeight))
-                leftBarrier.position = (CGPoint(x: leftBarrier.size.width/2, y: self.size.height + 150))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 512, height:self.barrierHeight))
-                rightBarrier.position = CGPoint(x: self.size.width - (rightBarrier.size.width/2), y: self.size.height + 150)
-            case 3 :
-
-                leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  1024, height:self.barrierHeight))
-                leftBarrier.position = (CGPoint(x: leftBarrier.size.width/2, y: self.size.height + 150))
-                rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 256, height:self.barrierHeight))
-                rightBarrier.position = CGPoint(x: self.size.width - (rightBarrier.size.width/2), y: self.size.height + 150)
-
-
-
-            default: break
-
-            }
-            
+            //setup left barrier
+            var leftBarrier = SKSpriteNode(color: UIColor.white, size: CGSize(width:  256 + (i * 256), height:self.barrierHeight))
+            leftBarrier.position = (CGPoint(x: leftBarrier.size.width/2 , y: self.size.height + CGFloat(self.barrierHeight)))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
             leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
             leftBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
             leftBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player
             
+
             
-            
+            //setup right barrier
+            var rightBarrier =  SKSpriteNode(color: UIColor.white, size: CGSize(width:  1024 - (i * 256), height:self.barrierHeight))
+            rightBarrier.position = (CGPoint(x: self.size.width - (rightBarrier.size.width/2) , y: self.size.height + CGFloat(self.barrierHeight)))
             rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false
             rightBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
             rightBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
             rightBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player
+            
+            
             
             DispatchQueue.main.async(execute: {
                 self.addChild(leftBarrier)
