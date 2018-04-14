@@ -18,7 +18,49 @@ class MainMenuScene: SKScene{
     let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
     let ship = SpaceShip()
+    
+    //protonStar animation variables
+    
+    private var protonStarFrames: [SKTexture] = []
+    let protonStarAnimatedAtlas = SKTextureAtlas(named: "protonStar")
+    var protonFrames: [SKTexture] = []
+    
+    //galaxy animation variables
+    
+    private var galaxyFrames: [SKTexture] = []
+    let galaxyAnimatedAtlas = SKTextureAtlas(named: "galaxy")
+    var galFrames: [SKTexture] = []
+    
+    
 
+    override init(size:CGSize) {
+        
+        //setup protonStar animation
+        var numImages = protonStarAnimatedAtlas.textureNames.count
+        for i in 1...numImages {
+            let textureName = "protonStar\(i)"
+            protonFrames.append(protonStarAnimatedAtlas.textureNamed(textureName))
+        }
+        protonStarFrames = protonFrames
+        
+        //setup galaxy animation
+        numImages = galaxyAnimatedAtlas.textureNames.count
+        for i in 1...numImages {
+            let textureName = "galaxy\(i)"
+            galFrames.append(galaxyAnimatedAtlas.textureNamed(textureName))
+        }
+        galaxyFrames = galFrames
+        
+        super.init(size: size)
+    }
+    
+    
+    
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didMove(to view: SKView) {
         

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		990D6B142082213000429C9D /* protonStar.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B132082213000429C9D /* protonStar.atlas */; };
+		990D6B162082218000429C9D /* galaxy.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B152082218000429C9D /* galaxy.atlas */; };
 		99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357AE2079072400F86F84 /* MainMenuScene.swift */; };
 		99A357B12079073400F86F84 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357B02079073400F86F84 /* GameOverScene.swift */; };
 		99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99A357B22079082F00F86F84 /* introGravicaine.wav */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		990D6B132082213000429C9D /* protonStar.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = protonStar.atlas; sourceTree = "<group>"; };
+		990D6B152082218000429C9D /* galaxy.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = galaxy.atlas; sourceTree = "<group>"; };
 		99A357AE2079072400F86F84 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		99A357B02079073400F86F84 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		99A357B22079082F00F86F84 /* introGravicaine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = introGravicaine.wav; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 		99A40D3B20754BE0000D5DD9 = {
 			isa = PBXGroup;
 			children = (
+				990D6B152082218000429C9D /* galaxy.atlas */,
+				990D6B132082213000429C9D /* protonStar.atlas */,
 				99A357D420813F2B00F86F84 /* playerExplosion.atlas */,
 				99A357BF207A585500F86F84 /* Nodes */,
 				99A357B620791B9900F86F84 /* Particles */,
@@ -208,11 +214,13 @@
 				99A357BC207935E800F86F84 /* Jellee-Roman.ttf in Resources */,
 				99A40D5320754BE0000D5DD9 /* Main.storyboard in Resources */,
 				99A357D520813F2B00F86F84 /* playerExplosion.atlas in Resources */,
+				990D6B162082218000429C9D /* galaxy.atlas in Resources */,
 				99A357BA20791F4000F86F84 /* spark.png in Resources */,
 				99A40D4A20754BE0000D5DD9 /* GameScene.sks in Resources */,
 				99A357B52079088E00F86F84 /* explosion.wav in Resources */,
 				99A357B820791BAE00F86F84 /* ship-fire.sks in Resources */,
 				99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */,
+				990D6B142082213000429C9D /* protonStar.atlas in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
 				99A357C3207A595000F86F84 /* laser.mp3 in Resources */,
 				99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */,
