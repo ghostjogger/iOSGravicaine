@@ -6,6 +6,7 @@ import SpriteKit
 
 protocol GameLogicDelegate: class {
     
+    func scoreDidChange(_ newScore: Int, text: String!)
     func shouldSpawnBarrier()
     func shouldSpawnPlanet()
     func barrierTouchesPlayer()
@@ -14,14 +15,29 @@ protocol GameLogicDelegate: class {
 
 class GameLogic: NSObject, SKPhysicsContactDelegate {
 
- 
+    private static let DefaultScore: Int = 0
     
     // MARK: - delegate
     
     weak var delegate: GameLogicDelegate? = nil
     
+    // MARK: - score
     
-    // MARK: - bonus
+    private(set) var score: Int = GameLogic.DefaultScore {
+        didSet {
+            if oldValue != score {
+                delegate?.scoreDidChange(score, text: self.scoreText())
+            }
+        }
+    }
+    
+    
+    func scoreText() -> String! {
+        return "SCORE : \(score)"
+    }
+    
+    
+    // MARK: - planet
     
     private var planetSpawner: Timer? = nil
     
@@ -98,6 +114,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         // player hits barrier
         if body1.categoryBitMask == PhysicsCategories.Player && body2.categoryBitMask == PhysicsCategories.Barrier {
 
+            self.barrierTouchesPlayer()
             delegate?.barrierTouchesPlayer()
         
         }
@@ -122,7 +139,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
 
     func barrierTouchesPlayer(){
-        
+        self.score -= 100
     }
 
     

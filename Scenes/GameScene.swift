@@ -17,6 +17,33 @@ enum GameState {
     case gameOver
 }
 
+extension SKAction {
+    
+    
+    class func hudLabelFadeAction(duration d: TimeInterval = 0.9, fadeDuration fd: TimeInterval = 0.3) -> SKAction {
+        let waitDuration = d - 2 * fd;
+        let fadeIn = SKAction.fadeAlpha(to: 1.0, duration: fd)
+        let wait = SKAction.wait(forDuration: waitDuration)
+        let fadeOut = SKAction.fadeAlpha(to: 0.0, duration: fd)
+        return SKAction.sequence([fadeIn, wait, fadeOut])
+    }
+    
+    class func hudLabelMoveAction(movingLabel: SKLabelNode!, destinationNode: SKNode!, duration: TimeInterval = 0.9) -> SKAction {
+        var pos = movingLabel.position
+        pos.y = destinationNode.position.y -
+            destinationNode.frame.size.height * 0.5 -
+            movingLabel.frame.size.height * 0.5
+        return SKAction.moveTo(y: pos.y, duration: duration)
+    }
+    
+    class func hudLabelBumpAction(duration: TimeInterval = 0.3) -> SKAction {
+        let scale = SKAction.scale(to: 1.4, duration: duration / 2)
+        let unscale = SKAction.scale(to: 1.0, duration: duration / 2)
+        return SKAction.sequence([scale, unscale])
+    }
+    
+}
+
 class GameScene: SKScene, GameLogicDelegate {
     
     static let backgroundNodeNameObject = "background-node-0"
@@ -41,6 +68,12 @@ class GameScene: SKScene, GameLogicDelegate {
         }
         return nodes
     }()
+    
+    // ui nodes
+    
+    private var startPanel: StartPanelNode? = nil
+    private let scoreLabel: SKLabelNode?
+
     
     // game data
     
@@ -100,6 +133,13 @@ class GameScene: SKScene, GameLogicDelegate {
         gameArea = CGRect(x: margin, y: 0, width: playableWidth, height: size.height)
         barrierwidthFraction = Int(gameArea.width / 6)
         
+        // label
+        scoreLabel = SKLabelNode()
+        scoreLabel?.fontSize = 65.0
+        scoreLabel?.fontName = FontName
+        scoreLabel?.horizontalAlignmentMode = .left
+        scoreLabel?.verticalAlignmentMode = .top
+        
         
         super.init(size: size)
         
@@ -150,11 +190,18 @@ class GameScene: SKScene, GameLogicDelegate {
 
         
         //set up return to main menu button
-        startLabel.fontName = "Jellee-Roman"
+        startLabel.fontName = FontName
         startLabel.fontColor = UIColor.white
         startLabel.fontSize = 100
         startLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.9)
         self.addChild(startLabel)
+        
+        // score label prep work
+        
+        scoreLabel?.zPosition = 100
+        scoreLabel?.position = CGPoint(x: 200, y: self.size.height - 22.0)
+        scoreLabel?.text = gameLogic.scoreText()
+        self.addChild(scoreLabel!)
         
         self.gameState = .inGame
         
@@ -245,6 +292,25 @@ class GameScene: SKScene, GameLogicDelegate {
 
             
         }
+        
+    }
+    
+    // MARK: - game logic delegate
+    
+    func scoreDidChange(_ newScore: Int, text: String!) {
+        
+        if newScore == 0 {
+            scoreLabel?.text = text
+            return
+        }
+        
+        guard let score: SKLabelNode = scoreLabel else {
+            return
+        }
+        
+        score.text = text
+        score.run(SKAction.hudLabelBumpAction())
+        
         
     }
     

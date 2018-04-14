@@ -9,7 +9,7 @@
 import CoreGraphics
 
 let GodMode: Bool = false
-let FontName: String = "DINCondensed-Bold"
+let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 
 struct PhysicsCategories {
