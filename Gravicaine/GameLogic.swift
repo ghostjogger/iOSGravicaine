@@ -21,6 +21,16 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
     weak var delegate: GameLogicDelegate? = nil
     
+    // MARK: - private
+    
+    private func gameOver(playerDestroyed destroyed: Bool) {
+        if score > UserDefaults.standard.integer(forKey: HighScoreKey) {
+            UserDefaults.standard.set(score, forKey: HighScoreKey)
+        }
+        delegate?.barrierTouchesPlayer()
+        
+    }
+    
     // MARK: - score
     
     private(set) var score: Int = GameLogic.DefaultScore {
@@ -125,7 +135,6 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         if body1.categoryBitMask == PhysicsCategories.Player && body2.categoryBitMask == PhysicsCategories.Barrier {
 
             self.barrierTouchesPlayer()
-            delegate?.barrierTouchesPlayer()
         
         }
 //
@@ -150,6 +159,9 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
 
     func barrierTouchesPlayer(){
 
+        if !GodMode {
+            self.gameOver(playerDestroyed: true)
+        }
     }
     
 
