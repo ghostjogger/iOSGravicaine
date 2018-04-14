@@ -19,12 +19,28 @@ enum GameState {
 
 class GameScene: SKScene, GameLogicDelegate {
     
+    static let backgroundNodeNameObject = "background-node-0"
 
+    
     let startLabel = SKLabelNode(text: "Main Menu")
     let player = SpaceShip()
     let gameArea: CGRect
     var barrierwidthFraction = 0
     var barrierHeight = 150
+    
+    // planets
+    
+    private var planetsNodes: [SpaceSpriteNode] = {
+        var nodes = [SpaceSpriteNode]()
+        for textureIndex in 0...6 {
+            let texture = SKTexture(imageNamed: "planet-big-\(textureIndex)")
+            let planet = SpaceSpriteNode(texture: texture)
+            planet.name = GameScene.backgroundNodeNameObject
+            planet.type = SpaceSpriteNodeType.Planet
+            nodes.append(planet)
+        }
+        return nodes
+    }()
     
     // game data
     
@@ -125,6 +141,8 @@ class GameScene: SKScene, GameLogicDelegate {
             self.addChild(background)
             
         }
+        
+
  
         //set up player ship
         player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
@@ -179,6 +197,9 @@ class GameScene: SKScene, GameLogicDelegate {
         
         
     }
+    
+    
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -248,45 +269,37 @@ class GameScene: SKScene, GameLogicDelegate {
             var rightBarrier =  SKSpriteNode()
             
             switch i {
-                
+
             case 0 :
-                
+
                 leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  256, height:self.barrierHeight))
-                leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
                 rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 1024, height:self.barrierHeight))
-                rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 rightBarrier.position = CGPoint(x: 512, y: self.size.height + 150)
-                
+
             case 1 :
-                
+
                 leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  512, height:self.barrierHeight))
-                leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
                 rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 768, height:self.barrierHeight))
-                rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 rightBarrier.position = CGPoint(x: 768, y: self.size.height + 150)
             case 2 :
-                
+
                 leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  768, height:self.barrierHeight))
-                leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
                 rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 512, height:self.barrierHeight))
-                rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 rightBarrier.position = CGPoint(x: 1024, y: self.size.height + 150)
             case 3 :
-                
+
                 leftBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width:  1024, height:self.barrierHeight))
-                leftBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 leftBarrier.position = (CGPoint(x: 0, y: self.size.height + 150))
                 rightBarrier = SKSpriteNode(color: UIColor.darkGray, size: CGSize(width: 256, height:self.barrierHeight))
-                rightBarrier.anchorPoint = CGPoint(x: 0, y: 0)
                 rightBarrier.position = CGPoint(x: 1280, y: self.size.height + 150)
-                
-                
-                
+
+
+
             default: break
-                
+
             }
             
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)

@@ -19,6 +19,7 @@
 		99A357C3207A595000F86F84 /* laser.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99A357C2207A595000F86F84 /* laser.mp3 */; };
 		99A357C5207A75A000F86F84 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357C4207A75A000F86F84 /* GameLogic.swift */; };
 		99A357D520813F2B00F86F84 /* playerExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99A357D420813F2B00F86F84 /* playerExplosion.atlas */; };
+		99A357D72081EA1F00F86F84 /* SpaceSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357D62081EA1F00F86F84 /* SpaceSpriteNode.swift */; };
 		99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A40D4720754BE0000D5DD9 /* AppDelegate.swift */; };
 		99A40D4A20754BE0000D5DD9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D4920754BE0000D5DD9 /* GameScene.sks */; };
 		99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D4B20754BE0000D5DD9 /* Actions.sks */; };
@@ -42,6 +43,7 @@
 		99A357C2207A595000F86F84 /* laser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laser.mp3; sourceTree = "<group>"; };
 		99A357C4207A75A000F86F84 /* GameLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		99A357D420813F2B00F86F84 /* playerExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = playerExplosion.atlas; sourceTree = "<group>"; };
+		99A357D62081EA1F00F86F84 /* SpaceSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceSpriteNode.swift; sourceTree = "<group>"; };
 		99A40D4420754BE0000D5DD9 /* Gravicaine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gravicaine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A40D4720754BE0000D5DD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99A40D4920754BE0000D5DD9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		99A357BF207A585500F86F84 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				99A357D62081EA1F00F86F84 /* SpaceSpriteNode.swift */,
 				99A357C0207A587700F86F84 /* SpaceShip.swift */,
 			);
 			path = Nodes;
@@ -226,6 +229,7 @@
 				99A357C5207A75A000F86F84 /* GameLogic.swift in Sources */,
 				99A357C1207A587700F86F84 /* SpaceShip.swift in Sources */,
 				99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */,
+				99A357D72081EA1F00F86F84 /* SpaceSpriteNode.swift in Sources */,
 				99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */,
 				99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */,
 				99A357BE207A578700F86F84 /* Utils.swift in Sources */,
