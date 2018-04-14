@@ -17,7 +17,7 @@ class SpaceShip: SKSpriteNode {
     
     init() {
         let texture = SKTexture(imageNamed: "playerShip")
-        let size = CGSize(width: texture.size().width * 0.6, height: texture.size().height * 0.6)
+        let size = CGSize(width: texture.size().width, height: texture.size().height)
         
         super.init(texture: texture, color: UIColor.clear, size: size)
         self.name = "player"
