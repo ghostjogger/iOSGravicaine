@@ -7,6 +7,7 @@ import SpriteKit
 protocol GameLogicDelegate: class {
     
     func shouldSpawnBarrier()
+    func shouldSpawnPlanet()
     func barrierTouchesPlayer()
 
 }
@@ -19,7 +20,31 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
     weak var delegate: GameLogicDelegate? = nil
     
+    
     // MARK: - bonus
+    
+    private var planetSpawner: Timer? = nil
+    
+    @objc private func spawnPlanet(_ timer: Timer) {
+        delegate?.shouldSpawnPlanet()
+        self.startSpawningPlanet()
+    }
+    
+    private func startSpawningPlanet() {
+        let waitTime = random(min: 1.0, max: 5.0)
+        planetSpawner = Timer.scheduledTimer(timeInterval: TimeInterval(waitTime),
+                                            target: self,
+                                            selector: #selector(GameLogic.spawnPlanet(_:)),
+                                            userInfo: nil,
+                                            repeats: false)
+    }
+    
+    private func stopSpawningPlanet() {
+        planetSpawner?.invalidate()
+        planetSpawner = nil
+    }
+    
+    // MARK: - barrier
     
     private var barrierSpawner: Timer? = nil
     private let barrierFrequency: TimeInterval = 2.0
@@ -47,6 +72,8 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         
         self.stopSpawningBarrier()
         self.startSpawningBarrier()
+        self.stopSpawningPlanet()
+        self.startSpawningPlanet()
         
     }
     
