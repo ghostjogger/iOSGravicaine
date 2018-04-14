@@ -319,7 +319,7 @@ class GameScene: SKScene, GameLogicDelegate {
         DispatchQueue.global().async {
             
             // two actions
-            let moveBarrier = SKAction.moveTo(y: -150, duration: 3.0)
+            let moveBarrier = SKAction.moveTo(y: -150, duration: 2.0)
             let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
             let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
