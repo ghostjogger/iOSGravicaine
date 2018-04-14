@@ -26,7 +26,7 @@ class GameScene: SKScene, GameLogicDelegate {
     let player = SpaceShip()
     let gameArea: CGRect
     var barrierwidthFraction = 0
-    var barrierHeight = 150
+    var barrierHeight = 300
     
     // planets
     
@@ -265,7 +265,7 @@ class GameScene: SKScene, GameLogicDelegate {
             
            
             //setup left barrier
-            var leftBarrier = SKSpriteNode(color: UIColor.white, size: CGSize(width:  256 + (i * 256), height:self.barrierHeight))
+            let leftBarrier = SKSpriteNode(color: UIColor.white, size: CGSize(width:  256 + (i * 256), height:self.barrierHeight))
             leftBarrier.position = (CGPoint(x: leftBarrier.size.width/2 , y: self.size.height + CGFloat(self.barrierHeight)))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
@@ -276,7 +276,7 @@ class GameScene: SKScene, GameLogicDelegate {
 
             
             //setup right barrier
-            var rightBarrier =  SKSpriteNode(color: UIColor.white, size: CGSize(width:  1024 - (i * 256), height:self.barrierHeight))
+            let rightBarrier =  SKSpriteNode(color: UIColor.white, size: CGSize(width:  1024 - (i * 256), height:self.barrierHeight))
             rightBarrier.position = (CGPoint(x: self.size.width - (rightBarrier.size.width/2) , y: self.size.height + CGFloat(self.barrierHeight)))
             rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false
