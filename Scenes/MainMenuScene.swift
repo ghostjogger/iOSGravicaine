@@ -65,6 +65,8 @@ class MainMenuScene: SKScene{
     
     var lastUpdateTime:TimeInterval = 0
     var deltaFrameTime:TimeInterval = 0
+    var animationTimer:TimeInterval = 0
+    let animationTimeInterval = 3000.0
     
     override func update(_ currentTime: TimeInterval) {
         
@@ -76,6 +78,12 @@ class MainMenuScene: SKScene{
         {
             deltaFrameTime = currentTime - lastUpdateTime
             lastUpdateTime = currentTime
+            animationTimer += deltaFrameTime
+        }
+        
+        if animationTimer > animationTimeInterval{
+            spawnAnimation()
+            animationTimer = 0
         }
     }
     
@@ -130,6 +138,10 @@ class MainMenuScene: SKScene{
             
         }
  
+    }
+    //To do
+    func spawnAnimation(){
+        
     }
     
     
