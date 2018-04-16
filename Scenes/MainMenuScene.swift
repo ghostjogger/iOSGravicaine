@@ -19,10 +19,10 @@ class MainMenuScene: SKScene{
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
     let ship = SpaceShip()
     
-    //protonStar animation variables
+    //star animation variables
     
     private var protonStarFrames: [SKTexture] = []
-    let protonStarAnimatedAtlas = SKTextureAtlas(named: "protonStar")
+    let protonStarAnimatedAtlas = SKTextureAtlas(named: "star")
     var protonFrames: [SKTexture] = []
     
     //galaxy animation variables
@@ -31,14 +31,20 @@ class MainMenuScene: SKScene{
     let galaxyAnimatedAtlas = SKTextureAtlas(named: "galaxy")
     var galFrames: [SKTexture] = []
     
+    //ring animation variables
+    
+    private var ringAFrames: [SKTexture] = []
+    let ringAnimatedAtlas = SKTextureAtlas(named: "ring")
+    var ringFrames: [SKTexture] = []
+    
     
 
     override init(size:CGSize) {
         
-        //setup protonStar animation
+        //setup star animation
         var numImages = protonStarAnimatedAtlas.textureNames.count
         for i in 1...numImages {
-            let textureName = "protonStar\(i)"
+            let textureName = "star\(i)"
             protonFrames.append(protonStarAnimatedAtlas.textureNamed(textureName))
         }
         protonStarFrames = protonFrames
@@ -50,6 +56,14 @@ class MainMenuScene: SKScene{
             galFrames.append(galaxyAnimatedAtlas.textureNamed(textureName))
         }
         galaxyFrames = galFrames
+        
+        //setup ring animation
+        numImages = ringAnimatedAtlas.textureNames.count
+        for i in 1...numImages {
+            let textureName = "ring\(i)"
+            ringAFrames.append(ringAnimatedAtlas.textureNamed(textureName))
+        }
+        ringFrames = ringAFrames
         
         super.init(size: size)
     }
@@ -66,7 +80,7 @@ class MainMenuScene: SKScene{
     var lastUpdateTime:TimeInterval = 0
     var deltaFrameTime:TimeInterval = 0
     var animationTimer:TimeInterval = 0
-    let animationTimeInterval = 2.0
+    let animationTimeInterval = 1.5
     
     override func update(_ currentTime: TimeInterval) {
         
@@ -142,12 +156,12 @@ class MainMenuScene: SKScene{
     
     func spawnAnimation(){
         
-        let i = Int(random(min: 0, max: 2.0))
+        let i = Int(random(min: 0, max: 3.0))
         
         if i == 0 {
             let node = SKSpriteNode(texture: protonFrames[0])
-            node.setScale(0.5)
-            let action = SKAction.animate(with: protonFrames, timePerFrame: 0.1, resize: false, restore: false)
+            node.setScale(0.6)
+            let action = SKAction.animate(with: protonFrames, timePerFrame: 0.2, resize: false, restore: false)
             let deleteAction = SKAction.removeFromParent()
             let sequence = SKAction.sequence([action,deleteAction])
             node.zPosition = 10
@@ -158,7 +172,7 @@ class MainMenuScene: SKScene{
             
         }
         
-        else{
+        else if i == 1{
             let node = SKSpriteNode(texture: galFrames[0])
             node.setScale(0.5)
             let action = SKAction.animate(with: galFrames, timePerFrame: 0.1, resize: false, restore: false)
@@ -169,6 +183,20 @@ class MainMenuScene: SKScene{
                                     y: random(min: 200, max: 1100))
             self.addChild(node)
             node.run(sequence)
+        }
+        
+        else{
+            let node = SKSpriteNode(texture: ringFrames[0])
+            node.setScale(0.3)
+            let action = SKAction.animate(with: ringFrames, timePerFrame: 0.1, resize: false, restore: false)
+            let deleteAction = SKAction.removeFromParent()
+            let sequence = SKAction.sequence([action,deleteAction])
+            node.zPosition = 10
+            node.position = CGPoint(x: random(min: 200, max: 1100),
+                                    y: random(min: 200, max: 1100))
+            self.addChild(node)
+            node.run(sequence)
+            
         }
         
     }
