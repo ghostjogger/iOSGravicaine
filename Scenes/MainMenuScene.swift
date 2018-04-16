@@ -62,6 +62,23 @@ class MainMenuScene: SKScene{
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    var lastUpdateTime:TimeInterval = 0
+    var deltaFrameTime:TimeInterval = 0
+    
+    override func update(_ currentTime: TimeInterval) {
+        
+        if lastUpdateTime == 0
+        {
+            lastUpdateTime = currentTime
+        }
+        else
+        {
+            deltaFrameTime = currentTime - lastUpdateTime
+            lastUpdateTime = currentTime
+        }
+    }
+    
     override func didMove(to view: SKView) {
         
         backgroundImage.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
