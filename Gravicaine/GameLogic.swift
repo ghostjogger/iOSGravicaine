@@ -42,6 +42,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     
+    
     func scoreText() -> String! {
         return "SCORE : \(score)"
     }

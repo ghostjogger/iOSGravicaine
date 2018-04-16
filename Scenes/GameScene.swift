@@ -80,6 +80,7 @@ class GameScene: SKScene, GameLogicDelegate {
     // ui nodes
     
     private var startPanel: StartPanelNode? = nil
+    private var gameOverPanel: GameOverPanelNode? = nil
     private let scoreLabel: SKLabelNode?
 
     
@@ -157,17 +158,15 @@ class GameScene: SKScene, GameLogicDelegate {
     private func setGameOverState() {
 
         gameLogic.gameDidStop()
-        gameOverTransitioning = true
-        
-        self.enumerateChildNodes(withName: "barrier") {
-            (node, stop) in
-            
-            node.removeAllActions()
 
-            
-            
-        }
         
+        gameOverPanel?.removeFromParent()
+        gameOverPanel = GameOverPanelNode(size: self.size, score: gameLogic.score )
+        gameOverPanel?.zPosition = 50
+        self.addChild(gameOverPanel!)
+        gameOverPanel?.fadeIn()
+        
+        gameOverTransitioning = false
         
 
     }
@@ -319,9 +318,17 @@ class GameScene: SKScene, GameLogicDelegate {
             return
         }
         
-        if gameState == .waiting || gameState == .gameOver {
+        if gameState == .waiting  {
             self.gameState = .inGame
             return
+        }
+        
+        if gameState == .gameOver {
+            
+            let sceneToMoveTo = GameScene(size: self.size)
+            sceneToMoveTo.scaleMode = self.scaleMode
+            let myTransition = SKTransition.fade(withDuration: 1.0)
+            self.view!.presentScene(sceneToMoveTo, transition:myTransition)
         }
         
         if self.gameState == .inGame{
@@ -442,18 +449,26 @@ class GameScene: SKScene, GameLogicDelegate {
     
     func barrierTouchesPlayer(){
  
+        gameOverTransitioning = true
+        
+        self.enumerateChildNodes(withName: "barrier") {
+            (node, stop) in
+            
+            node.removeAllActions()
+            
+            
+            
+        }
         player.removeAllChildren()
         let hideAction = SKAction.hide()
         let waitAction = SKAction.wait(forDuration: 1.0)
         let animateExplosionAction = SKAction.animate(with: playerExplosionFrames, timePerFrame: 0.1, resize: false, restore: false)
         let playerExplosionSequence = SKAction.sequence([playerExplosionSound, animateExplosionAction,hideAction,waitAction])
         player.run(playerExplosionSequence, completion: {
-            let sceneToMoveTo = GameScene(size: self.size)
-            sceneToMoveTo.scaleMode = self.scaleMode
-            let myTransition = SKTransition.fade(withDuration: 1.0)
-            self.view!.presentScene(sceneToMoveTo, transition:myTransition)})
+             self.gameState = .gameOver
+})
         
-        self.gameState = .gameOver
+       
        
     }
     
