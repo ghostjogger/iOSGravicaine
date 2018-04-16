@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		990D6B142082213000429C9D /* protonStar.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B132082213000429C9D /* protonStar.atlas */; };
 		990D6B162082218000429C9D /* galaxy.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B152082218000429C9D /* galaxy.atlas */; };
+		99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99766E2F2084E58900AA937A /* GameOverPanelNode.swift */; };
 		99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357AE2079072400F86F84 /* MainMenuScene.swift */; };
 		99A357B12079073400F86F84 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357B02079073400F86F84 /* GameOverScene.swift */; };
 		99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99A357B22079082F00F86F84 /* introGravicaine.wav */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		990D6B132082213000429C9D /* protonStar.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = protonStar.atlas; sourceTree = "<group>"; };
 		990D6B152082218000429C9D /* galaxy.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = galaxy.atlas; sourceTree = "<group>"; };
+		99766E2F2084E58900AA937A /* GameOverPanelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPanelNode.swift; sourceTree = "<group>"; };
 		99A357AE2079072400F86F84 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		99A357B02079073400F86F84 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		99A357B22079082F00F86F84 /* introGravicaine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = introGravicaine.wav; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				99A357D82082160F00F86F84 /* StartPanelNode.swift */,
 				99A357D62081EA1F00F86F84 /* SpaceSpriteNode.swift */,
 				99A357C0207A587700F86F84 /* SpaceShip.swift */,
+				99766E2F2084E58900AA937A /* GameOverPanelNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */,
 				99A357D92082160F00F86F84 /* StartPanelNode.swift in Sources */,
 				99A357D72081EA1F00F86F84 /* SpaceSpriteNode.swift in Sources */,
+				99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */,
 				99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */,
 				99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */,
 				99A357BE207A578700F86F84 /* Utils.swift in Sources */,
