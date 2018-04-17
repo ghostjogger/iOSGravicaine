@@ -135,7 +135,7 @@ class MainMenuScene: SKScene{
             let deleteAction = SKAction.removeFromParent()
             let sequence = SKAction.sequence([action,deleteAction])
             node.zPosition = 10
-            node.position = CGPoint(x: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 400),
+            node.position = CGPoint(x: random(min: (self.size.width/2) - 500, max: (self.size.width/2) + 500),
                                     y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 700))
             self.addChild(node)
             node.run(sequence)
