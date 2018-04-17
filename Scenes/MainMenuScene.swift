@@ -25,19 +25,6 @@ class MainMenuScene: SKScene{
     let protonStarAnimatedAtlas = SKTextureAtlas(named: "star")
     var protonFrames: [SKTexture] = []
     
-    //galaxy animation variables
-    
-    private var galaxyFrames: [SKTexture] = []
-    let galaxyAnimatedAtlas = SKTextureAtlas(named: "galaxy")
-    var galFrames: [SKTexture] = []
-    
-    //ring animation variables
-    
-    private var ringAFrames: [SKTexture] = []
-    let ringAnimatedAtlas = SKTextureAtlas(named: "ring")
-    var ringFrames: [SKTexture] = []
-    
-    
 
     override init(size:CGSize) {
         
@@ -49,21 +36,7 @@ class MainMenuScene: SKScene{
         }
         protonStarFrames = protonFrames
         
-        //setup galaxy animation
-        numImages = galaxyAnimatedAtlas.textureNames.count
-        for i in 1...numImages {
-            let textureName = "galaxy\(i)"
-            galFrames.append(galaxyAnimatedAtlas.textureNamed(textureName))
-        }
-        galaxyFrames = galFrames
-        
-        //setup ring animation
-        numImages = ringAnimatedAtlas.textureNames.count
-        for i in 1...numImages {
-            let textureName = "ring\(i)"
-            ringAFrames.append(ringAnimatedAtlas.textureNamed(textureName))
-        }
-        ringFrames = ringAFrames
+ 
         
         super.init(size: size)
     }
@@ -80,7 +53,7 @@ class MainMenuScene: SKScene{
     var lastUpdateTime:TimeInterval = 0
     var deltaFrameTime:TimeInterval = 0
     var animationTimer:TimeInterval = 0
-    let animationTimeInterval = 2.0
+    let animationTimeInterval = 0.2
     
     override func update(_ currentTime: TimeInterval) {
         
@@ -155,11 +128,7 @@ class MainMenuScene: SKScene{
     }
     
     func spawnAnimation(){
-        
-        let i = Int(random(min: 0, max: 3.0))
-        
-        
-        if i == 0 {
+
             let node = SKSpriteNode(texture: protonFrames[0])
             node.setScale(0.8)
             let action = SKAction.animate(with: protonFrames, timePerFrame: 0.2, resize: false, restore: false)
@@ -170,36 +139,7 @@ class MainMenuScene: SKScene{
                                     y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 700))
             self.addChild(node)
             node.run(sequence)
-            
-        }
-        
-        else if i == 1{
-            let node = SKSpriteNode(texture: galFrames[0])
-            node.setScale(0.40)
-            let action = SKAction.animate(with: galFrames, timePerFrame: 0.2, resize: false, restore: false)
-            let deleteAction = SKAction.removeFromParent()
-            let sequence = SKAction.sequence([action,deleteAction])
-            node.zPosition = 10
-            node.position = CGPoint(x: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 400),
-                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 700))
-            self.addChild(node)
-            node.run(sequence)
-        }
-        
-        else{
-            let node = SKSpriteNode(texture: ringFrames[0])
-            node.setScale(0.25)
-            let action = SKAction.animate(with: ringFrames, timePerFrame: 0.2, resize: false, restore: false)
-            let deleteAction = SKAction.removeFromParent()
-            let sequence = SKAction.sequence([action,deleteAction])
-            node.zPosition = 10
-            node.position = CGPoint(x: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 400),
-                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 700))
-            self.addChild(node)
-            node.run(sequence)
-            
-        }
-        
+     
     }
     
     
