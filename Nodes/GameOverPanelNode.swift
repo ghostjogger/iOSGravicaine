@@ -19,6 +19,7 @@ class GameOverPanelNode: SKSpriteNode {
     let highScoreLabel: SKLabelNode = SKLabelNode()
     let scoreLabel: SKLabelNode = SKLabelNode()
     let score: Int
+    let labelVerticalSeparation = 25
     
     init(size: CGSize, score: Int) {
         
@@ -51,11 +52,11 @@ class GameOverPanelNode: SKSpriteNode {
         
         var pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
         gameOverLabel.position = pos
-        pos.y -= scoreLabel.frame.size.height + 16.0
+        pos.y -= scoreLabel.frame.size.height + CGFloat(labelVerticalSeparation)
         scoreLabel.position = pos
-        pos.y -= scoreLabel.frame.size.height + 16.0
+        pos.y -= scoreLabel.frame.size.height + CGFloat(labelVerticalSeparation)
         highScoreLabel.position = pos
-        pos.y -= scoreLabel.frame.size.height + 16.0
+        pos.y -= scoreLabel.frame.size.height + CGFloat(labelVerticalSeparation)
         label.position = pos
         
         super.init(texture: nil, color: UIColor.clear, size: size)

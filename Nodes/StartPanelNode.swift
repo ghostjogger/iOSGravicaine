@@ -14,6 +14,7 @@ class StartPanelNode: SKSpriteNode {
     
     let label: SKLabelNode = SKLabelNode()
     let scoreLabel: SKLabelNode = SKLabelNode()
+    let labelVerticalSeparation = 25
     
     init(size: CGSize) {
         
@@ -33,7 +34,7 @@ class StartPanelNode: SKSpriteNode {
         
         var pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
         scoreLabel.position = pos
-        pos.y -= scoreLabel.frame.size.height + 16.0
+        pos.y -= scoreLabel.frame.size.height + CGFloat(labelVerticalSeparation)
         label.position = pos
         
         super.init(texture: nil, color: UIColor.clear, size: size)
