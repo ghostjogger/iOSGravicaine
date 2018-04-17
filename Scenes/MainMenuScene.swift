@@ -80,7 +80,7 @@ class MainMenuScene: SKScene{
     var lastUpdateTime:TimeInterval = 0
     var deltaFrameTime:TimeInterval = 0
     var animationTimer:TimeInterval = 0
-    let animationTimeInterval = 1.0
+    let animationTimeInterval = 2.0
     
     override func update(_ currentTime: TimeInterval) {
         
@@ -161,13 +161,13 @@ class MainMenuScene: SKScene{
         
         if i == 0 {
             let node = SKSpriteNode(texture: protonFrames[0])
-            node.setScale(0.6)
+            node.setScale(0.8)
             let action = SKAction.animate(with: protonFrames, timePerFrame: 0.2, resize: false, restore: false)
             let deleteAction = SKAction.removeFromParent()
             let sequence = SKAction.sequence([action,deleteAction])
             node.zPosition = 10
             node.position = CGPoint(x: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 400),
-                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 600))
+                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 700))
             self.addChild(node)
             node.run(sequence)
             
@@ -175,26 +175,26 @@ class MainMenuScene: SKScene{
         
         else if i == 1{
             let node = SKSpriteNode(texture: galFrames[0])
-            node.setScale(0.5)
-            let action = SKAction.animate(with: galFrames, timePerFrame: 0.1, resize: false, restore: false)
+            node.setScale(0.40)
+            let action = SKAction.animate(with: galFrames, timePerFrame: 0.2, resize: false, restore: false)
             let deleteAction = SKAction.removeFromParent()
             let sequence = SKAction.sequence([action,deleteAction])
             node.zPosition = 10
             node.position = CGPoint(x: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 400),
-                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 600))
+                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 700))
             self.addChild(node)
             node.run(sequence)
         }
         
         else{
             let node = SKSpriteNode(texture: ringFrames[0])
-            node.setScale(0.3)
-            let action = SKAction.animate(with: ringFrames, timePerFrame: 0.1, resize: false, restore: false)
+            node.setScale(0.25)
+            let action = SKAction.animate(with: ringFrames, timePerFrame: 0.2, resize: false, restore: false)
             let deleteAction = SKAction.removeFromParent()
             let sequence = SKAction.sequence([action,deleteAction])
             node.zPosition = 10
             node.position = CGPoint(x: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 400),
-                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 600))
+                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 700))
             self.addChild(node)
             node.run(sequence)
             

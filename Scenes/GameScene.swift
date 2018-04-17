@@ -405,11 +405,11 @@ class GameScene: SKScene, GameLogicDelegate {
             // sequence of actions
             let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
             
-            let i = Int(random(min: 0, max: 4.0))
+            let i = Int(random(min: 0, max: 7.0))
             
            
             //setup left barrier
-            let leftBarrier = SKSpriteNode(color: UIColor.lightGray, size: CGSize(width:  256 + (i * 256), height:self.barrierHeight))
+            let leftBarrier = SKSpriteNode(color: UIColor.lightGray, size: CGSize(width:  256 + (i * 128), height:self.barrierHeight))
             leftBarrier.position = (CGPoint(x: leftBarrier.size.width/2 , y: self.size.height + CGFloat(self.barrierHeight)))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
@@ -421,7 +421,7 @@ class GameScene: SKScene, GameLogicDelegate {
 
             
             //setup right barrier
-            let rightBarrier =  SKSpriteNode(color: UIColor.yellow, size: CGSize(width:  1024 - (i * 256), height:self.barrierHeight))
+            let rightBarrier =  SKSpriteNode(color: UIColor.yellow, size: CGSize(width:  1024 - (i * 128), height:self.barrierHeight))
             rightBarrier.position = (CGPoint(x: self.size.width - (rightBarrier.size.width/2) , y: self.size.height + CGFloat(self.barrierHeight)))
             rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false

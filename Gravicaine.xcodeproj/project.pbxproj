@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		990D6B142082213000429C9D /* protonStar.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B132082213000429C9D /* protonStar.atlas */; };
 		990D6B162082218000429C9D /* galaxy.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B152082218000429C9D /* galaxy.atlas */; };
 		990D6B18208548B800429C9D /* star.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B17208548B800429C9D /* star.atlas */; };
 		990D6B1A20854A1000429C9D /* ring.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B1920854A1000429C9D /* ring.atlas */; };
@@ -37,7 +36,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		990D6B132082213000429C9D /* protonStar.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = protonStar.atlas; sourceTree = "<group>"; };
 		990D6B152082218000429C9D /* galaxy.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = galaxy.atlas; sourceTree = "<group>"; };
 		990D6B17208548B800429C9D /* star.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = star.atlas; sourceTree = "<group>"; };
 		990D6B1920854A1000429C9D /* ring.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ring.atlas; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				990D6B1920854A1000429C9D /* ring.atlas */,
 				990D6B17208548B800429C9D /* star.atlas */,
 				990D6B152082218000429C9D /* galaxy.atlas */,
-				990D6B132082213000429C9D /* protonStar.atlas */,
 				99A357D420813F2B00F86F84 /* playerExplosion.atlas */,
 				99A357BF207A585500F86F84 /* Nodes */,
 				99A357B620791B9900F86F84 /* Particles */,
@@ -230,7 +227,6 @@
 				99A357B52079088E00F86F84 /* explosion.wav in Resources */,
 				99A357B820791BAE00F86F84 /* ship-fire.sks in Resources */,
 				99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */,
-				990D6B142082213000429C9D /* protonStar.atlas in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
 				99A357C3207A595000F86F84 /* laser.mp3 in Resources */,
 				990D6B1A20854A1000429C9D /* ring.atlas in Resources */,
