@@ -80,7 +80,7 @@ class MainMenuScene: SKScene{
     var lastUpdateTime:TimeInterval = 0
     var deltaFrameTime:TimeInterval = 0
     var animationTimer:TimeInterval = 0
-    let animationTimeInterval = 1.5
+    let animationTimeInterval = 1.0
     
     override func update(_ currentTime: TimeInterval) {
         
@@ -158,6 +158,7 @@ class MainMenuScene: SKScene{
         
         let i = Int(random(min: 0, max: 3.0))
         
+        
         if i == 0 {
             let node = SKSpriteNode(texture: protonFrames[0])
             node.setScale(0.6)
@@ -165,8 +166,8 @@ class MainMenuScene: SKScene{
             let deleteAction = SKAction.removeFromParent()
             let sequence = SKAction.sequence([action,deleteAction])
             node.zPosition = 10
-            node.position = CGPoint(x: random(min: 200, max: 1100),
-                                    y: random(min: 200, max: 1100))
+            node.position = CGPoint(x: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 400),
+                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 600))
             self.addChild(node)
             node.run(sequence)
             
@@ -179,8 +180,8 @@ class MainMenuScene: SKScene{
             let deleteAction = SKAction.removeFromParent()
             let sequence = SKAction.sequence([action,deleteAction])
             node.zPosition = 10
-            node.position = CGPoint(x: random(min: 200, max: 1100),
-                                    y: random(min: 200, max: 1100))
+            node.position = CGPoint(x: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 400),
+                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 600))
             self.addChild(node)
             node.run(sequence)
         }
@@ -192,8 +193,8 @@ class MainMenuScene: SKScene{
             let deleteAction = SKAction.removeFromParent()
             let sequence = SKAction.sequence([action,deleteAction])
             node.zPosition = 10
-            node.position = CGPoint(x: random(min: 200, max: 1100),
-                                    y: random(min: 200, max: 1100))
+            node.position = CGPoint(x: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 400),
+                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 600))
             self.addChild(node)
             node.run(sequence)
             
