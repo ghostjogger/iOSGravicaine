@@ -8,9 +8,7 @@ protocol GameLogicDelegate: class {
     
     func scoreDidChange(_ newScore: Int, text: String!)
     func shouldSpawnBarrier()
-    func shouldSpawnPlanet()
     func barrierTouchesPlayer()
-
 }
 
 class GameLogic: NSObject, SKPhysicsContactDelegate {
@@ -48,29 +46,6 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
 
-    
-    // MARK: - planet
-    
-    private var planetSpawner: Timer? = nil
-    
-    @objc private func spawnPlanet(_ timer: Timer) {
-        delegate?.shouldSpawnPlanet()
-        self.startSpawningPlanet()
-    }
-    
-    private func startSpawningPlanet() {
-        let waitTime = random(min: 1.0, max: 5.0)
-        planetSpawner = Timer.scheduledTimer(timeInterval: TimeInterval(waitTime),
-                                            target: self,
-                                            selector: #selector(GameLogic.spawnPlanet(_:)),
-                                            userInfo: nil,
-                                            repeats: false)
-    }
-    
-    private func stopSpawningPlanet() {
-        planetSpawner?.invalidate()
-        planetSpawner = nil
-    }
     
     // MARK: - barrier
     

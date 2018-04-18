@@ -45,6 +45,8 @@ extension SKAction {
 }
 
 class GameScene: SKScene, GameLogicDelegate {
+
+    
     
     static let backgroundNodeNameObject = "background-node-0"
 
@@ -62,20 +64,7 @@ class GameScene: SKScene, GameLogicDelegate {
     let gameArea: CGRect
     var barrierwidthFraction = 0
     var barrierHeight = 300
-    
-    // planets
-    
-    private var planetsNodes: [SpaceSpriteNode] = {
-        var nodes = [SpaceSpriteNode]()
-        for textureIndex in 0...6 {
-            let texture = SKTexture(imageNamed: "planet-big-\(textureIndex)")
-            let planet = SpaceSpriteNode(texture: texture)
-            planet.name = GameScene.backgroundNodeNameObject
-            planet.type = SpaceSpriteNodeType.Planet
-            nodes.append(planet)
-        }
-        return nodes
-    }()
+
     
     // ui nodes
     
@@ -473,36 +462,6 @@ class GameScene: SKScene, GameLogicDelegate {
     }
     
 
-    func shouldSpawnPlanet(){
-        
-        DispatchQueue.global().async {
-            // two actions
-            let movePlanet = SKAction.moveTo(y: -150, duration: 2.0)
-            let appearPlanet = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
-            let planetAnimation = SKAction.group([movePlanet, appearPlanet])
-            let deletePlanet = SKAction.removeFromParent()
-            
-            // sequence of actions
-            let planetSequence = SKAction.sequence([ planetAnimation, deletePlanet])
-            
-            let planetIndex = Int(arc4random()) % self.planetsNodes.count
-            let planet = self.planetsNodes[planetIndex]
-            planet.setScale(random(min: 0.3, max: 0.5))
-            
-            let randomY = random(min: 600.0, max: 1000.0)
-            planet.position.y = self.size.height + randomY
-            planet.position.x = random(min: 10.0, max: self.size.width - 10.0)
-            planet.zPosition = 5
-            
-            DispatchQueue.main.async(execute: {
-                self.addChild(planet)
-                planet.run(planetSequence)
-            })
-            
-            
-            
-        }
-    }
 
     
 }
