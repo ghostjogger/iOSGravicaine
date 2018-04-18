@@ -49,6 +49,8 @@ class GameScene: SKScene, GameLogicDelegate {
     
     
     static let backgroundNodeNameObject = "background-node-0"
+    //world
+    let gravity = 0.2
 
     
     // player
@@ -180,10 +182,7 @@ class GameScene: SKScene, GameLogicDelegate {
         
         
         super.init(size: size)
-        
-        
-        
-        
+ 
         gameLogic.delegate = self
         
         //setup player explosion animation
@@ -252,6 +251,8 @@ class GameScene: SKScene, GameLogicDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
+        
+
         
 
         
@@ -342,6 +343,7 @@ class GameScene: SKScene, GameLogicDelegate {
             let amountDraggedX = pointOfTouch.x - previous.x
             
             player.position.x += amountDraggedX
+
             
             if player.position.x > gameArea.maxX - player.size.width/2
             {
