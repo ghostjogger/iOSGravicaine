@@ -337,12 +337,15 @@ class GameScene: SKScene, GameLogicDelegate {
         for touch: AnyObject in touches{
 
             let pointOfTouch = touch.location(in: self)
+            
+            print("\(pointOfTouch.x)")
+            print("\(pointOfTouch.y)")
 
-            if (leftMove?.contains(pointOfTouch))!{
-                player.physicsBody?.applyImpulse(CGVector(dx: -50, dy: 0))
+            if pointOfTouch.x < self.size.width / 2{
+                player.physicsBody?.applyImpulse(CGVector(dx: -100, dy: 0))
             }
-            else if (rightMove?.contains(pointOfTouch))!{
-                player.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 0))
+            else if pointOfTouch.x >= self.size.width / 2{
+                player.physicsBody?.applyImpulse(CGVector(dx: 100, dy: 0))
             }
 
 
