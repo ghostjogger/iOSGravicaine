@@ -73,6 +73,11 @@ class GameScene: SKScene, GameLogicDelegate {
     private var startPanel: StartPanelNode? = nil
     private var gameOverPanel: GameOverPanelNode? = nil
     private let scoreLabel: SKLabelNode?
+    
+    // control nodes
+    private var leftMove: SKLabelNode?
+    private var rightMove: SKLabelNode?
+    
 
     
     // game data
@@ -178,6 +183,23 @@ class GameScene: SKScene, GameLogicDelegate {
         scoreLabel?.horizontalAlignmentMode = .left
         scoreLabel?.verticalAlignmentMode = .top
         
+        // control nodes
+        leftMove = SKLabelNode()
+        leftMove?.text = "◀︎"
+        leftMove?.fontSize = 100.0
+        leftMove?.horizontalAlignmentMode = .left
+        leftMove?.verticalAlignmentMode = .bottom
+        
+        
+        
+        rightMove = SKLabelNode()
+        rightMove?.text = "▶︎"
+        rightMove?.fontSize = 100.0
+        rightMove?.horizontalAlignmentMode = .right
+        rightMove?.verticalAlignmentMode = .bottom
+        
+        
+        
         player = SpaceShip()
         
         
@@ -237,6 +259,16 @@ class GameScene: SKScene, GameLogicDelegate {
         scoreLabel?.text = gameLogic.scoreText()
         self.addChild(scoreLabel!)
         
+        //move label prep
+        leftMove?.zPosition = 150
+        leftMove?.position = CGPoint(x: self.size.width * 0.2, y: self.size.height * 0.05)
+        rightMove?.zPosition = 150
+        rightMove?.position = CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.05)
+        
+        self.addChild(leftMove!)
+        self.addChild(rightMove!)
+        
+        
         
         if GodMode {
             player.physicsBody?.categoryBitMask = PhysicsCategories.None
@@ -268,6 +300,17 @@ class GameScene: SKScene, GameLogicDelegate {
         }
         
     
+            if player.position.x > gameArea.maxX - player.size.width/2
+            {
+                player.position.x = gameArea.maxX - player.size.width/2
+                player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            }
+            
+            if player.position.x < gameArea.minX + player.size.width/2
+            {
+                player.position.x = gameArea.minX + player.size.width/2
+                player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            }
         
         let amountToMoveBackground = speedToMove * CGFloat(deltaFrameTime)
         
@@ -291,19 +334,28 @@ class GameScene: SKScene, GameLogicDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-//        for touch: AnyObject in touches{
-//
-//            let pointOfTouch = touch.location(in: self)
-//
-//            if startLabel.contains(pointOfTouch){
-//
-//                let sceneToMoveTo = MainMenuScene(size: self.size)
-//                sceneToMoveTo.scaleMode = self.scaleMode
-//                let myTransition = SKTransition.fade(withDuration: 0.5)
-//                self.view!.presentScene(sceneToMoveTo, transition:myTransition)
-//            }
-//
-//        }
+        for touch: AnyObject in touches{
+
+            let pointOfTouch = touch.location(in: self)
+
+            if (leftMove?.contains(pointOfTouch))!{
+                player.physicsBody?.applyImpulse(CGVector(dx: -200, dy: 0))
+            }
+            else if (rightMove?.contains(pointOfTouch))!{
+                player.physicsBody?.applyImpulse(CGVector(dx: 200, dy: 0))
+            }
+            
+            if player.position.x > gameArea.maxX - player.size.width/2
+            {
+                player.position.x = gameArea.maxX - player.size.width/2
+            }
+            
+            if player.position.x < gameArea.minX + player.size.width/2
+            {
+                player.position.x = gameArea.minX + player.size.width/2
+            }
+
+        }
         if gameOverTransitioning {
             return
         }
