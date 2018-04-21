@@ -303,13 +303,13 @@ class GameScene: SKScene, GameLogicDelegate {
             if player.position.x > gameArea.maxX - player.size.width/2
             {
                 player.position.x = gameArea.maxX - player.size.width/2
-                player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                //player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
             }
             
             if player.position.x < gameArea.minX + player.size.width/2
             {
                 player.position.x = gameArea.minX + player.size.width/2
-                player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+               // player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
             }
         
         let amountToMoveBackground = speedToMove * CGFloat(deltaFrameTime)
@@ -339,10 +339,10 @@ class GameScene: SKScene, GameLogicDelegate {
             let pointOfTouch = touch.location(in: self)
 
             if (leftMove?.contains(pointOfTouch))!{
-                player.physicsBody?.applyImpulse(CGVector(dx: -100, dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: -50, dy: 0))
             }
             else if (rightMove?.contains(pointOfTouch))!{
-                player.physicsBody?.applyImpulse(CGVector(dx: 100, dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: 50, dy: 0))
             }
 
 
@@ -363,10 +363,10 @@ class GameScene: SKScene, GameLogicDelegate {
             let myTransition = SKTransition.fade(withDuration: 1.0)
             self.view!.presentScene(sceneToMoveTo, transition:myTransition)
         }
-        
-        if self.gameState == .inGame{
-        player.fireBullet(destinationY: self.size.height)
-        }
+//
+//        if self.gameState == .inGame{
+//        player.fireBullet(destinationY: self.size.height)
+//        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -421,7 +421,7 @@ class GameScene: SKScene, GameLogicDelegate {
         DispatchQueue.global().async {
             
             // two actions
-            let moveBarrier = SKAction.moveTo(y: -150, duration: 2.0)
+            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.0)
             let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
             let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
