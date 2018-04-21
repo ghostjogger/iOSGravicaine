@@ -303,13 +303,13 @@ class GameScene: SKScene, GameLogicDelegate {
             if player.position.x > gameArea.maxX - player.size.width/2
             {
                 player.position.x = gameArea.maxX - player.size.width/2
-                //player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+              
             }
             
             if player.position.x < gameArea.minX + player.size.width/2
             {
                 player.position.x = gameArea.minX + player.size.width/2
-               // player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+         
             }
         
         let amountToMoveBackground = speedToMove * CGFloat(deltaFrameTime)
@@ -337,15 +337,13 @@ class GameScene: SKScene, GameLogicDelegate {
         for touch: AnyObject in touches{
 
             let pointOfTouch = touch.location(in: self)
-            
-            print("\(pointOfTouch.x)")
-            print("\(pointOfTouch.y)")
+
 
             if pointOfTouch.x < self.size.width / 2{
-                player.physicsBody?.applyImpulse(CGVector(dx: -100, dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: -65, dy: 0))
             }
             else if pointOfTouch.x >= self.size.width / 2{
-                player.physicsBody?.applyImpulse(CGVector(dx: 100, dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: 65, dy: 0))
             }
 
 
@@ -372,30 +370,30 @@ class GameScene: SKScene, GameLogicDelegate {
 //        }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-        if gameOverTransitioning {
-            return
-        }
-        
-        if gameState == .waiting || gameState == .gameOver {
-            return
-        }
-
-        for touch: AnyObject in touches {
-            
-            let pointOfTouch = touch.location(in: self)
-            let previous = touch.previousLocation(in: self)
-            let amountDraggedX = pointOfTouch.x - previous.x
-            
-            player.position.x += amountDraggedX
-
-
-
-            
-        }
-        
-    }
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//        if gameOverTransitioning {
+//            return
+//        }
+//
+//        if gameState == .waiting || gameState == .gameOver {
+//            return
+//        }
+//
+//        for touch: AnyObject in touches {
+//
+//            let pointOfTouch = touch.location(in: self)
+//            let previous = touch.previousLocation(in: self)
+//            let amountDraggedX = pointOfTouch.x - previous.x
+//
+//            player.position.x += amountDraggedX
+//
+//
+//
+//
+//        }
+//
+//    }
     
     // MARK: - game logic delegate
     
