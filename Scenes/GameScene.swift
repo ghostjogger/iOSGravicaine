@@ -144,6 +144,7 @@ class GameScene: SKScene, GameLogicDelegate {
         }
         
         // player appear
+        player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * self.playerBaseY, duration: 0.3)
@@ -422,7 +423,7 @@ class GameScene: SKScene, GameLogicDelegate {
         DispatchQueue.global().async {
             
             // two actions
-            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.0)
+            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.5)
             let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
             let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
