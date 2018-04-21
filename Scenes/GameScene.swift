@@ -485,6 +485,7 @@ class GameScene: SKScene, GameLogicDelegate {
             
             
         }
+        player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.removeAllChildren()
         let hideAction = SKAction.hide()
         let waitAction = SKAction.wait(forDuration: 1.0)
