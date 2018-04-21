@@ -186,7 +186,7 @@ class GameScene: SKScene, GameLogicDelegate {
         // control nodes
         leftMove = SKLabelNode()
         leftMove?.text = "◀︎"
-        leftMove?.fontSize = 100.0
+        leftMove?.fontSize = 120.0
         leftMove?.horizontalAlignmentMode = .left
         leftMove?.verticalAlignmentMode = .bottom
         
@@ -194,7 +194,7 @@ class GameScene: SKScene, GameLogicDelegate {
         
         rightMove = SKLabelNode()
         rightMove?.text = "▶︎"
-        rightMove?.fontSize = 100.0
+        rightMove?.fontSize = 120.0
         rightMove?.horizontalAlignmentMode = .right
         rightMove?.verticalAlignmentMode = .bottom
         
@@ -339,21 +339,12 @@ class GameScene: SKScene, GameLogicDelegate {
             let pointOfTouch = touch.location(in: self)
 
             if (leftMove?.contains(pointOfTouch))!{
-                player.physicsBody?.applyImpulse(CGVector(dx: -200, dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: -100, dy: 0))
             }
             else if (rightMove?.contains(pointOfTouch))!{
-                player.physicsBody?.applyImpulse(CGVector(dx: 200, dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: 100, dy: 0))
             }
-            
-            if player.position.x > gameArea.maxX - player.size.width/2
-            {
-                player.position.x = gameArea.maxX - player.size.width/2
-            }
-            
-            if player.position.x < gameArea.minX + player.size.width/2
-            {
-                player.position.x = gameArea.minX + player.size.width/2
-            }
+
 
         }
         if gameOverTransitioning {
@@ -396,17 +387,7 @@ class GameScene: SKScene, GameLogicDelegate {
             
             player.position.x += amountDraggedX
 
-            
-            if player.position.x > gameArea.maxX - player.size.width/2
-            {
-                player.position.x = gameArea.maxX - player.size.width/2
-            }
 
-            if player.position.x < gameArea.minX + player.size.width/2
-            {
-                player.position.x = gameArea.minX + player.size.width/2
-            }
-            
 
             
         }
