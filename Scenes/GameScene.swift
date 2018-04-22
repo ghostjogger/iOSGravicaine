@@ -184,20 +184,7 @@ class GameScene: SKScene, GameLogicDelegate {
         scoreLabel?.horizontalAlignmentMode = .left
         scoreLabel?.verticalAlignmentMode = .top
         
-        // control nodes
-        leftMove = SKLabelNode()
-        leftMove?.text = "◀︎"
-        leftMove?.fontSize = 120.0
-        leftMove?.horizontalAlignmentMode = .left
-        leftMove?.verticalAlignmentMode = .bottom
-        
-        
-        
-        rightMove = SKLabelNode()
-        rightMove?.text = "▶︎"
-        rightMove?.fontSize = 120.0
-        rightMove?.horizontalAlignmentMode = .right
-        rightMove?.verticalAlignmentMode = .bottom
+
         
         
         
@@ -260,14 +247,7 @@ class GameScene: SKScene, GameLogicDelegate {
         scoreLabel?.text = gameLogic.scoreText()
         self.addChild(scoreLabel!)
         
-        //move label prep
-        leftMove?.zPosition = 150
-        leftMove?.position = CGPoint(x: self.size.width * 0.2, y: self.size.height * 0.05)
-        rightMove?.zPosition = 150
-        rightMove?.position = CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.05)
-        
-        self.addChild(leftMove!)
-        self.addChild(rightMove!)
+
         
         
         
