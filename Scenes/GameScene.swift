@@ -322,9 +322,11 @@ class GameScene: SKScene, GameLogicDelegate {
 
             if pointOfTouch.x < self.size.width / 2{
                 player.physicsBody?.applyImpulse(CGVector(dx: -65, dy: 0))
+                player.thrustLeft()
             }
             else if pointOfTouch.x >= self.size.width / 2{
                 player.physicsBody?.applyImpulse(CGVector(dx: 65, dy: 0))
+                player.thrustRight()
             }
 
 

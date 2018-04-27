@@ -11,6 +11,8 @@ class SpaceShip: SKSpriteNode {
 
     private static let bulletSound: SKAction = SKAction.playSoundFileNamed("laser.mp3", waitForCompletion: false)
     private static let bulletTexture: SKTexture = SKTexture(imageNamed: "player_bullet")
+    private let leftThruster:SKSpriteNode = SKSpriteNode(imageNamed: "l_thruster_small")
+    private let rightThruster:SKSpriteNode = SKSpriteNode(imageNamed: "r_thruster_small")
     private var fireEmitter: SKEmitterNode? = nil
  
     
@@ -43,6 +45,8 @@ class SpaceShip: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+ 
+    
 
     
     func fireBullet(destinationY: CGFloat)  {
@@ -70,6 +74,17 @@ class SpaceShip: SKSpriteNode {
         let bulletSequence = SKAction.sequence([SpaceShip.bulletSound, bulletAnimation, deleteBullet])
         bullet.run(bulletSequence)
         
+    }
+    
+    func thrustLeft(){
+        
+
+        
+    }
+    
+    func thrustRight(){
+        
+
     }
 
 
