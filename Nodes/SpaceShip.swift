@@ -11,8 +11,8 @@ class SpaceShip: SKSpriteNode {
 
     private static let bulletSound: SKAction = SKAction.playSoundFileNamed("laser.mp3", waitForCompletion: false)
     private static let bulletTexture: SKTexture = SKTexture(imageNamed: "player_bullet")
-    private let leftThruster:SKSpriteNode = SKSpriteNode(imageNamed: "l_thruster_small")
-    private let rightThruster:SKSpriteNode = SKSpriteNode(imageNamed: "r_thruster_small")
+    private let leftThruster:SKSpriteNode = SKSpriteNode(imageNamed: "r_thruster_small")
+    private let rightThruster:SKSpriteNode = SKSpriteNode(imageNamed: "l_thruster_small")
     private var fireEmitter: SKEmitterNode? = nil
  
     
@@ -78,12 +78,45 @@ class SpaceShip: SKSpriteNode {
     
     func thrustLeft(){
         
+        if !self.children.contains(leftThruster){
+        leftThruster.size = CGSize(width: 30, height: 20)
+        leftThruster.alpha = 0.0
+        leftThruster.position = CGPoint(x: (self.scene?.position.x)! + 50, y: (self.scene?.position.y)!)
+        self.addChild(leftThruster)
+        
+        //thrust actions
+        let appearThruster = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
+        let thrustBurn = SKAction.wait(forDuration: 0.25)
+        let disappearThruster = SKAction.fadeAlpha(to: 0.0, duration: 0.15)
+        let deleteThruster = SKAction.removeFromParent()
+        
+        //thrust sequence
+        let thrustSequence = SKAction.sequence([appearThruster,thrustBurn, disappearThruster ,deleteThruster])
+        leftThruster.run(thrustSequence)
+        }
+        
 
         
     }
     
     func thrustRight(){
         
+        if !self.children.contains(rightThruster){
+        rightThruster.size = CGSize(width: 30, height: 20)
+        rightThruster.alpha = 0.0
+        rightThruster.position = CGPoint(x: (self.scene?.position.x)! - 50, y: (self.scene?.position.y)!)
+        self.addChild(rightThruster)
+        
+        //thrust actions
+        let appearThruster = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
+        let thrustBurn = SKAction.wait(forDuration: 0.25)
+        let disappearThruster = SKAction.fadeAlpha(to: 0.0, duration: 0.15)
+        let deleteThruster = SKAction.removeFromParent()
+        
+        //thrust sequence
+        let thrustSequence = SKAction.sequence([appearThruster,thrustBurn, disappearThruster ,deleteThruster])
+        rightThruster.run(thrustSequence)
+        }
 
     }
 
