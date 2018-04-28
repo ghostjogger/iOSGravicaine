@@ -28,3 +28,5 @@ func random() -> CGFloat {
 func random(min: CGFloat, max: CGFloat) -> CGFloat {
     return random() * (max - min) + min
 }
+
+
