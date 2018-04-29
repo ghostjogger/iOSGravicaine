@@ -56,7 +56,7 @@ class GameScene: SKScene, GameLogicDelegate {
     // player
     
     private var player: SpaceShip
-    private let playerBaseY: CGFloat = 0.1
+    private let playerBaseY: CGFloat = 0.2
 
 
     
@@ -474,7 +474,7 @@ class GameScene: SKScene, GameLogicDelegate {
             
             
         }
-        player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        //player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.removeAllChildren()
         let hideAction = SKAction.hide()
         let waitAction = SKAction.wait(forDuration: 1.0)
