@@ -17,7 +17,7 @@ class MainMenuScene: SKScene{
     let signatureLabel = SKLabelNode(text: "Stephen Ball's")
     let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
-    let ship = SpaceShip()
+    //let ship = SpaceShip()
     
     //star animation variables
     
@@ -87,9 +87,9 @@ class MainMenuScene: SKScene{
         titleImage.setScale(0.9)
         self.addChild(titleImage)
         
-        ship.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.3)
-        ship.zPosition = 2
-        self.addChild(ship)
+        //ship.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.3)
+        //ship.zPosition = 2
+        //self.addChild(ship)
 
         
         startLabel.fontName = "Jellee-Roman"
