@@ -132,7 +132,7 @@ class MainMenuScene: SKScene{
 
             let node = SKSpriteNode(texture: protonFrames[0])
             node.setScale(0.8)
-            let action = SKAction.animate(with: protonFrames, timePerFrame: 0.2, resize: false, restore: false)
+            let action = SKAction.animate(with: protonFrames, timePerFrame: 0.1, resize: false, restore: false)
             let deleteAction = SKAction.removeFromParent()
             let sequence = SKAction.sequence([action,deleteAction])
             node.zPosition = 10
