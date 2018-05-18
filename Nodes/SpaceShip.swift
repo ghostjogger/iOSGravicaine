@@ -26,7 +26,7 @@ class SpaceShip: SKSpriteNode {
         self.name = "player"
         self.zPosition = 2
         self.physicsBody = SKPhysicsBody(rectangleOf: texture.size())
-        self.physicsBody!.affectedByGravity = false
+        self.physicsBody!.affectedByGravity = true
         self.physicsBody!.categoryBitMask = PhysicsCategories.Player
         self.physicsBody!.collisionBitMask = PhysicsCategories.None
         self.physicsBody!.contactTestBitMask = PhysicsCategories.Barrier

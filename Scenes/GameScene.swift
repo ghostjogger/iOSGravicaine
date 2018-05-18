@@ -50,13 +50,14 @@ class GameScene: SKScene, GameLogicDelegate {
     
     static let backgroundNodeNameObject = "background-node-0"
     //world
-    let gravity = 0.2
+    let gravity = 1.6
 
     
     // player
     
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.2
+    private let impulse = 80
 
 
     
@@ -140,6 +141,8 @@ class GameScene: SKScene, GameLogicDelegate {
         }
 
         gameLogic.gameDidStart()
+        
+        self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
 
         startPanel?.fadeOut() {
             self.startPanel?.removeFromParent()
@@ -195,6 +198,8 @@ class GameScene: SKScene, GameLogicDelegate {
         
         
         super.init(size: size)
+        
+        
  
         gameLogic.delegate = self
         
@@ -283,6 +288,17 @@ class GameScene: SKScene, GameLogicDelegate {
             lastUpdateTime = currentTime
         }
         
+            print("\(self.player.position.x)")
+            print("\(self.player.position.y)")
+            
+            if player.position.x < self.size.width/2{
+                self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
+            }
+            else{
+                self.physicsWorld.gravity = CGVector(dx: gravity, dy: 0)
+            }
+            
+            
     
             if player.position.x > gameArea.maxX - player.size.width/2
             {
@@ -325,13 +341,13 @@ class GameScene: SKScene, GameLogicDelegate {
 
             if pointOfTouch.x < self.size.width / 2{
                 if self.gameState == .inGame {
-                player.physicsBody?.applyImpulse(CGVector(dx: -65, dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: -impulse, dy: 0))
                 player.thrustLeft()
                 }
             }
             else if pointOfTouch.x >= self.size.width / 2{
                 if self.gameState == .inGame{
-                player.physicsBody?.applyImpulse(CGVector(dx: 65, dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: impulse, dy: 0))
                 player.thrustRight()
                 }
             }
