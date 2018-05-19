@@ -16,7 +16,7 @@ protocol GameLogicDelegate: class {
 class GameLogic: NSObject, SKPhysicsContactDelegate {
 
     private static let DefaultScore: Int = 0
-    private static let DefaultFuel: Int = 100
+    
     
     // MARK: - delegate
     
@@ -45,9 +45,10 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - fuel
     
     private var fuelReducer: Timer? = nil
-    private let fuelReducerFrequency: TimeInterval = 2.0
+    private let fuelReducerFrequency: TimeInterval = 0.4
+    private static let defaultFuel = 100
     
-    private(set) var fuel: Int = GameLogic.DefaultFuel {
+    private(set) var fuel: Int = GameLogic.defaultFuel {
         didSet {
             if oldValue != fuel {
                 print(fuel)
@@ -75,6 +76,11 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     private func stopReducingFuel() {
         fuelReducer?.invalidate()
         fuelReducer = nil
+    }
+    
+    func addFuel(amount: Int){
+        
+        fuel += amount
     }
     
     
