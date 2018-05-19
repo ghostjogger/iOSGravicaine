@@ -61,6 +61,11 @@ class GameScene: SKScene, GameLogicDelegate {
     private let fuelNode: FuelDisplayNode = FuelDisplayNode()
 
 
+    //fuel
+    private var isFuelEmpty = false
+    private let fuelTopUp = 10
+    private let startFuel = 100
+    
     
     private var gameOverTransitioning = false
     
@@ -143,7 +148,10 @@ class GameScene: SKScene, GameLogicDelegate {
 
         gameLogic.gameDidStart()
         
-        self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
+        fuelNode.setFuel(fuel: startFuel)
+        isFuelEmpty = false
+        
+        //self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
 
         startPanel?.fadeOut() {
             self.startPanel?.removeFromParent()
@@ -257,9 +265,10 @@ class GameScene: SKScene, GameLogicDelegate {
         self.addChild(scoreLabel!)
         
 
-        fuelNode.position.x = 40.0
-        fuelNode.position.y = 40.0
+        fuelNode.position.x = 230.0
+        fuelNode.position.y = 140.0
         fuelNode.zPosition = 200.0
+        fuelNode.setFuel(fuel: startFuel)
         self.addChild(fuelNode)
         
         
@@ -511,6 +520,15 @@ class GameScene: SKScene, GameLogicDelegate {
     
     func fuelEmpty(){
         
+        isFuelEmpty = true
+    }
+    
+    func fuelDidChange(fuel:Int){
+        
+        fuelNode.setFuel(fuel: fuel)
+        if fuel == 0{
+            isFuelEmpty = true
+        }
         
     }
     

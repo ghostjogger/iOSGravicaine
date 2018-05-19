@@ -9,12 +9,14 @@ protocol GameLogicDelegate: class {
     func scoreDidChange(_ newScore: Int, text: String!)
     func shouldSpawnBarrier()
     func barrierTouchesPlayer()
+    func fuelDidChange(fuel:Int)
     func fuelEmpty()    
 }
 
 class GameLogic: NSObject, SKPhysicsContactDelegate {
 
     private static let DefaultScore: Int = 0
+    private static let DefaultFuel: Int = 100
     
     // MARK: - delegate
     
@@ -36,6 +38,15 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         didSet {
             if oldValue != score {
                 delegate?.scoreDidChange(score, text: self.scoreText())
+            }
+        }
+    }
+    
+    // MARK: - fuel
+    private(set) var fuel: Int = GameLogic.DefaultFuel {
+        didSet {
+            if oldValue != fuel {
+                delegate?.fuelDidChange(fuel:fuel)
             }
         }
     }
