@@ -274,6 +274,7 @@ class GameScene: SKScene, GameLogicDelegate {
         fuelLabel.position = CGPoint(x: self.size.width/2, y: 60)
         self.addChild(fuelLabel)
         
+        gravityNode.position.x = -1000
         self.addChild(gravityNode)
         
         
@@ -510,7 +511,8 @@ class GameScene: SKScene, GameLogicDelegate {
             
             
         }
-        //player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.removeAllChildren()
         let hideAction = SKAction.hide()
         let waitAction = SKAction.wait(forDuration: 1.0)
