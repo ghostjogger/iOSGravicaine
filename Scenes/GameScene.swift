@@ -45,21 +45,14 @@ extension SKAction {
 }
 
 class GameScene: SKScene, GameLogicDelegate {
-
-    
-    
+   
     static let backgroundNodeNameObject = "background-node-0"
-    //world
-    let gravity = 1.6
-
-    
+ 
     // player
     
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.2
     private let impulse = 80
-
-
 
     //fuel
     private var isFuelEmpty = false
@@ -68,7 +61,11 @@ class GameScene: SKScene, GameLogicDelegate {
     private var fuelNode: SKSpriteNode = SKSpriteNode()
     private var fuelLabel = SKLabelNode(text: "Fuel")
     
+    //gravity
+    private let gravity = 1.6
+    private var gravityNode: SKSpriteNode = SKSpriteNode()
     
+
     private var gameOverTransitioning = false
     
     
@@ -84,8 +81,6 @@ class GameScene: SKScene, GameLogicDelegate {
     
     private var startPanel: StartPanelNode? = nil
     private var gameOverPanel: GameOverPanelNode? = nil
-    
-
     
     private let scoreLabel: SKLabelNode?
 
@@ -198,7 +193,9 @@ class GameScene: SKScene, GameLogicDelegate {
         scoreLabel?.horizontalAlignmentMode = .left
         scoreLabel?.verticalAlignmentMode = .top
         
-        fuelNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 500, height: 100))
+        fuelNode = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.40), size: CGSize(width: 500, height: 100))
+        
+        gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 100, height: 200))
 
         
         player = SpaceShip()
@@ -277,7 +274,7 @@ class GameScene: SKScene, GameLogicDelegate {
         fuelLabel.position = CGPoint(x: self.size.width/2, y: 60)
         self.addChild(fuelLabel)
         
-        
+        self.addChild(gravityNode)
         
         
         if GodMode {
@@ -312,9 +309,13 @@ class GameScene: SKScene, GameLogicDelegate {
             
             if player.position.x < self.size.width/2{
                 self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
+                gravityNode.position = CGPoint(x: self.size.width/2 - 500, y: 150)
+                gravityNode.zPosition = 100
             }
             else{
                 self.physicsWorld.gravity = CGVector(dx: gravity, dy: 0)
+                gravityNode.position = CGPoint(x: self.size.width/2 + 500, y: 150)
+                gravityNode.zPosition = 100
             }
             
             
@@ -534,10 +535,11 @@ class GameScene: SKScene, GameLogicDelegate {
         print(fuel)
         if fuel == 0{
             isFuelEmpty = true
-            fuelNode.removeFromParent()
         }
 
-        fuelNode.size.width -= 5
+        if !gameOverTransitioning && fuel != 0{
+            fuelNode.size.width -= 5
+        }
         
 
     }
