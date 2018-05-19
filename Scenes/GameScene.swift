@@ -58,6 +58,7 @@ class GameScene: SKScene, GameLogicDelegate {
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.2
     private let impulse = 80
+    private let fuelNode: FuelDisplayNode = FuelDisplayNode()
 
 
     
@@ -256,6 +257,10 @@ class GameScene: SKScene, GameLogicDelegate {
         self.addChild(scoreLabel!)
         
 
+        fuelNode.position.x = 40.0
+        fuelNode.position.y = 40.0
+        fuelNode.zPosition = 200.0
+        self.addChild(fuelNode)
         
         
         
@@ -502,6 +507,11 @@ class GameScene: SKScene, GameLogicDelegate {
         
        
        
+    }
+    
+    func fuelEmpty(){
+        
+        
     }
     
 

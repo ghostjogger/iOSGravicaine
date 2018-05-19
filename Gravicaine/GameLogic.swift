@@ -9,6 +9,7 @@ protocol GameLogicDelegate: class {
     func scoreDidChange(_ newScore: Int, text: String!)
     func shouldSpawnBarrier()
     func barrierTouchesPlayer()
+    func fuelEmpty()    
 }
 
 class GameLogic: NSObject, SKPhysicsContactDelegate {

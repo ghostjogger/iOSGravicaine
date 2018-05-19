@@ -31,6 +31,7 @@
 		99A40D5320754BE0000D5DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5120754BE0000D5DD9 /* Main.storyboard */; };
 		99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5420754BE1000D5DD9 /* Assets.xcassets */; };
 		99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */; };
+		99FB2C8120B02D92003C7510 /* FuelDisplayNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8020B02D92003C7510 /* FuelDisplayNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		99A40D5420754BE1000D5DD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99A40D5720754BE1000D5DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99A40D5920754BE1000D5DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99FB2C8020B02D92003C7510 /* FuelDisplayNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelDisplayNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				99A357D62081EA1F00F86F84 /* SpaceSpriteNode.swift */,
 				99A357C0207A587700F86F84 /* SpaceShip.swift */,
 				99766E2F2084E58900AA937A /* GameOverPanelNode.swift */,
+				99FB2C8020B02D92003C7510 /* FuelDisplayNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99FB2C8120B02D92003C7510 /* FuelDisplayNode.swift in Sources */,
 				99A357B12079073400F86F84 /* GameOverScene.swift in Sources */,
 				99A40D4E20754BE0000D5DD9 /* GameScene.swift in Sources */,
 				99A357C5207A75A000F86F84 /* GameLogic.swift in Sources */,
