@@ -266,7 +266,7 @@ class GameScene: SKScene, GameLogicDelegate {
         
 
         fuelNode.position.x = 230.0
-        fuelNode.position.y = 140.0
+        fuelNode.position.y = 100.0
         fuelNode.zPosition = 200.0
         fuelNode.setFuel(fuel: startFuel)
         self.addChild(fuelNode)
