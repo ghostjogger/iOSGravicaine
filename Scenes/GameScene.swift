@@ -58,7 +58,7 @@ class GameScene: SKScene, GameLogicDelegate {
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.2
     private let impulse = 80
-    private let fuelNode: FuelDisplayNode = FuelDisplayNode()
+
 
 
     //fuel
@@ -148,7 +148,6 @@ class GameScene: SKScene, GameLogicDelegate {
 
         gameLogic.gameDidStart()
         
-        fuelNode.setFuel(fuel: startFuel)
         isFuelEmpty = false
         
         //self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
@@ -265,11 +264,6 @@ class GameScene: SKScene, GameLogicDelegate {
         self.addChild(scoreLabel!)
         
 
-        fuelNode.position.x = 230.0
-        fuelNode.position.y = 140.0
-        fuelNode.zPosition = 200.0
-        fuelNode.setFuel(fuel: startFuel)
-        self.addChild(fuelNode)
         
         
         
@@ -301,9 +295,7 @@ class GameScene: SKScene, GameLogicDelegate {
             deltaFrameTime = currentTime - lastUpdateTime
             lastUpdateTime = currentTime
         }
-        
-            print("\(self.player.position.x)")
-            print("\(self.player.position.y)")
+
             
             if player.position.x < self.size.width/2{
                 self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
@@ -524,13 +516,9 @@ class GameScene: SKScene, GameLogicDelegate {
     }
     
     func fuelDidChange(fuel:Int){
-        
-        fuelNode.setFuel(fuel: fuel)
-        if fuel == 0{
-            isFuelEmpty = true
-        }
-        
+
     }
+
     
 
 

@@ -43,12 +43,38 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     // MARK: - fuel
+    
+    private var fuelReducer: Timer? = nil
+    private let fuelReducerFrequency: TimeInterval = 2.0
+    
     private(set) var fuel: Int = GameLogic.DefaultFuel {
         didSet {
             if oldValue != fuel {
+                print(fuel)
                 delegate?.fuelDidChange(fuel:fuel)
             }
         }
+    }
+    
+    @objc private func reduceFuel(_ timer: Timer) {
+        print(fuel)
+        fuel -= 1
+        self.startReducingFuel()
+        
+    }
+    
+    private func startReducingFuel() {
+        
+       fuelReducer = Timer.scheduledTimer(timeInterval: TimeInterval(fuelReducerFrequency),
+                                              target: self,
+                                              selector: #selector(GameLogic.reduceFuel(_:)),
+                                              userInfo: nil,
+                                              repeats: false)
+    }
+    
+    private func stopReducingFuel() {
+        fuelReducer?.invalidate()
+        fuelReducer = nil
     }
     
     
@@ -92,6 +118,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         
         self.stopSpawningBarrier()
         self.startSpawningBarrier()
+        self.startReducingFuel()
         //self.stopSpawningPlanet()
         //self.startSpawningPlanet()
         
@@ -99,6 +126,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
     func gameDidStop(){
         self.stopSpawningBarrier()
+        self.stopReducingFuel()
     }
     
 
