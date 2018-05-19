@@ -40,6 +40,13 @@ class FuelDisplayNode: SKSpriteNode{
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setFuelPercentage(percentage: Float) {
+        mask.removeAction(forKey: FuelDisplayNode.MaskSizeActionName)
+        let maskSizeHeight = sprite.size.height * CGFloat(percentage)
+        let maskAction = SKAction.resize(toHeight: maskSizeHeight , duration: 0.2)
+        mask.run(maskAction, withKey: FuelDisplayNode.MaskSizeActionName)
+    }
+    
 
     
 }
