@@ -52,17 +52,18 @@ class GameScene: SKScene, GameLogicDelegate {
     
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.2
-    private let impulse = 130
+    private let impulse = 100
 
     //fuel
     private var isFuelEmpty = false
     private let fuelTopUp = 10
     private let startFuel = 100
     private var fuelNode: SKSpriteNode = SKSpriteNode()
+    private var fuelBackgroundNode: SKSpriteNode = SKSpriteNode()
     private var fuelLabel = SKLabelNode(text: "Fuel")
     
     //gravity
-    private let gravity = 1.6
+    private let gravity = 1.5
     private var gravityNode: SKSpriteNode = SKSpriteNode()
     private var gravityNodeLabel: SKLabelNode = SKLabelNode(text: "G")
     
@@ -189,7 +190,8 @@ class GameScene: SKScene, GameLogicDelegate {
         scoreLabel?.verticalAlignmentMode = .top
         
         // fuel node
-        fuelNode = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.40), size: CGSize(width: 500, height: 100))
+        fuelNode = SKSpriteNode(texture: nil, color: UIColor.green, size: CGSize(width: 500, height: 100))
+        fuelBackgroundNode = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.30), size: CGSize(width: 500, height: 100))
         
         //gravity indicators
         gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 100, height: 200))
@@ -258,6 +260,11 @@ class GameScene: SKScene, GameLogicDelegate {
         fuelNode.zPosition = 100
         fuelNode.anchorPoint = CGPoint.zero
         self.addChild(fuelNode)
+        
+        fuelBackgroundNode.position = CGPoint(x: self.size.width/2 - fuelBackgroundNode.size.width/2, y: 100)
+        fuelBackgroundNode.zPosition = 50
+        fuelBackgroundNode.anchorPoint = CGPoint.zero
+        self.addChild(fuelBackgroundNode)
 
         fuelLabel.fontSize = 42.0
         fuelLabel.fontName = FontName
@@ -402,7 +409,7 @@ class GameScene: SKScene, GameLogicDelegate {
         DispatchQueue.global().async {
             
             // two actions
-            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.5)
+            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 4.0)
             let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
             let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
@@ -444,7 +451,7 @@ class GameScene: SKScene, GameLogicDelegate {
                     self.gameLogic.passBarrier()
                     })
                 rightBarrier.run(barrierSequence, completion: {
-                    self.gameLogic.passBarrier()
+                   // self.gameLogic.passBarrier()
                 })
             })
         }
@@ -485,14 +492,12 @@ class GameScene: SKScene, GameLogicDelegate {
     }
     
     func fuelDidChange(fuel:Int){
-        
-        
-        print(fuel)
-        if fuel == 0{
+
+        if fuel <= 0{
             isFuelEmpty = true
         }
 
-        if !gameOverTransitioning && fuel != 0{
+        if !gameOverTransitioning && !isFuelEmpty{
             fuelNode.size.width -= 5
         }
         

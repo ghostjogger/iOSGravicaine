@@ -117,7 +117,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     func passBarrier(){
-        self.score += 10
+        self.score += 1
     }
     
     func gameDidStart() {
