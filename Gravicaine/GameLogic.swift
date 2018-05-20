@@ -120,7 +120,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - barrier
     
     private var barrierSpawner: Timer? = nil
-    private let barrierFrequency: TimeInterval = 2.5
+    private let barrierFrequency: TimeInterval = 3.0
     
     @objc private func spawnBarrier(_ timer: Timer) {
         delegate?.shouldSpawnBarrier()

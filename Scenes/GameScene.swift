@@ -80,7 +80,7 @@ class GameScene: SKScene, GameLogicDelegate {
 
     
     // ui nodes
-    
+    private let exitLabel = SKLabelNode(text: "Quit")
     private var startPanel: StartPanelNode? = nil
     private var gameOverPanel: GameOverPanelNode? = nil
     private let scoreLabel: SKLabelNode?
@@ -276,9 +276,20 @@ class GameScene: SKScene, GameLogicDelegate {
         fuelLabel.position = CGPoint(x: self.size.width/2, y: 60)
         self.addChild(fuelLabel)
         
+        //gravity nodes
         gravityNode.position.x = -1000
         gravityNode.addChild(gravityNodeLabel)
         self.addChild(gravityNode)
+        
+        //exit label
+        exitLabel.fontSize = 80.0
+        exitLabel.fontName = FontName
+        exitLabel.horizontalAlignmentMode = .left
+        exitLabel.verticalAlignmentMode = .center
+        exitLabel.zPosition = 50
+        exitLabel.position = CGPoint(x: 200, y: self.size.height - 50.0)
+        self.addChild(exitLabel)
+        
         
         if GodMode {
             player.physicsBody?.categoryBitMask = PhysicsCategories.None
@@ -348,6 +359,14 @@ class GameScene: SKScene, GameLogicDelegate {
         for touch: AnyObject in touches{
 
             let pointOfTouch = touch.location(in: self)
+            
+            if exitLabel.contains(pointOfTouch){
+                
+                let sceneToMoveTo = MainMenuScene(size: self.size)
+                sceneToMoveTo.scaleMode = self.scaleMode
+                let myTransition = SKTransition.fade(withDuration: 0.5)
+                self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+            }
 
 
             if pointOfTouch.x < self.size.width / 2{
@@ -411,7 +430,7 @@ class GameScene: SKScene, GameLogicDelegate {
         DispatchQueue.global().async {
             
             // two actions
-            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.0)
+            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.5)
             let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
             let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
