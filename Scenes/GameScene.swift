@@ -495,10 +495,11 @@ class GameScene: SKScene, GameLogicDelegate {
 
         if fuel <= 0{
             isFuelEmpty = true
+            fuelNode.size.width = 0
         }
 
         if !gameOverTransitioning && !isFuelEmpty{
-            fuelNode.size.width -= 5
+            fuelNode.size.width = CGFloat(fuel * 5)
         }
         
 
