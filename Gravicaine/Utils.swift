@@ -19,6 +19,7 @@ struct PhysicsCategories {
     static let Enemy:   UInt32 = 0b100  // 4
     static let Barrier: UInt32 = 0b1000 // 8
     static let Asteroid: UInt32 = 0b10000 // 16
+    static let PowerUp: UInt32 = 0b100000 //32
 }
 
 func random() -> CGFloat {

@@ -31,6 +31,8 @@
 		99A40D5320754BE0000D5DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5120754BE0000D5DD9 /* Main.storyboard */; };
 		99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5420754BE1000D5DD9 /* Assets.xcassets */; };
 		99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */; };
+		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
+		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		99A40D5420754BE1000D5DD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99A40D5720754BE1000D5DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99A40D5920754BE1000D5DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
+		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 				99A357B22079082F00F86F84 /* introGravicaine.wav */,
 				99A357C2207A595000F86F84 /* laser.mp3 */,
 				99A357B42079088E00F86F84 /* explosion.wav */,
+				99FB2C8820B1C108003C7510 /* Powerup.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 				99A357D62081EA1F00F86F84 /* SpaceSpriteNode.swift */,
 				99A357C0207A587700F86F84 /* SpaceShip.swift */,
 				99766E2F2084E58900AA937A /* GameOverPanelNode.swift */,
+				99FB2C8620B1B458003C7510 /* PowerUpNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -220,6 +226,7 @@
 				99A357B52079088E00F86F84 /* explosion.wav in Resources */,
 				99A357B820791BAE00F86F84 /* ship-fire.sks in Resources */,
 				99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */,
+				99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
 				99A357C3207A595000F86F84 /* laser.mp3 in Resources */,
 				99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */,
@@ -242,6 +249,7 @@
 				99A357D92082160F00F86F84 /* StartPanelNode.swift in Sources */,
 				99A357D72081EA1F00F86F84 /* SpaceSpriteNode.swift in Sources */,
 				99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */,
+				99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */,
 				99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */,
 				99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */,
 				99A357BE207A578700F86F84 /* Utils.swift in Sources */,

@@ -10,7 +10,9 @@ protocol GameLogicDelegate: class {
     func shouldSpawnBarrier()
     func barrierTouchesPlayer()
     func fuelDidChange(fuel:Int)
-    func fuelEmpty()    
+    func fuelEmpty()
+    func shouldSpawnPowerUp()
+    func powerUpTouchesPlayer()
 }
 
 class GameLogic: NSObject, SKPhysicsContactDelegate {
@@ -41,6 +43,9 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
             }
         }
     }
+    
+    // MARK: - power
+    private static let DefaultPowerSpawnInterval = 5.0
     
     // MARK: - fuel
     
@@ -90,11 +95,32 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
 
+    // MARK: - powerups
+    
+    private var spawnPowerInterval: TimeInterval = GameLogic.DefaultPowerSpawnInterval
+    private var powerSpawner: Timer? = nil
+    
+    @objc private func spawnPower(_ timer: Timer) {
+        delegate?.shouldSpawnPowerUp()
+    }
+    
+    private func startSpawningPower() {
+        powerSpawner = Timer.scheduledTimer(timeInterval: spawnPowerInterval,
+                                              target: self,
+                                              selector: #selector(GameLogic.spawnPower(_:)),
+                                              userInfo: nil,
+                                              repeats: true)
+    }
+    
+    private func stopSpawningPower() {
+        powerSpawner?.invalidate()
+        powerSpawner = nil
+    }
     
     // MARK: - barrier
     
     private var barrierSpawner: Timer? = nil
-    private let barrierFrequency: TimeInterval = 2.0
+    private let barrierFrequency: TimeInterval = 2.5
     
     @objc private func spawnBarrier(_ timer: Timer) {
         delegate?.shouldSpawnBarrier()
@@ -125,6 +151,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         self.stopSpawningBarrier()
         self.startSpawningBarrier()
         self.startReducingFuel()
+        self.startSpawningPower()
         //self.stopSpawningPlanet()
         //self.startSpawningPlanet()
         
@@ -133,6 +160,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     func gameDidStop(){
         self.stopSpawningBarrier()
         self.stopReducingFuel()
+        self.stopSpawningPower()
     }
     
 
@@ -158,6 +186,11 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
             &&  body2.categoryBitMask == PhysicsCategories.Barrier {
                 self.barrierTouchesPlayer()
             }
+        //player hits powerup
+        if      body1.categoryBitMask == PhysicsCategories.Player
+            &&  body2.categoryBitMask == PhysicsCategories.PowerUp {
+                self.powerUpTouchesPlayer()
+        }
 //
 //        // bullet hits enemy
 //        if body1.categoryBitMask == PhysicsCategories.Bullet && body2.categoryBitMask == PhysicsCategories.Enemy {
@@ -182,6 +215,12 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         if !GodMode {
             self.gameOver(playerDestroyed: true)
         }
+    }
+    
+    func powerUpTouchesPlayer(){
+        print("collision")
+        self.fuel = GameLogic.defaultFuel
+        delegate?.powerUpTouchesPlayer()
     }
     
 

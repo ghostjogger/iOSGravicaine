@@ -52,7 +52,7 @@ class GameScene: SKScene, GameLogicDelegate {
     
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.2
-    private let impulse = 100
+    private let impulse = 70
 
     //fuel
     private var isFuelEmpty = false
@@ -63,7 +63,7 @@ class GameScene: SKScene, GameLogicDelegate {
     private var fuelLabel = SKLabelNode(text: "Fuel")
     
     //gravity
-    private let gravity = 1.5
+    private let gravity = 1.3
     private var gravityNode: SKSpriteNode = SKSpriteNode()
     private var gravityNodeLabel: SKLabelNode = SKLabelNode(text: "G")
     
@@ -114,6 +114,8 @@ class GameScene: SKScene, GameLogicDelegate {
     let explosionAnimatedAtlas = SKTextureAtlas(named: "playerExplosion")
     var explosionFrames: [SKTexture] = []
     
+    //powerup sound action
+    private var powerUpSound: SKAction = SKAction.playSoundFileNamed("Powerup.wav", waitForCompletion: false)
    
     
     // MARK: - game state
@@ -409,7 +411,7 @@ class GameScene: SKScene, GameLogicDelegate {
         DispatchQueue.global().async {
             
             // two actions
-            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 4.0)
+            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.0)
             let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
             let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
@@ -467,8 +469,12 @@ class GameScene: SKScene, GameLogicDelegate {
             (node, stop) in
             
             node.removeAllActions()
+  
+        }
+        self.enumerateChildNodes(withName: "power") {
+            (node, stop) in
             
-            
+            node.removeAllActions()
             
         }
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
@@ -484,6 +490,18 @@ class GameScene: SKScene, GameLogicDelegate {
         
        
        
+    }
+    
+    func powerUpTouchesPlayer(){
+        self.enumerateChildNodes(withName: "power") {
+            (node, stop) in
+            
+            node.removeFromParent()
+            
+        }
+        let powerUpSequence = SKAction.sequence([powerUpSound])
+        player.run(powerUpSequence)
+        
     }
     
     func fuelEmpty(){
@@ -503,6 +521,35 @@ class GameScene: SKScene, GameLogicDelegate {
         }
         
 
+    }
+    func shouldSpawnPowerUp() {
+        if !gameOverTransitioning {
+        
+        DispatchQueue.global().async {
+            
+            let power = PowerUpNode()
+            power.name = "power"
+            var moveType = PowerUpMove.Straight
+            moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
+            
+            power.move = moveType
+            power.zPosition = 5
+            
+            let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
+            let yStart = self.size.height + 200.0
+            
+            let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
+            let yEnd: CGFloat = -power.size.height
+            
+            DispatchQueue.main.async(execute: {
+                self.addChild(power)
+                power.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
+                    //
+                }
+            })
+            
+            }
+        }
     }
 
     
