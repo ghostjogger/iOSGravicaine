@@ -56,14 +56,12 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     private(set) var fuel: Int = GameLogic.defaultFuel {
         didSet {
             if oldValue != fuel {
-                print(fuel)
                 delegate?.fuelDidChange(fuel:fuel)
             }
         }
     }
     
     @objc private func reduceFuel(_ timer: Timer) {
-        print(fuel)
         fuel -= 1
         self.startReducingFuel()
         
@@ -152,8 +150,6 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         self.startSpawningBarrier()
         self.startReducingFuel()
         self.startSpawningPower()
-        //self.stopSpawningPlanet()
-        //self.startSpawningPlanet()
         
     }
     
@@ -218,7 +214,6 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     func powerUpTouchesPlayer(){
-        print("collision")
         self.fuel = GameLogic.defaultFuel
         delegate?.powerUpTouchesPlayer()
     }

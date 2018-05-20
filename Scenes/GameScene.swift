@@ -362,6 +362,7 @@ class GameScene: SKScene, GameLogicDelegate {
             
             if exitLabel.contains(pointOfTouch){
                 
+                gameLogic.gameDidStop()
                 let sceneToMoveTo = MainMenuScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.fade(withDuration: 0.5)
@@ -520,6 +521,7 @@ class GameScene: SKScene, GameLogicDelegate {
         }
         let powerUpSequence = SKAction.sequence([powerUpSound])
         player.run(powerUpSequence)
+        fuelNode.run(SKAction.hudLabelBumpAction())
         
     }
     
