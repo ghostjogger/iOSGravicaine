@@ -64,6 +64,7 @@ class GameScene: SKScene, GameLogicDelegate {
     //gravity
     private let gravity = 1.6
     private var gravityNode: SKSpriteNode = SKSpriteNode()
+    private var gravityNodeLabel: SKLabelNode = SKLabelNode(text: "G")
     
 
     private var gameOverTransitioning = false
@@ -197,6 +198,9 @@ class GameScene: SKScene, GameLogicDelegate {
         
         gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 100, height: 200))
 
+        gravityNodeLabel.fontName = FontName
+        gravityNodeLabel.fontSize = 50.0
+        gravityNodeLabel.fontColor = UIColor.green
         
         player = SpaceShip()
         
@@ -275,6 +279,7 @@ class GameScene: SKScene, GameLogicDelegate {
         self.addChild(fuelLabel)
         
         gravityNode.position.x = -1000
+        gravityNode.addChild(gravityNodeLabel)
         self.addChild(gravityNode)
         
         

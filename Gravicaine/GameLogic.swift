@@ -154,11 +154,10 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         }
 
         // player hits barrier
-        if body1.categoryBitMask == PhysicsCategories.Player && body2.categoryBitMask == PhysicsCategories.Barrier {
-
-            self.barrierTouchesPlayer()
-        
-        }
+        if      body1.categoryBitMask == PhysicsCategories.Player
+            &&  body2.categoryBitMask == PhysicsCategories.Barrier {
+                self.barrierTouchesPlayer()
+            }
 //
 //        // bullet hits enemy
 //        if body1.categoryBitMask == PhysicsCategories.Bullet && body2.categoryBitMask == PhysicsCategories.Enemy {
@@ -180,7 +179,6 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
 
 
     func barrierTouchesPlayer(){
-
         if !GodMode {
             self.gameOver(playerDestroyed: true)
         }
