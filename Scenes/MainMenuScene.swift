@@ -29,7 +29,7 @@ class MainMenuScene: SKScene{
     override init(size:CGSize) {
         
         //setup star animation
-        var numImages = protonStarAnimatedAtlas.textureNames.count
+        let numImages = protonStarAnimatedAtlas.textureNames.count
         for i in 1...numImages {
             let textureName = "star\(i)"
             protonFrames.append(protonStarAnimatedAtlas.textureNamed(textureName))
