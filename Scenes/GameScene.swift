@@ -52,7 +52,7 @@ class GameScene: SKScene, GameLogicDelegate {
     
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.2
-    private let impulse = 80
+    private let impulse = 130
 
     //fuel
     private var isFuelEmpty = false
@@ -82,7 +82,6 @@ class GameScene: SKScene, GameLogicDelegate {
     
     private var startPanel: StartPanelNode? = nil
     private var gameOverPanel: GameOverPanelNode? = nil
-    
     private let scoreLabel: SKLabelNode?
 
 
@@ -120,7 +119,6 @@ class GameScene: SKScene, GameLogicDelegate {
     
     private func setWaitingGameState() {
         
-        
         player.position = CGPoint(x: self.size.width/2, y:  0 - self.size.height)
         startPanel?.removeFromParent()
         startPanel = StartPanelNode(size: self.size)
@@ -128,7 +126,6 @@ class GameScene: SKScene, GameLogicDelegate {
         self.addChild(startPanel!)
         startPanel?.fadeIn()
 
-        
     }
     
     private func setInGameState() {
@@ -136,10 +133,7 @@ class GameScene: SKScene, GameLogicDelegate {
         self.enumerateChildNodes(withName: "barrier") {
             (node, stop) in
             
-           
             node.removeFromParent()
-            
-            
         }
 
         gameLogic.gameDidStart()
@@ -189,26 +183,25 @@ class GameScene: SKScene, GameLogicDelegate {
         
         // label
         scoreLabel = SKLabelNode()
-        scoreLabel?.fontSize = 65.0
+        scoreLabel?.fontSize = 90.0
         scoreLabel?.fontName = FontName
-        scoreLabel?.horizontalAlignmentMode = .left
+        scoreLabel?.horizontalAlignmentMode = .center
         scoreLabel?.verticalAlignmentMode = .top
         
+        // fuel node
         fuelNode = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.40), size: CGSize(width: 500, height: 100))
         
+        //gravity indicators
         gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 100, height: 200))
-
         gravityNodeLabel.fontName = FontName
         gravityNodeLabel.fontSize = 50.0
         gravityNodeLabel.fontColor = UIColor.green
         
+        //player init
         player = SpaceShip()
         
-        
         super.init(size: size)
-        
-        
- 
+
         gameLogic.delegate = self
         
         //setup player explosion animation
@@ -246,20 +239,16 @@ class GameScene: SKScene, GameLogicDelegate {
             self.addChild(background)
             
         }
-        
 
- 
         //set up player ship
-        //player.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
+        
         self.gameState = .waiting
         self.addChild(player)
-
-
-        
+    
         // score label prep work
         
         scoreLabel?.zPosition = 100
-        scoreLabel?.position = CGPoint(x: 200, y: self.size.height - 22.0)
+        scoreLabel?.position = CGPoint(x: self.size.width/2, y: self.size.height - 22.0)
         scoreLabel?.text = gameLogic.scoreText()
         self.addChild(scoreLabel!)
         
@@ -282,12 +271,9 @@ class GameScene: SKScene, GameLogicDelegate {
         gravityNode.addChild(gravityNodeLabel)
         self.addChild(gravityNode)
         
-        
         if GodMode {
             player.physicsBody?.categoryBitMask = PhysicsCategories.None
         }
-        
-       
     }
     
     var lastUpdateTime:TimeInterval = 0
@@ -296,11 +282,7 @@ class GameScene: SKScene, GameLogicDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
-        
 
-        
-
-        
         if self.gameState == .inGame && !gameOverTransitioning{
         if lastUpdateTime == 0
         {
@@ -323,9 +305,7 @@ class GameScene: SKScene, GameLogicDelegate {
                 gravityNode.position = CGPoint(x: self.size.width/2 + 500, y: 150)
                 gravityNode.zPosition = 100
             }
-            
-            
-    
+
             if player.position.x > gameArea.maxX - player.size.width/2
             {
                 player.position.x = gameArea.maxX - player.size.width/2
@@ -348,16 +328,12 @@ class GameScene: SKScene, GameLogicDelegate {
             if node.position.y < -self.size.height{
                 node.position.y += self.size.height * 2
             }
-            
-           
+    
         }
         
         }
     }
-    
-    
 
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch: AnyObject in touches{
@@ -366,18 +342,17 @@ class GameScene: SKScene, GameLogicDelegate {
 
 
             if pointOfTouch.x < self.size.width / 2{
-                if self.gameState == .inGame && !isFuelEmpty{
+                if self.gameState == .inGame && !isFuelEmpty && !gameOverTransitioning{
                 player.physicsBody?.applyImpulse(CGVector(dx: -impulse, dy: 0))
                 player.thrustLeft()
                 }
             }
             else if pointOfTouch.x >= self.size.width / 2{
-                if self.gameState == .inGame && !isFuelEmpty{
+                if self.gameState == .inGame && !isFuelEmpty && !gameOverTransitioning{
                 player.physicsBody?.applyImpulse(CGVector(dx: impulse, dy: 0))
                 player.thrustRight()
                 }
             }
-
 
         }
         if gameOverTransitioning {
@@ -396,36 +371,9 @@ class GameScene: SKScene, GameLogicDelegate {
             let myTransition = SKTransition.fade(withDuration: 1.0)
             self.view!.presentScene(sceneToMoveTo, transition:myTransition)
         }
-//
-//        if self.gameState == .inGame{
-//        player.fireBullet(destinationY: self.size.height)
-//        }
     }
     
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//        if gameOverTransitioning {
-//            return
-//        }
-//
-//        if gameState == .waiting || gameState == .gameOver {
-//            return
-//        }
-//
-//        for touch: AnyObject in touches {
-//
-//            let pointOfTouch = touch.location(in: self)
-//            let previous = touch.previousLocation(in: self)
-//            let amountDraggedX = pointOfTouch.x - previous.x
-//
-//            player.position.x += amountDraggedX
-//
-//
-//
-//
-//        }
-//
-//    }
+
     
     // MARK: - game logic delegate
     
