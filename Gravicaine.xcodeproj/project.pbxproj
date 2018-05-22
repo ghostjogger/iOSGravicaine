@@ -31,6 +31,10 @@
 		99A40D5320754BE0000D5DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5120754BE0000D5DD9 /* Main.storyboard */; };
 		99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5420754BE1000D5DD9 /* Assets.xcassets */; };
 		99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */; };
+		99B334C720B3626100AC5C59 /* ThumbStickNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B334C620B3626100AC5C59 /* ThumbStickNode.swift */; };
+		99B334CA20B3729600AC5C59 /* ControlInputSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B334C920B3729600AC5C59 /* ControlInputSource.swift */; };
+		99B334CC20B372A200AC5C59 /* TouchControlInputNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B334CB20B372A200AC5C59 /* TouchControlInputNode.swift */; };
+		99B334CE20B372D100AC5C59 /* GameplayConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B334CD20B372D100AC5C59 /* GameplayConfiguration.swift */; };
 		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
 		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
 /* End PBXBuildFile section */
@@ -62,6 +66,10 @@
 		99A40D5420754BE1000D5DD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99A40D5720754BE1000D5DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99A40D5920754BE1000D5DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99B334C620B3626100AC5C59 /* ThumbStickNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbStickNode.swift; sourceTree = "<group>"; };
+		99B334C920B3729600AC5C59 /* ControlInputSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlInputSource.swift; sourceTree = "<group>"; };
+		99B334CB20B372A200AC5C59 /* TouchControlInputNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchControlInputNode.swift; sourceTree = "<group>"; };
+		99B334CD20B372D100AC5C59 /* GameplayConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayConfiguration.swift; sourceTree = "<group>"; };
 		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
 		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +118,7 @@
 		99A357BF207A585500F86F84 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				99B334C520B3624B00AC5C59 /* Control Nodes */,
 				99A357D82082160F00F86F84 /* StartPanelNode.swift */,
 				99A357D62081EA1F00F86F84 /* SpaceSpriteNode.swift */,
 				99A357C0207A587700F86F84 /* SpaceShip.swift */,
@@ -122,6 +131,7 @@
 		99A40D3B20754BE0000D5DD9 = {
 			isa = PBXGroup;
 			children = (
+				99B334C820B3727B00AC5C59 /* Player Control */,
 				990D6B17208548B800429C9D /* star.atlas */,
 				99A357D420813F2B00F86F84 /* playerExplosion.atlas */,
 				99A357BF207A585500F86F84 /* Nodes */,
@@ -145,6 +155,7 @@
 		99A40D4620754BE0000D5DD9 /* Gravicaine */ = {
 			isa = PBXGroup;
 			children = (
+				99B334CD20B372D100AC5C59 /* GameplayConfiguration.swift */,
 				99A357BD207A578700F86F84 /* Utils.swift */,
 				99A357C4207A75A000F86F84 /* GameLogic.swift */,
 				99A40D4720754BE0000D5DD9 /* AppDelegate.swift */,
@@ -157,6 +168,23 @@
 				99A40D5920754BE1000D5DD9 /* Info.plist */,
 			);
 			path = Gravicaine;
+			sourceTree = "<group>";
+		};
+		99B334C520B3624B00AC5C59 /* Control Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				99B334C620B3626100AC5C59 /* ThumbStickNode.swift */,
+			);
+			path = "Control Nodes";
+			sourceTree = "<group>";
+		};
+		99B334C820B3727B00AC5C59 /* Player Control */ = {
+			isa = PBXGroup;
+			children = (
+				99B334C920B3729600AC5C59 /* ControlInputSource.swift */,
+				99B334CB20B372A200AC5C59 /* TouchControlInputNode.swift */,
+			);
+			path = "Player Control";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,10 +270,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				99A357B12079073400F86F84 /* GameOverScene.swift in Sources */,
+				99B334C720B3626100AC5C59 /* ThumbStickNode.swift in Sources */,
 				99A40D4E20754BE0000D5DD9 /* GameScene.swift in Sources */,
 				99A357C5207A75A000F86F84 /* GameLogic.swift in Sources */,
 				99A357C1207A587700F86F84 /* SpaceShip.swift in Sources */,
 				99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */,
+				99B334CC20B372A200AC5C59 /* TouchControlInputNode.swift in Sources */,
 				99A357D92082160F00F86F84 /* StartPanelNode.swift in Sources */,
 				99A357D72081EA1F00F86F84 /* SpaceSpriteNode.swift in Sources */,
 				99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */,
@@ -253,6 +283,8 @@
 				99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */,
 				99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */,
 				99A357BE207A578700F86F84 /* Utils.swift in Sources */,
+				99B334CE20B372D100AC5C59 /* GameplayConfiguration.swift in Sources */,
+				99B334CA20B3729600AC5C59 /* ControlInputSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

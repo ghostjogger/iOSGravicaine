@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "playerShip-2.png",
+      "filename" : "ControlPad.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "playerShip-1.png",
+      "filename" : "ControlPad@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "playerShip.png",
+      "filename" : "ControlPad@3x.png",
       "scale" : "3x"
     }
   ],

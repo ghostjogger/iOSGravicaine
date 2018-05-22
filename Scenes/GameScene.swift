@@ -51,8 +51,8 @@ class GameScene: SKScene, GameLogicDelegate {
     // player
     
     private var player: SpaceShip
-    private let playerBaseY: CGFloat = 0.2
-    private let impulse = 70
+    private let playerBaseY: CGFloat = 0.25
+    private let impulse = 110
 
     //fuel
     private var isFuelEmpty = false
@@ -63,7 +63,7 @@ class GameScene: SKScene, GameLogicDelegate {
     private var fuelLabel = SKLabelNode(text: "Fuel")
     
     //gravity
-    private let gravity = 1.3
+    private let gravity = 1.2
     private var gravityNode: SKSpriteNode = SKSpriteNode()
     private var gravityNodeLabel: SKLabelNode = SKLabelNode(text: "G")
     
