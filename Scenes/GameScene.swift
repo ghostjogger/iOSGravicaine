@@ -52,7 +52,7 @@ class GameScene: SKScene, GameLogicDelegate {
     
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.25
-    private let impulse = 110
+    private let impulse = 200
 
     //fuel
     private var isFuelEmpty = false
@@ -63,7 +63,7 @@ class GameScene: SKScene, GameLogicDelegate {
     private var fuelLabel = SKLabelNode(text: "Fuel")
     
     //gravity
-    private let gravity = 1.2
+    private let gravity = 1.5
     private var gravityNode: SKSpriteNode = SKSpriteNode()
     private var gravityNodeLabel: SKLabelNode = SKLabelNode(text: "G")
     
@@ -438,12 +438,11 @@ class GameScene: SKScene, GameLogicDelegate {
             
             // sequence of actions
             let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
-            
-            let i = Int(random(min: 0, max: 7.0))
+
             
            
             //setup left barrier
-            let leftBarrier = SKSpriteNode(color: self.barrierColours[Int(random(min: 0, max: CGFloat(self.barrierColours.count)))], size: CGSize(width:  256 + (i * 128), height:self.barrierHeight))
+            let leftBarrier = SKSpriteNode(color: self.barrierColours[Int(random(min: 0, max: CGFloat(self.barrierColours.count)))], size: CGSize(width:  Int(random(min: 100.0, max: 1000.0)), height:self.barrierHeight))
             leftBarrier.position = (CGPoint(x: leftBarrier.size.width/2 , y: self.size.height + CGFloat(self.barrierHeight)))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
@@ -455,7 +454,7 @@ class GameScene: SKScene, GameLogicDelegate {
 
             
             //setup right barrier
-            let rightBarrier =  SKSpriteNode(color: self.barrierColours[Int(random(min: 0, max: CGFloat(self.barrierColours.count)))], size: CGSize(width:  1024 - (i * 128), height:self.barrierHeight))
+            let rightBarrier =  SKSpriteNode(color: self.barrierColours[Int(random(min: 0, max: CGFloat(self.barrierColours.count)))], size: CGSize(width:  Int(1000 - leftBarrier.size.width), height:self.barrierHeight))
             rightBarrier.position = (CGPoint(x: self.size.width - (rightBarrier.size.width/2) , y: self.size.height + CGFloat(self.barrierHeight)))
             rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false
@@ -521,7 +520,7 @@ class GameScene: SKScene, GameLogicDelegate {
         }
         let powerUpSequence = SKAction.sequence([powerUpSound])
         player.run(powerUpSequence)
-        fuelNode.run(SKAction.hudLabelBumpAction())
+        //fuelNode.run(SKAction.hudLabelBumpAction())
         
     }
     
