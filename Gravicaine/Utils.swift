@@ -11,6 +11,7 @@ import CoreGraphics
 let GodMode: Bool = false
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
+let HighScoreKeys: String = "HighScores"
 
 struct PhysicsCategories {
     static let None:    UInt32 = 0      // 0
