@@ -18,6 +18,7 @@ protocol GameLogicDelegate: class {
 class GameLogic: NSObject, SKPhysicsContactDelegate {
 
     private static let DefaultScore: Int = 0
+    //private var highScores = [String:Int]()
     
     
     // MARK: - delegate
@@ -29,6 +30,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     private func gameOver(playerDestroyed destroyed: Bool) {
         if score > UserDefaults.standard.integer(forKey: HighScoreKey) {
             UserDefaults.standard.set(score, forKey: HighScoreKey)
+            //UserDefaults.standard.set(highScores, forKey: HighScoreKeys)
         }
         delegate?.barrierTouchesPlayer()
         
