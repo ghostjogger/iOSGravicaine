@@ -66,6 +66,7 @@ class GameOverPanelNode: SKSpriteNode {
         self.addChild(highScoreLabel)
         self.addChild(label)
         
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
