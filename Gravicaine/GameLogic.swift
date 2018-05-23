@@ -8,7 +8,7 @@ protocol GameLogicDelegate: class {
     
     func scoreDidChange(_ newScore: Int, text: String!)
     func shouldSpawnBarrier()
-    func barrierTouchesPlayer()
+    func barrierTouchesPlayer(isHighScore: Bool, highScore: Int)
     func fuelDidChange(fuel:Int)
     func fuelEmpty()
     func shouldSpawnPowerUp()
@@ -18,7 +18,7 @@ protocol GameLogicDelegate: class {
 class GameLogic: NSObject, SKPhysicsContactDelegate {
 
     private static let DefaultScore: Int = 0
-    //private var highScores = [String:Int]()
+
     
     
     // MARK: - delegate
@@ -29,12 +29,18 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
     private func gameOver(playerDestroyed destroyed: Bool) {
         if score > UserDefaults.standard.integer(forKey: HighScoreKey) {
-            UserDefaults.standard.set(score, forKey: HighScoreKey)
+            //UserDefaults.standard.set(score, forKey: HighScoreKey)
             //UserDefaults.standard.set(highScores, forKey: HighScoreKeys)
+            delegate?.barrierTouchesPlayer(isHighScore: true, highScore: self.score)
+        }else{
+            delegate?.barrierTouchesPlayer(isHighScore: false, highScore: self.score)
+            
         }
-        delegate?.barrierTouchesPlayer()
+        
         
     }
+    
+
     
     // MARK: - score
     
@@ -218,6 +224,14 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     func powerUpTouchesPlayer(){
         self.fuel = GameLogic.defaultFuel
         delegate?.powerUpTouchesPlayer()
+    }
+    
+    func updateHighScore(name: String, score: Int){
+        
+        UserDefaults.standard.set(score, forKey: HighScoreKey)
+        UserDefaults.standard.set(name, forKey: HighScoreName)
+        
+        
     }
     
 

@@ -25,6 +25,11 @@ class GameOverPanelNode: SKSpriteNode {
         
         self.score = score
         let highScore = UserDefaults.standard.integer(forKey: HighScoreKey)
+        var highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
+        
+        if highScoreName == nil {
+            highScoreName = ""
+        }
         
         scoreLabel.fontSize = 52.0
         scoreLabel.fontName = FontName
@@ -36,7 +41,7 @@ class GameOverPanelNode: SKSpriteNode {
         highScoreLabel.fontName = FontName
         highScoreLabel.horizontalAlignmentMode = .center
         highScoreLabel.verticalAlignmentMode = .center
-        highScoreLabel.text = "HIGH SCORE : \(highScore)"
+        highScoreLabel.text = "HIGH SCORE by \(highScoreName!) is \(highScore)"
         
         gameOverLabel.fontSize = 80.0
         gameOverLabel.fontName = FontName

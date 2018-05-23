@@ -44,7 +44,7 @@ extension SKAction {
     
 }
 
-class GameScene: SKScene, GameLogicDelegate {
+class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
    
     static let backgroundNodeNameObject = "background-node-0"
  
@@ -69,7 +69,10 @@ class GameScene: SKScene, GameLogicDelegate {
     
 
     private var gameOverTransitioning = false
-    
+    private var wasHighScore = false
+    private var highScoreValue = 0
+    private var highScoreNameText = ""
+    private var highScoreText: UITextField? = nil
     
     let gameArea: CGRect
     
@@ -83,6 +86,7 @@ class GameScene: SKScene, GameLogicDelegate {
     private let exitLabel = SKLabelNode(text: "Quit")
     private var startPanel: StartPanelNode? = nil
     private var gameOverPanel: GameOverPanelNode? = nil
+    private var highScorePanel: HighScorePanelNode? = nil
     private let scoreLabel: SKLabelNode?
 
 
@@ -121,6 +125,7 @@ class GameScene: SKScene, GameLogicDelegate {
     // MARK: - game state
     
     private func setWaitingGameState() {
+        
         
         player.position = CGPoint(x: self.size.width/2, y:  0 - self.size.height)
         startPanel?.removeFromParent()
@@ -163,14 +168,41 @@ class GameScene: SKScene, GameLogicDelegate {
 
         gameLogic.gameDidStop()
 
+        if !wasHighScore{
+            gameOverPanel?.removeFromParent()
+            gameOverPanel = GameOverPanelNode(size: self.size, score: gameLogic.score )
+            gameOverPanel?.zPosition = 50
+            self.addChild(gameOverPanel!)
+            gameOverPanel?.fadeIn()
+            gameOverTransitioning = false
+        }
+        else{
+            highScorePanel?.removeFromParent()
+            highScorePanel = HighScorePanelNode(size: self.size, score: gameLogic.score )
+            highScorePanel?.zPosition = 50
+            self.addChild(highScorePanel!)
+            highScoreText = UITextField(frame: CGRect(
+                x: ((view?.bounds.width)! / 2) - 160,
+                y: ((view?.bounds.height)! / 2) - 20,
+                width: 320,
+                height: 40))
+            
+            highScoreText?.borderStyle = UITextBorderStyle.roundedRect
+            highScoreText?.textColor = SKColor.black
+            highScoreText?.placeholder = "Enter your name here"
+            highScoreText?.backgroundColor = SKColor.white
+
+            
+            // add the UITextField to the GameScene's view
+            view?.addSubview(highScoreText!)
+            
+            // add the gamescene as the UITextField delegate.
+            // delegate funtion called is textFieldShouldReturn:
+            highScoreText?.delegate = self
+   
+        }
         
-        gameOverPanel?.removeFromParent()
-        gameOverPanel = GameOverPanelNode(size: self.size, score: gameLogic.score )
-        gameOverPanel?.zPosition = 50
-        self.addChild(gameOverPanel!)
-        gameOverPanel?.fadeIn()
         
-        gameOverTransitioning = false
         
 
     }
@@ -221,6 +253,30 @@ class GameScene: SKScene, GameLogicDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // Called by tapping return on the keyboard.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField.text == ""{
+            return false
+        }
+        
+        highScoreNameText = textField.text!
+        
+        // Hides the keyboard
+        
+        textField.resignFirstResponder()
+        gameLogic.updateHighScore(name: highScoreNameText, score: highScoreValue)
+        highScoreText?.removeFromSuperview()
+        highScorePanel?.removeFromParent()
+        gameOverPanel?.removeFromParent()
+        gameOverPanel = GameOverPanelNode(size: self.size, score: gameLogic.score )
+        gameOverPanel?.zPosition = 50
+        self.addChild(gameOverPanel!)
+        gameOverPanel?.fadeIn()
+        gameOverTransitioning = false
+        return true
     }
     
 
@@ -480,9 +536,11 @@ class GameScene: SKScene, GameLogicDelegate {
         }
     }
     
-    func barrierTouchesPlayer(){
+    func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
  
         gameOverTransitioning = true
+        wasHighScore = isHighScore
+        highScoreValue = highScore
         
         self.enumerateChildNodes(withName: "barrier") {
             (node, stop) in
