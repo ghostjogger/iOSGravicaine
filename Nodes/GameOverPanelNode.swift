@@ -26,10 +26,7 @@ class GameOverPanelNode: SKSpriteNode {
         self.score = score
         let highScore = UserDefaults.standard.integer(forKey: HighScoreKey)
         var highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
-        
-        if highScoreName == nil {
-            highScoreName = ""
-        }
+
         
         scoreLabel.fontSize = 52.0
         scoreLabel.fontName = FontName
@@ -41,8 +38,13 @@ class GameOverPanelNode: SKSpriteNode {
         highScoreLabel.fontName = FontName
         highScoreLabel.horizontalAlignmentMode = .center
         highScoreLabel.verticalAlignmentMode = .center
-        highScoreLabel.text = "HIGH SCORE by \(highScoreName!) is \(highScore)"
-        
+        if highScoreName == nil{
+            highScoreLabel.text = ""
+        }
+        else{
+            highScoreLabel.text = "HIGH SCORE by  \(highScoreName!) is  \(highScore)"
+        }
+
         gameOverLabel.fontSize = 80.0
         gameOverLabel.fontName = FontName
         gameOverLabel.horizontalAlignmentMode = .center
@@ -53,7 +55,7 @@ class GameOverPanelNode: SKSpriteNode {
         label.fontName = FontName
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center
-        label.text = "TAP TO PLAY AGAIN"
+        label.text = "TAP TO TRY AGAIN"
         
         var pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
         gameOverLabel.position = pos

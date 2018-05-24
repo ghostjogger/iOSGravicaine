@@ -20,17 +20,18 @@ class StartPanelNode: SKSpriteNode {
         
         let highScore = UserDefaults.standard.integer(forKey: HighScoreKey)
         var highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
-        
-        if highScoreName == nil {
-            highScoreName = ""
-        }
+
         
         scoreLabel.fontSize = 52.0
         scoreLabel.fontName = FontName
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
-        scoreLabel.text = "HIGH SCORE by \(highScoreName!) is \(highScore)"
-        
+        if highScoreName == nil{
+            scoreLabel.text = ""
+        }
+        else{
+            scoreLabel.text = "HIGH SCORE by  \(highScoreName!) is  \(highScore)"
+        }
         label.fontSize = 80.0
         label.fontName = FontName
         label.horizontalAlignmentMode = .center
