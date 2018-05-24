@@ -487,7 +487,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         if !gameOverTransitioning {
             
-          
+        //say   
         DispatchQueue.global().async {
             
             // two actions
