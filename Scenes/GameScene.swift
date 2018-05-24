@@ -178,9 +178,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         }
         else{
             highScorePanel?.removeFromParent()
-            highScorePanel = HighScorePanelNode(size: self.size, score: gameLogic.score )
+            highScorePanel = HighScorePanelNode(size: self.size)
             highScorePanel?.zPosition = 50
             self.addChild(highScorePanel!)
+            highScorePanel?.fadeIn()
             highScoreText = UITextField(frame: CGRect(
                 x: ((view?.bounds.width)! / 2) - 160,
                 y: ((view?.bounds.height)! / 2) - 20,
@@ -270,6 +271,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         gameLogic.updateHighScore(name: highScoreNameText, score: highScoreValue)
         highScoreText?.removeFromSuperview()
         highScorePanel?.removeFromParent()
+        highScorePanel?.fadeOut()
         gameOverPanel?.removeFromParent()
         gameOverPanel = GameOverPanelNode(size: self.size, score: gameLogic.score )
         gameOverPanel?.zPosition = 50
