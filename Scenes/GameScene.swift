@@ -534,7 +534,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                     self.gameLogic.passBarrier()
                     })
                 rightBarrier.run(barrierSequence, completion: {
-                   // self.gameLogic.passBarrier()
                 })
             })
         }
