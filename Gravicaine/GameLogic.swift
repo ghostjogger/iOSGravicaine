@@ -58,7 +58,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - fuel
     
     private var fuelReducer: Timer? = nil
-    private let fuelReducerFrequency: TimeInterval = 0.4
+    private let fuelReducerFrequency: TimeInterval = 0.5
     private static let defaultFuel = 100
     
     private(set) var fuel: Int = GameLogic.defaultFuel {
@@ -111,7 +111,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     private func startSpawningPower() {
-        powerSpawner = Timer.scheduledTimer(timeInterval: spawnPowerInterval,
+        powerSpawner = Timer.scheduledTimer(timeInterval: Double(random(min: CGFloat(2.0), max: CGFloat(spawnPowerInterval))) ,
                                               target: self,
                                               selector: #selector(GameLogic.spawnPower(_:)),
                                               userInfo: nil,
@@ -126,7 +126,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - barrier
     
     private var barrierSpawner: Timer? = nil
-    private let barrierFrequency: TimeInterval = 1.5
+    private let barrierFrequency: TimeInterval = 1.7
     
     @objc private func spawnBarrier(_ timer: Timer) {
         delegate?.shouldSpawnBarrier()
