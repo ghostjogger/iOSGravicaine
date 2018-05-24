@@ -502,9 +502,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
            
             //setup left barrier
-//            let leftBarrier = SKSpriteNode(color: self.barrierColours[Int(random(min: 0, max: CGFloat(self.barrierColours.count)))], size: CGSize(width:  Int(random(min: 100.0, max: 1000.0)), height:self.barrierHeight))
+
             let leftBarrier = SKSpriteNode(imageNamed: "BarrierL")
-//            leftBarrier.position = (CGPoint(x: leftBarrier.size.width/2 , y: self.size.height + CGFloat(self.barrierHeight)))
             leftBarrier.position = CGPoint(x: random(min: -400, max: 500), y: self.size.height + CGFloat(self.barrierHeight))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
@@ -516,9 +515,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
             
             //setup right barrier
-//            let rightBarrier =  SKSpriteNode(color: self.barrierColours[Int(random(min: 0, max: CGFloat(self.barrierColours.count)))], size: CGSize(width:  Int(1000 - leftBarrier.size.width), height:self.barrierHeight))
+
             let rightBarrier = SKSpriteNode(imageNamed: "BarrierR")
-            rightBarrier.position = (CGPoint(x: leftBarrier.position.x + 608 + 1000, y: self.size.height + CGFloat(self.barrierHeight)))
+            rightBarrier.position = (CGPoint(x: leftBarrier.position.x + 608 + 1100, y: self.size.height + CGFloat(self.barrierHeight)))
             rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false
             rightBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
