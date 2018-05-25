@@ -183,6 +183,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             highScorePanel = HighScorePanelNode(size: self.size)
             highScorePanel?.zPosition = 50
             self.addChild(highScorePanel!)
+            //fadein
             highScorePanel?.fadeIn()
             highScoreText = UITextField(frame: CGRect(
                 x: ((view?.bounds.width)! / 2) - 160,
