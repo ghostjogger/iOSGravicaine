@@ -26,13 +26,13 @@ class HighScorePanelNode: SKSpriteNode {
         scoreLabel.fontName = FontName
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
-        scoreLabel.text = "Congratulations New HIGH SCORE!!"
+        scoreLabel.text = "Congratulations new HIGH SCORE!"
         
         label.fontSize = 80.0
         label.fontName = FontName
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center
-        label.text = "Enter your name below:"
+        label.text = "Enter your name below"
         
         var pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
         scoreLabel.position = pos
