@@ -47,6 +47,7 @@ extension SKAction {
 class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
    
     static let backgroundNodeNameObject = "background-node-0"
+
  
     // player
     
@@ -356,6 +357,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             player.physicsBody?.categoryBitMask = PhysicsCategories.None
         }
     }
+    
+
     
     var lastUpdateTime:TimeInterval = 0
     var deltaFrameTime:TimeInterval = 0
