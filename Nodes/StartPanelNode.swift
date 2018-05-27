@@ -1,9 +1,9 @@
 //
 //  StartPanelNode.swift
-//  solo-mission
+//  Gravicaine
 //
-//  Created by Romain ROCHE on 01/07/2016.
-//  Copyright © 2016 Romain ROCHE. All rights reserved.
+//  Created by Stephen Ball on 23/05/2018.
+//  Copyright © 2018 Stephen Ball. All rights reserved.
 //
 
 import SpriteKit

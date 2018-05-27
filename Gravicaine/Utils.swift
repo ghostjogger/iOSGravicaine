@@ -1,9 +1,9 @@
 //
 //  Utils.swift
-//  solo-mission
+//  Gravicaine
 //
-//  Created by Romain ROCHE on 04/07/2016.
-//  Copyright © 2016 Romain ROCHE. All rights reserved.
+//  Created by Stephen Ball on 23/05/2018.
+//  Copyright © 2018 Stephen Ball. All rights reserved.
 //
 
 import CoreGraphics
@@ -12,6 +12,7 @@ let GodMode: Bool = false
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 let HighScoreName: String = "HighScoreName"
+
 
 struct PhysicsCategories {
     static let None:    UInt32 = 0      // 0

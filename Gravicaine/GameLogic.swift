@@ -1,5 +1,9 @@
 //
 //  GameLogic.swift
+//  Gravicaine
+//
+//  Created by Stephen Ball on 23/05/2018.
+//  Copyright © 2018 Stephen Ball. All rights reserved.
 //
 
 import SpriteKit
@@ -28,16 +32,14 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - private
     
     private func gameOver(playerDestroyed destroyed: Bool) {
-        if score > UserDefaults.standard.integer(forKey: HighScoreKey) {
-            //UserDefaults.standard.set(score, forKey: HighScoreKey)
-            //UserDefaults.standard.set(highScores, forKey: HighScoreKeys)
+        if score > UserDefaults.standard.integer(forKey: HighScoreKey)
+        {
             delegate?.barrierTouchesPlayer(isHighScore: true, highScore: self.score)
-        }else{
-            delegate?.barrierTouchesPlayer(isHighScore: false, highScore: self.score)
-            
         }
-        
-        
+        else
+        {
+            delegate?.barrierTouchesPlayer(isHighScore: false, highScore: self.score)
+        }
     }
     
 
@@ -45,8 +47,10 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - score
     
     private(set) var score: Int = GameLogic.DefaultScore {
-        didSet {
-            if oldValue != score {
+        didSet
+        {
+            if oldValue != score
+            {
                 delegate?.scoreDidChange(score, text: self.scoreText())
             }
         }
@@ -62,8 +66,10 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     private static let defaultFuel = 100
     
     private(set) var fuel: Int = GameLogic.defaultFuel {
-        didSet {
-            if oldValue != fuel {
+        didSet
+        {
+            if oldValue != fuel
+            {
                 delegate?.fuelDidChange(fuel:fuel)
             }
         }
@@ -89,8 +95,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         fuelReducer = nil
     }
     
-    func addFuel(amount: Int){
-        
+    func addFuel(amount: Int){        
         fuel += amount
     }
     
@@ -177,24 +182,29 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         var body1 = SKPhysicsBody()
         var body2 = SKPhysicsBody()
         
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            body1 = contact.bodyA
-            body2 = contact.bodyB
-        } else {
-            body1 = contact.bodyB
-            body2 = contact.bodyA
-        }
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask
+            {
+                body1 = contact.bodyA
+                body2 = contact.bodyB
+            }
+            else
+            {
+                body1 = contact.bodyB
+                body2 = contact.bodyA
+            }
 
         // player hits barrier
         if      body1.categoryBitMask == PhysicsCategories.Player
-            &&  body2.categoryBitMask == PhysicsCategories.Barrier {
+            &&  body2.categoryBitMask == PhysicsCategories.Barrier
+            {
                 self.barrierTouchesPlayer()
             }
         //player hits powerup
         if      body1.categoryBitMask == PhysicsCategories.Player
-            &&  body2.categoryBitMask == PhysicsCategories.PowerUp {
+            &&  body2.categoryBitMask == PhysicsCategories.PowerUp
+            {
                 self.powerUpTouchesPlayer()
-        }
+            }
 //
 //        // bullet hits enemy
 //        if body1.categoryBitMask == PhysicsCategories.Bullet && body2.categoryBitMask == PhysicsCategories.Enemy {
@@ -208,15 +218,12 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
 //        }
    
         // MARK: - implementation
-        
-
-
-        
     }
 
 
     func barrierTouchesPlayer(){
-        if !GodMode {
+        if !GodMode
+        {
             self.gameOver(playerDestroyed: true)
         }
     }
@@ -230,8 +237,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         
         UserDefaults.standard.set(score, forKey: HighScoreKey)
         UserDefaults.standard.set(name, forKey: HighScoreName)
-        
-        
+    
     }
     
 

@@ -2,7 +2,9 @@
 //  SpaceShip.swift
 //  Gravicaine
 //
-
+//  Created by Stephen Ball on 23/05/2018.
+//  Copyright © 2018 Stephen Ball. All rights reserved.
+//
 
 import SpriteKit
 import GameplayKit

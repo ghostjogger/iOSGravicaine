@@ -52,7 +52,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.25
-    private let impulse = 220
+    //private let impulse = 220
 
     //fuel
     private var isFuelEmpty = false
