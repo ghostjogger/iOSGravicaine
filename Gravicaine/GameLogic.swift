@@ -142,7 +142,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     private func startSpawningPower() {
-        powerSpawner = Timer.scheduledTimer(timeInterval: Double(random(min: CGFloat(2.0), max: CGFloat(spawnPowerInterval))) ,
+        powerSpawner = Timer.scheduledTimer(timeInterval: Double(random(min: CGFloat(5.0), max: CGFloat(spawnPowerInterval))) ,
                                               target: self,
                                               selector: #selector(GameLogic.spawnPower(_:)),
                                               userInfo: nil,
@@ -185,8 +185,8 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
     func gameDidStart() {
         
-        self.stopSpawningBarrier()
-        self.startSpawningBarrier()
+        //self.stopSpawningBarrier()
+        //self.startSpawningBarrier()
         self.startReducingFuel()
         self.startSpawningPower()
         self.startSpawningAsteroids()
@@ -194,7 +194,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     func gameDidStop(){
-        self.stopSpawningBarrier()
+        //self.stopSpawningBarrier()
         self.stopReducingFuel()
         self.stopSpawningPower()
         self.stopSpawningAsteroids()
@@ -233,6 +233,13 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
             {
                 self.powerUpTouchesPlayer()
             }
+        
+        //player hits asteroid
+        if      body1.categoryBitMask == PhysicsCategories.Player
+            &&  body2.categoryBitMask == PhysicsCategories.Asteroid
+        {
+            self.asteroidTouchesPlayer()
+        }
 //
 //        // bullet hits enemy
 //        if body1.categoryBitMask == PhysicsCategories.Bullet && body2.categoryBitMask == PhysicsCategories.Enemy {
@@ -259,6 +266,13 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     func powerUpTouchesPlayer(){
         self.fuel = GameLogic.defaultFuel
         delegate?.powerUpTouchesPlayer()
+    }
+    
+    func asteroidTouchesPlayer(){
+        if !GodMode
+        {
+            self.gameOver(playerDestroyed: true)
+        }
     }
     
     func updateHighScore(name: String, score: Int){

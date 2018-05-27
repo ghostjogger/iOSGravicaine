@@ -563,6 +563,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             node.removeAllActions()
             
         }
+        self.enumerateChildNodes(withName: "asteroid") {
+            (node, stop) in
+            
+            node.removeAllActions()
+            
+        }
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.removeAllChildren()

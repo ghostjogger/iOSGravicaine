@@ -16,13 +16,13 @@ enum AsteroidMove {
 
 class AsteroidNode: SKSpriteNode {
     
-    let asteroidSpeed: CGFloat = 600.0 // (speed is x px per second)
+    let asteroidSpeed: CGFloat = 700.0 // (speed is x px per second)
     var move: AsteroidMove = .Straight
     
     // MARK: init
     
     init() {
-        let asteroidTextureChoice = random(min: 1, max: 19)
+        let asteroidTextureChoice = Int(random(min: 1, max: 19))
         let texture = SKTexture(imageNamed: "asteroid\(asteroidTextureChoice)")
         let size = CGSize(width: texture.size().width, height: texture.size().height)
         super.init(texture: texture, color: UIColor.clear, size: size)
