@@ -17,13 +17,19 @@ class MainMenuScene: SKScene{
     let signatureLabel = SKLabelNode(text: "Stephen Ball's")
     let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
-    //let ship = SpaceShip()
+    var titleTextures = [SKTexture]()
+    
+    let titleSound = SKAction.playSoundFileNamed("sound43.wav", waitForCompletion: false)
+    let titleEndSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
     
     //star animation variables
     
     private var protonStarFrames: [SKTexture] = []
     let protonStarAnimatedAtlas = SKTextureAtlas(named: "star")
     var protonFrames: [SKTexture] = []
+    
+
+
     
 
     override init(size:CGSize) {
@@ -36,9 +42,11 @@ class MainMenuScene: SKScene{
         }
         protonStarFrames = protonFrames
         
- 
+
         
         super.init(size: size)
+        
+
 
     }
     
@@ -80,18 +88,8 @@ class MainMenuScene: SKScene{
         backgroundImage.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         backgroundImage.zPosition = 0
         self.addChild(backgroundImage)
-        
-        
-        titleImage.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.85)
-        titleImage.zPosition = 1
-        titleImage.setScale(0.9)
-        self.addChild(titleImage)
-        
-        //ship.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.3)
-        //ship.zPosition = 2
-        //self.addChild(ship)
 
-        
+   
         startLabel.fontName = "Jellee-Roman"
         startLabel.fontColor = UIColor.white
         startLabel.fontSize = 100
@@ -103,6 +101,13 @@ class MainMenuScene: SKScene{
         signatureLabel.fontSize = 80
         signatureLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.9)
         self.addChild(signatureLabel)
+        
+        titleImage.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.85)
+        titleImage.zPosition = 1
+        titleImage.setScale(0.9)
+        addChild(titleImage)
+
+        
         
 
         

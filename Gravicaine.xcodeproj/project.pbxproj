@@ -32,6 +32,8 @@
 		99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5420754BE1000D5DD9 /* Assets.xcassets */; };
 		99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */; };
 		99B334D020B5E99D00AC5C59 /* HighScorePanelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B334CF20B5E99D00AC5C59 /* HighScorePanelNode.swift */; };
+		99B334D220BB355A00AC5C59 /* sound43.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99B334D120BB355A00AC5C59 /* sound43.wav */; };
+		99B334D420BB44AC00AC5C59 /* sound62.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99B334D320BB44AC00AC5C59 /* sound62.wav */; };
 		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
 		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,8 @@
 		99A40D5720754BE1000D5DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99A40D5920754BE1000D5DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99B334CF20B5E99D00AC5C59 /* HighScorePanelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScorePanelNode.swift; sourceTree = "<group>"; };
+		99B334D120BB355A00AC5C59 /* sound43.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound43.wav; sourceTree = "<group>"; };
+		99B334D320BB44AC00AC5C59 /* sound62.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound62.wav; sourceTree = "<group>"; };
 		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
 		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +100,8 @@
 				99A357C2207A595000F86F84 /* laser.mp3 */,
 				99A357B42079088E00F86F84 /* explosion.wav */,
 				99FB2C8820B1C108003C7510 /* Powerup.wav */,
+				99B334D120BB355A00AC5C59 /* sound43.wav */,
+				99B334D320BB44AC00AC5C59 /* sound62.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -228,6 +234,8 @@
 				99A40D4A20754BE0000D5DD9 /* GameScene.sks in Resources */,
 				99A357B52079088E00F86F84 /* explosion.wav in Resources */,
 				99A357B820791BAE00F86F84 /* ship-fire.sks in Resources */,
+				99B334D420BB44AC00AC5C59 /* sound62.wav in Resources */,
+				99B334D220BB355A00AC5C59 /* sound43.wav in Resources */,
 				99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */,
 				99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,

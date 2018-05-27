@@ -37,7 +37,7 @@ extension SKAction {
     }
     
     class func hudLabelBumpAction(duration: TimeInterval = 0.3) -> SKAction {
-        let scale = SKAction.scale(to: 1.4, duration: duration / 2)
+        let scale = SKAction.scale(to: 2.0, duration: duration / 2)
         let unscale = SKAction.scale(to: 1.0, duration: duration / 2)
         return SKAction.sequence([scale, unscale])
     }
@@ -52,7 +52,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.25
-    private let impulse = 220
+    private let impulse = 250
 
     //fuel
     private var isFuelEmpty = false
@@ -63,7 +63,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var fuelLabel = SKLabelNode(text: "Fuel")
     
     //gravity
-    private let gravity = 1.5
+    private let gravity = 2.0
     private var gravityNode: SKSpriteNode = SKSpriteNode()
     private var gravityNodeLabel: SKLabelNode = SKLabelNode(text: "G")
     
@@ -492,7 +492,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         DispatchQueue.global().async {
             
             // two actions
-            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.5)
+            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.0)
             let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
             let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
