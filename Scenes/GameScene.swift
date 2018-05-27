@@ -53,7 +53,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.25
-    private let impulse = 250
+    private let impulse = 220
 
     //fuel
     private var isFuelEmpty = false
@@ -64,7 +64,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var fuelLabel = SKLabelNode(text: "Fuel")
     
     //gravity
-    private let gravity = 2.0
+    private let gravity = 1.5
     private var gravityNode: SKSpriteNode = SKSpriteNode()
     private var gravityNodeLabel: SKLabelNode = SKLabelNode(text: "G")
     
@@ -495,7 +495,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         DispatchQueue.global().async {
             
             // two actions
-            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.0)
+            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.5)
             let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
             let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
@@ -508,7 +508,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             //setup left barrier
 
             let leftBarrier = SKSpriteNode(imageNamed: "BarrierLBig")
-            leftBarrier.position = CGPoint(x: random(min: -400, max: 325), y: self.size.height + CGFloat(self.barrierHeight))
+            leftBarrier.position = CGPoint(x: random(min: -400, max: 300), y: self.size.height + CGFloat(self.barrierHeight))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
             leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
@@ -521,7 +521,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             //setup right barrier
 
             let rightBarrier = SKSpriteNode(imageNamed: "BarrierRBig")
-            rightBarrier.position = (CGPoint(x: leftBarrier.position.x + 608 + 1000, y: self.size.height + CGFloat(self.barrierHeight)))
+            rightBarrier.position = (CGPoint(x: leftBarrier.position.x + 608 + 1050, y: self.size.height + CGFloat(self.barrierHeight)))
             rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false
             rightBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
