@@ -52,7 +52,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.25
-    //private let impulse = 220
+    private let impulse = 220
 
     //fuel
     private var isFuelEmpty = false
@@ -79,8 +79,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     //barriers
     var barrierwidthFraction = 0
     var barrierHeight = 300
-    var leftBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierL")
-    var rightBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierR")
+    var leftBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierLBig")
+    var rightBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierRBig")
     let barrierColours = [UIColor.blue,UIColor.green,UIColor.cyan,UIColor.yellow, UIColor.red, UIColor.purple,UIColor.lightGray, UIColor.orange]
 
     
@@ -504,7 +504,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
            
             //setup left barrier
 
-            let leftBarrier = SKSpriteNode(imageNamed: "BarrierL")
+            let leftBarrier = SKSpriteNode(imageNamed: "BarrierLBig")
             leftBarrier.position = CGPoint(x: random(min: -400, max: 325), y: self.size.height + CGFloat(self.barrierHeight))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
@@ -517,7 +517,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             //setup right barrier
 
-            let rightBarrier = SKSpriteNode(imageNamed: "BarrierR")
+            let rightBarrier = SKSpriteNode(imageNamed: "BarrierRBig")
             rightBarrier.position = (CGPoint(x: leftBarrier.position.x + 608 + 1000, y: self.size.height + CGFloat(self.barrierHeight)))
             rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false
