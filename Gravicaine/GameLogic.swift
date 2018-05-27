@@ -17,6 +17,7 @@ protocol GameLogicDelegate: class {
     func fuelEmpty()
     func shouldSpawnPowerUp()
     func powerUpTouchesPlayer()
+    func shouldSpawnAsteroid()
 }
 
 class GameLogic: NSObject, SKPhysicsContactDelegate {
@@ -58,6 +59,9 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
     // MARK: - power
     private static let DefaultPowerSpawnInterval = 5.0
+    
+    //MARK - asteroid
+    private static let DefaultAsteroidSpawnInterval = 2.0
     
     // MARK: - fuel
     
@@ -103,6 +107,28 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
     func scoreText() -> String! {
         return "\(score)"
+    }
+    
+    // MARK: - asteroids
+    
+    private var spawnAsteroidInterval: TimeInterval = GameLogic.DefaultAsteroidSpawnInterval
+    private var asteroidSpawner: Timer? = nil
+    
+    @objc private func spawnAsteroid(_ timer: Timer) {
+        delegate?.shouldSpawnAsteroid()
+    }
+    
+    private func startSpawningAsteroids() {
+        asteroidSpawner = Timer.scheduledTimer(timeInterval:TimeInterval(spawnAsteroidInterval) ,
+                                            target: self,
+                                            selector: #selector(GameLogic.spawnAsteroid(_:)),
+                                            userInfo: nil,
+                                            repeats: true)
+    }
+    
+    private func stopSpawningAsteroids() {
+        asteroidSpawner?.invalidate()
+        asteroidSpawner = nil
     }
     
 
@@ -163,6 +189,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         self.startSpawningBarrier()
         self.startReducingFuel()
         self.startSpawningPower()
+        self.startSpawningAsteroids()
         
     }
     
@@ -170,6 +197,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         self.stopSpawningBarrier()
         self.stopReducingFuel()
         self.stopSpawningPower()
+        self.stopSpawningAsteroids()
     }
     
 

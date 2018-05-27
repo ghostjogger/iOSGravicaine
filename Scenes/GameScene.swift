@@ -638,6 +638,37 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             }
         }
     }
+    
+    func shouldSpawnAsteroid() {
+        
+        if !gameOverTransitioning {
+            
+            DispatchQueue.global().async {
+                
+                let asteroid = AsteroidNode()
+                asteroid.name = "asteroid"
+                var moveType = AsteroidMove.Straight
+                moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
+                
+                asteroid.move = moveType
+                asteroid.zPosition = 5
+                
+                let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
+                let yStart = self.size.height + 200.0
+                
+                let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
+                let yEnd: CGFloat = -asteroid.size.height
+                
+                DispatchQueue.main.async(execute: {
+                    self.addChild(asteroid)
+                    asteroid.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
+                        //
+                    }
+                })
+                
+            }
+        }
+    }
 
     
 
