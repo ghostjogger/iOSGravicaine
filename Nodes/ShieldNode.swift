@@ -22,8 +22,9 @@ class ShieldNode: SKSpriteNode{
         super.init(texture: texture, color: UIColor.clear, size: size)
         self.name = "shield"
         self.zPosition = 100
-        self.physicsBody = SKPhysicsBody(rectangleOf: texture.size())
-        self.physicsBody!.affectedByGravity = true
+//        self.physicsBody = SKPhysicsBody(rectangleOf: texture.size())
+//        self.physicsBody!.affectedByGravity = true
+
         
         //setup shield animation
         let numImages = shieldAnimatedAtlas.textureNames.count
@@ -42,8 +43,9 @@ class ShieldNode: SKSpriteNode{
     }
     
     func animate(){
-        let animateShieldAction = SKAction.animate(with: shieldAnimationFrames, timePerFrame: 0.1, resize: false, restore: true)
-        self.run(animateShieldAction)
+        let animateShieldAction = SKAction.animate(with: shieldAnimationFrames, timePerFrame: 0.02, resize: false, restore: false)
+        let shieldAnimation = SKAction.repeatForever(animateShieldAction)
+        self.run(shieldAnimation)
     }
     
     func stopAnimating(){

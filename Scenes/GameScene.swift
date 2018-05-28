@@ -54,6 +54,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var player: SpaceShip
     private let playerBaseY: CGFloat = 0.25
     private let impulse = 220
+    private let shieldNode: ShieldNode
 
     //fuel
     private var isFuelEmpty = false
@@ -163,8 +164,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * self.playerBaseY, duration: 0.3)
-        self.player.run(playerAppear)
-        
+        self.player.run(playerAppear)        
     }
     
     private func setGameOverState() {
@@ -240,7 +240,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         //player init
         player = SpaceShip()
-        
+        shieldNode = ShieldNode()
         super.init(size: size)
 
         gameLogic.delegate = self
@@ -352,6 +352,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         exitLabel.position = CGPoint(x: 200, y: self.size.height - 50.0)
         self.addChild(exitLabel)
         
+//        shieldNode.position.x = player.position.y
+//        shieldNode.position.y = player.position.y
+//        shieldNode.zPosition = 100
+//        self.addChild(shieldNode)
+//        shieldNode.animate()
+        
         
         if GodMode {
             player.physicsBody?.categoryBitMask = PhysicsCategories.None
@@ -377,6 +383,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             deltaFrameTime = currentTime - lastUpdateTime
             lastUpdateTime = currentTime
         }
+            
+            if !shieldNode.isHidden{
+                shieldNode.position.x = player.position.x
+                shieldNode.position.y = player.position.y - 70
+            }
 
             
             if player.position.x < self.size.width/2{
@@ -591,9 +602,23 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             node.removeFromParent()
             
         }
+        self.enumerateChildNodes(withName: "shield") {
+            (node, stop) in
+            
+            node.removeFromParent()
+            
+        }
         let powerUpSequence = SKAction.sequence([powerUpSound])
         player.run(powerUpSequence)
         //fuelNode.run(SKAction.hudLabelBumpAction())
+        
+        
+        shieldNode.position.x = player.position.x
+        shieldNode.position.y = player.position.y - 70
+        shieldNode.zPosition = 100
+        self.addChild(shieldNode)
+        shieldNode.animate()
+        
         
     }
     

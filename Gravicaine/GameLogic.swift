@@ -157,7 +157,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - barrier
     
     private var barrierSpawner: Timer? = nil
-    private let barrierFrequency: TimeInterval = 4.0
+    private let barrierFrequency: TimeInterval = 3.0
     
     @objc private func spawnBarrier(_ timer: Timer) {
         delegate?.shouldSpawnBarrier()
@@ -186,10 +186,10 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     func gameDidStart() {
         
         self.stopSpawningBarrier()
-        self.startSpawningBarrier()
+        //self.startSpawningBarrier()
         self.startReducingFuel()
         self.startSpawningPower()
-        self.startSpawningAsteroids()
+        //self.startSpawningAsteroids()
         
     }
     
