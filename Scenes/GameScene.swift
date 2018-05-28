@@ -560,6 +560,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
  
+        if !shieldActive{
         gameOverTransitioning = true
         wasHighScore = isHighScore
         highScoreValue = highScore
@@ -593,9 +594,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
              self.gameState = .gameOver
 })
         
-       
-       
     }
+       
+}
     
     func powerUpTouchesPlayer(){
         self.enumerateChildNodes(withName: "power") {

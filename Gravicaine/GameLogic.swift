@@ -58,7 +58,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     // MARK: - power
-    private static let DefaultPowerSpawnInterval = 20.0
+    private static let DefaultPowerSpawnInterval = 5.0
     
     //MARK - asteroid
     private static let DefaultAsteroidSpawnInterval = 1.5
@@ -142,7 +142,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     private func startSpawningPower() {
-        powerSpawner = Timer.scheduledTimer(timeInterval: Double(random(min: CGFloat(15.0), max: CGFloat(spawnPowerInterval))) ,
+        powerSpawner = Timer.scheduledTimer(timeInterval: Double(random(min: CGFloat(2.0), max: CGFloat(spawnPowerInterval))) ,
                                               target: self,
                                               selector: #selector(GameLogic.spawnPower(_:)),
                                               userInfo: nil,
@@ -186,10 +186,10 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     func gameDidStart() {
         
         self.stopSpawningBarrier()
-        //self.startSpawningBarrier()
+        self.startSpawningBarrier()
         self.startReducingFuel()
         self.startSpawningPower()
-        //self.startSpawningAsteroids()
+        self.startSpawningAsteroids()
         
     }
     
