@@ -55,6 +55,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private let playerBaseY: CGFloat = 0.25
     private let impulse = 220
     private let shieldNode: ShieldNode
+    private var shieldActive: Bool = false
 
     //fuel
     private var isFuelEmpty = false
@@ -151,6 +152,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         gameLogic.gameDidStart()
         
         isFuelEmpty = false
+        shieldActive = false
         
         //self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
 
@@ -602,22 +604,19 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             node.removeFromParent()
             
         }
-        self.enumerateChildNodes(withName: "shield") {
-            (node, stop) in
-            
-            node.removeFromParent()
-            
-        }
+
         let powerUpSequence = SKAction.sequence([powerUpSound])
         player.run(powerUpSequence)
         //fuelNode.run(SKAction.hudLabelBumpAction())
         
-        
+        if !shieldActive{
         shieldNode.position.x = player.position.x
         shieldNode.position.y = player.position.y - 70
         shieldNode.zPosition = 100
         self.addChild(shieldNode)
         shieldNode.animate()
+        shieldActive = true
+        }
         
         
     }
