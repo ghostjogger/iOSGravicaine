@@ -52,23 +52,17 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     // player
     
     private var player: SpaceShip
-    private let playerBaseY: CGFloat = 0.25
-    private let impulse = 220
     private let shieldNode: ShieldNode
     private var shieldActive: Bool = false
-    private let shieldActivationTime = 10.0
     private var shieldTimer = Timer()
 
     //fuel
     private var isFuelEmpty = false
-    private let fuelTopUp = 10
-    private let startFuel = 100
     private var fuelNode: SKSpriteNode = SKSpriteNode()
     private var fuelBackgroundNode: SKSpriteNode = SKSpriteNode()
     private var fuelLabel = SKLabelNode(text: "Fuel")
     
     //gravity
-    private let gravity = 1.5
     private var gravityNode: SKSpriteNode = SKSpriteNode()
     private var gravityNodeLabel: SKLabelNode = SKLabelNode(text: "G")
     
@@ -82,13 +76,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     let gameArea: CGRect
     
     //barriers
-    var barrierwidthFraction = 0
-    var barrierHeight = 300
     var leftBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierLBig")
     var rightBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierRBig")
-    let barrierColours = [UIColor.blue,UIColor.green,UIColor.cyan,UIColor.yellow, UIColor.red, UIColor.purple,UIColor.lightGray, UIColor.orange]
-
-    
+   
     // ui nodes
     private let exitLabel = SKLabelNode(text: "Quit")
     private var startPanel: StartPanelNode? = nil
@@ -155,8 +145,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         isFuelEmpty = false
         shieldActive = false
-        
-        //self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
 
         startPanel?.fadeOut() {
             self.startPanel?.removeFromParent()
@@ -167,7 +155,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
         self.player.isHidden = false
-        let playerAppear = SKAction.moveTo(y: self.size.height * self.playerBaseY, duration: 0.3)
+        let playerAppear = SKAction.moveTo(y: self.size.height * CGFloat(playerBaseY), duration: 0.3)
         self.player.run(playerAppear)        
     }
     
@@ -223,7 +211,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         let playableWidth = size.height / maxAspectRatio
         let margin = (size.width - playableWidth) / 2
         gameArea = CGRect(x: margin, y: 0, width: playableWidth, height: size.height)
-        barrierwidthFraction = Int(gameArea.width / 6)
+
         
         // label
         scoreLabel = SKLabelNode()
@@ -355,21 +343,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         exitLabel.zPosition = 50
         exitLabel.position = CGPoint(x: 200, y: self.size.height - 50.0)
         self.addChild(exitLabel)
-        
-//        shieldNode.position.x = player.position.y
-//        shieldNode.position.y = player.position.y
-//        shieldNode.zPosition = 100
-//        self.addChild(shieldNode)
-//        shieldNode.animate()
-        
-        
+
         if GodMode {
             player.physicsBody?.categoryBitMask = PhysicsCategories.None
         }
     }
-    
 
-    
     var lastUpdateTime:TimeInterval = 0
     var deltaFrameTime:TimeInterval = 0
     var speedToMove:CGFloat = 100.0
@@ -510,7 +489,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         DispatchQueue.global().async {
             
             // two actions
-            let moveBarrier = SKAction.moveTo(y: CGFloat(-self.barrierHeight), duration: 3.5)
+            let moveBarrier = SKAction.moveTo(y: CGFloat(-barrierHeight), duration: 3.5)
             let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
             let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
@@ -523,7 +502,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             //setup left barrier
 
             let leftBarrier = SKSpriteNode(imageNamed: "BarrierLBig")
-            leftBarrier.position = CGPoint(x: random(min: -400, max: 300), y: self.size.height + CGFloat(self.barrierHeight))
+            leftBarrier.position = CGPoint(x: random(min: 250 - 608, max: 250), y: self.size.height + CGFloat(barrierHeight))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
             leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
@@ -536,7 +515,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             //setup right barrier
 
             let rightBarrier = SKSpriteNode(imageNamed: "BarrierRBig")
-            rightBarrier.position = (CGPoint(x: leftBarrier.position.x + 608 + 1050, y: self.size.height + CGFloat(self.barrierHeight)))
+            rightBarrier.position = (CGPoint(x: leftBarrier.position.x + CGFloat(barrierWidth)
+                + CGFloat(barrierGap),
+                                             y: self.size.height + CGFloat(barrierHeight)))
             rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false
             rightBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
@@ -589,7 +570,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.removeAllChildren()
         let hideAction = SKAction.hide()
-        let waitAction = SKAction.wait(forDuration: 1.0)
+        let waitAction = SKAction.wait(forDuration: 0.5)
         let animateExplosionAction = SKAction.animate(with: playerExplosionFrames, timePerFrame: 0.1, resize: false, restore: false)
         let playerExplosionSequence = SKAction.sequence([playerExplosionSound, animateExplosionAction,hideAction,waitAction])
         player.run(playerExplosionSequence, completion: {
@@ -610,7 +591,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
         let powerUpSequence = SKAction.sequence([powerUpSound])
         player.run(powerUpSequence)
-        //fuelNode.run(SKAction.hudLabelBumpAction())
         
         if !shieldActive{
             shieldNode.position.x = player.position.x
