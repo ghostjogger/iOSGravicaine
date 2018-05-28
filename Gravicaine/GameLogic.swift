@@ -58,15 +58,15 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     // MARK: - power
-    private static let DefaultPowerSpawnInterval = 5.0
+    private static let DefaultPowerSpawnInterval = 20.0
     
     //MARK - asteroid
-    private static let DefaultAsteroidSpawnInterval = 2.0
+    private static let DefaultAsteroidSpawnInterval = 1.5
     
     // MARK: - fuel
     
     private var fuelReducer: Timer? = nil
-    private let fuelReducerFrequency: TimeInterval = 0.5
+    private let fuelReducerFrequency: TimeInterval = 1.0
     private static let defaultFuel = 100
     
     private(set) var fuel: Int = GameLogic.defaultFuel {
@@ -142,7 +142,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     private func startSpawningPower() {
-        powerSpawner = Timer.scheduledTimer(timeInterval: Double(random(min: CGFloat(5.0), max: CGFloat(spawnPowerInterval))) ,
+        powerSpawner = Timer.scheduledTimer(timeInterval: Double(random(min: CGFloat(15.0), max: CGFloat(spawnPowerInterval))) ,
                                               target: self,
                                               selector: #selector(GameLogic.spawnPower(_:)),
                                               userInfo: nil,
@@ -157,7 +157,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - barrier
     
     private var barrierSpawner: Timer? = nil
-    private let barrierFrequency: TimeInterval = 6.0
+    private let barrierFrequency: TimeInterval = 4.0
     
     @objc private func spawnBarrier(_ timer: Timer) {
         delegate?.shouldSpawnBarrier()
@@ -167,7 +167,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
     private func startSpawningBarrier() {
        
-        barrierSpawner = Timer.scheduledTimer(timeInterval: Double(random(min: CGFloat(3.0), max: CGFloat(barrierFrequency))),
+        barrierSpawner = Timer.scheduledTimer(timeInterval: Double(random(min: CGFloat(2.0), max: CGFloat(barrierFrequency))),
                                             target: self,
                                             selector: #selector(GameLogic.spawnBarrier(_:)),
                                             userInfo: nil,
