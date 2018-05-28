@@ -588,11 +588,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             node.removeFromParent()
             
         }
+        
 
         let powerUpSequence = SKAction.sequence([powerUpSound])
         player.run(powerUpSequence)
         
-        if !shieldActive{
+        if !shieldActive && !self.children.contains(shieldNode){
             shieldNode.position.x = player.position.x
             shieldNode.position.y = player.position.y - 70
             shieldNode.zPosition = 100
@@ -600,9 +601,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             shieldNode.animate()
             shieldActive = true
             shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
+   
                 self.shieldNode.stopAnimating()
                 self.shieldNode.removeFromParent()
                 self.shieldActive = false
+
             }
         }
         else{
@@ -611,6 +614,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             shieldTimer.invalidate()
             }
             shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
+                
                 self.shieldNode.stopAnimating()
                 self.shieldNode.removeFromParent()
                 self.shieldActive = false
