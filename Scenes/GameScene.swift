@@ -56,6 +56,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private let impulse = 220
     private let shieldNode: ShieldNode
     private var shieldActive: Bool = false
+    private let shieldActivationTime = 10.0
+    private var shieldTimer = Timer()
 
     //fuel
     private var isFuelEmpty = false
@@ -611,12 +613,29 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         //fuelNode.run(SKAction.hudLabelBumpAction())
         
         if !shieldActive{
-        shieldNode.position.x = player.position.x
-        shieldNode.position.y = player.position.y - 70
-        shieldNode.zPosition = 100
-        self.addChild(shieldNode)
-        shieldNode.animate()
-        shieldActive = true
+            shieldNode.position.x = player.position.x
+            shieldNode.position.y = player.position.y - 70
+            shieldNode.zPosition = 100
+            self.addChild(shieldNode)
+            shieldNode.animate()
+            shieldActive = true
+            shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
+                self.shieldNode.stopAnimating()
+                self.shieldNode.removeFromParent()
+                self.shieldActive = false
+            }
+        }
+        else{
+            if shieldTimer.isValid
+            {
+            shieldTimer.invalidate()
+            }
+            shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
+                self.shieldNode.stopAnimating()
+                self.shieldNode.removeFromParent()
+                self.shieldActive = false
+            }
+            
         }
         
         
