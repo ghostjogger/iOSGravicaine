@@ -25,7 +25,7 @@ class GameOverPanelNode: SKSpriteNode {
         
         self.score = score
         let highScore = UserDefaults.standard.integer(forKey: HighScoreKey)
-        var highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
+        let highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
 
         
         scoreLabel.fontSize = 52.0

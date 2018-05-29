@@ -16,6 +16,7 @@ class SpaceShip: SKSpriteNode {
     private let leftThruster:SKSpriteNode = SKSpriteNode(imageNamed: "r_thruster_small")
     private let rightThruster:SKSpriteNode = SKSpriteNode(imageNamed: "l_thruster_small")
     private var fireEmitter: SKEmitterNode? = nil
+    private var shieldNode: ShieldNode = ShieldNode()
  
     
     
@@ -39,6 +40,8 @@ class SpaceShip: SKSpriteNode {
             fireEmitter?.targetNode = self
             self.addChild(fireEmitter!)
         }
+        shieldNode.animate()
+
 
         
     }
@@ -120,6 +123,35 @@ class SpaceShip: SKSpriteNode {
         rightThruster.run(thrustSequence)
         }
 
+    }
+    
+    func setShield(){
+        
+        if !self.children.contains(shieldNode){
+            
+            shieldNode = ShieldNode()
+            shieldNode.animate()
+            shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)! - 70)
+            self.addChild(shieldNode)
+            
+            
+            
+        }
+        
+    }
+    
+    func removeShield(){
+        
+        if self.children.contains(shieldNode){
+            let reddenShield = SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.5)
+            let disappearShield = SKAction.fadeAlpha(to: 0, duration: 2.5)
+            let deleteShield = SKAction.removeFromParent()
+            let removeShieldSequence = SKAction.sequence([reddenShield,disappearShield,deleteShield])
+            
+            shieldNode.run(removeShieldSequence)
+        
+        }
+        
     }
 
 

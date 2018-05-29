@@ -52,7 +52,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     // player
     
     private var player: SpaceShip
-    private let shieldNode: ShieldNode
     private var shieldActive: Bool = false
     private var shieldTimer = Timer()
 
@@ -232,7 +231,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         //player init
         player = SpaceShip()
-        shieldNode = ShieldNode()
         super.init(size: size)
 
         gameLogic.delegate = self
@@ -367,10 +365,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             lastUpdateTime = currentTime
         }
             
-            if !shieldNode.isHidden{
-                shieldNode.position.x = player.position.x
-                shieldNode.position.y = player.position.y - 70
-            }
 
             
             if player.position.x < self.size.width/2{
@@ -592,18 +586,16 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
         let powerUpSequence = SKAction.sequence([powerUpSound])
         player.run(powerUpSequence)
+
         
-        if !shieldActive && !self.children.contains(shieldNode){
-            shieldNode.position.x = player.position.x
-            shieldNode.position.y = player.position.y - 70
-            shieldNode.zPosition = 100
-            self.addChild(shieldNode)
-            shieldNode.animate()
+        if !shieldActive{
+            
+            player.setShield()
             shieldActive = true
+
             shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
-   
-                self.shieldNode.stopAnimating()
-                self.shieldNode.removeFromParent()
+                
+                self.player.removeShield()
                 self.shieldActive = false
 
             }
@@ -611,15 +603,14 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         else{
             if shieldTimer.isValid
             {
-            shieldTimer.invalidate()
+                shieldTimer.invalidate()
             }
             shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
-                
-                self.shieldNode.stopAnimating()
-                self.shieldNode.removeFromParent()
+
+                self.player.removeShield()
                 self.shieldActive = false
+
             }
-            
         }
         
         
