@@ -148,7 +148,7 @@ class SpaceShip: SKSpriteNode {
         
         if self.children.contains(shieldNode){
             let reddenShield = SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.5)
-            let disappearShield = SKAction.fadeAlpha(to: 0, duration: 2.5)
+            let disappearShield = SKAction.fadeAlpha(to: 0, duration: 3.5)
             let deleteShield = SKAction.removeFromParent()
             let removeShieldSequence = SKAction.sequence([reddenShield,disappearShield,deleteShield])
             

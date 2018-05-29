@@ -583,8 +583,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             node.removeFromParent()
             
         }
-        
-
         let powerUpSequence = SKAction.sequence([powerUpSound])
         player.run(powerUpSequence)
 
@@ -597,31 +595,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
                 
                 self.player.removeShield()
-                    self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (time) in
+                    self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.8, repeats: false) { (time) in
                     
                         self.shieldActive = false
                     }
             }
         }
-        else{
-            if shieldTimer.isValid
-            {
-                shieldTimer.invalidate()
-                if shieldTransitionTimer.isValid{
-                    shieldTransitionTimer.invalidate()
-                }
-            }
-            shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
-                
-                self.player.removeShield()
-                self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (time) in
-                    
-                    self.shieldActive = false
-                }
-            }
-        }
-        
-        
     }
     
     func fuelEmpty(){
@@ -639,9 +618,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         if !gameOverTransitioning && !isFuelEmpty{
             fuelNode.size.width = CGFloat(fuel * 5)
         }
-        
-
     }
+    
     func shouldSpawnPowerUp() {
         if !gameOverTransitioning {
         
