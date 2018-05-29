@@ -13,14 +13,21 @@ import GameplayKit
 
 class MainMenuScene: SKScene{
     
-    let startLabel = SKLabelNode(text: "Start")
+    let startLabel = SKLabelNode(text: "Play")
     let signatureLabel = SKLabelNode(text: "Stephen Ball's")
     let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
+    
+    let highScoreLabel = SKLabelNode(text: "High Score")
+    let highScoreNameLabel = SKLabelNode(text: "")
+    let highScoreScoreLabel = SKLabelNode(text: "")
+    
     var titleTextures = [SKTexture]()
     
     let titleSound = SKAction.playSoundFileNamed("sound43.wav", waitForCompletion: false)
     let titleEndSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
+    
+    private var highScorePanel: HighScoreNamePanel? = nil
     
     //star animation variables
     
@@ -96,16 +103,31 @@ class MainMenuScene: SKScene{
         startLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
         self.addChild(startLabel)
         
-        signatureLabel.fontName = "Jellee-Roman"
-        signatureLabel.fontColor = UIColor.white
-        signatureLabel.fontSize = 80
-        signatureLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.9)
-        self.addChild(signatureLabel)
+//        signatureLabel.fontName = "Jellee-Roman"
+//        signatureLabel.fontColor = UIColor.white
+//        signatureLabel.fontSize = 80
+//        signatureLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.9)
+//        self.addChild(signatureLabel)
         
         titleImage.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.85)
         titleImage.zPosition = 1
-        titleImage.setScale(0.9)
+        titleImage.setScale(5.0)
         addChild(titleImage)
+        let titleAction = SKAction.scale(to: 0.9, duration: 1.4)
+        let titleSequence = SKAction.sequence([titleSound,titleAction,titleEndSound])
+        titleImage.run(titleSequence){
+            
+            if UserDefaults.standard.string(forKey: HighScoreName) != nil{
+                
+                self.highScorePanel?.removeFromParent()
+                self.highScorePanel = HighScoreNamePanel(size: self.size)
+                self.highScorePanel?.zPosition = 50
+                self.addChild(self.highScorePanel!)
+                self.highScorePanel?.fadeIn()
+                
+            }
+            
+        }
 
         
         

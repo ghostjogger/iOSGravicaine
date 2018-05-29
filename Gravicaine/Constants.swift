@@ -19,6 +19,6 @@ let startFuel = 100
 let impulse = 220
 let gravity = 1.5
 
-let shieldActivationTime = 10.0
+let shieldActivationTime = 6.0
 
 
