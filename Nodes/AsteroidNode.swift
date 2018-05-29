@@ -16,7 +16,7 @@ enum AsteroidMove {
 
 class AsteroidNode: SKSpriteNode {
     
-    let asteroidSpeed: CGFloat = 900.0 // (speed is x px per second)
+    let asteroidSpeed: CGFloat = 700.0 // (speed is x px per second)
     var move: AsteroidMove = .Straight
     
     // MARK: init

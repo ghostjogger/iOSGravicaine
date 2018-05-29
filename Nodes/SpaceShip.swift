@@ -28,7 +28,8 @@ class SpaceShip: SKSpriteNode {
         super.init(texture: texture, color: UIColor.clear, size: size)
         self.name = "player"
         self.zPosition = 2
-        self.physicsBody = SKPhysicsBody(rectangleOf: texture.size())
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: texture.size().width * 0.85,
+                                                             height:texture.size().height * 0.85))
         self.physicsBody!.affectedByGravity = true
         self.physicsBody!.categoryBitMask = PhysicsCategories.Player
         self.physicsBody!.collisionBitMask = PhysicsCategories.None
@@ -58,7 +59,6 @@ class SpaceShip: SKSpriteNode {
   
         let bullet = SKSpriteNode(texture: SpaceShip.bulletTexture)
         bullet.size = CGSize(width: 25, height: 50)
-        //bullet.setScale(GameScene.scale)
         bullet.position = self.position
         bullet.zPosition = self.zPosition - 0.1
         bullet.alpha = 0.0
