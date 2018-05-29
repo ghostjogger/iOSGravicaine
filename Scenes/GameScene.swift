@@ -85,6 +85,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var gameOverPanel: GameOverPanelNode? = nil
     private var highScorePanel: HighScorePanelNode? = nil
     private let scoreLabel: SKLabelNode?
+    
+    //sound
+    let backgroundSound = SKAudioNode(fileNamed: "gameSoundtrack.mp3")
 
 
     // game data
@@ -149,6 +152,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         startPanel?.fadeOut() {
             self.startPanel?.removeFromParent()
             self.startPanel = nil
+            
         }
         
         // player appear
@@ -156,12 +160,16 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * CGFloat(playerBaseY), duration: 0.3)
-        self.player.run(playerAppear)        
+        self.player.run(playerAppear){
+            self.addChild(self.backgroundSound)
+        }
+
     }
     
     private func setGameOverState() {
 
         gameLogic.gameDidStop()
+
 
         if !wasHighScore{
             gameOverPanel?.removeFromParent()
@@ -243,6 +251,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             explosionFrames.append(explosionAnimatedAtlas.textureNamed(explosionTextureName))
         }
         playerExplosionFrames = explosionFrames
+        
+        
+
 
 
     }
@@ -335,13 +346,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         self.addChild(gravityNode)
         
         //exit label
-        exitLabel.fontSize = 80.0
-        exitLabel.fontName = FontName
-        exitLabel.horizontalAlignmentMode = .left
-        exitLabel.verticalAlignmentMode = .center
-        exitLabel.zPosition = 50
-        exitLabel.position = CGPoint(x: 200, y: self.size.height - 50.0)
-        self.addChild(exitLabel)
+//        exitLabel.fontSize = 80.0
+//        exitLabel.fontName = FontName
+//        exitLabel.horizontalAlignmentMode = .left
+//        exitLabel.verticalAlignmentMode = .center
+//        exitLabel.zPosition = 50
+//        exitLabel.position = CGPoint(x: 200, y: self.size.height - 50.0)
+//        self.addChild(exitLabel)
 
         if GodMode {
             player.physicsBody?.categoryBitMask = PhysicsCategories.None
@@ -443,6 +454,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         if gameState == .waiting  {
             self.gameState = .inGame
+            
             return
         }
         
@@ -561,6 +573,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             node.removeAllActions()
             
         }
+        
+        backgroundSound.removeFromParent()
+        
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.removeAllChildren()
