@@ -128,14 +128,18 @@ class SpaceShip: SKSpriteNode {
     func setShield(){
         
         if !self.children.contains(shieldNode){
-            
             shieldNode = ShieldNode()
             shieldNode.animate()
             shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)! - 70)
             self.addChild(shieldNode)
-            
-            
-            
+        }
+        else{
+            shieldNode.removeAllActions()
+            shieldNode.removeFromParent()
+            shieldNode = ShieldNode()
+            shieldNode.animate()
+            shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)! - 70)
+            self.addChild(shieldNode)
         }
         
     }

@@ -54,6 +54,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var player: SpaceShip
     private var shieldActive: Bool = false
     private var shieldTimer = Timer()
+    private var shieldTransitionTimer = Timer()
 
     //fuel
     private var isFuelEmpty = false
@@ -596,20 +597,27 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
                 
                 self.player.removeShield()
-                self.shieldActive = false
-
+                    self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (time) in
+                    
+                        self.shieldActive = false
+                    }
             }
         }
         else{
             if shieldTimer.isValid
             {
                 shieldTimer.invalidate()
+                if shieldTransitionTimer.isValid{
+                    shieldTransitionTimer.invalidate()
+                }
             }
             shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
-
+                
                 self.player.removeShield()
-                self.shieldActive = false
-
+                self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (time) in
+                    
+                    self.shieldActive = false
+                }
             }
         }
         
