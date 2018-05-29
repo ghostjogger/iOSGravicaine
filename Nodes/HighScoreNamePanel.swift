@@ -30,7 +30,7 @@ class HighScoreNamePanel: SKSpriteNode {
         scoreLabel.fontName = FontName
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
-        scoreLabel.text = "Top Gravicainer"
+        scoreLabel.text = "Top Gravicainer:"
         
         highScoreLabel.fontSize = 100.0
         highScoreLabel.fontName = FontName
