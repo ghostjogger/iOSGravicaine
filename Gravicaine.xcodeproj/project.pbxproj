@@ -15,7 +15,7 @@
 		990D6B18208548B800429C9D /* star.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B17208548B800429C9D /* star.atlas */; };
 		9959EF5520BDFCF400B7F64C /* gameSoundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */; };
 		9959EF5720BF37C500B7F64C /* ShieldPowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */; };
-		9959EF5920BF3AF200B7F64C /* shieldSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5820BF3AF200B7F64C /* shieldSound.wav */; };
+		9959EF5B20BF4A9E00B7F64C /* shieldSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */; };
 		99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99766E2F2084E58900AA937A /* GameOverPanelNode.swift */; };
 		99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357AE2079072400F86F84 /* MainMenuScene.swift */; };
 		99A357B12079073400F86F84 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357B02079073400F86F84 /* GameOverScene.swift */; };
@@ -55,7 +55,7 @@
 		990D6B17208548B800429C9D /* star.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = star.atlas; sourceTree = "<group>"; };
 		9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameSoundtrack.mp3; sourceTree = "<group>"; };
 		9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldPowerNode.swift; sourceTree = "<group>"; };
-		9959EF5820BF3AF200B7F64C /* shieldSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shieldSound.wav; sourceTree = "<group>"; };
+		9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shieldSound.wav; sourceTree = "<group>"; };
 		99766E2F2084E58900AA937A /* GameOverPanelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPanelNode.swift; sourceTree = "<group>"; };
 		99A357AE2079072400F86F84 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		99A357B02079073400F86F84 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 				99B334D120BB355A00AC5C59 /* sound43.wav */,
 				99B334D320BB44AC00AC5C59 /* sound62.wav */,
 				9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */,
-				9959EF5820BF3AF200B7F64C /* shieldSound.wav */,
+				9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -259,10 +259,10 @@
 				99A357B52079088E00F86F84 /* explosion.wav in Resources */,
 				990B01C620BC5B2700F2BA3F /* shield.atlas in Resources */,
 				99A357B820791BAE00F86F84 /* ship-fire.sks in Resources */,
+				9959EF5B20BF4A9E00B7F64C /* shieldSound.wav in Resources */,
 				99B334D420BB44AC00AC5C59 /* sound62.wav in Resources */,
 				9959EF5520BDFCF400B7F64C /* gameSoundtrack.mp3 in Resources */,
 				99B334D220BB355A00AC5C59 /* sound43.wav in Resources */,
-				9959EF5920BF3AF200B7F64C /* shieldSound.wav in Resources */,
 				99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */,
 				99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
