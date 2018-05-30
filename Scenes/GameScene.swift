@@ -120,6 +120,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     //powerup sound action
     private var powerUpSound: SKAction = SKAction.playSoundFileNamed("Powerup.wav", waitForCompletion: false)
+    
+    // shield powerup sound action
+    private var shieldPowerSound: SKAction = SKAction.playSoundFileNamed("shieldSound.wav", waitForCompletion: false)
    
     
     // MARK: - game state
@@ -573,6 +576,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             node.removeAllActions()
             
         }
+        self.enumerateChildNodes(withName: "shieldPower") {
+                (node, stop) in
+                
+                node.removeAllActions()
+                
+        }
         
         backgroundSound.removeFromParent()
         
@@ -602,20 +611,35 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.run(powerUpSequence)
 
         
+
+    }
+    
+    func shieldPowerTouchesPlayer(){
+        
         if !shieldActive{
             
+            self.enumerateChildNodes(withName: "shieldPower") {
+                (node, stop) in
+                
+                node.removeFromParent()
+            }
+            
+            let shieldPowerSequence = SKAction.sequence([shieldPowerSound])
+            
             player.setShield()
+            player.run(shieldPowerSequence)
             shieldActive = true
-
+            
             shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
                 
                 self.player.removeShield()
-                    self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.8, repeats: false) { (time) in
+                self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.8, repeats: false) { (time) in
                     
-                        self.shieldActive = false
-                    }
+                    self.shieldActive = false
+                }
             }
         }
+        
     }
     
     func fuelEmpty(){
@@ -688,6 +712,37 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 DispatchQueue.main.async(execute: {
                     self.addChild(asteroid)
                     asteroid.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
+                        //
+                    }
+                })
+                
+            }
+        }
+    }
+    
+    func shouldSpawnShield() {
+        
+        if !gameOverTransitioning {
+            
+            DispatchQueue.global().async {
+                
+                let shield = ShieldPowerNode()
+                shield.name = "shieldPower"
+                var moveType = ShieldMove.Straight
+                moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
+                
+                shield.move = moveType
+                shield.zPosition = 50
+                
+                let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
+                let yStart = self.size.height + 200.0
+                
+                let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
+                let yEnd: CGFloat = -shield.size.height
+                
+                DispatchQueue.main.async(execute: {
+                    self.addChild(shield)
+                    shield.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
                         //
                     }
                 })

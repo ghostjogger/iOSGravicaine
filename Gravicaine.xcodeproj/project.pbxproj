@@ -14,6 +14,8 @@
 		990B01CA20BDF03900F2BA3F /* HighScoreNamePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B01C920BDF03900F2BA3F /* HighScoreNamePanel.swift */; };
 		990D6B18208548B800429C9D /* star.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B17208548B800429C9D /* star.atlas */; };
 		9959EF5520BDFCF400B7F64C /* gameSoundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */; };
+		9959EF5720BF37C500B7F64C /* ShieldPowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */; };
+		9959EF5920BF3AF200B7F64C /* shieldSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5820BF3AF200B7F64C /* shieldSound.wav */; };
 		99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99766E2F2084E58900AA937A /* GameOverPanelNode.swift */; };
 		99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357AE2079072400F86F84 /* MainMenuScene.swift */; };
 		99A357B12079073400F86F84 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357B02079073400F86F84 /* GameOverScene.swift */; };
@@ -52,6 +54,8 @@
 		990B01C920BDF03900F2BA3F /* HighScoreNamePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreNamePanel.swift; sourceTree = "<group>"; };
 		990D6B17208548B800429C9D /* star.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = star.atlas; sourceTree = "<group>"; };
 		9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameSoundtrack.mp3; sourceTree = "<group>"; };
+		9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldPowerNode.swift; sourceTree = "<group>"; };
+		9959EF5820BF3AF200B7F64C /* shieldSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shieldSound.wav; sourceTree = "<group>"; };
 		99766E2F2084E58900AA937A /* GameOverPanelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPanelNode.swift; sourceTree = "<group>"; };
 		99A357AE2079072400F86F84 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		99A357B02079073400F86F84 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				99B334D120BB355A00AC5C59 /* sound43.wav */,
 				99B334D320BB44AC00AC5C59 /* sound62.wav */,
 				9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */,
+				9959EF5820BF3AF200B7F64C /* shieldSound.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 				990B01C120BB549800F2BA3F /* AsteroidNode.swift */,
 				990B01C320BC583F00F2BA3F /* ShieldNode.swift */,
 				990B01C920BDF03900F2BA3F /* HighScoreNamePanel.swift */,
+				9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -256,6 +262,7 @@
 				99B334D420BB44AC00AC5C59 /* sound62.wav in Resources */,
 				9959EF5520BDFCF400B7F64C /* gameSoundtrack.mp3 in Resources */,
 				99B334D220BB355A00AC5C59 /* sound43.wav in Resources */,
+				9959EF5920BF3AF200B7F64C /* shieldSound.wav in Resources */,
 				99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */,
 				99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
@@ -276,6 +283,7 @@
 				99A40D4E20754BE0000D5DD9 /* GameScene.swift in Sources */,
 				99A357C5207A75A000F86F84 /* GameLogic.swift in Sources */,
 				99A357C1207A587700F86F84 /* SpaceShip.swift in Sources */,
+				9959EF5720BF37C500B7F64C /* ShieldPowerNode.swift in Sources */,
 				990B01C220BB549800F2BA3F /* AsteroidNode.swift in Sources */,
 				99B334D020B5E99D00AC5C59 /* HighScorePanelNode.swift in Sources */,
 				99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */,

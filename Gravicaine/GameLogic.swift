@@ -18,6 +18,8 @@ protocol GameLogicDelegate: class {
     func shouldSpawnPowerUp()
     func powerUpTouchesPlayer()
     func shouldSpawnAsteroid()
+    func shouldSpawnShield()
+    func shieldPowerTouchesPlayer()
 }
 
 class GameLogic: NSObject, SKPhysicsContactDelegate {
@@ -157,7 +159,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - barrier
     
     private var barrierSpawner: Timer? = nil
-    private let barrierFrequency: TimeInterval = 3.0
+    private let barrierFrequency: TimeInterval = 1.5
     
     @objc private func spawnBarrier(_ timer: Timer) {
         delegate?.shouldSpawnBarrier()
@@ -183,6 +185,33 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         self.score += 1
     }
     
+    
+    // MARK: - shield
+    
+    private var shieldSpawner: Timer? = nil
+    private let shieldFrequency: TimeInterval = 15.0
+    
+    @objc private func spawnShield(_ timer: Timer) {
+        delegate?.shouldSpawnShield()
+        self.startSpawningShield()
+        
+    }
+    
+    private func startSpawningShield() {
+        
+        shieldSpawner = Timer.scheduledTimer(timeInterval: shieldFrequency,
+                                              target: self,
+                                              selector: #selector(GameLogic.spawnShield(_:)),
+                                              userInfo: nil,
+                                              repeats: false)
+    }
+    
+    private func stopSpawningShield() {
+        shieldSpawner?.invalidate()
+        shieldSpawner = nil
+    }
+    
+
     func gameDidStart() {
         
         self.stopSpawningBarrier()
@@ -190,6 +219,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         self.startReducingFuel()
         self.startSpawningPower()
         self.startSpawningAsteroids()
+        self.startSpawningShield()
         
     }
     
@@ -198,6 +228,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         self.stopReducingFuel()
         self.stopSpawningPower()
         self.stopSpawningAsteroids()
+        self.stopSpawningShield()
     }
     
 
@@ -240,6 +271,13 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         {
             self.asteroidTouchesPlayer()
         }
+        
+        //player hits shieldpowerup
+        if      body1.categoryBitMask == PhysicsCategories.Player
+            &&  body2.categoryBitMask == PhysicsCategories.ShieldPower
+        {
+            self.shieldPowerTouchesPlayer()
+        }
 //
 //        // bullet hits enemy
 //        if body1.categoryBitMask == PhysicsCategories.Bullet && body2.categoryBitMask == PhysicsCategories.Enemy {
@@ -266,6 +304,12 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     func powerUpTouchesPlayer(){
         self.fuel = GameLogic.defaultFuel
         delegate?.powerUpTouchesPlayer()
+    }
+    
+    func shieldPowerTouchesPlayer(){
+        
+        delegate?.shieldPowerTouchesPlayer()
+        
     }
     
     func asteroidTouchesPlayer(){
