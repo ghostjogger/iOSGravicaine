@@ -17,11 +17,13 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
-        print("\(UIDevice().type)")
+        var deviceWidth =  UIScreen.main.nativeBounds.width
+        var deviceHeight = UIScreen.main.nativeBounds.height
 
 
-        let scene = MainMenuScene(size: CGSize(width: 1536, height: 2048))
+        let scene = MainMenuScene(size: CGSize(width: deviceWidth, height: deviceHeight))
 
         
         //configure the view
