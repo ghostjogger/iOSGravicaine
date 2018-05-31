@@ -26,6 +26,7 @@ class MainMenuScene: SKScene{
     
     let titleSound = SKAction.playSoundFileNamed("sound43.wav", waitForCompletion: false)
     let titleEndSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
+    var titleScaleFactor = 1.0
     
     private var highScorePanel: HighScoreNamePanel? = nil
     
@@ -52,9 +53,10 @@ class MainMenuScene: SKScene{
 
         
         super.init(size: size)
-        print("screen width is: \(self.frame.width)")
-        print("screen height is: \(self.frame.height)")
 
+
+        titleScaleFactor = (Double(self.frame.width) / Double(maxDeviceScreenWidth)) * 0.8
+        print(titleScaleFactor)
 
     }
     
@@ -94,6 +96,7 @@ class MainMenuScene: SKScene{
     override func didMove(to view: SKView) {
         
         backgroundImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+        backgroundImage.size = self.size
         backgroundImage.zPosition = 0
         self.addChild(backgroundImage)
 
@@ -111,10 +114,10 @@ class MainMenuScene: SKScene{
 //        self.addChild(signatureLabel)
         
         titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.85)
-        titleImage.zPosition = 1
+        titleImage.zPosition = 10
         titleImage.setScale(5.0)
         addChild(titleImage)
-        let titleAction = SKAction.scale(to: 0.9, duration: 1.4)
+        let titleAction = SKAction.scale(to: CGFloat(titleScaleFactor), duration: 1.4)
         let titleSequence = SKAction.sequence([titleSound,titleAction,titleEndSound])
         titleImage.run(titleSequence){
             
@@ -163,9 +166,10 @@ class MainMenuScene: SKScene{
             let action = SKAction.animate(with: protonFrames, timePerFrame: 0.1, resize: false, restore: false)
             let deleteAction = SKAction.removeFromParent()
             let sequence = SKAction.sequence([action,deleteAction])
-            node.zPosition = 10
-            node.position = CGPoint(x: random(min: (self.frame.width/2) - 500, max: (self.size.width/2) + 500),
-                                    y: random(min: (self.frame.width/2) - 400, max: (self.size.width/2) + 700))
+            node.zPosition = 5
+            node.position = CGPoint(x: random(min: (self.frame.midX) - self.frame.width/2, max: (self.frame.midX) + self.frame.width/2),
+                                    y: random(min: (self.frame.midY) - self.frame.height, max: (self.frame.midY)) + self.frame.height/2)
+
             self.addChild(node)
             node.run(sequence)
      

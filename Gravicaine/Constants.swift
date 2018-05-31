@@ -21,4 +21,7 @@ let gravity = 1.5
 
 let shieldActivationTime = 6.0
 
+// iphone X screen width
+let maxDeviceScreenWidth = 1125
+
 
