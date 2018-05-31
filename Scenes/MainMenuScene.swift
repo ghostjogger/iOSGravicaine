@@ -52,7 +52,8 @@ class MainMenuScene: SKScene{
 
         
         super.init(size: size)
-        
+        print("screen width is: \(self.frame.width)")
+        print("screen height is: \(self.frame.height)")
 
 
     }
@@ -92,7 +93,7 @@ class MainMenuScene: SKScene{
     
     override func didMove(to view: SKView) {
         
-        backgroundImage.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        backgroundImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
         backgroundImage.zPosition = 0
         self.addChild(backgroundImage)
 
@@ -100,7 +101,7 @@ class MainMenuScene: SKScene{
         startLabel.fontName = "Jellee-Roman"
         startLabel.fontColor = UIColor.white
         startLabel.fontSize = 100
-        startLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.1)
+        startLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.1)
         self.addChild(startLabel)
         
 //        signatureLabel.fontName = "Jellee-Roman"
@@ -109,7 +110,7 @@ class MainMenuScene: SKScene{
 //        signatureLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.9)
 //        self.addChild(signatureLabel)
         
-        titleImage.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.85)
+        titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.85)
         titleImage.zPosition = 1
         titleImage.setScale(5.0)
         addChild(titleImage)
@@ -163,8 +164,8 @@ class MainMenuScene: SKScene{
             let deleteAction = SKAction.removeFromParent()
             let sequence = SKAction.sequence([action,deleteAction])
             node.zPosition = 10
-            node.position = CGPoint(x: random(min: (self.size.width/2) - 500, max: (self.size.width/2) + 500),
-                                    y: random(min: (self.size.width/2) - 400, max: (self.size.width/2) + 700))
+            node.position = CGPoint(x: random(min: (self.frame.width/2) - 500, max: (self.size.width/2) + 500),
+                                    y: random(min: (self.frame.width/2) - 400, max: (self.size.width/2) + 700))
             self.addChild(node)
             node.run(sequence)
      

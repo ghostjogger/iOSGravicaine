@@ -10,10 +10,16 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+
+
+
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("\(UIDevice().type)")
+
 
         let scene = MainMenuScene(size: CGSize(width: 1536, height: 2048))
 
