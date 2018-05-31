@@ -319,18 +319,18 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         // score label prep work
         
         scoreLabel?.zPosition = 100
-        scoreLabel?.position = CGPoint(x: self.size.width/2, y: self.size.height - 22.0)
+        scoreLabel?.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.95)
         scoreLabel?.text = gameLogic.scoreText()
         self.addChild(scoreLabel!)
         
 
         //fuel label prep
-        fuelNode.position = CGPoint(x: self.size.width/2 - fuelNode.size.width/2, y: 100)
+        fuelNode.position = CGPoint(x: self.frame.midX - fuelNode.size.width/2, y: self.size.height * 0.05)
         fuelNode.zPosition = 100
         fuelNode.anchorPoint = CGPoint.zero
         self.addChild(fuelNode)
         
-        fuelBackgroundNode.position = CGPoint(x: self.size.width/2 - fuelBackgroundNode.size.width/2, y: 100)
+        fuelBackgroundNode.position = CGPoint(x: self.frame.midX - fuelBackgroundNode.size.width/2, y: self.size.height * 0.05)
         fuelBackgroundNode.zPosition = 50
         fuelBackgroundNode.anchorPoint = CGPoint.zero
         self.addChild(fuelBackgroundNode)
