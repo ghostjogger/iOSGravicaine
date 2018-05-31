@@ -226,17 +226,17 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         // label
         scoreLabel = SKLabelNode()
-        scoreLabel?.fontSize = 90.0
+        scoreLabel?.fontSize = 100.0
         scoreLabel?.fontName = FontName
         scoreLabel?.horizontalAlignmentMode = .center
         scoreLabel?.verticalAlignmentMode = .top
         
         // fuel node
-        fuelNode = SKSpriteNode(texture: nil, color: UIColor.green, size: CGSize(width: 500, height: 100))
-        fuelBackgroundNode = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.30), size: CGSize(width: 500, height: 100))
+        fuelNode = SKSpriteNode(texture: nil, color: UIColor.green, size: CGSize(width: 500, height: 80))
+        fuelBackgroundNode = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.30), size: CGSize(width: 500, height: 80))
         
         //gravity indicators
-        gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 100, height: 200))
+        gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 75, height: 150))
         gravityNodeLabel.fontName = FontName
         gravityNodeLabel.fontSize = 50.0
         gravityNodeLabel.fontColor = UIColor.green
@@ -340,7 +340,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         fuelLabel.horizontalAlignmentMode = .center
         fuelLabel.verticalAlignmentMode = .center
         fuelLabel.zPosition = 100
-        fuelLabel.position = CGPoint(x: self.size.width/2, y: 60)
+        fuelLabel.position = CGPoint(x: self.frame.midX, y: self.size.height * 0.03)
         self.addChild(fuelLabel)
         
         //gravity nodes
@@ -384,24 +384,26 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             if player.position.x < self.size.width/2{
                 self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
-                gravityNode.position = CGPoint(x: self.size.width/2 - 500, y: 150)
+                gravityNode.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.height * 0.04)
                 gravityNode.zPosition = 100
             }
             else{
                 self.physicsWorld.gravity = CGVector(dx: gravity, dy: 0)
-                gravityNode.position = CGPoint(x: self.size.width/2 + 500, y: 150)
+                gravityNode.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.height * 0.04)
                 gravityNode.zPosition = 100
             }
 
-            if player.position.x > gameArea.maxX - player.size.width/2
+            if player.position.x > self.frame.maxX - player.size.width/2
             {
-                player.position.x = gameArea.maxX - player.size.width/2
+                player.position.x = self.frame.maxX - player.size.width/2
+                player.physicsBody?.velocity = CGVector(dx: -10, dy: 0)
               
             }
             
-            if player.position.x < gameArea.minX + player.size.width/2
+            if player.position.x < self.frame.minX + player.size.width/2
             {
-                player.position.x = gameArea.minX + player.size.width/2
+                player.position.x = self.frame.minX + player.size.width/2
+                player.physicsBody?.velocity = CGVector(dx: 10, dy: 0)
          
             }
         

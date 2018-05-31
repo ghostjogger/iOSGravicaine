@@ -98,8 +98,8 @@ class MainMenuScene: SKScene{
    
         startLabel.fontName = "Jellee-Roman"
         startLabel.fontColor = UIColor.white
-        startLabel.fontSize = 100
-        startLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.1)
+        startLabel.fontSize = 100 * CGFloat(titleScaleFactor)
+        startLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.05)
         self.addChild(startLabel)
         
 //        signatureLabel.fontName = "Jellee-Roman"
