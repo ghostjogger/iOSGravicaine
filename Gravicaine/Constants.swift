@@ -10,7 +10,7 @@ import Foundation
 
 let barrierHeight = 512
 let barrierWidth = 1216
-let barrierGap = 500
+let barrierGap = 300
 
 let playerBaseY = 0.20
 

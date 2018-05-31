@@ -520,7 +520,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let leftBarrier = SKSpriteNode(imageNamed: "BarrierLBig")
             leftBarrier.anchorPoint = CGPoint.zero
             leftBarrier.position = CGPoint(
-                x: self.frame.minX ,
+                x: random(min: self.frame.minX - leftBarrier.size.width, max: self.frame.minX) ,
                 y: self.size.height + CGFloat(barrierHeight))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
@@ -536,7 +536,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let rightBarrier = SKSpriteNode(imageNamed: "BarrierRBig")
             rightBarrier.anchorPoint = CGPoint.zero
             rightBarrier.position = (CGPoint(x: leftBarrier.position.x
-                + leftBarrier.size.width + CGFloat(200),
+                + leftBarrier.size.width + CGFloat(barrierGap),
                                              y: self.size.height + CGFloat(barrierHeight)))
             rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false
