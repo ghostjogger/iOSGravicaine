@@ -74,6 +74,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var highScoreText: UITextField? = nil
     
     let gameArea: CGRect
+    var scaleFactor:CGFloat = 0
     
     //barriers
     var leftBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierLBig")
@@ -244,6 +245,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         //player init
         player = SpaceShip()
         super.init(size: size)
+        
+        scaleFactor = self.frame.width / CGFloat(maxDeviceScreenWidth)
+        print(scaleFactor)
 
         gameLogic.delegate = self
         
@@ -514,7 +518,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             //setup left barrier
 
             let leftBarrier = SKSpriteNode(imageNamed: "BarrierLBig")
-            leftBarrier.position = CGPoint(x: random(min: 250 - 608, max: 250), y: self.size.height + CGFloat(barrierHeight))
+            leftBarrier.anchorPoint = CGPoint.zero
+            leftBarrier.position = CGPoint(
+                x: self.frame.minX ,
+                y: self.size.height + CGFloat(barrierHeight))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
             leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
@@ -527,8 +534,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             //setup right barrier
 
             let rightBarrier = SKSpriteNode(imageNamed: "BarrierRBig")
-            rightBarrier.position = (CGPoint(x: leftBarrier.position.x + CGFloat(barrierWidth)
-                + CGFloat(barrierGap),
+            rightBarrier.anchorPoint = CGPoint.zero
+            rightBarrier.position = (CGPoint(x: leftBarrier.position.x
+                + leftBarrier.size.width + CGFloat(200),
                                              y: self.size.height + CGFloat(barrierHeight)))
             rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false

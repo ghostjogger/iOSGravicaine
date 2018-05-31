@@ -12,7 +12,7 @@ import GameplayKit
 
 
 
-let GodMode: Bool = false
+let GodMode: Bool = true
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 let HighScoreName: String = "HighScoreName"

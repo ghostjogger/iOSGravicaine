@@ -19,10 +19,9 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         
-        var deviceWidth =  UIScreen.main.nativeBounds.width
-        var deviceHeight = UIScreen.main.nativeBounds.height
-
-
+        let deviceWidth =  UIScreen.main.nativeBounds.width
+        let deviceHeight = UIScreen.main.nativeBounds.height
+        
         let scene = MainMenuScene(size: CGSize(width: deviceWidth, height: deviceHeight))
 
         
