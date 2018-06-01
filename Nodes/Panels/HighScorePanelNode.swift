@@ -15,6 +15,7 @@ class HighScorePanelNode: SKSpriteNode {
 
     private static let FadeInTranslationY: CGFloat = 80.0
     
+    let background = SKSpriteNode(imageNamed: "panelBackground")
     let label: SKLabelNode = SKLabelNode()
     let scoreLabel: SKLabelNode = SKLabelNode()
     let labelVerticalSeparation = 30
@@ -35,13 +36,19 @@ class HighScorePanelNode: SKSpriteNode {
         label.verticalAlignmentMode = .center
         label.text = "Enter your name below"
         
-        var pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
+        background.size = CGSize(width: background.size.width * scale,
+                                 height: background.size.height * scale)
+        var pos = CGPoint(x: size.width / 2, y: size.height * 0.61)
+        background.position = pos
+        
+        pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
         scoreLabel.position = pos
         pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
         label.position = pos
         
         super.init(texture: nil, color: UIColor.clear, size: size)
         
+        self.addChild(background)
         self.addChild(scoreLabel)
         self.addChild(label)
         
