@@ -19,7 +19,7 @@ class GameOverPanelNode: SKSpriteNode {
     let highScoreLabel: SKLabelNode = SKLabelNode()
     let scoreLabel: SKLabelNode = SKLabelNode()
     let score: Int
-    let labelVerticalSeparation = 25
+    let labelVerticalSeparation = 30
     
     init(size: CGSize, score: Int) {
         
@@ -27,14 +27,15 @@ class GameOverPanelNode: SKSpriteNode {
         let highScore = UserDefaults.standard.integer(forKey: HighScoreKey)
         let highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
 
+        let scale = size.width/CGFloat(maxDeviceScreenWidth)
         
-        scoreLabel.fontSize = 52.0
+        scoreLabel.fontSize = 52.0 * scale
         scoreLabel.fontName = FontName
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
         scoreLabel.text = "Your Score : \(self.score)"
         
-        highScoreLabel.fontSize = 52.0
+        highScoreLabel.fontSize = 52.0 * scale
         highScoreLabel.fontName = FontName
         highScoreLabel.horizontalAlignmentMode = .center
         highScoreLabel.verticalAlignmentMode = .center
@@ -45,13 +46,13 @@ class GameOverPanelNode: SKSpriteNode {
             highScoreLabel.text = "HIGH SCORE by  \(highScoreName!) is  \(highScore)"
         }
 
-        gameOverLabel.fontSize = 80.0
+        gameOverLabel.fontSize = 80.0 * scale
         gameOverLabel.fontName = FontName
         gameOverLabel.horizontalAlignmentMode = .center
         gameOverLabel.verticalAlignmentMode = .center
         gameOverLabel.text = "Game Over!"
         
-        label.fontSize = 80.0
+        label.fontSize = 80.0 * scale
         label.fontName = FontName
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center
@@ -59,11 +60,11 @@ class GameOverPanelNode: SKSpriteNode {
         
         var pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
         gameOverLabel.position = pos
-        pos.y -= scoreLabel.frame.size.height + CGFloat(labelVerticalSeparation)
+        pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
         scoreLabel.position = pos
-        pos.y -= scoreLabel.frame.size.height + CGFloat(labelVerticalSeparation)
+        pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
         highScoreLabel.position = pos
-        pos.y -= scoreLabel.frame.size.height + CGFloat(labelVerticalSeparation)
+        pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
         label.position = pos
         
         super.init(texture: nil, color: UIColor.clear, size: size)

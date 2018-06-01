@@ -14,15 +14,17 @@ class StartPanelNode: SKSpriteNode {
     
     let label: SKLabelNode = SKLabelNode()
     let scoreLabel: SKLabelNode = SKLabelNode()
-    let labelVerticalSeparation = 25
+    let labelVerticalSeparation = 30
     
     init(size: CGSize) {
         
         let highScore = UserDefaults.standard.integer(forKey: HighScoreKey)
         let highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
+        
+        let scale = size.width/CGFloat(maxDeviceScreenWidth)
 
         
-        scoreLabel.fontSize = 52.0
+        scoreLabel.fontSize = 52.0 * scale
         scoreLabel.fontName = FontName
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
@@ -32,7 +34,7 @@ class StartPanelNode: SKSpriteNode {
         else{
             scoreLabel.text = "HIGH SCORE by  \(highScoreName!) is  \(highScore)"
         }
-        label.fontSize = 80.0
+        label.fontSize = 80.0 * scale
         label.fontName = FontName
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center
@@ -40,7 +42,7 @@ class StartPanelNode: SKSpriteNode {
         
         var pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
         scoreLabel.position = pos
-        pos.y -= scoreLabel.frame.size.height + CGFloat(labelVerticalSeparation)
+        pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
         label.position = pos
         
         super.init(texture: nil, color: UIColor.clear, size: size)

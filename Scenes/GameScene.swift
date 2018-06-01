@@ -340,7 +340,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         fuelBackgroundNode.anchorPoint = CGPoint.zero
         self.addChild(fuelBackgroundNode)
 
-        fuelLabel.fontSize = 42.0
+        fuelLabel.fontSize = 42.0 * scaleFactor
         fuelLabel.fontName = FontName
         fuelLabel.horizontalAlignmentMode = .center
         fuelLabel.verticalAlignmentMode = .center
