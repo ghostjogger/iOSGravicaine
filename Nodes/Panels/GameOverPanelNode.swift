@@ -14,6 +14,7 @@ class GameOverPanelNode: SKSpriteNode {
     
     private static let FadeInTranslationY: CGFloat = 80.0
     
+    let background = SKSpriteNode(imageNamed: "panelBackground")
     let gameOverLabel: SKLabelNode = SKLabelNode()
     let label: SKLabelNode = SKLabelNode()
     let highScoreLabel: SKLabelNode = SKLabelNode()
@@ -58,7 +59,11 @@ class GameOverPanelNode: SKSpriteNode {
         label.verticalAlignmentMode = .center
         label.text = "TAP TO TRY AGAIN"
         
-        var pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
+        background.size = CGSize(width: background.size.width * scale,
+                                 height: background.size.height * scale)
+        var pos = CGPoint(x: size.width / 2, y: size.height * 0.61)
+        background.position = pos
+        pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
         gameOverLabel.position = pos
         pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
         scoreLabel.position = pos
@@ -69,6 +74,7 @@ class GameOverPanelNode: SKSpriteNode {
         
         super.init(texture: nil, color: UIColor.clear, size: size)
         
+        self.addChild(background)
         self.addChild(gameOverLabel)
         self.addChild(scoreLabel)
         self.addChild(highScoreLabel)
