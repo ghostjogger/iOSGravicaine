@@ -16,20 +16,23 @@ class SpaceShip: SKSpriteNode {
     private let leftThruster:SKSpriteNode = SKSpriteNode(imageNamed: "r_thruster_small")
     private let rightThruster:SKSpriteNode = SKSpriteNode(imageNamed: "l_thruster_small")
     private var fireEmitter: SKEmitterNode? = nil
-    private var shieldNode: ShieldNode = ShieldNode()
+    private var shieldNode: ShieldNode = ShieldNode(scale: 1.0)
+    private var scale = CGFloat(0.0)
  
     
     
     
-    init() {
+    init(scale: CGFloat) {
         let texture = SKTexture(imageNamed: "playerShip")
-        let size = CGSize(width: texture.size().width, height: texture.size().height)
+        self.scale = scale
+        let size = CGSize(width: texture.size().width * self.scale, height: texture.size().height * self.scale)
+        self.shieldNode = ShieldNode(scale: self.scale)
         
         super.init(texture: texture, color: UIColor.clear, size: size)
         self.name = "player"
         self.zPosition = 2
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: texture.size().width * 0.85,
-                                                             height:texture.size().height * 0.85))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:  size.width * 0.85,
+                                                             height: size.height * 0.85))
         self.physicsBody!.affectedByGravity = true
         self.physicsBody!.categoryBitMask = PhysicsCategories.Player
         self.physicsBody!.collisionBitMask = PhysicsCategories.None
@@ -37,7 +40,7 @@ class SpaceShip: SKSpriteNode {
         
         if let emitter = SKEmitterNode(fileNamed: "ship-fire") {
             fireEmitter = emitter
-            fireEmitter?.position = CGPoint(x: 0.0, y: -(self.size.height/2) + 15.0)
+            fireEmitter?.position = CGPoint(x: 0.0, y: -((self.size.height/2) + (15.0 * self.scale)))
             fireEmitter?.targetNode = self
             self.addChild(fireEmitter!)
         }
@@ -84,9 +87,9 @@ class SpaceShip: SKSpriteNode {
     func thrustLeft(){
         
         if !self.children.contains(leftThruster){
-        leftThruster.size = CGSize(width: 30, height: 20)
+        leftThruster.size = CGSize(width: 30 * scale, height: 20 * scale)
         leftThruster.alpha = 0.0
-        leftThruster.position = CGPoint(x: (self.scene?.position.x)! + 50, y: (self.scene?.position.y)!)
+        leftThruster.position = CGPoint(x: (self.scene?.position.x)! + (50 * scale), y: (self.scene?.position.y)!)
         self.addChild(leftThruster)
         
         //thrust actions
@@ -107,9 +110,9 @@ class SpaceShip: SKSpriteNode {
     func thrustRight(){
         
         if !self.children.contains(rightThruster){
-        rightThruster.size = CGSize(width: 30, height: 20)
+        rightThruster.size = CGSize(width: 30 * scale, height: 20 * scale)
         rightThruster.alpha = 0.0
-        rightThruster.position = CGPoint(x: (self.scene?.position.x)! - 50, y: (self.scene?.position.y)!)
+        rightThruster.position = CGPoint(x: (self.scene?.position.x)! - (50 * scale), y: (self.scene?.position.y)!)
         self.addChild(rightThruster)
         
         //thrust actions
@@ -128,17 +131,17 @@ class SpaceShip: SKSpriteNode {
     func setShield(){
         
         if !self.children.contains(shieldNode){
-            shieldNode = ShieldNode()
+            shieldNode = ShieldNode(scale: self.scale)
             shieldNode.animate()
-            shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)! - 70)
+            shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)! - (70 * scale))
             self.addChild(shieldNode)
         }
         else{
             shieldNode.removeAllActions()
             shieldNode.removeFromParent()
-            shieldNode = ShieldNode()
+            shieldNode = ShieldNode(scale: self.scale)
             shieldNode.animate()
-            shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)! - 70)
+            shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)! - (70 * scale))
             self.addChild(shieldNode)
         }
         

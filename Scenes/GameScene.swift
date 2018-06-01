@@ -224,10 +224,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         let margin = (size.width - playableWidth) / 2
         gameArea = CGRect(x: margin, y: 0, width: playableWidth, height: size.height)
 
+        scaleFactor = size.width / CGFloat(maxDeviceScreenWidth)
+        print(scaleFactor)
         
         // label
         scoreLabel = SKLabelNode()
-        scoreLabel?.fontSize = 100.0
+        scoreLabel?.fontSize = 100.0 * scaleFactor
         scoreLabel?.fontName = FontName
         scoreLabel?.horizontalAlignmentMode = .center
         scoreLabel?.verticalAlignmentMode = .top
@@ -237,17 +239,16 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         fuelBackgroundNode = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.30), size: CGSize(width: 500, height: 80))
         
         //gravity indicators
-        gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 75, height: 150))
+        gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 75 * scaleFactor, height: 150 * scaleFactor))
         gravityNodeLabel.fontName = FontName
-        gravityNodeLabel.fontSize = 50.0
+        gravityNodeLabel.fontSize = 50.0 * scaleFactor
         gravityNodeLabel.fontColor = UIColor.green
         
         //player init
-        player = SpaceShip()
+        player = SpaceShip(scale: scaleFactor)
         super.init(size: size)
         
-        scaleFactor = self.frame.width / CGFloat(maxDeviceScreenWidth)
-        print(scaleFactor)
+
 
         gameLogic.delegate = self
         
@@ -519,6 +520,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
             let leftBarrier = SKSpriteNode(imageNamed: "BarrierLBig")
             leftBarrier.anchorPoint = CGPoint.zero
+            
+            var scaledX = leftBarrier.size.width * self.scaleFactor
+            var scaledY = leftBarrier.size.height * self.scaleFactor
+            leftBarrier.size = CGSize(width: scaledX, height: scaledY)
+            
             leftBarrier.position = CGPoint(
                 x: random(min: self.frame.minX - leftBarrier.size.width, max: self.frame.minX) ,
                 y: self.size.height + CGFloat(barrierHeight))
@@ -535,6 +541,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
             let rightBarrier = SKSpriteNode(imageNamed: "BarrierRBig")
             rightBarrier.anchorPoint = CGPoint.zero
+            
+            scaledX = rightBarrier.size.width * self.scaleFactor
+            scaledY = rightBarrier.size.height * self.scaleFactor
+            rightBarrier.size = CGSize(width: scaledX, height: scaledY)
+            
             rightBarrier.position = (CGPoint(x: leftBarrier.position.x
                 + leftBarrier.size.width + CGFloat(barrierGap),
                                              y: self.size.height + CGFloat(barrierHeight)))
@@ -674,7 +685,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         DispatchQueue.global().async {
             
-            let power = PowerUpNode()
+            let power = PowerUpNode(scale: self.scaleFactor)
             power.name = "power"
             var moveType = PowerUpMove.Straight
             moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
@@ -705,7 +716,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             DispatchQueue.global().async {
                 
-                let asteroid = AsteroidNode()
+                let asteroid = AsteroidNode(scale: self.scaleFactor)
                 asteroid.name = "asteroid"
                 var moveType = AsteroidMove.Straight
                 moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
@@ -736,7 +747,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             DispatchQueue.global().async {
                 
-                let shield = ShieldPowerNode()
+                let shield = ShieldPowerNode(scale: self.scaleFactor)
                 shield.name = "shieldPower"
                 var moveType = ShieldMove.Straight
                 moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)

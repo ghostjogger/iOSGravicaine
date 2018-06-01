@@ -15,9 +15,9 @@ class ShieldNode: SKSpriteNode{
     private let shieldAnimatedAtlas = SKTextureAtlas(named: "shield")
     private var shieldFrames: [SKTexture] = []
     
-    init() {
+    init(scale: CGFloat) {
         let texture = SKTexture(imageNamed: "shield1")
-        let size = CGSize(width: texture.size().width, height: texture.size().height)
+        let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         
         super.init(texture: texture, color: UIColor.clear, size: size)
         self.name = "shield"

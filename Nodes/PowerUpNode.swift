@@ -21,9 +21,9 @@ class PowerUpNode: SKSpriteNode {
     
     // MARK: init
     
-    init() {
+    init(scale: CGFloat) {
         let texture = SKTexture(imageNamed: "fuel")
-        let size = CGSize(width: texture.size().width, height: texture.size().height)
+        let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         super.init(texture: texture, color: UIColor.clear, size: size)
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody!.affectedByGravity = false
