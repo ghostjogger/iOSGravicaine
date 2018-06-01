@@ -572,7 +572,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
  
-        if !shieldActive{
+        if !shieldActive {
+            
+        
         gameOverTransitioning = true
         wasHighScore = isHighScore
         highScoreValue = highScore
