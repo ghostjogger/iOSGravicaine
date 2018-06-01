@@ -35,10 +35,6 @@ class MainMenuScene: SKScene{
     private var protonStarFrames: [SKTexture] = []
     let protonStarAnimatedAtlas = SKTextureAtlas(named: "star")
     var protonFrames: [SKTexture] = []
-    
-
-
-    
 
     override init(size:CGSize) {
         
@@ -54,11 +50,7 @@ class MainMenuScene: SKScene{
         
         titleScaleFactor = (Double(self.frame.width) / Double(maxDeviceScreenWidth)) * 0.85
     }
-    
-    
-    
-    
-    
+  
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
