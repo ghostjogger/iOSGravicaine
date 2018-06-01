@@ -189,7 +189,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - shield
     
     private var shieldSpawner: Timer? = nil
-    private let shieldFrequency: TimeInterval = 15.0
+    private let shieldFrequency: TimeInterval = 5.0
     
     @objc private func spawnShield(_ timer: Timer) {
         delegate?.shouldSpawnShield()

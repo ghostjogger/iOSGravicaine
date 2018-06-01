@@ -446,13 +446,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
             if pointOfTouch.x < self.size.width / 2{
                 if self.gameState == .inGame && !isFuelEmpty && !gameOverTransitioning{
-                player.physicsBody?.applyImpulse(CGVector(dx: -impulse, dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: -(Int(CGFloat(impulse) * scaleFactor)), dy: 0))
                 player.thrustLeft()
                 }
             }
             else if pointOfTouch.x >= self.size.width / 2{
                 if self.gameState == .inGame && !isFuelEmpty && !gameOverTransitioning{
-                player.physicsBody?.applyImpulse(CGVector(dx: impulse, dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: Int(CGFloat(impulse) * scaleFactor), dy: 0))
                 player.thrustRight()
                 }
             }
@@ -519,14 +519,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             //setup left barrier
 
             let leftBarrier = SKSpriteNode(imageNamed: "BarrierLBig")
-            leftBarrier.anchorPoint = CGPoint.zero
-            
             var scaledX = leftBarrier.size.width * self.scaleFactor
             var scaledY = leftBarrier.size.height * self.scaleFactor
             leftBarrier.size = CGSize(width: scaledX, height: scaledY)
             
             leftBarrier.position = CGPoint(
-                x: random(min: self.frame.minX - leftBarrier.size.width, max: self.frame.minX) ,
+                x: random(min: self.frame.minX - leftBarrier.size.width/2,
+                            max: self.frame.maxX - (CGFloat(barrierGap) * self.scaleFactor) - leftBarrier.size.width/2) ,
                 y: self.size.height + CGFloat(barrierHeight))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
@@ -540,14 +539,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             //setup right barrier
 
             let rightBarrier = SKSpriteNode(imageNamed: "BarrierRBig")
-            rightBarrier.anchorPoint = CGPoint.zero
-            
             scaledX = rightBarrier.size.width * self.scaleFactor
             scaledY = rightBarrier.size.height * self.scaleFactor
             rightBarrier.size = CGSize(width: scaledX, height: scaledY)
             
             rightBarrier.position = (CGPoint(x: leftBarrier.position.x
-                + leftBarrier.size.width + CGFloat(barrierGap),
+                + leftBarrier.size.width + (CGFloat(barrierGap) * self.scaleFactor),
                                              y: self.size.height + CGFloat(barrierHeight)))
             rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
             rightBarrier.physicsBody!.affectedByGravity = false
