@@ -22,9 +22,6 @@ class ShieldNode: SKSpriteNode{
         super.init(texture: texture, color: UIColor.clear, size: size)
         self.name = "shield"
         self.zPosition = 100
-//        self.physicsBody = SKPhysicsBody(rectangleOf: texture.size())
-//        self.physicsBody!.affectedByGravity = true
-
         
         //setup shield animation
         let numImages = shieldAnimatedAtlas.textureNames.count
