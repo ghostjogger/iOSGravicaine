@@ -17,7 +17,7 @@ let playerMass = 0.3
 
 let startFuel = 100
 
-let impulse = 110
+let impulse = 80
 let gravity = 1.5
 
 let shieldActivationTime = 6.0

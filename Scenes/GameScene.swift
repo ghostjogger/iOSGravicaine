@@ -122,8 +122,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     //powerup sound action
     private var powerUpSound: SKAction = SKAction.playSoundFileNamed("Powerup.wav", waitForCompletion: false)
     
-    // shield powerup sound action
+    // shield powerup sound actions
     private var shieldPowerSound: SKAction = SKAction.playSoundFileNamed("shieldSound.wav", waitForCompletion: false)
+    private var shieldFinishSound: SKAction = SKAction.playSoundFileNamed("shieldFinish.wav", waitForCompletion: false)
    
     
     // MARK: - game state
@@ -651,8 +652,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
                 
                 self.player.removeShield()
-                self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.8, repeats: false) { (time) in
+                self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false) { (time) in
                     
+                    self.player.run(self.shieldFinishSound)
                     self.shieldActive = false
                 }
             }

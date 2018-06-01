@@ -13,6 +13,7 @@
 		990B01C820BC8D6000F2BA3F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B01C720BC8D6000F2BA3F /* Constants.swift */; };
 		990B01CA20BDF03900F2BA3F /* HighScoreNamePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B01C920BDF03900F2BA3F /* HighScoreNamePanel.swift */; };
 		990D6B18208548B800429C9D /* star.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B17208548B800429C9D /* star.atlas */; };
+		993C7E4B20C1AFF30095D78D /* shieldFinish.wav in Resources */ = {isa = PBXBuildFile; fileRef = 993C7E4A20C1AFF30095D78D /* shieldFinish.wav */; };
 		9959EF5520BDFCF400B7F64C /* gameSoundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */; };
 		9959EF5720BF37C500B7F64C /* ShieldPowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */; };
 		9959EF5B20BF4A9E00B7F64C /* shieldSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */; };
@@ -53,6 +54,7 @@
 		990B01C720BC8D6000F2BA3F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		990B01C920BDF03900F2BA3F /* HighScoreNamePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreNamePanel.swift; sourceTree = "<group>"; };
 		990D6B17208548B800429C9D /* star.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = star.atlas; sourceTree = "<group>"; };
+		993C7E4A20C1AFF30095D78D /* shieldFinish.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shieldFinish.wav; sourceTree = "<group>"; };
 		9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameSoundtrack.mp3; sourceTree = "<group>"; };
 		9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldPowerNode.swift; sourceTree = "<group>"; };
 		9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shieldSound.wav; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				99B334D320BB44AC00AC5C59 /* sound62.wav */,
 				9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */,
 				9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */,
+				993C7E4A20C1AFF30095D78D /* shieldFinish.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				99A357C3207A595000F86F84 /* laser.mp3 in Resources */,
 				99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */,
 				99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */,
+				993C7E4B20C1AFF30095D78D /* shieldFinish.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
