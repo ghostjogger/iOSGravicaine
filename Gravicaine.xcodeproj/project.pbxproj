@@ -139,15 +139,12 @@
 		99A357BF207A585500F86F84 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				99A357D82082160F00F86F84 /* StartPanelNode.swift */,
+				99A7EBBB20C1C4FB00336F91 /* Panels */,
 				99A357D62081EA1F00F86F84 /* SpaceSpriteNode.swift */,
 				99A357C0207A587700F86F84 /* SpaceShip.swift */,
-				99766E2F2084E58900AA937A /* GameOverPanelNode.swift */,
 				99FB2C8620B1B458003C7510 /* PowerUpNode.swift */,
-				99B334CF20B5E99D00AC5C59 /* HighScorePanelNode.swift */,
 				990B01C120BB549800F2BA3F /* AsteroidNode.swift */,
 				990B01C320BC583F00F2BA3F /* ShieldNode.swift */,
-				990B01C920BDF03900F2BA3F /* HighScoreNamePanel.swift */,
 				9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */,
 			);
 			path = Nodes;
@@ -193,6 +190,17 @@
 				990B01C720BC8D6000F2BA3F /* Constants.swift */,
 			);
 			path = Gravicaine;
+			sourceTree = "<group>";
+		};
+		99A7EBBB20C1C4FB00336F91 /* Panels */ = {
+			isa = PBXGroup;
+			children = (
+				990B01C920BDF03900F2BA3F /* HighScoreNamePanel.swift */,
+				99B334CF20B5E99D00AC5C59 /* HighScorePanelNode.swift */,
+				99766E2F2084E58900AA937A /* GameOverPanelNode.swift */,
+				99A357D82082160F00F86F84 /* StartPanelNode.swift */,
+			);
+			path = Panels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

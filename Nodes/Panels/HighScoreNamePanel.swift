@@ -14,11 +14,12 @@ class HighScoreNamePanel: SKSpriteNode {
     
     private static let FadeInTranslationY: CGFloat = 80.0
     
+    let background = SKSpriteNode(imageNamed: "panelBackground")
     let gameOverLabel: SKLabelNode = SKLabelNode()
     let label: SKLabelNode = SKLabelNode()
     let highScoreLabel: SKLabelNode = SKLabelNode()
     let scoreLabel: SKLabelNode = SKLabelNode()
-    let labelVerticalSeparation = 40
+    let labelVerticalSeparation = 30
     
     init(size: CGSize) {
         
@@ -31,7 +32,7 @@ class HighScoreNamePanel: SKSpriteNode {
         scoreLabel.fontName = FontName
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
-        scoreLabel.text = "Top Gravicainer:"
+        scoreLabel.text = "High Score:"
         
         highScoreLabel.fontSize = 100.0 * scale
         highScoreLabel.fontName = FontName
@@ -65,17 +66,23 @@ class HighScoreNamePanel: SKSpriteNode {
         label.verticalAlignmentMode = .center
         label.text = ""
         
-        var pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
+        background.size = CGSize(width: background.size.width * scale,
+                                 height: background.size.height * scale)
+        var pos = CGPoint(x: size.width / 2, y: size.height * 0.25)
+        background.position = pos
+        
+        pos = CGPoint(x: size.width / 2, y: size.height * 0.30)
         scoreLabel.position = pos
-        pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale) * 1.8
+        pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
         highScoreLabel.position = pos
-        pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale) * 1.8
+        pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
         gameOverLabel.position = pos
         pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
         label.position = pos
         
         super.init(texture: nil, color: UIColor.clear, size: size)
         
+        self.addChild(background)
         self.addChild(gameOverLabel)
         self.addChild(scoreLabel)
         self.addChild(highScoreLabel)
