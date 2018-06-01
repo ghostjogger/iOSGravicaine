@@ -161,6 +161,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         // player appear
         player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        player.physicsBody?.mass = CGFloat(playerMass)
         player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * CGFloat(playerBaseY), duration: 0.3)
@@ -225,7 +226,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         gameArea = CGRect(x: margin, y: 0, width: playableWidth, height: size.height)
 
         scaleFactor = size.width / CGFloat(maxDeviceScreenWidth)
-        print(scaleFactor)
         
         // label
         scoreLabel = SKLabelNode()
@@ -446,13 +446,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
             if pointOfTouch.x < self.size.width / 2{
                 if self.gameState == .inGame && !isFuelEmpty && !gameOverTransitioning{
-                player.physicsBody?.applyImpulse(CGVector(dx: -(Int(CGFloat(impulse) * scaleFactor)), dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: -impulse, dy: 0))
                 player.thrustLeft()
                 }
             }
             else if pointOfTouch.x >= self.size.width / 2{
                 if self.gameState == .inGame && !isFuelEmpty && !gameOverTransitioning{
-                player.physicsBody?.applyImpulse(CGVector(dx: Int(CGFloat(impulse) * scaleFactor), dy: 0))
+                player.physicsBody?.applyImpulse(CGVector(dx: impulse, dy: 0))
                 player.thrustRight()
                 }
             }

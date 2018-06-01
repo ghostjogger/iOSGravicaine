@@ -16,7 +16,7 @@ enum ShieldMove {
 
 class ShieldPowerNode: SKSpriteNode {
     
-    let shieldSpeed: CGFloat = 500.0 // (speed is x px per second)
+    var shieldSpeed: CGFloat = 600.0 // (speed is x px per second)
     var move: ShieldMove = .Straight
     
     // MARK: init
@@ -26,6 +26,9 @@ class ShieldPowerNode: SKSpriteNode {
         let texture = SKTexture(imageNamed: "shield")
         let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         super.init(texture: texture, color: UIColor.clear, size: size)
+        
+        shieldSpeed = 600 * scale
+        
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody!.affectedByGravity = false
         self.physicsBody!.categoryBitMask = PhysicsCategories.ShieldPower

@@ -52,7 +52,7 @@ class MainMenuScene: SKScene{
       
         super.init(size: size)
         
-        titleScaleFactor = (Double(self.frame.width) / Double(maxDeviceScreenWidth)) * 0.8
+        titleScaleFactor = (Double(self.frame.width) / Double(maxDeviceScreenWidth)) * 0.85
     }
     
     

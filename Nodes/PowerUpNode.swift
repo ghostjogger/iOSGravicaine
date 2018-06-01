@@ -16,7 +16,7 @@ enum PowerUpMove {
 
 class PowerUpNode: SKSpriteNode {
     
-    let enemySpeed: CGFloat = 600.0 // (speed is x px per second)
+    var enemySpeed: CGFloat = 600.0 // (speed is x px per second)
     var move: PowerUpMove = .Straight
     
     // MARK: init
@@ -25,6 +25,9 @@ class PowerUpNode: SKSpriteNode {
         let texture = SKTexture(imageNamed: "fuel")
         let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         super.init(texture: texture, color: UIColor.clear, size: size)
+        
+        enemySpeed = 600 * scale
+        
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody!.affectedByGravity = false
         self.physicsBody!.categoryBitMask = PhysicsCategories.PowerUp
