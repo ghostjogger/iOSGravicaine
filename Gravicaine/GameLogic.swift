@@ -256,6 +256,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         if      body1.categoryBitMask == PhysicsCategories.Player
             &&  body2.categoryBitMask == PhysicsCategories.ShieldPower
         {
+            body2.node?.removeFromParent()
             self.shieldPowerTouchesPlayer()
         }
 
@@ -263,6 +264,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         if      body1.categoryBitMask == PhysicsCategories.Player
             &&  body2.categoryBitMask == PhysicsCategories.PowerUp
             {
+                body2.node?.removeFromParent()
                 self.powerUpTouchesPlayer()
             }
         

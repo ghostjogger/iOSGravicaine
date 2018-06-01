@@ -622,35 +622,22 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 }
     
     func powerUpTouchesPlayer(){
-        self.enumerateChildNodes(withName: "power") {
-            (node, stop) in
-            
-            node.removeFromParent()
-            
-        }
+
         let powerUpSequence = SKAction.sequence([powerUpSound])
         player.run(powerUpSequence)
-
-        
 
     }
     
     func shieldPowerTouchesPlayer(){
         
         if !shieldActive{
-            
-            self.enumerateChildNodes(withName: "shieldPower") {
-                (node, stop) in
-                
-                node.removeFromParent()
-            }
-            
+
             let shieldPowerSequence = SKAction.sequence([shieldPowerSound])
             
+            shieldActive = true
             player.setShield()
             player.run(shieldPowerSequence)
-            shieldActive = true
-            
+
             shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
                 
                 self.player.removeShield()
@@ -703,7 +690,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             DispatchQueue.main.async(execute: {
                 self.addChild(power)
                 power.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
-                    //
                 }
             })
             
