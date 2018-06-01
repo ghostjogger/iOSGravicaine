@@ -251,19 +251,28 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
                 body1 = contact.bodyB
                 body2 = contact.bodyA
             }
-
-        // player hits barrier
+        
+        //player hits shieldpowerup
         if      body1.categoryBitMask == PhysicsCategories.Player
-            &&  body2.categoryBitMask == PhysicsCategories.Barrier
-            {
-                self.barrierTouchesPlayer()
-            }
+            &&  body2.categoryBitMask == PhysicsCategories.ShieldPower
+        {
+            self.shieldPowerTouchesPlayer()
+        }
+
         //player hits powerup
         if      body1.categoryBitMask == PhysicsCategories.Player
             &&  body2.categoryBitMask == PhysicsCategories.PowerUp
             {
                 self.powerUpTouchesPlayer()
             }
+        
+        
+        // player hits barrier
+        if      body1.categoryBitMask == PhysicsCategories.Player
+            &&  body2.categoryBitMask == PhysicsCategories.Barrier
+        {
+            self.barrierTouchesPlayer()
+        }
         
         //player hits asteroid
         if      body1.categoryBitMask == PhysicsCategories.Player
@@ -272,12 +281,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
             self.asteroidTouchesPlayer()
         }
         
-        //player hits shieldpowerup
-        if      body1.categoryBitMask == PhysicsCategories.Player
-            &&  body2.categoryBitMask == PhysicsCategories.ShieldPower
-        {
-            self.shieldPowerTouchesPlayer()
-        }
+
 //
 //        // bullet hits enemy
 //        if body1.categoryBitMask == PhysicsCategories.Bullet && body2.categoryBitMask == PhysicsCategories.Enemy {
