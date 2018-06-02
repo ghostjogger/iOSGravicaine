@@ -16,8 +16,9 @@ extension SKNode {
             static let explosionSound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
         }
         
-        let animateExplosionAction = SKAction.animate(with: frames, timePerFrame: 0.1, resize: false, restore: false)
-        let playerExplosionSequence = SKAction.sequence([SKNodeExplosion.explosionSound, animateExplosionAction])
+        let animateExplosionAction = SKAction.animate(with: frames, timePerFrame: 0.05, resize: false, restore: false)
+        let playerExplosionSequence = SKAction.sequence([ animateExplosionAction])
+        self.removeAllActions()
         self.run(playerExplosionSequence, completion: {
             self.removeFromParent()
         })

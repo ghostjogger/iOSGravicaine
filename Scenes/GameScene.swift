@@ -504,7 +504,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         DispatchQueue.global().async {
             
             // two actions
-            let moveBarrier = SKAction.moveTo(y: CGFloat(-barrierHeight), duration: 3.5)
+            let moveBarrier = SKAction.moveTo(y: CGFloat(-barrierHeight), duration: barrierSpeed)
             let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
             let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
@@ -529,7 +529,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             leftBarrier.physicsBody!.affectedByGravity = false
             leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
             leftBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
-            leftBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player
+            leftBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player | PhysicsCategories.Asteroid
             leftBarrier.name = "barrier"
             
 
@@ -548,7 +548,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             rightBarrier.physicsBody!.affectedByGravity = false
             rightBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
             rightBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
-            rightBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player
+            rightBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Asteroid | PhysicsCategories.Player
             rightBarrier.name = "barrier"
             
             
