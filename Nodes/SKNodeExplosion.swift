@@ -1,11 +1,10 @@
 //
 //  SKNodeExplosion.swift
-//  solo-mission
+//  Gravicaine
 //
-//  Created by Romain ROCHE on 05/07/2016.
-//  Copyright © 2016 Romain ROCHE. All rights reserved.
+//  Created by Stephen Ball on 30/05/2018.
+//  Copyright © 2018 Stephen Ball. All rights reserved.
 //
-
 import SpriteKit
 
 extension SKNode {
@@ -21,6 +20,7 @@ extension SKNode {
         self.removeAllActions()
         self.run(playerExplosionSequence, completion: {
             self.removeFromParent()
+            completion()
         })
         
 //        let boom = SKSpriteNode(imageNamed: "explosion")
