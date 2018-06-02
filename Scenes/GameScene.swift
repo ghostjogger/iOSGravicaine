@@ -81,7 +81,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     var rightBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierRBig")
    
     // ui nodes
-    private let exitLabel = SKLabelNode(text: "Quit")
+    private let exitLabel = SKSpriteNode(imageNamed: "backIcon")
     private var startPanel: StartPanelNode? = nil
     private var gameOverPanel: GameOverPanelNode? = nil
     private var highScorePanel: HighScorePanelNode? = nil
@@ -192,6 +192,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             self.addChild(highScorePanel!)
             //fadein
             highScorePanel?.fadeIn()
+            
+            //name entry textfield
             highScoreText = UITextField(frame: CGRect(
                 x: ((view?.bounds.width)! / 2) - 160,
                 y: ((view?.bounds.height)! / 2) - 20,
@@ -355,13 +357,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         self.addChild(gravityNode)
         
         //exit label
-//        exitLabel.fontSize = 80.0
-//        exitLabel.fontName = FontName
-//        exitLabel.horizontalAlignmentMode = .left
-//        exitLabel.verticalAlignmentMode = .center
-//        exitLabel.zPosition = 50
-//        exitLabel.position = CGPoint(x: 200, y: self.size.height - 50.0)
-//        self.addChild(exitLabel)
+        exitLabel.zPosition = 50
+        exitLabel.size = CGSize(width: exitLabel.size.width * scaleFactor, height: exitLabel.size.height * scaleFactor)
+        exitLabel.position = CGPoint(x: self.frame.width * 0.1, y: self.frame.height * 0.95)
+        self.addChild(exitLabel)
 
         if GodMode {
             player.physicsBody?.categoryBitMask = PhysicsCategories.None
