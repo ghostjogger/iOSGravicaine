@@ -86,9 +86,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var gameOverPanel: GameOverPanelNode? = nil
     private var highScorePanel: HighScorePanelNode? = nil
     private let scoreLabel: SKLabelNode?
-    
-    //sound
-    let backgroundSound = SKAudioNode(fileNamed: "gameSoundtrack.mp3")
+
 
 
     // game data
@@ -111,20 +109,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         }
         
     }
-    
-    //player explosion animation variables
-    
-    private var playerExplosionFrames: [SKTexture] = []
-    private let playerExplosionSound: SKAction = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
-    let explosionAnimatedAtlas = SKTextureAtlas(named: "playerExplosion")
-    var explosionFrames: [SKTexture] = []
-    
-    //powerup sound action
-    private var powerUpSound: SKAction = SKAction.playSoundFileNamed("Powerup.wav", waitForCompletion: false)
-    
-    // shield powerup sound actions
-    private var shieldPowerSound: SKAction = SKAction.playSoundFileNamed("shieldSound.wav", waitForCompletion: false)
-    private var shieldFinishSound: SKAction = SKAction.playSoundFileNamed("shieldFinish.wav", waitForCompletion: false)
+
+
    
     
     // MARK: - game state
@@ -167,7 +153,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * CGFloat(playerBaseY), duration: 0.3)
         self.player.run(playerAppear){
-            self.addChild(self.backgroundSound)
+            self.addChild(backgroundSound)
         }
 
     }
@@ -255,17 +241,29 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
         gameLogic.delegate = self
         
-        //setup player explosion animation
-        let numImages = explosionAnimatedAtlas.textureNames.count
-        for i in 1...numImages {
-            let explosionTextureName = "explosion\(i)"
-            explosionFrames.append(explosionAnimatedAtlas.textureNamed(explosionTextureName))
+        if playerExplosionFrames.count == 0 {
+        
+            //setup player explosion animation
+            var numImages = playerExplosionAnimatedAtlas.textureNames.count
+            for i in 1...numImages {
+                let explosionTextureName = "explosion\(i)"
+                playerExplosionFrames.append(playerExplosionAnimatedAtlas.textureNamed(explosionTextureName))
+            }
+            
+            //setup entity explosion animation
+            numImages = entityExplosionAnimatedAtlas.textureNames.count
+            for i in 1...numImages {
+                let explosionTextureName = "entity\(i)"
+                entityExplosionFrames.append(entityExplosionAnimatedAtlas.textureNamed(explosionTextureName))
+            }
+            
+            //setup red explosion animation
+            numImages = redExplosionAnimatedAtlas.textureNames.count
+            for i in 1...numImages {
+                let explosionTextureName = "redExplosion\(i)"
+                redExplosionFrames.append(redExplosionAnimatedAtlas.textureNamed(explosionTextureName))
+            }
         }
-        playerExplosionFrames = explosionFrames
-        
-        
-
-
 
     }
     
@@ -437,6 +435,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             if exitLabel.contains(pointOfTouch){
                 
                 gameLogic.gameDidStop()
+                highScoreText?.removeFromSuperview()
                 let sceneToMoveTo = MainMenuScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.fade(withDuration: 0.5)
@@ -501,8 +500,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     func shouldSpawnBarrier(){
         
         if !gameOverTransitioning {
-            
-        //say   
+  
         DispatchQueue.global().async {
             
             // two actions
@@ -627,6 +625,27 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
     }
     
+    func shouldExplodeNode(_ node: SKNode) -> Bool {
+        // if this is an enemy and it's out of bounds, do nothing
+        if node is PowerUpNode {
+            return false
+        }
+        // otherwise, explode it!!
+        //node.explode()
+        return true
+    }
+    
+    func asteroidTouchesPlayer(node: SKNode){
+        
+        if shieldActive{
+            node.explode(frames: entityExplosionFrames)
+        }
+        else{
+            gameLogic.asteroidTouchesPlayer()
+        }
+        
+    }
+    
     func shieldPowerTouchesPlayer(){
         
         if !shieldActive{
@@ -642,7 +661,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 self.player.removeShield()
                 self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false) { (time) in
                     
-                    self.player.run(self.shieldFinishSound)
+                    self.player.run(shieldFinishSound)
                     self.shieldActive = false
                 }
             }

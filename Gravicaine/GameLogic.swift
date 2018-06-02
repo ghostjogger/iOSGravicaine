@@ -20,6 +20,7 @@ protocol GameLogicDelegate: class {
     func shouldSpawnAsteroid()
     func shouldSpawnShield()
     func shieldPowerTouchesPlayer()
+    func asteroidTouchesPlayer(node: SKNode)
 }
 
 class GameLogic: NSObject, SKPhysicsContactDelegate {
@@ -280,8 +281,16 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         if      body1.categoryBitMask == PhysicsCategories.Player
             &&  body2.categoryBitMask == PhysicsCategories.Asteroid
         {
-            self.asteroidTouchesPlayer()
+            if let node = body2.node{
+                if !GodMode
+                {
+                    delegate?.asteroidTouchesPlayer(node: node)
+                }
+            }
+ 
         }
+        
+
         
 
 //

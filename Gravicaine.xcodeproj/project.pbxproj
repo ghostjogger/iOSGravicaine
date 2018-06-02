@@ -14,6 +14,10 @@
 		990B01CA20BDF03900F2BA3F /* HighScoreNamePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B01C920BDF03900F2BA3F /* HighScoreNamePanel.swift */; };
 		990D6B18208548B800429C9D /* star.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B17208548B800429C9D /* star.atlas */; };
 		993C7E4B20C1AFF30095D78D /* shieldFinish.wav in Resources */ = {isa = PBXBuildFile; fileRef = 993C7E4A20C1AFF30095D78D /* shieldFinish.wav */; };
+		993C7E4D20C2D9BD0095D78D /* SKNodeExplosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993C7E4C20C2D9BC0095D78D /* SKNodeExplosion.swift */; };
+		993C7E4F20C2E0B90095D78D /* GameAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993C7E4E20C2E0B90095D78D /* GameAssets.swift */; };
+		993C7E5220C2E6820095D78D /* redExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 993C7E5120C2E6820095D78D /* redExplosion.atlas */; };
+		993C7E5620C2EB8C0095D78D /* entityExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 993C7E5520C2EB8C0095D78D /* entityExplosion.atlas */; };
 		9959EF5520BDFCF400B7F64C /* gameSoundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */; };
 		9959EF5720BF37C500B7F64C /* ShieldPowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */; };
 		9959EF5B20BF4A9E00B7F64C /* shieldSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */; };
@@ -54,6 +58,10 @@
 		990B01C920BDF03900F2BA3F /* HighScoreNamePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreNamePanel.swift; sourceTree = "<group>"; };
 		990D6B17208548B800429C9D /* star.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = star.atlas; sourceTree = "<group>"; };
 		993C7E4A20C1AFF30095D78D /* shieldFinish.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shieldFinish.wav; sourceTree = "<group>"; };
+		993C7E4C20C2D9BC0095D78D /* SKNodeExplosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNodeExplosion.swift; sourceTree = "<group>"; };
+		993C7E4E20C2E0B90095D78D /* GameAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAssets.swift; sourceTree = "<group>"; };
+		993C7E5120C2E6820095D78D /* redExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = redExplosion.atlas; sourceTree = "<group>"; };
+		993C7E5520C2EB8C0095D78D /* entityExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = entityExplosion.atlas; sourceTree = "<group>"; };
 		9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameSoundtrack.mp3; sourceTree = "<group>"; };
 		9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldPowerNode.swift; sourceTree = "<group>"; };
 		9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shieldSound.wav; sourceTree = "<group>"; };
@@ -143,6 +151,7 @@
 				990B01C120BB549800F2BA3F /* AsteroidNode.swift */,
 				990B01C320BC583F00F2BA3F /* ShieldNode.swift */,
 				9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */,
+				993C7E4C20C2D9BC0095D78D /* SKNodeExplosion.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -150,6 +159,8 @@
 		99A40D3B20754BE0000D5DD9 = {
 			isa = PBXGroup;
 			children = (
+				993C7E5520C2EB8C0095D78D /* entityExplosion.atlas */,
+				993C7E5120C2E6820095D78D /* redExplosion.atlas */,
 				990B01C520BC5B2700F2BA3F /* shield.atlas */,
 				990D6B17208548B800429C9D /* star.atlas */,
 				99A357D420813F2B00F86F84 /* playerExplosion.atlas */,
@@ -185,6 +196,7 @@
 				99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */,
 				99A40D5920754BE1000D5DD9 /* Info.plist */,
 				990B01C720BC8D6000F2BA3F /* Constants.swift */,
+				993C7E4E20C2E0B90095D78D /* GameAssets.swift */,
 			);
 			path = Gravicaine;
 			sourceTree = "<group>";
@@ -270,11 +282,13 @@
 				9959EF5B20BF4A9E00B7F64C /* shieldSound.wav in Resources */,
 				99B334D420BB44AC00AC5C59 /* sound62.wav in Resources */,
 				9959EF5520BDFCF400B7F64C /* gameSoundtrack.mp3 in Resources */,
+				993C7E5220C2E6820095D78D /* redExplosion.atlas in Resources */,
 				99B334D220BB355A00AC5C59 /* sound43.wav in Resources */,
 				99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */,
 				99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
 				99A357C3207A595000F86F84 /* laser.mp3 in Resources */,
+				993C7E5620C2EB8C0095D78D /* entityExplosion.atlas in Resources */,
 				99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */,
 				99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */,
 				993C7E4B20C1AFF30095D78D /* shieldFinish.wav in Resources */,
@@ -303,8 +317,10 @@
 				99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */,
 				99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */,
 				99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */,
+				993C7E4D20C2D9BD0095D78D /* SKNodeExplosion.swift in Sources */,
 				990B01CA20BDF03900F2BA3F /* HighScoreNamePanel.swift in Sources */,
 				99A357BE207A578700F86F84 /* Utils.swift in Sources */,
+				993C7E4F20C2E0B90095D78D /* GameAssets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
