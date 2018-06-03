@@ -30,13 +30,13 @@ class GameOverPanelNode: SKSpriteNode {
 
         let scale = size.width/CGFloat(maxDeviceScreenWidth)
         
-        scoreLabel.fontSize = 52.0 * scale
+        scoreLabel.fontSize = 35.0 * scale
         scoreLabel.fontName = FontName
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
         scoreLabel.text = "Your Score : \(self.score)"
         
-        highScoreLabel.fontSize = 52.0 * scale
+        highScoreLabel.fontSize = 35.0 * scale
         highScoreLabel.fontName = FontName
         highScoreLabel.horizontalAlignmentMode = .center
         highScoreLabel.verticalAlignmentMode = .center
@@ -47,13 +47,13 @@ class GameOverPanelNode: SKSpriteNode {
             highScoreLabel.text = "HIGH SCORE by  \(highScoreName!) is  \(highScore)"
         }
 
-        gameOverLabel.fontSize = 80.0 * scale
+        gameOverLabel.fontSize = 50.0 * scale
         gameOverLabel.fontName = FontName
         gameOverLabel.horizontalAlignmentMode = .center
         gameOverLabel.verticalAlignmentMode = .center
         gameOverLabel.text = "Game Over!"
         
-        label.fontSize = 80.0 * scale
+        label.fontSize = 70.0 * scale
         label.fontName = FontName
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center

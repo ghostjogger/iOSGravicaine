@@ -28,13 +28,13 @@ class HighScoreNamePanel: SKSpriteNode {
         
         let scale = size.width/CGFloat(maxDeviceScreenWidth)
         
-        scoreLabel.fontSize = 80.0 * scale
+        scoreLabel.fontSize = 70.0 * scale
         scoreLabel.fontName = FontName
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
         scoreLabel.text = "High Score:"
         
-        highScoreLabel.fontSize = 100.0 * scale
+        highScoreLabel.fontSize = 60.0 * scale
         highScoreLabel.fontName = FontName
         highScoreLabel.horizontalAlignmentMode = .center
         highScoreLabel.verticalAlignmentMode = .center
@@ -47,7 +47,7 @@ class HighScoreNamePanel: SKSpriteNode {
             highScoreLabel.text = ""
         }
         
-        gameOverLabel.fontSize = 110.0 * scale
+        gameOverLabel.fontSize = 70.0 * scale
         gameOverLabel.fontName = FontName
         gameOverLabel.horizontalAlignmentMode = .center
         gameOverLabel.verticalAlignmentMode = .center
