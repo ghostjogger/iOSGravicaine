@@ -285,7 +285,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
             &&  body2.categoryBitMask == PhysicsCategories.Asteroid
         {
             if let node = body2.node{
-                node.explode(frames: redExplosionFrames)
+                node.explode(frames: asteroidExplosionFrames)
             }
         }
         

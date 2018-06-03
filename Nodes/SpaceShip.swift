@@ -133,7 +133,7 @@ class SpaceShip: SKSpriteNode {
         if !self.children.contains(shieldNode){
             shieldNode = ShieldNode(scale: self.scale)
             shieldNode.animate()
-            shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)! - (70 * scale))
+            shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)!)
             self.addChild(shieldNode)
         }
         else{

@@ -29,6 +29,13 @@ var redExplosionFrames: [SKTexture] = []
 let redExplosionSound: SKAction = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
 let redExplosionAnimatedAtlas = SKTextureAtlas(named: "redExplosion")
 
+// asteroid explosion animation variables
+// redexplosion animation variables
+
+var asteroidExplosionFrames: [SKTexture] = []
+let asteroidExplosionSound: SKAction = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
+let asteroidExplosionAnimatedAtlas = SKTextureAtlas(named: "asteroidExplosion")
+
 //powerup sound action
 let powerUpSound: SKAction = SKAction.playSoundFileNamed("Powerup.wav", waitForCompletion: false)
 

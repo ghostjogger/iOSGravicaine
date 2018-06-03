@@ -81,7 +81,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     var rightBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierRBig")
    
     // ui nodes
-    private let exitLabel = SKSpriteNode(imageNamed: "backIcon")
+    private let exitLabel = SKSpriteNode(imageNamed: "exitButton")
     private var startPanel: StartPanelNode? = nil
     private var gameOverPanel: GameOverPanelNode? = nil
     private var highScorePanel: HighScorePanelNode? = nil
@@ -262,6 +262,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             for i in 1...numImages {
                 let explosionTextureName = "redExplosion\(i)"
                 redExplosionFrames.append(redExplosionAnimatedAtlas.textureNamed(explosionTextureName))
+            }
+            
+            //setup asteroid explosion animation
+            numImages = asteroidExplosionAnimatedAtlas.textureNames.count
+            for i in 1...numImages {
+                let explosionTextureName = "newexplosion\(i)"
+                asteroidExplosionFrames.append(asteroidExplosionAnimatedAtlas.textureNamed(explosionTextureName))
             }
         }
 
@@ -638,7 +645,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     func asteroidTouchesPlayer(node: SKNode){
         
         if shieldActive{
-            node.explode(frames: entityExplosionFrames)
+            node.explode(frames: asteroidExplosionFrames)
         }
         else{
             gameLogic.asteroidTouchesPlayer()

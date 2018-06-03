@@ -13,7 +13,9 @@ import GameplayKit
 
 class MainMenuScene: SKScene{
     
-    let startLabel = SKLabelNode(text: "Play")
+    let startLabel = SKSpriteNode(imageNamed: "playButton")
+    let optionLabel = SKSpriteNode(imageNamed: "optionButton")
+    let creditLabel = SKSpriteNode(imageNamed: "creditsButton")
     let signatureLabel = SKLabelNode(text: "Stephen Ball's")
     let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
@@ -27,6 +29,8 @@ class MainMenuScene: SKScene{
     let titleSound = SKAction.playSoundFileNamed("sound43.wav", waitForCompletion: false)
     let titleEndSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
     var titleScaleFactor = 1.0
+    
+    var scale:CGFloat = 1.0
     
     private var highScorePanel: HighScoreNamePanel? = nil
     
@@ -49,6 +53,7 @@ class MainMenuScene: SKScene{
         super.init(size: size)
         
         titleScaleFactor = (Double(self.frame.width) / Double(maxDeviceScreenWidth)) * 0.85
+        scale = CGFloat(self.frame.width / CGFloat(maxDeviceScreenWidth))
     }
   
     required init?(coder aDecoder: NSCoder) {
@@ -86,19 +91,19 @@ class MainMenuScene: SKScene{
         backgroundImage.size = self.size
         backgroundImage.zPosition = 0
         self.addChild(backgroundImage)
+        
+        optionLabel.position = CGPoint(x: self.frame.width * 0.2, y: self.frame.height * 0.05)
+        optionLabel.size = CGSize(width: optionLabel.size.width * scale, height: optionLabel.size.height * scale )
+        self.addChild(optionLabel)
 
-   
-        startLabel.fontName = "Jellee-Roman"
-        startLabel.fontColor = UIColor.white
-        startLabel.fontSize = 100 * CGFloat(titleScaleFactor)
         startLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.05)
+        startLabel.size = CGSize(width: startLabel.size.width * scale, height: startLabel.size.height * scale )
         self.addChild(startLabel)
         
-//        signatureLabel.fontName = "Jellee-Roman"
-//        signatureLabel.fontColor = UIColor.white
-//        signatureLabel.fontSize = 80
-//        signatureLabel.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.9)
-//        self.addChild(signatureLabel)
+        creditLabel.position = CGPoint(x: self.frame.width * 0.8, y: self.frame.height * 0.05)
+        creditLabel.size = CGSize(width: creditLabel.size.width * scale, height: creditLabel.size.height * scale )
+        self.addChild(creditLabel)
+
         
         titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.85)
         titleImage.zPosition = 10

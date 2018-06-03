@@ -12,11 +12,11 @@ import GameplayKit
 class ShieldNode: SKSpriteNode{
     
     private var shieldAnimationFrames: [SKTexture] = []
-    private let shieldAnimatedAtlas = SKTextureAtlas(named: "shield")
+    private let shieldAnimatedAtlas = SKTextureAtlas(named: "newshield")
     private var shieldFrames: [SKTexture] = []
     
     init(scale: CGFloat) {
-        let texture = SKTexture(imageNamed: "shield1")
+        let texture = SKTexture(imageNamed: "newshield1")
         let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         
         super.init(texture: texture, color: UIColor.clear, size: size)
@@ -27,7 +27,7 @@ class ShieldNode: SKSpriteNode{
         //setup shield animation
         let numImages = shieldAnimatedAtlas.textureNames.count
         for i in 1...numImages {
-            let shieldTextureName = "shield\(i)"
+            let shieldTextureName = "newshield\(i)"
             shieldFrames.append(shieldAnimatedAtlas.textureNamed(shieldTextureName))
         }
         shieldAnimationFrames = shieldFrames
@@ -41,7 +41,7 @@ class ShieldNode: SKSpriteNode{
     }
     
     func animate(){
-        let animateShieldAction = SKAction.animate(with: shieldAnimationFrames, timePerFrame: 0.02, resize: false, restore: false)
+        let animateShieldAction = SKAction.animate(with: shieldAnimationFrames, timePerFrame: 0.1, resize: false, restore: false)
         let shieldAnimation = SKAction.repeatForever(animateShieldAction)
         self.run(shieldAnimation)
     }
