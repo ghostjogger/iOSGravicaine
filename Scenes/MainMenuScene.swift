@@ -15,7 +15,7 @@ class MainMenuScene: SKScene{
     
     let startLabel = SKSpriteNode(imageNamed: "playButton")
     let optionLabel = SKSpriteNode(imageNamed: "optionButton")
-    let creditLabel = SKSpriteNode(imageNamed: "creditsButton")
+    let creditLabel = SKSpriteNode(imageNamed: "creditButton")
     let signatureLabel = SKLabelNode(text: "Stephen Ball's")
     let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
@@ -145,6 +145,17 @@ class MainMenuScene: SKScene{
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.fade(withDuration: 0.5)
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+            }
+            
+            else if optionLabel.contains(pointOfTouch){
+                
+                
+            }
+                
+            else if creditLabel.contains(pointOfTouch){
+                
+                
+                
             }
             
         }
