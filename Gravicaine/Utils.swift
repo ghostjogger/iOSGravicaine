@@ -51,20 +51,12 @@ func seedRandom(seed: UInt64) -> [Int]{
     let rd = GKRandomDistribution(randomSource: rs, lowestValue: 0, highestValue: 100)
     
     // Now generate 10 numbers in the range 0...100:
-    for _ in 1...10 {
+    for _ in 1...50 {
         let i = rd.nextInt()
         randomArray.append(i)
         print(i)
     }
     
-    print("---")
-    
-    // Let's set the seed back to the starting value, and print the same 10
-    // random numbers.
-    rs.seed = seed
-    for _ in 1...10 {
-        print(rd.nextInt())
-    }
     
     return randomArray
     
