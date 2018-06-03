@@ -39,4 +39,36 @@ func random(min: CGFloat, max: CGFloat) -> CGFloat {
     return random() * (max - min) + min
 }
 
+func seedRandom(seed: UInt64) -> [Int]{
+    
+    let rs = GKMersenneTwisterRandomSource()
+    rs.seed = seed
+    
+    
+    var randomArray = [Int]()
+    // Use the random source and a lowest and highest value to create a
+    // GKRandomDistribution object that will provide the random numbers.
+    let rd = GKRandomDistribution(randomSource: rs, lowestValue: 0, highestValue: 100)
+    
+    // Now generate 10 numbers in the range 0...100:
+    for _ in 1...10 {
+        let i = rd.nextInt()
+        randomArray.append(i)
+        print(i)
+    }
+    
+    print("---")
+    
+    // Let's set the seed back to the starting value, and print the same 10
+    // random numbers.
+    rs.seed = seed
+    for _ in 1...10 {
+        print(rd.nextInt())
+    }
+    
+    return randomArray
+    
+    
+}
+
 
