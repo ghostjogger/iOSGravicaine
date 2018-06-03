@@ -217,9 +217,13 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         
         self.stopSpawningBarrier()
         self.startSpawningBarrier()
+        self.stopReducingFuel()
         self.startReducingFuel()
+        self.stopSpawningPower()
         self.startSpawningPower()
+        self.stopSpawningAsteroids()
         self.startSpawningAsteroids()
+        self.stopSpawningShield()
         self.startSpawningShield()
         
     }
