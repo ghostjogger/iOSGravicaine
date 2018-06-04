@@ -53,7 +53,6 @@ func seedRandom(seed: UInt64) -> [Int]{
     for _ in 1...100 {
         let i = rd.nextInt()
         randomArray.append(i)
-        print(i)
     }
 
     return randomArray
@@ -75,7 +74,6 @@ func seedRandom(seed: UInt64, count: Int, low: Int, high: Int) -> [Int]{
     for _ in 1...count {
         let i = rd.nextInt()
         randomArray.append(i)
-        print(i)
     }
     
     return randomArray

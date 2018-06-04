@@ -61,10 +61,10 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     }
     
     // MARK: - power
-    private static let DefaultPowerSpawnInterval = 15.0
+    private static let DefaultPowerSpawnInterval = 20.0
     
     //MARK - asteroid
-    private static let DefaultAsteroidSpawnInterval = 2.0
+    private static let DefaultAsteroidSpawnInterval = 3.0
     
     // MARK: - fuel
     
@@ -190,7 +190,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     // MARK: - shield
     
     private var shieldSpawner: Timer? = nil
-    private let shieldFrequency: TimeInterval = 5.0
+    private let shieldFrequency: TimeInterval = 10.0
     
     @objc private func spawnShield(_ timer: Timer) {
         delegate?.shouldSpawnShield()
@@ -221,8 +221,8 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         self.startReducingFuel()
         self.stopSpawningPower()
         self.startSpawningPower()
-        //self.stopSpawningAsteroids()
-        //self.startSpawningAsteroids()
+        self.stopSpawningAsteroids()
+        self.startSpawningAsteroids()
         self.stopSpawningShield()
         self.startSpawningShield()
         
