@@ -11,15 +11,15 @@ import Foundation
 let barrierHeight = 512
 let barrierWidth = 1216
 let barrierGap = 400
-let barrierSpeed = 3.5
+let barrierSpeed = 4.0
 
 let playerBaseY = 0.3
 let playerMass = 0.3
 
 let startFuel = 100
 
-let impulse = 60
-let gravity = 1.5
+let impulse = 80
+let gravity = 2.2
 
 let shieldActivationTime = 6.0
 

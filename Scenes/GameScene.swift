@@ -313,7 +313,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         self.physicsWorld.contactDelegate = gameLogic
         
         barrierCount = 0
-        barriers = seedRandom(seed: 55, count: 500, low:0, high:9)
+        barriers = seedRandom(seed: 10, count: 500, low:0, high:9)
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
@@ -788,6 +788,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 
                 DispatchQueue.main.async(execute: {
                     self.addChild(shield)
+                    shield.animate()
                     shield.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
                         //
                     }

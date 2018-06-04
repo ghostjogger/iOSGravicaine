@@ -16,18 +16,31 @@ enum ShieldMove {
 
 class ShieldPowerNode: SKSpriteNode {
     
+    
     var shieldSpeed: CGFloat = 600.0 // (speed is x px per second)
     var move: ShieldMove = .Straight
+    
+    private var animationFrames: [SKTexture] = []
+    private let animatedAtlas = SKTextureAtlas(named: "bombs")
+    private var shieldFrames: [SKTexture] = []
     
     // MARK: init
     
     init(scale: CGFloat) {
         
-        let texture = SKTexture(imageNamed: "shield")
+        let texture = SKTexture(imageNamed: "b1")
         let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         super.init(texture: texture, color: UIColor.clear, size: size)
         
         shieldSpeed = 600 * scale
+        
+        //setup animation
+        let numImages = animatedAtlas.textureNames.count
+        for i in 1...numImages {
+            let shieldTextureName = "b\(i)"
+            shieldFrames.append(animatedAtlas.textureNamed(shieldTextureName))
+        }
+        animationFrames = shieldFrames
         
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody!.affectedByGravity = false
@@ -95,11 +108,18 @@ class ShieldPowerNode: SKSpriteNode {
         }
         
         //let
+
         let removeAction = SKAction.removeFromParent()
         let runAction = SKAction.run(run)
         let sequence = SKAction.sequence([moveAction!, removeAction, runAction])
         self.run(sequence)
         
+    }
+    
+    func animate(){
+        let animateAction = SKAction.animate(with: animationFrames, timePerFrame: 0.1, resize: false, restore: true)
+        let animation = SKAction.repeatForever(animateAction)
+        self.run(animation)
     }
     
 }
