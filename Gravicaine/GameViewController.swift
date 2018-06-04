@@ -29,8 +29,6 @@ class GameViewController: UIViewController {
         guard let view = self.view as! SKView? else  {
             return
         }
-        view.showsFPS = true
-        view.showsNodeCount = true
         
         scene.scaleMode = .aspectFill
         view.presentScene(scene)
