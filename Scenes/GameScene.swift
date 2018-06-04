@@ -79,6 +79,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     //barriers
     var leftBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierLBig")
     var rightBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierRBig")
+    var barriers = [Int]()
+    var barrierCount = 0
    
     // ui nodes
     private let exitLabel = SKSpriteNode(imageNamed: "exitButton")
@@ -310,6 +312,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
         self.physicsWorld.contactDelegate = gameLogic
         
+        barrierCount = 0
+        barriers = seedRandom(seed: 55, count: 500, low:0, high:9)
+        
         //set up 2 star backgrounds to scroll
         for i in 0...1{
             
@@ -507,6 +512,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     func shouldSpawnBarrier(){
         
         if !gameOverTransitioning {
+            
+            var nextBarrier = barriers[barrierCount]
   
         DispatchQueue.global().async {
             
@@ -528,10 +535,15 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             var scaledY = leftBarrier.size.height * self.scaleFactor
             leftBarrier.size = CGSize(width: scaledX, height: scaledY)
             
+            var leftOffset = ((leftBarrier.size.width/10) * CGFloat(nextBarrier))
             leftBarrier.position = CGPoint(
-                x: random(min: self.frame.minX - leftBarrier.size.width/2,
-                            max: self.frame.maxX - (CGFloat(barrierGap) * self.scaleFactor) - leftBarrier.size.width/2) ,
+                x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
                 y: self.size.height + CGFloat(barrierHeight))
+            
+//            leftBarrier.position = CGPoint(
+//                x: random(min: self.frame.minX - leftBarrier.size.width/2,
+//                            max: self.frame.maxX - (CGFloat(barrierGap) * self.scaleFactor) - leftBarrier.size.width/2) ,
+//                y: self.size.height + CGFloat(barrierHeight))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
             leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
@@ -563,6 +575,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             DispatchQueue.main.async(execute: {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
+                self.barrierCount += 1
                 leftBarrier.run(barrierSequence, completion: {
                     self.gameLogic.passBarrier()
                     })

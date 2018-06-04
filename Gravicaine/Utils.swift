@@ -12,7 +12,7 @@ import GameplayKit
 
 
 
-let GodMode: Bool = false
+let GodMode: Bool = true
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 let HighScoreName: String = "HighScoreName"
@@ -43,20 +43,40 @@ func seedRandom(seed: UInt64) -> [Int]{
     
     let rs = GKMersenneTwisterRandomSource()
     rs.seed = seed
-    
-    
+
     var randomArray = [Int]()
     // Use the random source and a lowest and highest value to create a
     // GKRandomDistribution object that will provide the random numbers.
-    let rd = GKRandomDistribution(randomSource: rs, lowestValue: 0, highestValue: 100)
+    let rd = GKRandomDistribution(randomSource: rs, lowestValue: 0, highestValue: 9)
     
-    // Now generate 10 numbers in the range 0...100:
-    for _ in 1...50 {
+    // Now generate 100 numbers in the range 0...9:
+    for _ in 1...100 {
         let i = rd.nextInt()
         randomArray.append(i)
         print(i)
     }
+
+    return randomArray
     
+    
+}
+
+func seedRandom(seed: UInt64, count: Int, low: Int, high: Int) -> [Int]{
+    
+    let rs = GKMersenneTwisterRandomSource()
+    rs.seed = seed
+    
+    var randomArray = [Int]()
+    // Use the random source and a lowest and highest value to create a
+    // GKRandomDistribution object that will provide the random numbers.
+    let rd = GKRandomDistribution(randomSource: rs, lowestValue: low, highestValue: high)
+    
+    // Now generate count numbers in the range low...high:
+    for _ in 1...count {
+        let i = rd.nextInt()
+        randomArray.append(i)
+        print(i)
+    }
     
     return randomArray
     

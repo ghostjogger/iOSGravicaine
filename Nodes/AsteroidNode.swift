@@ -16,7 +16,7 @@ enum AsteroidMove {
 
 class AsteroidNode: SKSpriteNode {
     
-    var asteroidSpeed: CGFloat = 1500.0 // (speed is x px per second)
+    var asteroidSpeed: CGFloat = 1000.0 // (speed is x px per second)
     var move: AsteroidMove = .Straight
     
     // MARK: init
@@ -26,7 +26,7 @@ class AsteroidNode: SKSpriteNode {
         let texture = SKTexture(imageNamed: "asteroid\(asteroidTextureChoice)")
         let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         
-        asteroidSpeed = 1500 * scale
+        asteroidSpeed = 1000 * scale
         
         super.init(texture: texture, color: UIColor.clear, size: size)
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
