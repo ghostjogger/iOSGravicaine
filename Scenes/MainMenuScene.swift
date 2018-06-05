@@ -54,8 +54,7 @@ class MainMenuScene: SKScene{
         
         titleScaleFactor = (Double(self.frame.width) / Double(maxDeviceScreenWidth)) * 0.85
         scale = CGFloat(self.frame.width / CGFloat(maxDeviceScreenWidth))
-        
-        var array = seedRandom(seed: 10)
+
     }
   
     required init?(coder aDecoder: NSCoder) {
