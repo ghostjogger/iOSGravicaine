@@ -57,10 +57,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var shieldTransitionTimer = Timer()
 
     //fuel
-    private var isFuelEmpty = false
-    private var fuelNode: SKSpriteNode = SKSpriteNode()
-    private var fuelBackgroundNode: SKSpriteNode = SKSpriteNode()
-    private var fuelLabel = SKLabelNode(text: "Fuel")
+//    private var isFuelEmpty = false
+//    private var fuelNode: SKSpriteNode = SKSpriteNode()
+//    private var fuelBackgroundNode: SKSpriteNode = SKSpriteNode()
+//    private var fuelLabel = SKLabelNode(text: "Fuel")
     
     //gravity
     private var gravityNode: SKSpriteNode = SKSpriteNode()
@@ -139,7 +139,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
         gameLogic.gameDidStart()
         
-        isFuelEmpty = false
+        //isFuelEmpty = false
         shieldActive = false
 
         startPanel?.fadeOut() {
@@ -226,8 +226,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         scoreLabel?.verticalAlignmentMode = .top
         
         // fuel node
-        fuelNode = SKSpriteNode(texture: nil, color: UIColor.green, size: CGSize(width: 500, height: 80))
-        fuelBackgroundNode = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.30), size: CGSize(width: 500, height: 80))
+//        fuelNode = SKSpriteNode(texture: nil, color: UIColor.green, size: CGSize(width: 500, height: 80))
+//        fuelBackgroundNode = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.30), size: CGSize(width: 500, height: 80))
         
         //gravity indicators
         gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 75 * scaleFactor, height: 150 * scaleFactor))
@@ -343,23 +343,23 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
 
         //fuel label prep
-        fuelNode.position = CGPoint(x: self.frame.midX - fuelNode.size.width/2, y: self.size.height * 0.05)
-        fuelNode.zPosition = 100
-        fuelNode.anchorPoint = CGPoint.zero
-        self.addChild(fuelNode)
-        
-        fuelBackgroundNode.position = CGPoint(x: self.frame.midX - fuelBackgroundNode.size.width/2, y: self.size.height * 0.05)
-        fuelBackgroundNode.zPosition = 50
-        fuelBackgroundNode.anchorPoint = CGPoint.zero
-        self.addChild(fuelBackgroundNode)
-
-        fuelLabel.fontSize = 42.0 * scaleFactor
-        fuelLabel.fontName = FontName
-        fuelLabel.horizontalAlignmentMode = .center
-        fuelLabel.verticalAlignmentMode = .center
-        fuelLabel.zPosition = 100
-        fuelLabel.position = CGPoint(x: self.frame.midX, y: self.size.height * 0.03)
-        self.addChild(fuelLabel)
+//        fuelNode.position = CGPoint(x: self.frame.midX - fuelNode.size.width/2, y: self.size.height * 0.05)
+//        fuelNode.zPosition = 100
+//        fuelNode.anchorPoint = CGPoint.zero
+//        self.addChild(fuelNode)
+//
+//        fuelBackgroundNode.position = CGPoint(x: self.frame.midX - fuelBackgroundNode.size.width/2, y: self.size.height * 0.05)
+//        fuelBackgroundNode.zPosition = 50
+//        fuelBackgroundNode.anchorPoint = CGPoint.zero
+//        self.addChild(fuelBackgroundNode)
+//
+//        fuelLabel.fontSize = 42.0 * scaleFactor
+//        fuelLabel.fontName = FontName
+//        fuelLabel.horizontalAlignmentMode = .center
+//        fuelLabel.verticalAlignmentMode = .center
+//        fuelLabel.zPosition = 100
+//        fuelLabel.position = CGPoint(x: self.frame.midX, y: self.size.height * 0.03)
+//        self.addChild(fuelLabel)
         
         //gravity nodes
         gravityNode.position.x = -1000
@@ -456,13 +456,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
 
             if pointOfTouch.x < self.size.width / 2{
-                if self.gameState == .inGame && !isFuelEmpty && !gameOverTransitioning{
+                if self.gameState == .inGame && !gameOverTransitioning{
                 player.physicsBody?.applyImpulse(CGVector(dx: -impulse, dy: 0))
                 player.thrustLeft()
                 }
             }
             else if pointOfTouch.x >= self.size.width / 2{
-                if self.gameState == .inGame && !isFuelEmpty && !gameOverTransitioning{
+                if self.gameState == .inGame && !gameOverTransitioning{
                 player.physicsBody?.applyImpulse(CGVector(dx: impulse, dy: 0))
                 player.thrustRight()
                 }
@@ -689,22 +689,22 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
     }
     
-    func fuelEmpty(){
-        
-        isFuelEmpty = true
-    }
+//    func fuelEmpty(){
+//
+//        isFuelEmpty = true
+//    }
     
-    func fuelDidChange(fuel:Int){
-
-        if fuel <= 0{
-            isFuelEmpty = true
-            fuelNode.size.width = 0
-        }
-
-        if !gameOverTransitioning && !isFuelEmpty{
-            fuelNode.size.width = CGFloat(fuel * 5)
-        }
-    }
+//    func fuelDidChange(fuel:Int){
+//
+//        if fuel <= 0{
+//            isFuelEmpty = true
+//            fuelNode.size.width = 0
+//        }
+//
+//        if !gameOverTransitioning && !isFuelEmpty{
+//            fuelNode.size.width = CGFloat(fuel * 5)
+//        }
+//    }
     
     func shouldSpawnPowerUp() {
         if !gameOverTransitioning {

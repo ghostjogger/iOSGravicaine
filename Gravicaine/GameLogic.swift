@@ -13,8 +13,8 @@ protocol GameLogicDelegate: class {
     func scoreDidChange(_ newScore: Int, text: String!)
     func shouldSpawnBarrier()
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int)
-    func fuelDidChange(fuel:Int)
-    func fuelEmpty()
+    //func fuelDidChange(fuel:Int)
+    //func fuelEmpty()
     func shouldSpawnPowerUp()
     func powerUpTouchesPlayer()
     func shouldSpawnAsteroid()
@@ -68,43 +68,43 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
     // MARK: - fuel
     
-    private var fuelReducer: Timer? = nil
-    private let fuelReducerFrequency: TimeInterval = 1.0
-    private static let defaultFuel = 100
+//    private var fuelReducer: Timer? = nil
+//    private let fuelReducerFrequency: TimeInterval = 1.0
+//    private static let defaultFuel = 100
     
-    private(set) var fuel: Int = GameLogic.defaultFuel {
-        didSet
-        {
-            if oldValue != fuel
-            {
-                delegate?.fuelDidChange(fuel:fuel)
-            }
-        }
-    }
-    
-    @objc private func reduceFuel(_ timer: Timer) {
-        fuel -= 1
-        self.startReducingFuel()
-        
-    }
-    
-    private func startReducingFuel() {
-        
-       fuelReducer = Timer.scheduledTimer(timeInterval: TimeInterval(fuelReducerFrequency),
-                                              target: self,
-                                              selector: #selector(GameLogic.reduceFuel(_:)),
-                                              userInfo: nil,
-                                              repeats: false)
-    }
-    
-    private func stopReducingFuel() {
-        fuelReducer?.invalidate()
-        fuelReducer = nil
-    }
-    
-    func addFuel(amount: Int){        
-        fuel += amount
-    }
+//    private(set) var fuel: Int = GameLogic.defaultFuel {
+//        didSet
+//        {
+//            if oldValue != fuel
+//            {
+//                delegate?.fuelDidChange(fuel:fuel)
+//            }
+//        }
+//    }
+//
+//    @objc private func reduceFuel(_ timer: Timer) {
+//        fuel -= 1
+//        self.startReducingFuel()
+//
+//    }
+//
+//    private func startReducingFuel() {
+//
+//       fuelReducer = Timer.scheduledTimer(timeInterval: TimeInterval(fuelReducerFrequency),
+//                                              target: self,
+//                                              selector: #selector(GameLogic.reduceFuel(_:)),
+//                                              userInfo: nil,
+//                                              repeats: false)
+//    }
+//
+//    private func stopReducingFuel() {
+//        fuelReducer?.invalidate()
+//        fuelReducer = nil
+//    }
+//
+//    func addFuel(amount: Int){
+//        fuel += amount
+//    }
     
     
     
@@ -217,10 +217,10 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         
         self.stopSpawningBarrier()
         self.startSpawningBarrier()
-        self.stopReducingFuel()
-        self.startReducingFuel()
-        self.stopSpawningPower()
-        self.startSpawningPower()
+        //self.stopReducingFuel()
+        //self.startReducingFuel()
+        //self.stopSpawningPower()
+        //self.startSpawningPower()
         self.stopSpawningAsteroids()
         self.startSpawningAsteroids()
         self.stopSpawningShield()
@@ -230,8 +230,8 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     
     func gameDidStop(){
         self.stopSpawningBarrier()
-        self.stopReducingFuel()
-        self.stopSpawningPower()
+        //self.stopReducingFuel()
+        //self.stopSpawningPower()
         self.stopSpawningAsteroids()
         self.stopSpawningShield()
     }
@@ -266,12 +266,12 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         }
 
         //player hits powerup
-        if      body1.categoryBitMask == PhysicsCategories.Player
-            &&  body2.categoryBitMask == PhysicsCategories.PowerUp
-            {
-                body2.node?.removeFromParent()
-                self.powerUpTouchesPlayer()
-            }
+//        if      body1.categoryBitMask == PhysicsCategories.Player
+//            &&  body2.categoryBitMask == PhysicsCategories.PowerUp
+//            {
+//                body2.node?.removeFromParent()
+//                self.powerUpTouchesPlayer()
+//            }
         
         
         // player hits barrier
@@ -328,10 +328,10 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         }
     }
     
-    func powerUpTouchesPlayer(){
-        self.fuel = GameLogic.defaultFuel
-        delegate?.powerUpTouchesPlayer()
-    }
+//    func powerUpTouchesPlayer(){
+//        self.fuel = GameLogic.defaultFuel
+//        delegate?.powerUpTouchesPlayer()
+//    }
     
     func shieldPowerTouchesPlayer(){
         
