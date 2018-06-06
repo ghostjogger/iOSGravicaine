@@ -28,6 +28,7 @@ struct PhysicsCategories {
     static let PowerUp: UInt32 = 0b100000 //32
     static let ShieldPower: UInt32 = 0b1000000 //64
     static let Shield: UInt32 = 0b10000000 //128
+    static let BarrierGap: UInt32 = 0b100000000 //256
     
 }
 

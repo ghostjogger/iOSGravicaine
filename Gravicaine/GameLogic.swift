@@ -182,10 +182,6 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         barrierSpawner = nil
     }
     
-    func passBarrier(){
-        self.score += 1
-    }
-    
     
     // MARK: - shield
     
@@ -221,8 +217,8 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         //self.startReducingFuel()
         //self.stopSpawningPower()
         //self.startSpawningPower()
-        self.stopSpawningAsteroids()
-        self.startSpawningAsteroids()
+        //self.stopSpawningAsteroids()
+        //self.startSpawningAsteroids()
         self.stopSpawningShield()
         self.startSpawningShield()
         
@@ -265,13 +261,13 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
             self.shieldPowerTouchesPlayer()
         }
 
-        //player hits powerup
-//        if      body1.categoryBitMask == PhysicsCategories.Player
-//            &&  body2.categoryBitMask == PhysicsCategories.PowerUp
-//            {
-//                body2.node?.removeFromParent()
-//                self.powerUpTouchesPlayer()
-//            }
+        //player contacts BarrierGap
+        if      body1.categoryBitMask == PhysicsCategories.Player
+            &&  body2.categoryBitMask == PhysicsCategories.BarrierGap
+            {
+                body2.node?.removeFromParent()
+                self.score += 1
+            }
         
         
         // player hits barrier

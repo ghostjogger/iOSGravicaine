@@ -570,16 +570,29 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             rightBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Asteroid | PhysicsCategories.Player
             rightBarrier.name = "barrier"
             
+            //setup gap
+            let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
+            let barrierSpaceNode = SKSpriteNode(texture: nil, color: UIColor.clear, size: size)
+            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2, y: self.size.height + CGFloat(barrierHeight) + 10.0)
+            barrierSpaceNode.physicsBody = SKPhysicsBody(rectangleOf: barrierSpaceNode.size)
+            barrierSpaceNode.physicsBody?.affectedByGravity = false
+            barrierSpaceNode.physicsBody!.categoryBitMask = PhysicsCategories.BarrierGap
+            barrierSpaceNode.physicsBody!.collisionBitMask = PhysicsCategories.None
+            barrierSpaceNode.physicsBody!.contactTestBitMask = PhysicsCategories.Player
+            barrierSpaceNode.name = "barrierGap"
+            
             
             
             DispatchQueue.main.async(execute: {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
+                self.addChild(barrierSpaceNode)
                 self.barrierCount += 1
                 leftBarrier.run(barrierSequence, completion: {
-                    self.gameLogic.passBarrier()
                     })
                 rightBarrier.run(barrierSequence, completion: {
+                })
+                barrierSpaceNode.run(barrierSequence, completion: {
                 })
             })
         }
@@ -601,6 +614,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             node.removeAllActions()
   
+        }
+        self.enumerateChildNodes(withName: "barrierGap") {
+            (node, stop) in
+                
+            node.removeAllActions()
+                
         }
         self.enumerateChildNodes(withName: "power") {
             (node, stop) in
