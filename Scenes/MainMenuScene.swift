@@ -14,9 +14,9 @@ import SwiftEntryKit
 
 class MainMenuScene: SKScene{
     
-    let startLabel = SKSpriteNode(imageNamed: "playButton")
-    let optionLabel = SKSpriteNode(imageNamed: "optionButton")
-    let creditLabel = SKSpriteNode(imageNamed: "creditButton")
+    let startLabel = SKSpriteNode(imageNamed: "play")
+    let optionLabel = SKSpriteNode(imageNamed: "options")
+    let creditLabel = SKSpriteNode(imageNamed: "score")
     let signatureLabel = SKLabelNode(text: "Stephen Ball's")
     let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")

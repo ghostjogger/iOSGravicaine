@@ -13,7 +13,7 @@ let barrierWidth = 1216
 let barrierGap = 400
 let barrierSpeed = 4.0
 
-let playerBaseY = 0.3
+let playerBaseY = 0.2
 let playerMass = 0.3
 
 let startFuel = 100

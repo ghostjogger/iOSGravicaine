@@ -83,7 +83,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     var barrierCount = 0
    
     // ui nodes
-    private let exitLabel = SKSpriteNode(imageNamed: "exitButton")
+    private let exitLabel = SKSpriteNode(imageNamed: "exit")
+    private let pauseLabel = SKSpriteNode(imageNamed: "pause")
     private var startPanel: StartPanelNode? = nil
     private var gameOverPanel: GameOverPanelNode? = nil
     private var highScorePanel: HighScorePanelNode? = nil
@@ -371,6 +372,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         exitLabel.size = CGSize(width: exitLabel.size.width * scaleFactor, height: exitLabel.size.height * scaleFactor)
         exitLabel.position = CGPoint(x: self.frame.width * 0.1, y: self.frame.height * 0.95)
         self.addChild(exitLabel)
+        
+        //pause label
+        pauseLabel.zPosition = 50
+        pauseLabel.size = CGSize(width: pauseLabel.size.width * scaleFactor, height: pauseLabel.size.height * scaleFactor)
+        pauseLabel.position = CGPoint(x: self.frame.width * 0.9, y: self.frame.height * 0.95)
+        self.addChild(pauseLabel)
 
         if GodMode {
             player.physicsBody?.categoryBitMask = PhysicsCategories.None
@@ -608,6 +615,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         gameOverTransitioning = true
         wasHighScore = isHighScore
         highScoreValue = highScore
+            
         
         self.enumerateChildNodes(withName: "barrier") {
             (node, stop) in
