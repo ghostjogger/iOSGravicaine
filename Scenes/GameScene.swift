@@ -15,6 +15,7 @@ enum GameState {
     case waiting
     case inGame
     case gameOver
+    case paused
 }
 
 extension SKAction {
@@ -107,6 +108,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             case .gameOver:
                 self.setGameOverState()
                 break
+            case .paused:
+                self.setPausedState()
+                break
             default: break
             }
         }
@@ -117,6 +121,18 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
    
     
     // MARK: - game state
+    
+    private func setPausedState(){
+        
+//        for node in self.children{
+//            if let action = node.action(forKey: "moving"){
+//                action.speed = 0
+//            }
+//        }
+        self.scene?.isPaused = true
+    }
+    
+    
     
     private func setWaitingGameState() {
         
@@ -460,6 +476,15 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 let myTransition = SKTransition.fade(withDuration: 0.5)
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
             }
+            
+            if pauseLabel.contains(pointOfTouch){
+                if (self.scene?.isPaused)!{
+                    self.scene?.isPaused = false
+                }
+                else{
+                    self.scene?.isPaused = true
+                }
+            }
 
 
             if pointOfTouch.x < self.size.width / 2{
@@ -595,12 +620,16 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 self.addChild(rightBarrier)
                 self.addChild(barrierSpaceNode)
                 self.barrierCount += 1
-                leftBarrier.run(barrierSequence, completion: {
-                    })
-                rightBarrier.run(barrierSequence, completion: {
-                })
-                barrierSpaceNode.run(barrierSequence, completion: {
-                })
+                leftBarrier.run(barrierSequence, withKey: "moving")
+                rightBarrier.run(barrierSequence, withKey: "moving")
+                barrierSpaceNode.run(barrierSequence, withKey: "moving")
+                
+//                leftBarrier.run(barrierSequence, completion: {
+//                    })
+//                rightBarrier.run(barrierSequence, completion: {
+//                })
+//                barrierSpaceNode.run(barrierSequence, completion: {
+//                })
             })
         }
         
@@ -610,44 +639,15 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
  
         if !shieldActive {
-            
-        
+ 
         gameOverTransitioning = true
         wasHighScore = isHighScore
         highScoreValue = highScore
             
-        
-        self.enumerateChildNodes(withName: "barrier") {
-            (node, stop) in
-            
+        for node in self.children{
             node.removeAllActions()
-  
         }
-        self.enumerateChildNodes(withName: "barrierGap") {
-            (node, stop) in
-                
-            node.removeAllActions()
-                
-        }
-        self.enumerateChildNodes(withName: "power") {
-            (node, stop) in
-            
-            node.removeAllActions()
-            
-        }
-        self.enumerateChildNodes(withName: "asteroid") {
-            (node, stop) in
-            
-            node.removeAllActions()
-            
-        }
-        self.enumerateChildNodes(withName: "shieldPower") {
-                (node, stop) in
-                
-                node.removeAllActions()
-                
-        }
-        
+ 
         backgroundSound.removeFromParent()
         
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
