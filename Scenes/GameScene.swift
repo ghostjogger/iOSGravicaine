@@ -434,14 +434,14 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             if player.position.x > self.frame.maxX - player.size.width/2
             {
                 player.position.x = self.frame.maxX - player.size.width/2
-                player.physicsBody?.velocity = CGVector(dx: -10, dy: 0)
+                player.physicsBody?.velocity = CGVector(dx: -1, dy: 0)
               
             }
             
             if player.position.x < self.frame.minX + player.size.width/2
             {
                 player.position.x = self.frame.minX + player.size.width/2
-                player.physicsBody?.velocity = CGVector(dx: 10, dy: 0)
+                player.physicsBody?.velocity = CGVector(dx: 1, dy: 0)
          
             }
         
