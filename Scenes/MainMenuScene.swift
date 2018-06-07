@@ -16,7 +16,7 @@ class MainMenuScene: SKScene{
     
     let startLabel = SKSpriteNode(imageNamed: "play")
     let optionLabel = SKSpriteNode(imageNamed: "options")
-    let creditLabel = SKSpriteNode(imageNamed: "score")
+    let scoresLabel = SKSpriteNode(imageNamed: "score")
     let signatureLabel = SKLabelNode(text: "Stephen Ball's")
     let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
@@ -139,17 +139,10 @@ class MainMenuScene: SKScene{
         startLabel.size = CGSize(width: startLabel.size.width * scale, height: startLabel.size.height * scale )
         self.addChild(startLabel)
         
-        creditLabel.position = CGPoint(x: self.frame.width * 0.8, y: self.frame.height * 0.05)
-        creditLabel.size = CGSize(width: creditLabel.size.width * scale, height: creditLabel.size.height * scale )
-        self.addChild(creditLabel)
-        
-        
-        
-        
-        
-        
-        
-        
+        scoresLabel.position = CGPoint(x: self.frame.width * 0.8, y: self.frame.height * 0.05)
+        scoresLabel.size = CGSize(width: scoresLabel.size.width * scale, height: scoresLabel.size.height * scale )
+        self.addChild(scoresLabel)
+ 
         titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.85)
         titleImage.zPosition = 10
         titleImage.setScale(5.0)
@@ -157,28 +150,15 @@ class MainMenuScene: SKScene{
         let titleAction = SKAction.scale(to: CGFloat(titleScaleFactor), duration: 1.4)
         let titleSequence = SKAction.sequence([titleSound, titleAction,titleEndSound])
         titleImage.run(titleSequence){
-            
-            
-            
+     
             if UserDefaults.standard.string(forKey: HighScoreName) != nil{
                 
-                
                 SwiftEntryKit.display(entry: self.notificationView, using: self.attributes)
-                
-                
+      
             }
             
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+      
     }
     
     
@@ -204,15 +184,12 @@ class MainMenuScene: SKScene{
                 
             }
                 
-            else if creditLabel.contains(pointOfTouch){
-                
-                
+            else if scoresLabel.contains(pointOfTouch){
+          
                 SwiftEntryKit.display(entry: self.notificationView, using: self.attributes)
                 
             }
-            
         }
-        
     }
     
     func spawnAnimation(){

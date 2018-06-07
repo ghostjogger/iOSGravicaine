@@ -480,9 +480,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             if pauseLabel.contains(pointOfTouch){
                 if (self.scene?.isPaused)!{
                     self.scene?.isPaused = false
+                    gameLogic.gameDidUnpause()
                 }
                 else{
                     self.scene?.isPaused = true
+                    gameLogic.gameDidPause()
                 }
             }
 
