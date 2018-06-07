@@ -232,6 +232,15 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         self.stopSpawningShield()
     }
     
+    func gameDidPause(){
+        
+    }
+    
+    
+    func gameDidUnpause(){
+        
+    }
+    
 
     
     // MARK: - SKPhysicsContactDelegate
