@@ -30,7 +30,7 @@ class MainMenuScene: SKScene{
     let titleSound = SKAction.playSoundFileNamed("sound43.wav", waitForCompletion: false)
     let titleEndSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
     var titleScaleFactor = 1.0
-    var music: Bool?
+
 
     var scale:CGFloat = 1.0
     
@@ -49,6 +49,8 @@ class MainMenuScene: SKScene{
     
     var optionBackground = SKSpriteNode(imageNamed: "panelBackground")
     var musicLabel = SKLabelNode(text: "Game Music")
+    var music: Bool?
+    var musicNode: SKSpriteNode = SKSpriteNode()
     
     
     private var highScorePanel: HighScoreNamePanel? = nil
@@ -220,6 +222,12 @@ class MainMenuScene: SKScene{
             
             let pointOfTouch = touch.location(in: self)
             
+            if self.children.contains(musicNode){
+                if musicNode.contains(pointOfTouch){
+                    toggleMusic()
+                }
+            }
+            
             if startLabel.contains(pointOfTouch){
                 
                 let sceneToMoveTo = GameScene(size: self.size)
@@ -258,6 +266,33 @@ class MainMenuScene: SKScene{
             
         }
     }
+    
+    func toggleMusic(){
+        
+        music! = !(music!)
+        UserDefaults.standard.set(music!, forKey: "music")
+        
+        if music!{
+            
+            musicNode.removeFromParent()
+            musicNode = SKSpriteNode(imageNamed: "on")
+            musicNode.zPosition = 200
+            musicNode.position = CGPoint.zero
+            self.addChild(musicNode)
+            
+        }
+        else{
+            musicNode.removeFromParent()
+            musicNode = SKSpriteNode(imageNamed: "off")
+            musicNode.zPosition = 200
+            musicNode.position = CGPoint.zero
+            self.addChild(musicNode)
+            
+        }
+        
+        
+    }
+    
     
     func spawnAnimation(){
         
