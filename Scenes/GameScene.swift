@@ -333,7 +333,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
         let sceneToMoveTo = MainMenuScene(size: self.size)
         sceneToMoveTo.scaleMode = self.scaleMode
-        self.view!.presentScene(sceneToMoveTo)
+        self.view?.presentScene(sceneToMoveTo)
         return true
     }
     
@@ -480,7 +480,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 SwiftEntryKit.dismiss()
                 let sceneToMoveTo = MainMenuScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
-                self.view!.presentScene(sceneToMoveTo)
+                self.view?.presentScene(sceneToMoveTo)
             }
             
             if pauseLabel.contains(pointOfTouch){
@@ -530,7 +530,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let sceneToMoveTo = GameScene(size: self.size)
             sceneToMoveTo.scaleMode = self.scaleMode
             let myTransition = SKTransition.fade(withDuration: 1.0)
-            self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+            self.view?.presentScene(sceneToMoveTo, transition:myTransition)
         }
     }
     
