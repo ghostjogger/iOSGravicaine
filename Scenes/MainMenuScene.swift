@@ -36,10 +36,17 @@ class MainMenuScene: SKScene{
     var score:Int
     var highScoreName: String?
     
-    var attributes: EKAttributes
-    var message: EKSimpleMessage
-    var notificationMessage: EKNotificationMessage
-    var notificationView: EKNotificationMessageView
+    //score panel setup
+    var scoreattributes: EKAttributes
+    var scoremessage: EKSimpleMessage
+    var scorenotificationMessage: EKNotificationMessage
+    var scorenotificationView: EKNotificationMessageView
+    
+    //options panel setup
+    var optionsattributes: EKAttributes
+    var optionsmessage: EKSimpleMessage
+    var optionsnotificationMessage: EKNotificationMessage
+    var optionsnotificationView: EKNotificationMessageView
     
     private var highScorePanel: HighScoreNamePanel? = nil
     
@@ -69,20 +76,36 @@ class MainMenuScene: SKScene{
  
         
         
-        attributes = EKAttributes.centerFloat
-        attributes.displayDuration = .infinity
-        attributes.entryInteraction = .dismiss
-        attributes.entryBackground = .image(image: UIImage(named: "panelBackground")!)
-        attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
-        attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
-        message = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "AppIcon"),
-                                  title: EKProperty.LabelContent(text: "Highest Score:",
+        scoreattributes = EKAttributes.centerFloat
+        scoreattributes.displayDuration = 4.0
+        scoreattributes.entryInteraction = .dismiss
+        scoreattributes.entryBackground = .image(image: UIImage(named: "panelBackground")!)
+        scoreattributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+        scoreattributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+        scoremessage = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
+                                  title: EKProperty.LabelContent(text: "Highest Score",
                                                                  style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
                                   description: EKProperty.LabelContent(text: "\(highScoreName!) \n\n   \(score)",
                                     style: EKProperty.Label(font: UIFont(name: FontName, size: 12.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
         
-        notificationMessage = EKNotificationMessage(simpleMessage: message)
-        notificationView = EKNotificationMessageView(with: notificationMessage)
+        scorenotificationMessage = EKNotificationMessage(simpleMessage: scoremessage)
+        scorenotificationView = EKNotificationMessageView(with: scorenotificationMessage)
+        
+        
+        optionsattributes = EKAttributes.centerFloat
+        optionsattributes.displayDuration = .infinity
+        optionsattributes.entryInteraction = .dismiss
+        optionsattributes.entryBackground = .image(image: UIImage(named: "panelBackground")!)
+        optionsattributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+        optionsattributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
+        optionsmessage = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
+                                       title: EKProperty.LabelContent(text: "Options",
+                                                                      style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
+                                       description: EKProperty.LabelContent(text: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+                                        style: EKProperty.Label(font: UIFont(name: FontName, size: 12.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+        
+        optionsnotificationMessage = EKNotificationMessage(simpleMessage: optionsmessage)
+        optionsnotificationView = EKNotificationMessageView(with: optionsnotificationMessage)
         
         
         super.init(size: size)
@@ -153,7 +176,7 @@ class MainMenuScene: SKScene{
      
             if UserDefaults.standard.string(forKey: HighScoreName) != nil{
                 
-                SwiftEntryKit.display(entry: self.notificationView, using: self.attributes)
+                SwiftEntryKit.display(entry: self.scorenotificationView, using: self.scoreattributes)
       
             }
             
@@ -181,11 +204,13 @@ class MainMenuScene: SKScene{
                 
             else if optionLabel.contains(pointOfTouch){
                 
+                SwiftEntryKit.display(entry: self.optionsnotificationView, using: self.optionsattributes)
                 
             }
                 
             else if scoresLabel.contains(pointOfTouch){
                 
+                SwiftEntryKit.display(entry: self.scorenotificationView, using: self.scoreattributes)
                 
             }
         }

@@ -183,7 +183,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
 
         if !wasHighScore{
-            message = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "AppIcon"),
+            message = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
                                       title: EKProperty.LabelContent(text: "Game Over! \nTap to try again!!",
                                                                      style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
                                       description: EKProperty.LabelContent(text: "You scored :   \(gameLogic.score)",
@@ -262,7 +262,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         attributes.entryBackground = .image(image: UIImage(named: "panelBackground")!)
         attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
         attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
-        message = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "AppIcon"),
+        message = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
                                   title: EKProperty.LabelContent(text: "Game Over! \nTap to try again!!",
                                                                  style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
                                   description: EKProperty.LabelContent(text: "You scored :   \(gameLogic.score)",
