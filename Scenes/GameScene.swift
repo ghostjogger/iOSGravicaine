@@ -66,12 +66,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var leftTouchActive = false
     private var rightTouchActive = false
 
-
-    //fuel
-//    private var isFuelEmpty = false
-//    private var fuelNode: SKSpriteNode = SKSpriteNode()
-//    private var fuelBackgroundNode: SKSpriteNode = SKSpriteNode()
-//    private var fuelLabel = SKLabelNode(text: "Fuel")
     
     //gravity
     private var gravityNode: SKSpriteNode = SKSpriteNode()
@@ -133,12 +127,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     // MARK: - game state
     
     private func setPausedState(){
-        
-//        for node in self.children{
-//            if let action = node.action(forKey: "moving"){
-//                action.speed = 0
-//            }
-//        }
+
         self.scene?.isPaused = true
     }
     
@@ -341,15 +330,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         highScoreText?.removeFromSuperview()
         highScorePanel?.removeFromParent()
         highScorePanel?.fadeOut()
-//        gameOverPanel?.removeFromParent()
-//        gameOverPanel = GameOverPanelNode(size: self.size, score: gameLogic.score )
-//        gameOverPanel?.zPosition = 50
-//        self.addChild(gameOverPanel!)
-//        gameOverPanel?.fadeIn()
+
         let sceneToMoveTo = MainMenuScene(size: self.size)
         sceneToMoveTo.scaleMode = self.scaleMode
-        let myTransition = SKTransition.fade(withDuration: 1.0)
-        self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+        self.view!.presentScene(sceneToMoveTo)
         return true
     }
     
@@ -388,26 +372,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         scoreLabel?.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.95)
         scoreLabel?.text = gameLogic.scoreText()
         self.addChild(scoreLabel!)
-        
 
-        //fuel label prep
-//        fuelNode.position = CGPoint(x: self.frame.midX - fuelNode.size.width/2, y: self.size.height * 0.05)
-//        fuelNode.zPosition = 100
-//        fuelNode.anchorPoint = CGPoint.zero
-//        self.addChild(fuelNode)
-//
-//        fuelBackgroundNode.position = CGPoint(x: self.frame.midX - fuelBackgroundNode.size.width/2, y: self.size.height * 0.05)
-//        fuelBackgroundNode.zPosition = 50
-//        fuelBackgroundNode.anchorPoint = CGPoint.zero
-//        self.addChild(fuelBackgroundNode)
-//
-//        fuelLabel.fontSize = 42.0 * scaleFactor
-//        fuelLabel.fontName = FontName
-//        fuelLabel.horizontalAlignmentMode = .center
-//        fuelLabel.verticalAlignmentMode = .center
-//        fuelLabel.zPosition = 100
-//        fuelLabel.position = CGPoint(x: self.frame.midX, y: self.size.height * 0.03)
-//        self.addChild(fuelLabel)
         
         //gravity nodes
         gravityNode.position.x = -1000
@@ -515,8 +480,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 SwiftEntryKit.dismiss()
                 let sceneToMoveTo = MainMenuScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
-                let myTransition = SKTransition.fade(withDuration: 0.5)
-                self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+                self.view!.presentScene(sceneToMoveTo)
             }
             
             if pauseLabel.contains(pointOfTouch){
