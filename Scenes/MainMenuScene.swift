@@ -31,8 +31,7 @@ class MainMenuScene: SKScene{
     let titleEndSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
     var titleScaleFactor = 1.0
     var music: Bool?
-    
-    
+
     var scale:CGFloat = 1.0
     
     var score:Int
@@ -45,8 +44,8 @@ class MainMenuScene: SKScene{
     var scorenotificationView: EKNotificationMessageView
     
     //options panel setup
-    var optionsattributes: EKAttributes
-    var optionsPopUpView: EKPopUpMessageView
+//    var optionsattributes: EKAttributes
+//    var optionsPopUpView: EKPopUpMessageView
     
     private var highScorePanel: HighScoreNamePanel? = nil
     
@@ -77,11 +76,6 @@ class MainMenuScene: SKScene{
         music = UserDefaults.standard.bool(forKey: "music")
         highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
 
-
-
-        print(music!)
-        
- 
         
         // score panel
         scoreattributes = EKAttributes.centerFloat
@@ -102,36 +96,35 @@ class MainMenuScene: SKScene{
         
         
         //option panel
+//
+//
+//        optionsattributes = EKAttributes.centerFloat
+//        optionsattributes.hapticFeedbackType = .success
+//        optionsattributes.displayDuration = .infinity
+//        optionsattributes.screenInteraction = .absorbTouches
+//        optionsattributes.entryInteraction = .absorbTouches
+//        optionsattributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+//        optionsattributes.roundCorners = .all(radius: 8)
+//        optionsattributes.entranceAnimation = .init(translate: .init(duration: 0.7, spring: .init(damping: 0.7, initialVelocity: 0)),
+//                                             scale: .init(from: 0.7, to: 1, duration: 0.4, spring: .init(damping: 1, initialVelocity: 0)))
+//        optionsattributes.exitAnimation = .init(translate: .init(duration: 0.2))
+//        optionsattributes.entryBackground = .image(image: UIImage(named: "panelBackground")!)
+//        optionsattributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.35)))
+//        optionsattributes.positionConstraints.size = .init(width: .offset(value: 20), height: .intrinsic)
+//
+//        let image = EKProperty.ImageContent(imageName: "gravicaineIcon32")
+//        let title = EKProperty.LabelContent(text: "", style: .init(font: UIFont(name: FontName, size: 10.0)!, color: UIColor.white, alignment: .center))
+//        let description = EKProperty.LabelContent(text: "Game Music\n\n\n", style: .init(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: .left))
+//        let buttonText = EKProperty.LabelContent(text: "Done", style: .init(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.black, alignment: .center))
+//        let button = EKProperty.ButtonContent(label: buttonText, backgroundColor: UIColor.lightGray)
+//        let message = EKPopUpMessage(topImage: image, imagePosition: EKPopUpMessage.ImagePosition.topToTop(offset: 20.0) , title: title, description: description, button: button, action: {
+//            SwiftEntryKit.dismiss()
+//            })
+//
+//
+//        optionsPopUpView = EKPopUpMessageView(with: message)
 
-        
-        optionsattributes = EKAttributes.centerFloat
-        optionsattributes.hapticFeedbackType = .success
-        optionsattributes.displayDuration = .infinity
-        optionsattributes.screenInteraction = .absorbTouches
-        optionsattributes.entryInteraction = .absorbTouches
-        optionsattributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
-        optionsattributes.roundCorners = .all(radius: 8)
-        optionsattributes.entranceAnimation = .init(translate: .init(duration: 0.7, spring: .init(damping: 0.7, initialVelocity: 0)),
-                                             scale: .init(from: 0.7, to: 1, duration: 0.4, spring: .init(damping: 1, initialVelocity: 0)))
-        optionsattributes.exitAnimation = .init(translate: .init(duration: 0.2))
-        optionsattributes.entryBackground = .image(image: UIImage(named: "panelBackground")!)
-        optionsattributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.35)))
-        optionsattributes.positionConstraints.size = .init(width: .offset(value: 20), height: .intrinsic)
-        
-        let image = EKProperty.ImageContent(imageName: "gravicaineIcon32")
-        let title = EKProperty.LabelContent(text: "", style: .init(font: UIFont(name: FontName, size: 10.0)!, color: UIColor.white, alignment: .center))
-        let description = EKProperty.LabelContent(text: "Game Music\n\n\n", style: .init(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: .left))
-        let buttonText = EKProperty.LabelContent(text: "Done", style: .init(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.black, alignment: .center))
-        let button = EKProperty.ButtonContent(label: buttonText, backgroundColor: UIColor.lightGray)
-        let message = EKPopUpMessage(topImage: image, imagePosition: EKPopUpMessage.ImagePosition.topToTop(offset: 20.0) , title: title, description: description, button: button, action: {
-            SwiftEntryKit.dismiss()
-            })
-        
 
-        optionsPopUpView = EKPopUpMessageView(with: message)
-
-        
-        
         super.init(size: size)
         
         
@@ -223,15 +216,15 @@ class MainMenuScene: SKScene{
                 
                 
             else if optionLabel.contains(pointOfTouch){
-                
-                SwiftEntryKit.display(entry: optionsPopUpView, using: optionsattributes)
+
+                //SwiftEntryKit.display(entry: optionsPopUpView, using: optionsattributes)
                 
                 
             }
                 
             else if scoresLabel.contains(pointOfTouch){
                 
-                if UserDefaults.standard.string(forKey: HighScoreName) != nil{
+                if score != 0{
                     
                     SwiftEntryKit.display(entry: self.scorenotificationView, using: self.scoreattributes)
                     
