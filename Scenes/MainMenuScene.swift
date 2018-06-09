@@ -185,8 +185,7 @@ class MainMenuScene: SKScene{
             }
                 
             else if scoresLabel.contains(pointOfTouch){
-          
-                SwiftEntryKit.display(entry: self.notificationView, using: self.attributes)
+                
                 
             }
         }
