@@ -27,4 +27,9 @@ let shieldActivationTime = 6.0
 // iphone X screen width
 let maxDeviceScreenWidth = 1125
 
+let musicX = 850.0
+let musicY = 1460.0
+let musicLabelX = -200
+let musicLabelY = 500
+
 

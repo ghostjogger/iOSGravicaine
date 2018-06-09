@@ -188,6 +188,17 @@ class MainMenuScene: SKScene{
         optionBackground.size = CGSize(width: 1000 * scale, height: 1300 * scale)
         optionBackground.zPosition = 100
         
+        if music!{
+            musicNode = SKSpriteNode(imageNamed: "off")
+            musicNode.size = CGSize(width: musicNode.size.width * scale,
+                                    height: musicNode.size.height * scale)
+        }
+        else{
+            musicNode = SKSpriteNode(imageNamed: "on")
+            musicNode.size = CGSize(width: musicNode.size.width * scale,
+                                    height: musicNode.size.height * scale)
+        }
+        
         optionLabel.position = CGPoint(x: self.frame.width * 0.2, y: self.frame.height * 0.05)
         optionLabel.size = CGSize(width: optionLabel.size.width * scale, height: optionLabel.size.height * scale )
         self.addChild(optionLabel)
@@ -242,14 +253,20 @@ class MainMenuScene: SKScene{
 
                 //SwiftEntryKit.display(entry: optionsPopUpView, using: optionsattributes)
                 if !self.children.contains(optionBackground){
-                    musicLabel.position = CGPoint(x: -200 * scale, y: 530 * scale)
+                    musicLabel.position = CGPoint(x: CGFloat(musicLabelX) * scale, y: CGFloat(musicLabelY) * scale)
                     optionBackground.addChild(musicLabel)
                     self.addChild(optionBackground)
+                    
+                    musicNode.zPosition = 200
+                    musicNode.position = CGPoint(x: CGFloat(musicX) * scale, y: CGFloat(musicY) * scale)
+                    self.addChild(musicNode)
+                    
                     SwiftEntryKit.dismiss()
                 }
                 else{
                     optionBackground.removeAllChildren()
                     optionBackground.removeFromParent()
+                    musicNode.removeFromParent()
                 }
                 
                 
@@ -277,7 +294,9 @@ class MainMenuScene: SKScene{
             musicNode.removeFromParent()
             musicNode = SKSpriteNode(imageNamed: "on")
             musicNode.zPosition = 200
-            musicNode.position = CGPoint.zero
+            musicNode.size = CGSize(width: musicNode.size.width * scale,
+                                    height: musicNode.size.height * scale)
+            musicNode.position = CGPoint(x: CGFloat(musicX) * scale, y: CGFloat(musicY) * scale)
             self.addChild(musicNode)
             
         }
@@ -285,7 +304,9 @@ class MainMenuScene: SKScene{
             musicNode.removeFromParent()
             musicNode = SKSpriteNode(imageNamed: "off")
             musicNode.zPosition = 200
-            musicNode.position = CGPoint.zero
+            musicNode.size = CGSize(width: musicNode.size.width * scale,
+                                    height: musicNode.size.height * scale)
+            musicNode.position = CGPoint(x: CGFloat(musicX) * scale, y: CGFloat(musicY) * scale)
             self.addChild(musicNode)
             
         }
