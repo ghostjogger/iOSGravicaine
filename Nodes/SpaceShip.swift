@@ -18,6 +18,7 @@ class SpaceShip: SKSpriteNode {
     private var fireEmitter: SKEmitterNode? = nil
     private var shieldNode: ShieldNode = ShieldNode(scale: 1.0)
     private var scale = CGFloat(0.0)
+
  
     
     
@@ -26,8 +27,7 @@ class SpaceShip: SKSpriteNode {
         let texture = SKTexture(imageNamed: "playerShip")
         self.scale = scale
         let size = CGSize(width: texture.size().width * self.scale, height: texture.size().height * self.scale)
-        self.shieldNode = ShieldNode(scale: self.scale)
-        
+        self.shieldNode = ShieldNode(scale: self.scale)        
         super.init(texture: texture, color: UIColor.clear, size: size)
         self.name = "player"
         self.zPosition = 2
