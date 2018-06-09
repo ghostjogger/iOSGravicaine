@@ -44,9 +44,7 @@ class MainMenuScene: SKScene{
     
     //options panel setup
     var optionsattributes: EKAttributes
-    var optionsmessage: EKSimpleMessage
-    var optionsnotificationMessage: EKNotificationMessage
-    var optionsnotificationView: EKNotificationMessageView
+    var optionsPopUpView: EKPopUpMessageView
     
     private var highScorePanel: HighScoreNamePanel? = nil
     
@@ -75,7 +73,7 @@ class MainMenuScene: SKScene{
         }
  
         
-        
+        // score panel
         scoreattributes = EKAttributes.centerFloat
         scoreattributes.displayDuration = 4.0
         scoreattributes.entryInteraction = .dismiss
@@ -92,20 +90,36 @@ class MainMenuScene: SKScene{
         scorenotificationView = EKNotificationMessageView(with: scorenotificationMessage)
         
         
-        optionsattributes = EKAttributes.centerFloat
-        optionsattributes.displayDuration = .infinity
-        optionsattributes.entryInteraction = .dismiss
-        optionsattributes.entryBackground = .image(image: UIImage(named: "panelBackground")!)
-        optionsattributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
-        optionsattributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
-        optionsmessage = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
-                                       title: EKProperty.LabelContent(text: "Options",
-                                                                      style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
-                                       description: EKProperty.LabelContent(text: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
-                                        style: EKProperty.Label(font: UIFont(name: FontName, size: 12.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
         
-        optionsnotificationMessage = EKNotificationMessage(simpleMessage: optionsmessage)
-        optionsnotificationView = EKNotificationMessageView(with: optionsnotificationMessage)
+        //option panel
+
+        
+        optionsattributes = EKAttributes.centerFloat
+        optionsattributes.hapticFeedbackType = .success
+        optionsattributes.displayDuration = .infinity
+        optionsattributes.screenInteraction = .dismiss
+        optionsattributes.entryInteraction = .absorbTouches
+        optionsattributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+        optionsattributes.roundCorners = .all(radius: 8)
+        optionsattributes.entranceAnimation = .init(translate: .init(duration: 0.7, spring: .init(damping: 0.7, initialVelocity: 0)),
+                                             scale: .init(from: 0.7, to: 1, duration: 0.4, spring: .init(damping: 1, initialVelocity: 0)))
+        optionsattributes.exitAnimation = .init(translate: .init(duration: 0.2))
+        optionsattributes.entryBackground = .image(image: UIImage(named: "panelBackground")!)
+        optionsattributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.35)))
+        optionsattributes.positionConstraints.size = .init(width: .offset(value: 20), height: .intrinsic)
+        
+        let image = EKProperty.ImageContent(imageName: "gravicaineIcon32")
+        let title = EKProperty.LabelContent(text: "", style: .init(font: UIFont(name: FontName, size: 10.0)!, color: UIColor.white, alignment: .center))
+        let description = EKProperty.LabelContent(text: "\n\n\n\n\n\n\n\n\n\n", style: .init(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: .center))
+        let buttonText = EKProperty.LabelContent(text: "Done", style: .init(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.black, alignment: .center))
+        let button = EKProperty.ButtonContent(label: buttonText, backgroundColor: UIColor.lightGray)
+        let message = EKPopUpMessage(topImage: image, imagePosition: EKPopUpMessage.ImagePosition.topToTop(offset: 20.0) , title: title, description: description, button: button, action: {
+            SwiftEntryKit.dismiss()
+            })
+        
+
+        optionsPopUpView = EKPopUpMessageView(with: message)
+
         
         
         super.init(size: size)
@@ -174,11 +188,7 @@ class MainMenuScene: SKScene{
         let titleSequence = SKAction.sequence([titleSound, titleAction,titleEndSound])
         titleImage.run(titleSequence){
      
-            if UserDefaults.standard.string(forKey: HighScoreName) != nil{
-                
-                SwiftEntryKit.display(entry: self.scorenotificationView, using: self.scoreattributes)
-      
-            }
+ 
             
         }
       
@@ -204,13 +214,17 @@ class MainMenuScene: SKScene{
                 
             else if optionLabel.contains(pointOfTouch){
                 
-                SwiftEntryKit.display(entry: self.optionsnotificationView, using: self.optionsattributes)
+                SwiftEntryKit.display(entry: optionsPopUpView, using: optionsattributes)
                 
             }
                 
             else if scoresLabel.contains(pointOfTouch){
                 
-                SwiftEntryKit.display(entry: self.scorenotificationView, using: self.scoreattributes)
+                if UserDefaults.standard.string(forKey: HighScoreName) != nil{
+                    
+                    SwiftEntryKit.display(entry: self.scorenotificationView, using: self.scoreattributes)
+                    
+                }
                 
             }
         }
