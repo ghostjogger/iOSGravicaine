@@ -30,6 +30,8 @@ class MainMenuScene: SKScene{
     let titleSound = SKAction.playSoundFileNamed("sound43.wav", waitForCompletion: false)
     let titleEndSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
     var titleScaleFactor = 1.0
+    var music: Bool?
+    
     
     var scale:CGFloat = 1.0
     
@@ -64,13 +66,21 @@ class MainMenuScene: SKScene{
         }
         protonStarFrames = protonFrames
         
+        //setup initial option values here
+        if !UserDefaults.standard.bool(forKey: "firstTimeRun"){
+            UserDefaults.standard.set(true, forKey: "firstTimeRun")
+            UserDefaults.standard.set(true, forKey: "music")
+            UserDefaults.standard.set("", forKey: HighScoreName)
+        }
+        
         score = UserDefaults.standard.integer(forKey: HighScoreKey)
-        if UserDefaults.standard.string(forKey: HighScoreName) != nil{
-            highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
-        }
-        else{
-            highScoreName = ""
-        }
+        music = UserDefaults.standard.bool(forKey: "music")
+        highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
+
+
+
+        print(music!)
+        
  
         
         // score panel
@@ -97,7 +107,7 @@ class MainMenuScene: SKScene{
         optionsattributes = EKAttributes.centerFloat
         optionsattributes.hapticFeedbackType = .success
         optionsattributes.displayDuration = .infinity
-        optionsattributes.screenInteraction = .dismiss
+        optionsattributes.screenInteraction = .absorbTouches
         optionsattributes.entryInteraction = .absorbTouches
         optionsattributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
         optionsattributes.roundCorners = .all(radius: 8)
@@ -110,7 +120,7 @@ class MainMenuScene: SKScene{
         
         let image = EKProperty.ImageContent(imageName: "gravicaineIcon32")
         let title = EKProperty.LabelContent(text: "", style: .init(font: UIFont(name: FontName, size: 10.0)!, color: UIColor.white, alignment: .center))
-        let description = EKProperty.LabelContent(text: "\n\n\n\n\n\n\n\n\n\n", style: .init(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: .center))
+        let description = EKProperty.LabelContent(text: "Game Music\n\n\n", style: .init(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: .left))
         let buttonText = EKProperty.LabelContent(text: "Done", style: .init(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.black, alignment: .center))
         let button = EKProperty.ButtonContent(label: buttonText, backgroundColor: UIColor.lightGray)
         let message = EKPopUpMessage(topImage: image, imagePosition: EKPopUpMessage.ImagePosition.topToTop(offset: 20.0) , title: title, description: description, button: button, action: {
@@ -215,6 +225,7 @@ class MainMenuScene: SKScene{
             else if optionLabel.contains(pointOfTouch){
                 
                 SwiftEntryKit.display(entry: optionsPopUpView, using: optionsattributes)
+                
                 
             }
                 
