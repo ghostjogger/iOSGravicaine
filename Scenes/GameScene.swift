@@ -609,15 +609,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             var scaledY = leftBarrier.size.height * self.scaleFactor
             leftBarrier.size = CGSize(width: scaledX, height: scaledY)
             
-            let leftOffset = ((leftBarrier.size.width/10) * CGFloat(nextBarrier))
+            let leftOffset = ((leftBarrier.size.width/10) * CGFloat(nextBarrier) + 2)
             leftBarrier.position = CGPoint(
                 x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
                 y: self.size.height + CGFloat(barrierHeight))
-            
-//            leftBarrier.position = CGPoint(
-//                x: random(min: self.frame.minX - leftBarrier.size.width/2,
-//                            max: self.frame.maxX - (CGFloat(barrierGap) * self.scaleFactor) - leftBarrier.size.width/2) ,
-//                y: self.size.height + CGFloat(barrierHeight))
             leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
             leftBarrier.physicsBody!.affectedByGravity = false
             leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
