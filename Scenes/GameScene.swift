@@ -191,46 +191,49 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
         gameLogic.gameDidStop()
 
-        SwiftEntryKit.display(entry: notificationView, using: attributes)
-        gameOverTransitioning = false
 
-//        if !wasHighScore{
-//            gameOverPanel?.removeFromParent()
-//            gameOverPanel = GameOverPanelNode(size: self.size, score: gameLogic.score )
-//            gameOverPanel?.zPosition = 50
-//            self.addChild(gameOverPanel!)
-//            gameOverPanel?.fadeIn()
-//            gameOverTransitioning = false
-//        }
-//        else{
-//            highScorePanel?.removeFromParent()
-//            highScorePanel = HighScorePanelNode(size: self.size)
-//            highScorePanel?.zPosition = 50
-//            self.addChild(highScorePanel!)
-//            //fadein
-//            highScorePanel?.fadeIn()
-//
-//            //name entry textfield
-//            highScoreText = UITextField(frame: CGRect(
-//                x: ((view?.bounds.width)! / 2) - 160,
-//                y: ((view?.bounds.height)! / 2) - 20,
-//                width: 320,
-//                height: 40))
-//
-//            highScoreText?.borderStyle = UITextBorderStyle.roundedRect
-//            highScoreText?.textColor = SKColor.black
-//            highScoreText?.placeholder = "Enter your name (max 12 chars)"
-//            highScoreText?.backgroundColor = SKColor.white
-//
-//
-//            // add the UITextField to the GameScene's view
-//            view?.addSubview(highScoreText!)
-//
-//            // add the gamescene as the UITextField delegate.
-//            // delegate funtion called is textFieldShouldReturn:
-//            highScoreText?.delegate = self
-//
-//        }
+
+        if !wasHighScore{
+            message = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "AppIcon"),
+                                      title: EKProperty.LabelContent(text: "Game Over! \nTap to try again!!",
+                                                                     style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
+                                      description: EKProperty.LabelContent(text: "You scored :   \(gameLogic.score)",
+                                        style: EKProperty.Label(font: UIFont(name: FontName, size: 12.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+            
+            notificationMessage = EKNotificationMessage(simpleMessage: message)
+            notificationView = EKNotificationMessageView(with: notificationMessage)
+            SwiftEntryKit.display(entry: notificationView, using: attributes)
+            gameOverTransitioning = false
+        }
+        else{
+            highScorePanel?.removeFromParent()
+            highScorePanel = HighScorePanelNode(size: self.size)
+            highScorePanel?.zPosition = 50
+            self.addChild(highScorePanel!)
+            //fadein
+            highScorePanel?.fadeIn()
+
+            //name entry textfield
+            highScoreText = UITextField(frame: CGRect(
+                x: ((view?.bounds.width)! / 2) - 160,
+                y: ((view?.bounds.height)! / 2) - 20,
+                width: 320,
+                height: 40))
+
+            highScoreText?.borderStyle = UITextBorderStyle.roundedRect
+            highScoreText?.textColor = SKColor.black
+            highScoreText?.placeholder = "Enter your name (max 12 chars)"
+            highScoreText?.backgroundColor = SKColor.white
+
+
+            // add the UITextField to the GameScene's view
+            view?.addSubview(highScoreText!)
+
+            // add the gamescene as the UITextField delegate.
+            // delegate funtion called is textFieldShouldReturn:
+            highScoreText?.delegate = self
+
+        }
         
         
         
@@ -254,9 +257,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         scoreLabel?.horizontalAlignmentMode = .center
         scoreLabel?.verticalAlignmentMode = .top
         
-        // fuel node
-//        fuelNode = SKSpriteNode(texture: nil, color: UIColor.green, size: CGSize(width: 500, height: 80))
-//        fuelBackgroundNode = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.30), size: CGSize(width: 500, height: 80))
         
         //gravity indicators
         gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 75 * scaleFactor, height: 150 * scaleFactor))
@@ -341,12 +341,15 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         highScoreText?.removeFromSuperview()
         highScorePanel?.removeFromParent()
         highScorePanel?.fadeOut()
-        gameOverPanel?.removeFromParent()
-        gameOverPanel = GameOverPanelNode(size: self.size, score: gameLogic.score )
-        gameOverPanel?.zPosition = 50
-        self.addChild(gameOverPanel!)
-        gameOverPanel?.fadeIn()
-        gameOverTransitioning = false
+//        gameOverPanel?.removeFromParent()
+//        gameOverPanel = GameOverPanelNode(size: self.size, score: gameLogic.score )
+//        gameOverPanel?.zPosition = 50
+//        self.addChild(gameOverPanel!)
+//        gameOverPanel?.fadeIn()
+        let sceneToMoveTo = MainMenuScene(size: self.size)
+        sceneToMoveTo.scaleMode = self.scaleMode
+        let myTransition = SKTransition.fade(withDuration: 1.0)
+        self.view!.presentScene(sceneToMoveTo, transition:myTransition)
         return true
     }
     
@@ -614,7 +617,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         if !gameOverTransitioning {
             
-            var nextBarrier = barriers[barrierCount]
+            let nextBarrier = barriers[barrierCount]
   
         DispatchQueue.global().async {
             

@@ -77,9 +77,9 @@ class MainMenuScene: SKScene{
         attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
         message = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "AppIcon"),
                                   title: EKProperty.LabelContent(text: "Highest Score:",
-                                                                 style: EKProperty.Label(font: UIFont(name: FontName, size: 25.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
-                                  description: EKProperty.LabelContent(text: "\(highScoreName!) :   \(score)",
-                                    style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+                                                                 style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
+                                  description: EKProperty.LabelContent(text: "\(highScoreName!) \n\n   \(score)",
+                                    style: EKProperty.Label(font: UIFont(name: FontName, size: 12.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
         
         notificationMessage = EKNotificationMessage(simpleMessage: message)
         notificationView = EKNotificationMessageView(with: notificationMessage)

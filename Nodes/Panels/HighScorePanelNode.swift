@@ -41,6 +41,7 @@ class HighScorePanelNode: SKSpriteNode {
         var pos = CGPoint(x: size.width / 2, y: size.height * 0.61)
         background.position = pos
         
+        
         pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
         scoreLabel.position = pos
         pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
