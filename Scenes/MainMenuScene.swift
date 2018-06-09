@@ -51,6 +51,7 @@ class MainMenuScene: SKScene{
     var musicLabel = SKLabelNode(text: "Game Music")
     var music: Bool
     var musicNode: SKSpriteNode = SKSpriteNode()
+    var doneNode: SKSpriteNode = SKSpriteNode(imageNamed: "done")
     
     
     private var highScorePanel: HighScoreNamePanel? = nil
@@ -80,7 +81,6 @@ class MainMenuScene: SKScene{
         
         score = UserDefaults.standard.integer(forKey: HighScoreKey)
         music = UserDefaults.standard.bool(forKey: "music")
-        print(music)
         highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
 
         
@@ -107,6 +107,7 @@ class MainMenuScene: SKScene{
         musicLabel.verticalAlignmentMode = .top
        
 
+        doneNode.size = CGSize(width: doneNode.size.width * scale, height: doneNode.size.height * scale)
 
         super.init(size: size)
         
@@ -208,6 +209,12 @@ class MainMenuScene: SKScene{
                 if musicNode.contains(pointOfTouch){
                     toggleMusic()
                 }
+                else if doneNode.contains(pointOfTouch){
+                    optionBackground.removeAllChildren()
+                    optionBackground.removeFromParent()
+                    musicNode.removeFromParent()
+                    doneNode.removeFromParent()
+                }
             }
             
             if startLabel.contains(pointOfTouch){
@@ -232,12 +239,18 @@ class MainMenuScene: SKScene{
                     musicNode.position = CGPoint(x: CGFloat(musicX) * scale, y: CGFloat(musicY) * scale)
                     self.addChild(musicNode)
                     
+                    doneNode.zPosition = 200
+                    doneNode.position = CGPoint(x: CGFloat(doneX) * scale, y: CGFloat(doneY) * scale)
+                    self.addChild(doneNode)
+                    
+                    
                     SwiftEntryKit.dismiss()
                 }
                 else{
                     optionBackground.removeAllChildren()
                     optionBackground.removeFromParent()
                     musicNode.removeFromParent()
+                    doneNode.removeFromParent()
                 }
                 
                 

@@ -31,5 +31,7 @@ let musicX = 850.0
 let musicY = 1460.0
 let musicLabelX = -200
 let musicLabelY = 500
+let doneX = 1125/2
+let doneY = 420
 
 
