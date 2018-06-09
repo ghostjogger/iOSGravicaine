@@ -47,6 +47,10 @@ class MainMenuScene: SKScene{
 //    var optionsattributes: EKAttributes
 //    var optionsPopUpView: EKPopUpMessageView
     
+    var optionBackground = SKSpriteNode(imageNamed: "panelBackground")
+    var musicLabel = SKLabelNode(text: "Game Music")
+    
+    
     private var highScorePanel: HighScoreNamePanel? = nil
     
     //star animation variables
@@ -123,6 +127,12 @@ class MainMenuScene: SKScene{
 //
 //
 //        optionsPopUpView = EKPopUpMessageView(with: message)
+        
+        musicLabel.fontSize = 50.0 * scale
+        musicLabel.fontName = FontName
+        musicLabel.horizontalAlignmentMode = .center
+        musicLabel.verticalAlignmentMode = .top
+       
 
 
         super.init(size: size)
@@ -171,6 +181,11 @@ class MainMenuScene: SKScene{
         backgroundImage.zPosition = 0
         self.addChild(backgroundImage)
         
+        optionBackground.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2
+        )
+        optionBackground.size = CGSize(width: 1000 * scale, height: 1300 * scale)
+        optionBackground.zPosition = 100
+        
         optionLabel.position = CGPoint(x: self.frame.width * 0.2, y: self.frame.height * 0.05)
         optionLabel.size = CGSize(width: optionLabel.size.width * scale, height: optionLabel.size.height * scale )
         self.addChild(optionLabel)
@@ -218,19 +233,29 @@ class MainMenuScene: SKScene{
             else if optionLabel.contains(pointOfTouch){
 
                 //SwiftEntryKit.display(entry: optionsPopUpView, using: optionsattributes)
+                if !self.children.contains(optionBackground){
+                    musicLabel.position = CGPoint(x: -200 * scale, y: 530 * scale)
+                    optionBackground.addChild(musicLabel)
+                    self.addChild(optionBackground)
+                    SwiftEntryKit.dismiss()
+                }
+                else{
+                    optionBackground.removeAllChildren()
+                    optionBackground.removeFromParent()
+                }
                 
                 
             }
                 
             else if scoresLabel.contains(pointOfTouch){
                 
-                if score != 0{
-                    
+                if score != 0 && !self.children.contains(optionBackground){
                     SwiftEntryKit.display(entry: self.scorenotificationView, using: self.scoreattributes)
-                    
                 }
-                
+               
             }
+                
+            
         }
     }
     
