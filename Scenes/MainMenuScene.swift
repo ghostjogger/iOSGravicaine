@@ -107,7 +107,7 @@ class MainMenuScene: SKScene{
         musicLabel.verticalAlignmentMode = .top
        
 
-        doneNode.size = CGSize(width: doneNode.size.width * scale, height: doneNode.size.height * scale)
+        
 
         super.init(size: size)
         
@@ -182,6 +182,8 @@ class MainMenuScene: SKScene{
         scoresLabel.position = CGPoint(x: self.frame.width * 0.8, y: self.frame.height * 0.05)
         scoresLabel.size = CGSize(width: scoresLabel.size.width * scale, height: scoresLabel.size.height * scale )
         self.addChild(scoresLabel)
+        
+        doneNode.size = CGSize(width: doneNode.size.width * scale, height: doneNode.size.height * scale)
  
         titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.90)
         titleImage.zPosition = 10
@@ -241,6 +243,7 @@ class MainMenuScene: SKScene{
                     
                     doneNode.zPosition = 200
                     doneNode.position = CGPoint(x: CGFloat(doneX) * scale, y: CGFloat(doneY) * scale)
+                    
                     self.addChild(doneNode)
                     
                     
