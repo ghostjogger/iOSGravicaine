@@ -180,7 +180,7 @@ class MainMenuScene: SKScene{
         scoresLabel.size = CGSize(width: scoresLabel.size.width * scale, height: scoresLabel.size.height * scale )
         self.addChild(scoresLabel)
  
-        titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.85)
+        titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.90)
         titleImage.zPosition = 10
         titleImage.setScale(5.0)
         addChild(titleImage)
