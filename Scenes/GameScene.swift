@@ -549,6 +549,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
         leftTouchActive = false
         rightTouchActive = false
+        player.thrustRightEnded()
+        player.thrustLeftEnded()
 
         
     }
@@ -557,6 +559,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
         leftTouchActive = false
         rightTouchActive = false
+        player.thrustRightEnded()
+        player.thrustLeftEnded()
 
     }
     
@@ -605,7 +609,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             var scaledY = leftBarrier.size.height * self.scaleFactor
             leftBarrier.size = CGSize(width: scaledX, height: scaledY)
             
-            var leftOffset = ((leftBarrier.size.width/10) * CGFloat(nextBarrier))
+            let leftOffset = ((leftBarrier.size.width/10) * CGFloat(nextBarrier))
             leftBarrier.position = CGPoint(
                 x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
                 y: self.size.height + CGFloat(barrierHeight))
@@ -643,7 +647,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             //setup gap
             let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
             let barrierSpaceNode = SKSpriteNode(texture: nil, color: UIColor.clear, size: size)
-            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2, y: self.size.height + CGFloat(barrierHeight) + 10.0)
+            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2, y: self.size.height + CGFloat(barrierHeight) + CGFloat(barrierHeight))
             barrierSpaceNode.physicsBody = SKPhysicsBody(rectangleOf: barrierSpaceNode.size)
             barrierSpaceNode.physicsBody?.affectedByGravity = false
             barrierSpaceNode.physicsBody!.categoryBitMask = PhysicsCategories.BarrierGap

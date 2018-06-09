@@ -88,22 +88,29 @@ class SpaceShip: SKSpriteNode {
         
         if !self.children.contains(leftThruster){
         leftThruster.size = CGSize(width: 30 * scale, height: 20 * scale)
-        leftThruster.alpha = 0.0
         leftThruster.position = CGPoint(x: (self.scene?.position.x)! + (50 * scale), y: (self.scene?.position.y)!)
         self.addChild(leftThruster)
         
-        //thrust actions
-        let appearThruster = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
-        let thrustBurn = SKAction.wait(forDuration: 0.25)
-        let disappearThruster = SKAction.fadeAlpha(to: 0.0, duration: 0.15)
-        let deleteThruster = SKAction.removeFromParent()
-        
-        //thrust sequence
-        let thrustSequence = SKAction.sequence([appearThruster,thrustBurn, disappearThruster ,deleteThruster])
-        leftThruster.run(thrustSequence)
+//        //thrust actions
+//        let appearThruster = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
+//        let thrustBurn = SKAction.wait(forDuration: 0.25)
+//        let disappearThruster = SKAction.fadeAlpha(to: 0.0, duration: 0.15)
+//        let deleteThruster = SKAction.removeFromParent()
+//
+//        //thrust sequence
+//        let thrustSequence = SKAction.sequence([appearThruster,thrustBurn, disappearThruster ,deleteThruster])
+//        leftThruster.run(thrustSequence)
         }
         
 
+        
+    }
+    
+    func thrustLeftEnded(){
+        
+        if self.children.contains(leftThruster){
+            leftThruster.removeFromParent()
+        }
         
     }
     
@@ -111,21 +118,28 @@ class SpaceShip: SKSpriteNode {
         
         if !self.children.contains(rightThruster){
         rightThruster.size = CGSize(width: 30 * scale, height: 20 * scale)
-        rightThruster.alpha = 0.0
         rightThruster.position = CGPoint(x: (self.scene?.position.x)! - (50 * scale), y: (self.scene?.position.y)!)
         self.addChild(rightThruster)
         
-        //thrust actions
-        let appearThruster = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
-        let thrustBurn = SKAction.wait(forDuration: 0.25)
-        let disappearThruster = SKAction.fadeAlpha(to: 0.0, duration: 0.15)
-        let deleteThruster = SKAction.removeFromParent()
-        
-        //thrust sequence
-        let thrustSequence = SKAction.sequence([appearThruster,thrustBurn, disappearThruster ,deleteThruster])
-        rightThruster.run(thrustSequence)
+//        //thrust actions
+//        let appearThruster = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
+//        let thrustBurn = SKAction.wait(forDuration: 0.25)
+//        let disappearThruster = SKAction.fadeAlpha(to: 0.0, duration: 0.15)
+//        let deleteThruster = SKAction.removeFromParent()
+//
+//        //thrust sequence
+//        let thrustSequence = SKAction.sequence([appearThruster,thrustBurn, disappearThruster ,deleteThruster])
+//        rightThruster.run(thrustSequence)
         }
 
+    }
+    
+    func thrustRightEnded(){
+        
+        if self.children.contains(rightThruster){
+            rightThruster.removeFromParent()
+        }
+        
     }
     
     func setShield(){
