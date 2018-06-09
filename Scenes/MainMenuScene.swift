@@ -49,7 +49,7 @@ class MainMenuScene: SKScene{
     
     var optionBackground = SKSpriteNode(imageNamed: "panelBackground")
     var musicLabel = SKLabelNode(text: "Game Music")
-    var music: Bool?
+    var music: Bool
     var musicNode: SKSpriteNode = SKSpriteNode()
     
     
@@ -80,6 +80,7 @@ class MainMenuScene: SKScene{
         
         score = UserDefaults.standard.integer(forKey: HighScoreKey)
         music = UserDefaults.standard.bool(forKey: "music")
+        print(music)
         highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
 
         
@@ -158,13 +159,13 @@ class MainMenuScene: SKScene{
         optionBackground.size = CGSize(width: 1000 * scale, height: 1300 * scale)
         optionBackground.zPosition = 100
         
-        if music!{
-            musicNode = SKSpriteNode(imageNamed: "off")
+        if music{
+            musicNode = SKSpriteNode(imageNamed: "on")
             musicNode.size = CGSize(width: musicNode.size.width * scale,
                                     height: musicNode.size.height * scale)
         }
         else{
-            musicNode = SKSpriteNode(imageNamed: "on")
+            musicNode = SKSpriteNode(imageNamed: "off")
             musicNode.size = CGSize(width: musicNode.size.width * scale,
                                     height: musicNode.size.height * scale)
         }
@@ -256,10 +257,10 @@ class MainMenuScene: SKScene{
     
     func toggleMusic(){
         
-        music! = !(music!)
-        UserDefaults.standard.set(music!, forKey: "music")
+        music = !music
+        UserDefaults.standard.set(music, forKey: "music")
         
-        if music!{
+        if music{
             
             musicNode.removeFromParent()
             musicNode = SKSpriteNode(imageNamed: "on")

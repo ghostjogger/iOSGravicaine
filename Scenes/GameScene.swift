@@ -171,9 +171,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * CGFloat(playerBaseY), duration: 0.3)
         self.player.run(playerAppear){
+            if UserDefaults.standard.bool(forKey: "music"){
             self.addChild(backgroundSound)
-        }
+            }
 
+        }
     }
     
     private func setGameOverState() {
@@ -679,7 +681,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             node.removeAllActions()
         }
  
-        backgroundSound.removeFromParent()
+        if self.children.contains(backgroundSound){
+                backgroundSound.removeFromParent()
+        }
         
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
