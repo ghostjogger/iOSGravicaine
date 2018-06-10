@@ -621,47 +621,25 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             // sequence of actions
             let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
-            
-            
-            
+         
             //setup left barrier
             
-            let leftBarrier = SKSpriteNode(imageNamed: "Barrier2LBig")
-            var scaledX = leftBarrier.size.width * self.scaleFactor
-            var scaledY = leftBarrier.size.height * self.scaleFactor
-            leftBarrier.size = CGSize(width: scaledX, height: scaledY)
-            
+            let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2LBig")
             let leftOffset = ((leftBarrier.size.width/10) * CGFloat(count))
             leftBarrier.position = CGPoint(
                 x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
                 y: self.size.height + CGFloat(barrierHeight))
-            leftBarrier.physicsBody = SKPhysicsBody(rectangleOf: leftBarrier.size)
-            leftBarrier.physicsBody!.affectedByGravity = false
-            leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
-            leftBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
-            leftBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-            leftBarrier.name = "barrier"
-            
-            
-            
+ 
             //setup right barrier
             
-            let rightBarrier = SKSpriteNode(imageNamed: "Barrier2RBig")
-            scaledX = rightBarrier.size.width * self.scaleFactor
-            scaledY = rightBarrier.size.height * self.scaleFactor
-            rightBarrier.size = CGSize(width: scaledX, height: scaledY)
-            
+            let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2RBig")
             rightBarrier.position = (CGPoint(x: leftBarrier.position.x
                 + leftBarrier.size.width + (CGFloat(barrierGap) * self.scaleFactor),
                                              y: self.size.height + CGFloat(barrierHeight)))
-            rightBarrier.physicsBody = SKPhysicsBody(rectangleOf: rightBarrier.size)
-            rightBarrier.physicsBody!.affectedByGravity = false
-            rightBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
-            rightBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
-            rightBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Asteroid
-            rightBarrier.name = "barrier"
+
             
-            //setup gap
+            //setup score gap
+            
             let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
             let barrierSpaceNode = SKSpriteNode(texture: nil, color: UIColor.clear, size: size)
             barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2, y: self.size.height + CGFloat(barrierHeight) + CGFloat(barrierHeight))
