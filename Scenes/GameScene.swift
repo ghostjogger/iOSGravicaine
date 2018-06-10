@@ -593,8 +593,24 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         if !gameOverTransitioning {
             
-            let nextBarrier = barriers[barrierCount]
+            let next = barriers[barrierCount]
+            
+            if gameLogic.score <= 50{
+                spawnNormalBarrier(count: next)
+            }
+            else if gameLogic.score > 50 && gameLogic.score <= 100{
+                spawnNormalBarrier(count: next)
+            }
+            
+            barrierCount += 1
   
+
+        
+        }
+    }
+    
+    func spawnNormalBarrier(count: Int){
+        
         DispatchQueue.global().async {
             
             // two actions
@@ -605,17 +621,17 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             // sequence of actions
             let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
-
             
-           
+            
+            
             //setup left barrier
-
+            
             let leftBarrier = SKSpriteNode(imageNamed: "Barrier2LBig")
             var scaledX = leftBarrier.size.width * self.scaleFactor
             var scaledY = leftBarrier.size.height * self.scaleFactor
             leftBarrier.size = CGSize(width: scaledX, height: scaledY)
             
-            let leftOffset = ((leftBarrier.size.width/10) * CGFloat(nextBarrier))
+            let leftOffset = ((leftBarrier.size.width/10) * CGFloat(count))
             leftBarrier.position = CGPoint(
                 x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
                 y: self.size.height + CGFloat(barrierHeight))
@@ -623,13 +639,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             leftBarrier.physicsBody!.affectedByGravity = false
             leftBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
             leftBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
-            leftBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player | PhysicsCategories.Asteroid
+            leftBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Player
             leftBarrier.name = "barrier"
             
-
+            
             
             //setup right barrier
-
+            
             let rightBarrier = SKSpriteNode(imageNamed: "Barrier2RBig")
             scaledX = rightBarrier.size.width * self.scaleFactor
             scaledY = rightBarrier.size.height * self.scaleFactor
@@ -642,7 +658,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             rightBarrier.physicsBody!.affectedByGravity = false
             rightBarrier.physicsBody!.categoryBitMask = PhysicsCategories.Barrier
             rightBarrier.physicsBody!.collisionBitMask = PhysicsCategories.None
-            rightBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Asteroid | PhysicsCategories.Player
+            rightBarrier.physicsBody!.contactTestBitMask = PhysicsCategories.Asteroid
             rightBarrier.name = "barrier"
             
             //setup gap
@@ -662,15 +678,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
                 self.addChild(barrierSpaceNode)
-                self.barrierCount += 1
                 leftBarrier.run(barrierSequence, withKey: "moving")
                 rightBarrier.run(barrierSequence, withKey: "moving")
                 barrierSpaceNode.run(barrierSequence, withKey: "moving")
-
+                
             })
         }
         
-        }
     }
     
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
