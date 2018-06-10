@@ -29,9 +29,11 @@ let maxDeviceScreenWidth = 1125
 
 let musicX = 850.0
 let musicY = 1460.0
-let musicLabelX = -200
+let musicLabelX = -100
 let musicLabelY = 500
 let doneX = 1125/2
 let doneY = 450
+let gravIconX = -440
+let gravIconY = 585
 
 

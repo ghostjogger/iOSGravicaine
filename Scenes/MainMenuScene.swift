@@ -44,14 +44,14 @@ class MainMenuScene: SKScene{
     var scorenotificationView: EKNotificationMessageView
     
     //options panel setup
-//    var optionsattributes: EKAttributes
-//    var optionsPopUpView: EKPopUpMessageView
+
     
     var optionBackground = SKSpriteNode(imageNamed: "panelBackground")
     var musicLabel = SKLabelNode(text: "Game Music")
     var music: Bool
     var musicNode: SKSpriteNode = SKSpriteNode()
     var doneNode: SKSpriteNode = SKSpriteNode(imageNamed: "done")
+    var gravIcon = SKSpriteNode(imageNamed: "AppIcon")
     
     
     private var highScorePanel: HighScoreNamePanel? = nil
@@ -184,6 +184,7 @@ class MainMenuScene: SKScene{
         self.addChild(scoresLabel)
         
         doneNode.size = CGSize(width: doneNode.size.width * scale, height: doneNode.size.height * scale)
+        gravIcon.size = CGSize(width: gravIcon.size.width * scale, height: gravIcon.size.height * scale)
  
         titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.90)
         titleImage.zPosition = 10
@@ -234,7 +235,9 @@ class MainMenuScene: SKScene{
                 //SwiftEntryKit.display(entry: optionsPopUpView, using: optionsattributes)
                 if !self.children.contains(optionBackground){
                     musicLabel.position = CGPoint(x: CGFloat(musicLabelX) * scale, y: CGFloat(musicLabelY) * scale)
+                    gravIcon.position = CGPoint(x: CGFloat(gravIconX) * scale, y: CGFloat(gravIconY) * scale)
                     optionBackground.addChild(musicLabel)
+                    optionBackground.addChild(gravIcon)
                     self.addChild(optionBackground)
                     
                     musicNode.zPosition = 200
@@ -243,7 +246,6 @@ class MainMenuScene: SKScene{
                     
                     doneNode.zPosition = 200
                     doneNode.position = CGPoint(x: CGFloat(doneX) * scale, y: CGFloat(doneY) * scale)
-                    
                     self.addChild(doneNode)
                     
                     
