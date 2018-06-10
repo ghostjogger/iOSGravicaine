@@ -31,9 +31,9 @@ let maxDeviceScreenWidth = 1125
 
 
 //option positioning
-let musicX = 200.0
+let musicX = 230.0
 let musicY = 470.0
-let musicLabelX = -100
+let musicLabelX = -140
 let musicLabelY = 500
 let doneX = 0
 let doneY = -500
