@@ -667,34 +667,36 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     func spawnMovingBarrier(count: Int){
         
-       // DispatchQueue.global().async {
-            
-            var moveToX = 0
-            
-            if count < 5{
-                moveToX = 2000
-            }
-            else{
-                moveToX = -2000
-            }
-            
-            // two actions
+        var left:Bool
+        
+        if count < 5{
+            left = false
+        }
+        else{
+            left = true
+        }
+        
+        DispatchQueue.global().async {
+
           
             let moveBarrierDown = SKAction.moveTo(y: CGFloat(-barrierHeight), duration: barrierSpeed)
-            let moveBarrierAcross = SKAction.moveTo(x: CGFloat(moveToX), duration: barrierSpeedAcross)
-            let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
-            let barrierAnimation = SKAction.group([moveBarrierDown, moveBarrierAcross, appearBarrier])
             let deleteBarrier = SKAction.removeFromParent()
+
             
-            // sequence of actions
-            let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
+//            let moveBarrierAcross = SKAction.moveTo(x: CGFloat(0), duration: barrierSpeedAcross)
+//            let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
+//            let barrierAnimation = SKAction.group([moveBarrierDown, moveBarrierAcross, appearBarrier])
+//            let deleteBarrier = SKAction.removeFromParent()
+            
+            //squence of actions
+            //let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
         
         //setup left barrier
         
         let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongL")
-        let leftOffset = ((leftBarrier.size.width/10) * CGFloat(count))
+        let leftOffset = ((leftBarrier.size.width/20) * CGFloat(count))
         leftBarrier.position = CGPoint(
-            x: (self.frame.minX - leftBarrier.size.width) + leftOffset,
+            x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
             y: self.size.height + CGFloat(barrierHeight))
         
         //setup right barrier
@@ -717,20 +719,68 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         barrierSpaceNode.physicsBody!.contactTestBitMask = PhysicsCategories.Player
         barrierSpaceNode.name = "barrierGap"
         
-        
-        self.addChild(leftBarrier)
-        self.addChild(rightBarrier)
-        self.addChild(barrierSpaceNode)
-        leftBarrier.run(barrierSequence, withKey: "moving")
-        rightBarrier.run(barrierSequence, withKey: "moving")
-        barrierSpaceNode.run(barrierSequence, withKey: "moving")
+        //setup x movements
             
-            //DispatchQueue.main.async(execute: {
-
-                
-            //})
+        //leftbarrier x movement
+        var leftBarrierXdestination :CGFloat
+            
+        if left{
+            leftBarrierXdestination = leftBarrier.position.x - CGFloat(barrierMovementX)
+        }
+        else{
+            leftBarrierXdestination = leftBarrier.position.x + CGFloat(barrierMovementX)
+        }
+        let moveLeftBarrierAcross = SKAction.moveTo(x: leftBarrierXdestination, duration: barrierSpeedAcross)
+        let leftSequence = SKAction.sequence([ moveBarrierDown, moveLeftBarrierAcross, deleteBarrier])
         
-        //}
+            
+        //rightbarrier x movement
+        var rightBarrierXdestination :CGFloat
+            
+        if left{
+            rightBarrierXdestination = rightBarrier.position.x - CGFloat(barrierMovementX)
+        }
+        else{
+            rightBarrierXdestination = rightBarrier.position.x + CGFloat(barrierMovementX)
+        }
+        let moveRightBarrierAcross = SKAction.moveTo(x: rightBarrierXdestination, duration: barrierSpeedAcross)
+        let rightSequence = SKAction.sequence([ moveBarrierDown, moveRightBarrierAcross, deleteBarrier])
+            
+        //barrier gap x movement
+        var barrierGapXdestination: CGFloat
+        if left{
+            barrierGapXdestination = barrierSpaceNode.position.x - CGFloat(barrierMovementX)
+        }
+        else{
+             barrierGapXdestination = barrierSpaceNode.position.x + CGFloat(barrierMovementX)
+        }
+        let moveBarrierGapAcross = SKAction.moveTo(x: barrierGapXdestination, duration: barrierSpeedAcross)
+        let gapSequence = SKAction.sequence([ moveBarrierDown, moveBarrierGapAcross, deleteBarrier])
+            
+
+
+            
+            DispatchQueue.main.async(execute: {
+
+                self.addChild(leftBarrier)
+                self.addChild(rightBarrier)
+                self.addChild(barrierSpaceNode)
+                
+                leftBarrier.run(moveLeftBarrierAcross)
+                leftBarrier.run(moveBarrierDown){
+                    leftBarrier.removeFromParent()
+                }
+                rightBarrier.run(moveRightBarrierAcross)
+                rightBarrier.run(moveBarrierDown){
+                    rightBarrier.removeFromParent()
+                }  
+                barrierSpaceNode.run(moveBarrierGapAcross)
+                barrierSpaceNode.run(moveBarrierDown){
+                    barrierSpaceNode.removeFromParent()
+                }
+            })
+        
+        }
     }
     
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
