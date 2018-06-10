@@ -170,7 +170,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * CGFloat(playerBaseY), duration: 0.3)
-        let wait = SKAction.wait(forDuration: 1.5)
+        let wait = SKAction.wait(forDuration: 1.8)
         
         let spawn = SKAction.run({[unowned self] in
             
@@ -676,6 +676,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
  
         if !shieldActive {
+            
+        self.removeAllActions()
  
         gameOverTransitioning = true
         wasHighScore = isHighScore
@@ -685,7 +687,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             node.removeAllActions()
         }
             
-        self.removeAllActions()
+        
  
         if self.children.contains(backgroundSound){
                 backgroundSound.removeFromParent()

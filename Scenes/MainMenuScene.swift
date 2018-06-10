@@ -236,16 +236,20 @@ class MainMenuScene: SKScene{
                 if !self.children.contains(optionBackground){
                     musicLabel.position = CGPoint(x: CGFloat(musicLabelX) * scale, y: CGFloat(musicLabelY) * scale)
                     gravIcon.position = CGPoint(x: CGFloat(gravIconX) * scale, y: CGFloat(gravIconY) * scale)
+                    
                     optionBackground.addChild(musicLabel)
                     optionBackground.addChild(gravIcon)
+                    
                     self.addChild(optionBackground)
                     
                     musicNode.zPosition = 200
-                    musicNode.position = CGPoint(x: CGFloat(musicX) * scale, y: CGFloat(musicY) * scale)
+                    musicNode.position = CGPoint(x: optionBackground.position.x + CGFloat(musicX) * scale,
+                                                 y: optionBackground.position.y + CGFloat(musicY) * scale)
                     self.addChild(musicNode)
                     
                     doneNode.zPosition = 200
-                    doneNode.position = CGPoint(x: CGFloat(doneX) * scale, y: CGFloat(doneY) * scale)
+                    doneNode.position = CGPoint(x: optionBackground.position.x + CGFloat(doneX) * scale,
+                                                y: optionBackground.position.y + CGFloat(doneY) * scale)
                     self.addChild(doneNode)
                     
                     
@@ -254,7 +258,7 @@ class MainMenuScene: SKScene{
                 else{
                     optionBackground.removeAllChildren()
                     optionBackground.removeFromParent()
-                    musicNode.removeFromParent()
+                    //musicNode.removeFromParent()
                     doneNode.removeFromParent()
                 }
                 
@@ -285,7 +289,8 @@ class MainMenuScene: SKScene{
             musicNode.zPosition = 200
             musicNode.size = CGSize(width: musicNode.size.width * scale,
                                     height: musicNode.size.height * scale)
-            musicNode.position = CGPoint(x: CGFloat(musicX) * scale, y: CGFloat(musicY) * scale)
+            musicNode.position = CGPoint(x: optionBackground.position.x + CGFloat(musicX) * scale,
+                                         y: optionBackground.position.y + CGFloat(musicY) * scale)
             self.addChild(musicNode)
             
         }
@@ -295,7 +300,8 @@ class MainMenuScene: SKScene{
             musicNode.zPosition = 200
             musicNode.size = CGSize(width: musicNode.size.width * scale,
                                     height: musicNode.size.height * scale)
-            musicNode.position = CGPoint(x: CGFloat(musicX) * scale, y: CGFloat(musicY) * scale)
+            musicNode.position = CGPoint(x: optionBackground.position.x + CGFloat(musicX) * scale,
+                                         y: optionBackground.position.y + CGFloat(musicY) * scale)
             self.addChild(musicNode)
             
         }

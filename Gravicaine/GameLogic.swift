@@ -74,31 +74,7 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         
     }
     
-    
-    // MARK: - barrier
-    
-    private var spawner: Timer? = nil
-    private let frequency: TimeInterval = 1.5
-    
-    @objc private func spawn(_ timer: Timer) {
-        delegate?.shouldSpawn()
-        self.startSpawning()
-        
-    }
-    
-    private func startSpawning() {
-        
-        spawner = Timer.scheduledTimer(timeInterval: frequency,
-                                              target: self,
-                                              selector: #selector(GameLogic.spawn(_:)),
-                                              userInfo: nil,
-                                              repeats: false)
-    }
-    
-    private func stopSpawning() {
-        spawner?.invalidate()
-        spawner = nil
-    }
+
     
     
     func barrierTouchesPlayer(){
@@ -111,15 +87,13 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
 
 
     func gameDidStart() {
-        
-        //self.stopSpawning()
-        //self.startSpawning()
+
         
     }
     
     func gameDidStop(){
         
-        //self.stopSpawning()
+ 
 
     }
     
@@ -359,7 +333,31 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
     //        shieldSpawner = nil
     //    }
     
-
+    
+    // MARK: - barrier
+    //
+    //    private var spawner: Timer? = nil
+    //    private let frequency: TimeInterval = 1.5
+    //
+    //    @objc private func spawn(_ timer: Timer) {
+    //        delegate?.shouldSpawn()
+    //        self.startSpawning()
+    //
+    //    }
+    //
+    //    private func startSpawning() {
+    //
+    //        spawner = Timer.scheduledTimer(timeInterval: frequency,
+    //                                              target: self,
+    //                                              selector: #selector(GameLogic.spawn(_:)),
+    //                                              userInfo: nil,
+    //                                              repeats: false)
+    //    }
+    //
+    //    private func stopSpawning() {
+    //        spawner?.invalidate()
+    //        spawner = nil
+    //    }
 
     
 }
