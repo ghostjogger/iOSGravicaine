@@ -596,7 +596,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let next = barriers[barrierCount]
             
             if gameLogic.score <= 25{
-                spawnNormalBarrier(count: next)
+                spawnMovingBarrier(count: next)
             }
             else if gameLogic.score > 25 && gameLogic.score <= 50{
                 spawnMovingBarrier(count: next)
@@ -667,7 +667,70 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     func spawnMovingBarrier(count: Int){
         
+       // DispatchQueue.global().async {
+            
+            var moveToX = 0
+            
+            if count < 5{
+                moveToX = 2000
+            }
+            else{
+                moveToX = -2000
+            }
+            
+            // two actions
+          
+            let moveBarrierDown = SKAction.moveTo(y: CGFloat(-barrierHeight), duration: barrierSpeed)
+            let moveBarrierAcross = SKAction.moveTo(x: CGFloat(moveToX), duration: barrierSpeedAcross)
+            let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
+            let barrierAnimation = SKAction.group([moveBarrierDown, moveBarrierAcross, appearBarrier])
+            let deleteBarrier = SKAction.removeFromParent()
+            
+            // sequence of actions
+            let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
         
+        //setup left barrier
+        
+        let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongL")
+        let leftOffset = ((leftBarrier.size.width/10) * CGFloat(count))
+        leftBarrier.position = CGPoint(
+            x: (self.frame.minX - leftBarrier.size.width) + leftOffset,
+            y: self.size.height + CGFloat(barrierHeight))
+        
+        //setup right barrier
+        
+        let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongR")
+        rightBarrier.position = (CGPoint(x: leftBarrier.position.x
+            + leftBarrier.size.width + (CGFloat(barrierGap) * self.scaleFactor),
+                                         y: self.size.height + CGFloat(barrierHeight)))
+        
+        
+        //setup score gap
+        
+        let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
+        let barrierSpaceNode = SKSpriteNode(texture: nil, color: UIColor.clear, size: size)
+        barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2, y: self.size.height + CGFloat(barrierHeight) + CGFloat(barrierHeight))
+        barrierSpaceNode.physicsBody = SKPhysicsBody(rectangleOf: barrierSpaceNode.size)
+        barrierSpaceNode.physicsBody?.affectedByGravity = false
+        barrierSpaceNode.physicsBody!.categoryBitMask = PhysicsCategories.BarrierGap
+        barrierSpaceNode.physicsBody!.collisionBitMask = PhysicsCategories.None
+        barrierSpaceNode.physicsBody!.contactTestBitMask = PhysicsCategories.Player
+        barrierSpaceNode.name = "barrierGap"
+        
+        
+        self.addChild(leftBarrier)
+        self.addChild(rightBarrier)
+        self.addChild(barrierSpaceNode)
+        leftBarrier.run(barrierSequence, withKey: "moving")
+        rightBarrier.run(barrierSequence, withKey: "moving")
+        barrierSpaceNode.run(barrierSequence, withKey: "moving")
+            
+            //DispatchQueue.main.async(execute: {
+
+                
+            //})
+        
+        //}
     }
     
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
