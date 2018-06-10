@@ -82,8 +82,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     var scaleFactor:CGFloat = 0
     
     //barriers
-    var leftBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierLBig")
-    var rightBarrierNode: SKSpriteNode = SKSpriteNode(imageNamed: "BarrierRBig")
+    var leftBarrierNode: SKSpriteNode = SKSpriteNode()
+    var rightBarrierNode: SKSpriteNode = SKSpriteNode()
     var barriers = [Int]()
     var barrierCount = 0
    
@@ -610,7 +610,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
            
             //setup left barrier
 
-            let leftBarrier = SKSpriteNode(imageNamed: "BarrierLBig")
+            let leftBarrier = SKSpriteNode(imageNamed: "Barrier2LBig")
             var scaledX = leftBarrier.size.width * self.scaleFactor
             var scaledY = leftBarrier.size.height * self.scaleFactor
             leftBarrier.size = CGSize(width: scaledX, height: scaledY)
@@ -630,7 +630,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             //setup right barrier
 
-            let rightBarrier = SKSpriteNode(imageNamed: "BarrierRBig")
+            let rightBarrier = SKSpriteNode(imageNamed: "Barrier2RBig")
             scaledX = rightBarrier.size.width * self.scaleFactor
             scaledY = rightBarrier.size.height * self.scaleFactor
             rightBarrier.size = CGSize(width: scaledX, height: scaledY)
