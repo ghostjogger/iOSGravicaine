@@ -12,9 +12,9 @@ let barrierHeight = 336
 let barrierWidth = 800
 let barrierGap = 400
 let barrierSpeed = 4.0
-let barrierSpeedAcross = 6.0
+let barrierSpeedAcross = 5.0
 let bseed = 2
-let barrierMovementX = 600
+let barrierMovementX = 400
 
 
 let playerBaseY = 0.2
