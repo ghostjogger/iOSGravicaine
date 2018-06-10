@@ -170,12 +170,22 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * CGFloat(playerBaseY), duration: 0.3)
-        self.player.run(playerAppear){
+        let wait = SKAction.wait(forDuration: 1.5)
+        
+        let spawn = SKAction.run({[unowned self] in
+            
+            self.shouldSpawn()
+        })
+        
+        let spawnSequence = SKAction.sequence([spawn,wait])
+        let sequence = SKAction.sequence([playerAppear])
+        self.player.run(sequence){
             if UserDefaults.standard.bool(forKey: "music"){
             self.addChild(backgroundSound)
             }
 
         }
+        self.run(SKAction.repeatForever(spawnSequence), withKey: "spawning")
     }
     
     private func setGameOverState() {
@@ -347,7 +357,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         self.physicsWorld.contactDelegate = gameLogic
         
         barrierCount = 0
-        barriers = seedRandom(seed: 10, count: 500, low:0, high:9)
+        barriers = seedRandom(seed: 10, count: 500, low:1, high:8)
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
@@ -579,7 +589,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
     }
     
-    func shouldSpawnBarrier(){
+    func shouldSpawn(){
         
         if !gameOverTransitioning {
             
@@ -605,7 +615,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             var scaledY = leftBarrier.size.height * self.scaleFactor
             leftBarrier.size = CGSize(width: scaledX, height: scaledY)
             
-            let leftOffset = ((leftBarrier.size.width/10) * CGFloat(nextBarrier) + 2)
+            let leftOffset = ((leftBarrier.size.width/10) * CGFloat(nextBarrier))
             leftBarrier.position = CGPoint(
                 x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
                 y: self.size.height + CGFloat(barrierHeight))
@@ -656,13 +666,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 leftBarrier.run(barrierSequence, withKey: "moving")
                 rightBarrier.run(barrierSequence, withKey: "moving")
                 barrierSpaceNode.run(barrierSequence, withKey: "moving")
-                
-//                leftBarrier.run(barrierSequence, completion: {
-//                    })
-//                rightBarrier.run(barrierSequence, completion: {
-//                })
-//                barrierSpaceNode.run(barrierSequence, completion: {
-//                })
+
             })
         }
         
@@ -680,6 +684,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         for node in self.children{
             node.removeAllActions()
         }
+            
+        self.removeAllActions()
  
         if self.children.contains(backgroundSound){
                 backgroundSound.removeFromParent()
@@ -719,35 +725,29 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     func asteroidTouchesPlayer(node: SKNode){
         
-        if shieldActive{
-            node.explode(frames: asteroidExplosionFrames)
-        }
-        else{
-            gameLogic.asteroidTouchesPlayer()
-        }
         
     }
     
     func shieldPowerTouchesPlayer(){
         
-        if !shieldActive{
-
-            let shieldPowerSequence = SKAction.sequence([shieldPowerSound])
-            
-            shieldActive = true
-            player.setShield()
-            player.run(shieldPowerSequence)
-
-            shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
-                
-                self.player.removeShield()
-                self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false) { (time) in
-                    
-                    self.player.run(shieldFinishSound)
-                    self.shieldActive = false
-                }
-            }
-        }
+//        if !shieldActive{
+//
+//            let shieldPowerSequence = SKAction.sequence([shieldPowerSound])
+//
+//            shieldActive = true
+//            player.setShield()
+//            player.run(shieldPowerSequence)
+//
+//            shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
+//
+//                self.player.removeShield()
+//                self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false) { (time) in
+//
+//                    self.player.run(shieldFinishSound)
+//                    self.shieldActive = false
+//                }
+//            }
+//        }
         
     }
     
@@ -769,95 +769,95 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 //    }
     
     func shouldSpawnPowerUp() {
-        if !gameOverTransitioning {
-        
-        DispatchQueue.global().async {
-            
-            let power = PowerUpNode(scale: self.scaleFactor)
-            power.name = "power"
-            var moveType = PowerUpMove.Straight
-            moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
-            
-            power.move = moveType
-            power.zPosition = 5
-            
-            let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
-            let yStart = self.size.height + 200.0
-            
-            let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
-            let yEnd: CGFloat = -power.size.height
-            
-            DispatchQueue.main.async(execute: {
-                self.addChild(power)
-                power.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
-                }
-            })
-            
-            }
-        }
+//        if !gameOverTransitioning {
+//
+//        DispatchQueue.global().async {
+//
+//            let power = PowerUpNode(scale: self.scaleFactor)
+//            power.name = "power"
+//            var moveType = PowerUpMove.Straight
+//            moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
+//
+//            power.move = moveType
+//            power.zPosition = 5
+//
+//            let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
+//            let yStart = self.size.height + 200.0
+//
+//            let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
+//            let yEnd: CGFloat = -power.size.height
+//
+//            DispatchQueue.main.async(execute: {
+//                self.addChild(power)
+//                power.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
+//                }
+//            })
+//
+//            }
+//        }
     }
     
     func shouldSpawnAsteroid() {
         
-        if !gameOverTransitioning {
-            
-            DispatchQueue.global().async {
-                
-                let asteroid = AsteroidNode(scale: self.scaleFactor)
-                asteroid.name = "asteroid"
-                var moveType = AsteroidMove.Straight
-                moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
-                
-                asteroid.move = moveType
-                asteroid.zPosition = 5
-                
-                let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
-                let yStart = self.size.height + 200.0
-                
-                let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
-                let yEnd: CGFloat = -asteroid.size.height
-                
-                DispatchQueue.main.async(execute: {
-                    self.addChild(asteroid)
-                    asteroid.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
-                        //
-                    }
-                })
-                
-            }
-        }
+//        if !gameOverTransitioning {
+//
+//            DispatchQueue.global().async {
+//
+//                let asteroid = AsteroidNode(scale: self.scaleFactor)
+//                asteroid.name = "asteroid"
+//                var moveType = AsteroidMove.Straight
+//                moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
+//
+//                asteroid.move = moveType
+//                asteroid.zPosition = 5
+//
+//                let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
+//                let yStart = self.size.height + 200.0
+//
+//                let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
+//                let yEnd: CGFloat = -asteroid.size.height
+//
+//                DispatchQueue.main.async(execute: {
+//                    self.addChild(asteroid)
+//                    asteroid.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
+//                        //
+//                    }
+//                })
+//
+//            }
+//        }
     }
     
     func shouldSpawnShield() {
         
-        if !gameOverTransitioning {
-            
-            DispatchQueue.global().async {
-                
-                let shield = ShieldPowerNode(scale: self.scaleFactor)
-                shield.name = "shieldPower"
-                var moveType = ShieldMove.Straight
-                moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
-                
-                shield.move = moveType
-                shield.zPosition = 50
-                
-                let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
-                let yStart = self.size.height + 200.0
-                
-                let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
-                let yEnd: CGFloat = -shield.size.height
-                
-                DispatchQueue.main.async(execute: {
-                    self.addChild(shield)
-                    shield.animate()
-                    shield.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
-                        //
-                    }
-                })
-                
-            }
-        }
+//        if !gameOverTransitioning {
+//
+//            DispatchQueue.global().async {
+//
+//                let shield = ShieldPowerNode(scale: self.scaleFactor)
+//                shield.name = "shieldPower"
+//                var moveType = ShieldMove.Straight
+//                moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
+//
+//                shield.move = moveType
+//                shield.zPosition = 50
+//
+//                let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
+//                let yStart = self.size.height + 200.0
+//
+//                let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
+//                let yEnd: CGFloat = -shield.size.height
+//
+//                DispatchQueue.main.async(execute: {
+//                    self.addChild(shield)
+//                    shield.animate()
+//                    shield.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
+//                        //
+//                    }
+//                })
+//
+//            }
+//        }
     }
 
     

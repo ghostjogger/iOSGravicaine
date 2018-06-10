@@ -11,7 +11,7 @@ import SpriteKit
 protocol GameLogicDelegate: class {
     
     func scoreDidChange(_ newScore: Int, text: String!)
-    func shouldSpawnBarrier()
+    func shouldSpawn()
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int)
     //func fuelDidChange(fuel:Int)
     //func fuelEmpty()
@@ -60,176 +60,67 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         }
     }
     
-    // MARK: - power
-    private static let DefaultPowerSpawnInterval = 20.0
-    
-    //MARK - asteroid
-    private static let DefaultAsteroidSpawnInterval = 3.0
-    
-    // MARK: - fuel
-    
-//    private var fuelReducer: Timer? = nil
-//    private let fuelReducerFrequency: TimeInterval = 1.0
-//    private static let defaultFuel = 100
-    
-//    private(set) var fuel: Int = GameLogic.defaultFuel {
-//        didSet
-//        {
-//            if oldValue != fuel
-//            {
-//                delegate?.fuelDidChange(fuel:fuel)
-//            }
-//        }
-//    }
-//
-//    @objc private func reduceFuel(_ timer: Timer) {
-//        fuel -= 1
-//        self.startReducingFuel()
-//
-//    }
-//
-//    private func startReducingFuel() {
-//
-//       fuelReducer = Timer.scheduledTimer(timeInterval: TimeInterval(fuelReducerFrequency),
-//                                              target: self,
-//                                              selector: #selector(GameLogic.reduceFuel(_:)),
-//                                              userInfo: nil,
-//                                              repeats: false)
-//    }
-//
-//    private func stopReducingFuel() {
-//        fuelReducer?.invalidate()
-//        fuelReducer = nil
-//    }
-//
-//    func addFuel(amount: Int){
-//        fuel += amount
-//    }
-    
     
     
     func scoreText() -> String! {
         return "\(score)"
     }
     
-    // MARK: - asteroids
     
-    private var spawnAsteroidInterval: TimeInterval = GameLogic.DefaultAsteroidSpawnInterval
-    private var asteroidSpawner: Timer? = nil
-    
-    @objc private func spawnAsteroid(_ timer: Timer) {
-        delegate?.shouldSpawnAsteroid()
+    func updateHighScore(name: String, score: Int){
+        
+        UserDefaults.standard.set(score, forKey: HighScoreKey)
+        UserDefaults.standard.set(name, forKey: HighScoreName)
+        
     }
     
-    private func startSpawningAsteroids() {
-        asteroidSpawner = Timer.scheduledTimer(timeInterval:TimeInterval(spawnAsteroidInterval) ,
-                                            target: self,
-                                            selector: #selector(GameLogic.spawnAsteroid(_:)),
-                                            userInfo: nil,
-                                            repeats: true)
-    }
-    
-    private func stopSpawningAsteroids() {
-        asteroidSpawner?.invalidate()
-        asteroidSpawner = nil
-    }
-    
-
-    // MARK: - powerups
-    
-    private var spawnPowerInterval: TimeInterval = GameLogic.DefaultPowerSpawnInterval
-    private var powerSpawner: Timer? = nil
-    
-    @objc private func spawnPower(_ timer: Timer) {
-        delegate?.shouldSpawnPowerUp()
-    }
-    
-    private func startSpawningPower() {
-        powerSpawner = Timer.scheduledTimer(timeInterval: Double(random(min: CGFloat(12.0), max: CGFloat(spawnPowerInterval))) ,
-                                              target: self,
-                                              selector: #selector(GameLogic.spawnPower(_:)),
-                                              userInfo: nil,
-                                              repeats: true)
-    }
-    
-    private func stopSpawningPower() {
-        powerSpawner?.invalidate()
-        powerSpawner = nil
-    }
     
     // MARK: - barrier
     
-    private var barrierSpawner: Timer? = nil
-    private let barrierFrequency: TimeInterval = 1.8
+    private var spawner: Timer? = nil
+    private let frequency: TimeInterval = 1.5
     
-    @objc private func spawnBarrier(_ timer: Timer) {
-        delegate?.shouldSpawnBarrier()
-        self.startSpawningBarrier()
-       
+    @objc private func spawn(_ timer: Timer) {
+        delegate?.shouldSpawn()
+        self.startSpawning()
+        
     }
     
-    private func startSpawningBarrier() {
-       
-        barrierSpawner = Timer.scheduledTimer(timeInterval: barrierFrequency,
+    private func startSpawning() {
+        
+        spawner = Timer.scheduledTimer(timeInterval: frequency,
                                               target: self,
-                                              selector: #selector(GameLogic.spawnBarrier(_:)),
+                                              selector: #selector(GameLogic.spawn(_:)),
                                               userInfo: nil,
                                               repeats: false)
     }
     
-    private func stopSpawningBarrier() {
-        barrierSpawner?.invalidate()
-        barrierSpawner = nil
+    private func stopSpawning() {
+        spawner?.invalidate()
+        spawner = nil
     }
     
     
-    // MARK: - shield
-    
-    private var shieldSpawner: Timer? = nil
-    private let shieldFrequency: TimeInterval = 10.0
-    
-    @objc private func spawnShield(_ timer: Timer) {
-        delegate?.shouldSpawnShield()
-        self.startSpawningShield()
-        
-    }
-    
-    private func startSpawningShield() {
-        
-        shieldSpawner = Timer.scheduledTimer(timeInterval: shieldFrequency,
-                                              target: self,
-                                              selector: #selector(GameLogic.spawnShield(_:)),
-                                              userInfo: nil,
-                                              repeats: false)
-    }
-    
-    private func stopSpawningShield() {
-        shieldSpawner?.invalidate()
-        shieldSpawner = nil
+    func barrierTouchesPlayer(){
+        if !GodMode
+        {
+            self.gameOver(playerDestroyed: true)
+        }
     }
     
 
+
     func gameDidStart() {
         
-        self.stopSpawningBarrier()
-        self.startSpawningBarrier()
-        //self.stopReducingFuel()
-        //self.startReducingFuel()
-        //self.stopSpawningPower()
-        //self.startSpawningPower()
-        self.stopSpawningAsteroids()
-        self.startSpawningAsteroids()
-        self.stopSpawningShield()
-        self.startSpawningShield()
+        //self.stopSpawning()
+        //self.startSpawning()
         
     }
     
     func gameDidStop(){
-        self.stopSpawningBarrier()
-        //self.stopReducingFuel()
-        //self.stopSpawningPower()
-        self.stopSpawningAsteroids()
-        self.stopSpawningShield()
+        
+        //self.stopSpawning()
+
     }
     
     func gameDidPause(){
@@ -262,14 +153,6 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
                 body2 = contact.bodyA
             }
         
-        //player hits shieldpowerup
-        if      body1.categoryBitMask == PhysicsCategories.Player
-            &&  body2.categoryBitMask == PhysicsCategories.ShieldPower
-        {
-            body2.node?.removeFromParent()
-            self.shieldPowerTouchesPlayer()
-        }
-
         //player contacts BarrierGap
         if      body1.categoryBitMask == PhysicsCategories.Player
             &&  body2.categoryBitMask == PhysicsCategories.BarrierGap
@@ -285,27 +168,38 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
         {
             self.barrierTouchesPlayer()
         }
+        
+        
+    }
+        
+        //player hits shieldpowerup
+        //        if      body1.categoryBitMask == PhysicsCategories.Player
+        //            &&  body2.categoryBitMask == PhysicsCategories.ShieldPower
+        //        {
+        //            body2.node?.removeFromParent()
+        //            self.shieldPowerTouchesPlayer()
+        //        }
         // asteroid hits barrier
-        if      body1.categoryBitMask == PhysicsCategories.Barrier
-            &&  body2.categoryBitMask == PhysicsCategories.Asteroid
-        {
-            if let node = body2.node{
-                node.explode(frames: asteroidExplosionFrames)
-            }
-        }
+//        if      body1.categoryBitMask == PhysicsCategories.Barrier
+//            &&  body2.categoryBitMask == PhysicsCategories.Asteroid
+//        {
+//            if let node = body2.node{
+//                node.explode(frames: asteroidExplosionFrames)
+//            }
+//        }
         
         //player hits asteroid
-        if      body1.categoryBitMask == PhysicsCategories.Player
-            &&  body2.categoryBitMask == PhysicsCategories.Asteroid
-        {
-            if let node = body2.node{
-                if !GodMode
-                {
-                    delegate?.asteroidTouchesPlayer(node: node)
-                }
-            }
- 
-        }
+//        if      body1.categoryBitMask == PhysicsCategories.Player
+//            &&  body2.categoryBitMask == PhysicsCategories.Asteroid
+//        {
+//            if let node = body2.node{
+//                if !GodMode
+//                {
+//                    delegate?.asteroidTouchesPlayer(node: node)
+//                }
+//            }
+//
+//        }
         
 
         
@@ -323,40 +217,147 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
 //        }
    
         // MARK: - implementation
-    }
+//    }
 
 
-    func barrierTouchesPlayer(){
-        if !GodMode
-        {
-            self.gameOver(playerDestroyed: true)
-        }
-    }
     
 //    func powerUpTouchesPlayer(){
 //        self.fuel = GameLogic.defaultFuel
 //        delegate?.powerUpTouchesPlayer()
 //    }
     
-    func shieldPowerTouchesPlayer(){
-        
-        delegate?.shieldPowerTouchesPlayer()
-        
-    }
+//    func shieldPowerTouchesPlayer(){
+//
+//        delegate?.shieldPowerTouchesPlayer()
+//
+//    }
+//
+//    func asteroidTouchesPlayer(){
+//        if !GodMode
+//        {
+//            self.gameOver(playerDestroyed: true)
+//        }
+//    }
+
+    // MARK: - power
+    //private static let DefaultPowerSpawnInterval = 20.0
     
-    func asteroidTouchesPlayer(){
-        if !GodMode
-        {
-            self.gameOver(playerDestroyed: true)
-        }
-    }
+    //MARK - asteroid
+    //private static let DefaultAsteroidSpawnInterval = 3.0
     
-    func updateHighScore(name: String, score: Int){
-        
-        UserDefaults.standard.set(score, forKey: HighScoreKey)
-        UserDefaults.standard.set(name, forKey: HighScoreName)
+    // MARK: - fuel
     
-    }
+    //    private var fuelReducer: Timer? = nil
+    //    private let fuelReducerFrequency: TimeInterval = 1.0
+    //    private static let defaultFuel = 100
+    
+    //    private(set) var fuel: Int = GameLogic.defaultFuel {
+    //        didSet
+    //        {
+    //            if oldValue != fuel
+    //            {
+    //                delegate?.fuelDidChange(fuel:fuel)
+    //            }
+    //        }
+    //    }
+    //
+    //    @objc private func reduceFuel(_ timer: Timer) {
+    //        fuel -= 1
+    //        self.startReducingFuel()
+    //
+    //    }
+    //
+    //    private func startReducingFuel() {
+    //
+    //       fuelReducer = Timer.scheduledTimer(timeInterval: TimeInterval(fuelReducerFrequency),
+    //                                              target: self,
+    //                                              selector: #selector(GameLogic.reduceFuel(_:)),
+    //                                              userInfo: nil,
+    //                                              repeats: false)
+    //    }
+    //
+    //    private func stopReducingFuel() {
+    //        fuelReducer?.invalidate()
+    //        fuelReducer = nil
+    //    }
+    //
+    //    func addFuel(amount: Int){
+    //        fuel += amount
+    //    }
+    
+    
+    // MARK: - asteroids
+    
+    //    private var spawnAsteroidInterval: TimeInterval = GameLogic.DefaultAsteroidSpawnInterval
+    //    private var asteroidSpawner: Timer? = nil
+    //
+    //    @objc private func spawnAsteroid(_ timer: Timer) {
+    //        delegate?.shouldSpawnAsteroid()
+    //    }
+    //
+    //    private func startSpawningAsteroids() {
+    //        asteroidSpawner = Timer.scheduledTimer(timeInterval:TimeInterval(spawnAsteroidInterval) ,
+    //                                            target: self,
+    //                                            selector: #selector(GameLogic.spawnAsteroid(_:)),
+    //                                            userInfo: nil,
+    //                                            repeats: true)
+    //    }
+    //
+    //    private func stopSpawningAsteroids() {
+    //        asteroidSpawner?.invalidate()
+    //        asteroidSpawner = nil
+    //    }
+    
+    
+    // MARK: - powerups
+    //
+    //    private var spawnPowerInterval: TimeInterval = GameLogic.DefaultPowerSpawnInterval
+    //    private var powerSpawner: Timer? = nil
+    //
+    //    @objc private func spawnPower(_ timer: Timer) {
+    //        delegate?.shouldSpawnPowerUp()
+    //    }
+    //
+    //    private func startSpawningPower() {
+    //        powerSpawner = Timer.scheduledTimer(timeInterval: Double(random(min: CGFloat(12.0), max: CGFloat(spawnPowerInterval))) ,
+    //                                              target: self,
+    //                                              selector: #selector(GameLogic.spawnPower(_:)),
+    //                                              userInfo: nil,
+    //                                              repeats: true)
+    //    }
+    //
+    //    private func stopSpawningPower() {
+    //        powerSpawner?.invalidate()
+    //        powerSpawner = nil
+    //    }
+    
+    
+    
+    
+    // MARK: - shield
+    
+    //    private var shieldSpawner: Timer? = nil
+    //    private let shieldFrequency: TimeInterval = 10.0
+    //
+    //    @objc private func spawnShield(_ timer: Timer) {
+    //        delegate?.shouldSpawnShield()
+    //        self.startSpawningShield()
+    //
+    //    }
+    //
+    //    private func startSpawningShield() {
+    //
+    //        shieldSpawner = Timer.scheduledTimer(timeInterval: shieldFrequency,
+    //                                              target: self,
+    //                                              selector: #selector(GameLogic.spawnShield(_:)),
+    //                                              userInfo: nil,
+    //                                              repeats: false)
+    //    }
+    //
+    //    private func stopSpawningShield() {
+    //        shieldSpawner?.invalidate()
+    //        shieldSpawner = nil
+    //    }
     
 
 
