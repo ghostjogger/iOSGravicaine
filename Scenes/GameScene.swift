@@ -595,11 +595,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             let next = barriers[barrierCount]
             
-            if gameLogic.score <= 50{
+            if gameLogic.score <= 25{
                 spawnNormalBarrier(count: next)
             }
-            else if gameLogic.score > 50 && gameLogic.score <= 100{
-                spawnNormalBarrier(count: next)
+            else if gameLogic.score > 25 && gameLogic.score <= 50{
+                spawnMovingBarrier(count: next)
             }
             
             barrierCount += 1
@@ -665,6 +665,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
     }
     
+    func spawnMovingBarrier(count: Int){
+        
+        
+    }
+    
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
  
         if !shieldActive {
@@ -702,18 +707,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     func powerUpTouchesPlayer(){
 
-        let powerUpSequence = SKAction.sequence([powerUpSound])
-        player.run(powerUpSequence)
-
     }
     
     func shouldExplodeNode(_ node: SKNode) -> Bool {
-        // if this is an enemy and it's out of bounds, do nothing
-        if node is PowerUpNode {
-            return false
-        }
-        // otherwise, explode it!!
-        //node.explode()
+
         return true
     }
     
@@ -723,135 +720,22 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     }
     
     func shieldPowerTouchesPlayer(){
-        
-//        if !shieldActive{
-//
-//            let shieldPowerSequence = SKAction.sequence([shieldPowerSound])
-//
-//            shieldActive = true
-//            player.setShield()
-//            player.run(shieldPowerSequence)
-//
-//            shieldTimer = Timer.scheduledTimer(withTimeInterval: shieldActivationTime, repeats: false) { (time) in
-//
-//                self.player.removeShield()
-//                self.shieldTransitionTimer = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: false) { (time) in
-//
-//                    self.player.run(shieldFinishSound)
-//                    self.shieldActive = false
-//                }
-//            }
-//        }
+
         
     }
     
-//    func fuelEmpty(){
-//
-//        isFuelEmpty = true
-//    }
-    
-//    func fuelDidChange(fuel:Int){
-//
-//        if fuel <= 0{
-//            isFuelEmpty = true
-//            fuelNode.size.width = 0
-//        }
-//
-//        if !gameOverTransitioning && !isFuelEmpty{
-//            fuelNode.size.width = CGFloat(fuel * 5)
-//        }
-//    }
+
     
     func shouldSpawnPowerUp() {
-//        if !gameOverTransitioning {
-//
-//        DispatchQueue.global().async {
-//
-//            let power = PowerUpNode(scale: self.scaleFactor)
-//            power.name = "power"
-//            var moveType = PowerUpMove.Straight
-//            moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
-//
-//            power.move = moveType
-//            power.zPosition = 5
-//
-//            let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
-//            let yStart = self.size.height + 200.0
-//
-//            let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
-//            let yEnd: CGFloat = -power.size.height
-//
-//            DispatchQueue.main.async(execute: {
-//                self.addChild(power)
-//                power.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
-//                }
-//            })
-//
-//            }
-//        }
+
     }
     
     func shouldSpawnAsteroid() {
-        
-//        if !gameOverTransitioning {
-//
-//            DispatchQueue.global().async {
-//
-//                let asteroid = AsteroidNode(scale: self.scaleFactor)
-//                asteroid.name = "asteroid"
-//                var moveType = AsteroidMove.Straight
-//                moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
-//
-//                asteroid.move = moveType
-//                asteroid.zPosition = 5
-//
-//                let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
-//                let yStart = self.size.height + 200.0
-//
-//                let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
-//                let yEnd: CGFloat = -asteroid.size.height
-//
-//                DispatchQueue.main.async(execute: {
-//                    self.addChild(asteroid)
-//                    asteroid.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
-//                        //
-//                    }
-//                })
-//
-//            }
-//        }
+
     }
     
     func shouldSpawnShield() {
-        
-//        if !gameOverTransitioning {
-//
-//            DispatchQueue.global().async {
-//
-//                let shield = ShieldPowerNode(scale: self.scaleFactor)
-//                shield.name = "shieldPower"
-//                var moveType = ShieldMove.Straight
-//                moveType = (arc4random() % 2 == 0 ? .Straight : .Curvy)
-//
-//                shield.move = moveType
-//                shield.zPosition = 50
-//
-//                let randomXStart = random(min: 10.0, max: self.size.width - 10.0)
-//                let yStart = self.size.height + 200.0
-//
-//                let randomXEnd = random(min: 10.0, max: self.size.width - 10.0)
-//                let yEnd: CGFloat = -shield.size.height
-//
-//                DispatchQueue.main.async(execute: {
-//                    self.addChild(shield)
-//                    shield.animate()
-//                    shield.move(from: CGPoint(x: randomXStart, y: yStart), to: CGPoint(x: randomXEnd, y: yEnd)) {
-//                        //
-//                    }
-//                })
-//
-//            }
-//        }
+
     }
 
     
