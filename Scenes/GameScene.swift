@@ -358,7 +358,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         self.physicsWorld.contactDelegate = gameLogic
         
         barrierCount = 0
-        barriers = seedRandom(seed: 10, count: 500, low:1, high:8)
+        barriers = seedRandom(seed: UInt64(bseed), count: 500, low:1, high:8)
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
