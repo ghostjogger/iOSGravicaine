@@ -13,14 +13,7 @@ protocol GameLogicDelegate: class {
     func scoreDidChange(_ newScore: Int, text: String!)
     func shouldSpawn()
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int)
-    //func fuelDidChange(fuel:Int)
-    //func fuelEmpty()
-    func shouldSpawnPowerUp()
-    func powerUpTouchesPlayer()
-    func shouldSpawnAsteroid()
-    func shouldSpawnShield()
-    func shieldPowerTouchesPlayer()
-    func asteroidTouchesPlayer(node: SKNode)
+
 }
 
 class GameLogic: NSObject, SKPhysicsContactDelegate {

@@ -545,12 +545,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             self.view?.presentScene(sceneToMoveTo, transition:myTransition)
         }
     }
-    
 
-
-    
-
-    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         leftTouchActive = false
@@ -682,17 +677,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         DispatchQueue.global().async {
 
           
-            let moveBarrierDown = SKAction.moveTo(y: CGFloat(-barrierHeight), duration: barrierSpeed)
-            let deleteBarrier = SKAction.removeFromParent()
+        let moveBarrierDown = SKAction.moveTo(y: CGFloat(-barrierHeight), duration: barrierSpeed)
 
-            
-//            let moveBarrierAcross = SKAction.moveTo(x: CGFloat(0), duration: barrierSpeedAcross)
-//            let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
-//            let barrierAnimation = SKAction.group([moveBarrierDown, moveBarrierAcross, appearBarrier])
-//            let deleteBarrier = SKAction.removeFromParent()
-            
-            //squence of actions
-            //let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
+
         
         //setup left barrier
         
@@ -734,9 +721,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             leftBarrierXdestination = leftBarrier.position.x + CGFloat(barrierMovementX)
         }
         let moveLeftBarrierAcross = SKAction.moveTo(x: leftBarrierXdestination, duration: barrierSpeedAcross)
-        let leftSequence = SKAction.sequence([ moveBarrierDown, moveLeftBarrierAcross, deleteBarrier])
-        
-            
+
         //rightbarrier x movement
         var rightBarrierXdestination :CGFloat
             
@@ -747,7 +732,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             rightBarrierXdestination = rightBarrier.position.x + CGFloat(barrierMovementX)
         }
         let moveRightBarrierAcross = SKAction.moveTo(x: rightBarrierXdestination, duration: barrierSpeedAcross)
-        let rightSequence = SKAction.sequence([ moveBarrierDown, moveRightBarrierAcross, deleteBarrier])
+
             
         //barrier gap x movement
         var barrierGapXdestination: CGFloat
@@ -758,9 +743,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
              barrierGapXdestination = barrierSpaceNode.position.x + CGFloat(barrierMovementX)
         }
         let moveBarrierGapAcross = SKAction.moveTo(x: barrierGapXdestination, duration: barrierSpeedAcross)
-        let gapSequence = SKAction.sequence([ moveBarrierDown, moveBarrierGapAcross, deleteBarrier])
-            
-
 
             
             DispatchQueue.main.async(execute: {
@@ -820,53 +802,4 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     }
        
 }
-    
-    func powerUpTouchesPlayer(){
-
-    }
-    
-    func shouldExplodeNode(_ node: SKNode) -> Bool {
-
-        return true
-    }
-    
-    func asteroidTouchesPlayer(node: SKNode){
-        
-        
-    }
-    
-    func shieldPowerTouchesPlayer(){
-
-        
-    }
-    
-
-    
-    func shouldSpawnPowerUp() {
-
-    }
-    
-    func shouldSpawnAsteroid() {
-
-    }
-    
-    func shouldSpawnShield() {
-
-    }
-
-    
-
-
-    
 }
-    
-    
-
-    
-
-    
- 
-    
-    
-
-
