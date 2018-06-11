@@ -50,8 +50,7 @@ class MainMenuScene: SKScene{
     var musicLabel = SKLabelNode(text: "Game Music")
     var music: Bool
     var musicNode: SKSpriteNode = SKSpriteNode()
-    var doneNode: SKSpriteNode = SKSpriteNode(imageNamed: "done")
-    var gravIcon = SKSpriteNode(imageNamed: "AppIcon")
+
     
     
     private var highScorePanel: HighScoreNamePanel? = nil
@@ -86,7 +85,7 @@ class MainMenuScene: SKScene{
         
         // score panel
         scoreattributes = EKAttributes.centerFloat
-        scoreattributes.displayDuration = 4.0
+        scoreattributes.displayDuration = 3.0
         scoreattributes.entryInteraction = .dismiss
         scoreattributes.entryBackground = .image(image: UIImage(named: "panelBackground")!)
         scoreattributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
@@ -95,7 +94,7 @@ class MainMenuScene: SKScene{
                                   title: EKProperty.LabelContent(text: "Highest Score",
                                                                  style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
                                   description: EKProperty.LabelContent(text: "\(highScoreName!) \n\n   \(score)",
-                                    style: EKProperty.Label(font: UIFont(name: FontName, size: 12.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+                                    style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
         
         scorenotificationMessage = EKNotificationMessage(simpleMessage: scoremessage)
         scorenotificationView = EKNotificationMessageView(with: scorenotificationMessage)
@@ -182,9 +181,7 @@ class MainMenuScene: SKScene{
         scoresLabel.position = CGPoint(x: self.frame.width * 0.8, y: self.frame.height * 0.05)
         scoresLabel.size = CGSize(width: scoresLabel.size.width * scale, height: scoresLabel.size.height * scale )
         self.addChild(scoresLabel)
-        
-        doneNode.size = CGSize(width: doneNode.size.width * scale, height: doneNode.size.height * scale)
-        gravIcon.size = CGSize(width: gravIcon.size.width * scale, height: gravIcon.size.height * scale)
+
  
         titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.90)
         titleImage.zPosition = 10
@@ -212,12 +209,7 @@ class MainMenuScene: SKScene{
                 if musicNode.contains(pointOfTouch){
                     toggleMusic()
                 }
-                else if doneNode.contains(pointOfTouch){
-                    optionBackground.removeAllChildren()
-                    optionBackground.removeFromParent()
-                    musicNode.removeFromParent()
-                    doneNode.removeFromParent()
-                }
+ 
             }
             
             if startLabel.contains(pointOfTouch){
@@ -232,13 +224,12 @@ class MainMenuScene: SKScene{
                 
             else if optionLabel.contains(pointOfTouch){
 
-                //SwiftEntryKit.display(entry: optionsPopUpView, using: optionsattributes)
                 if !self.children.contains(optionBackground){
                     musicLabel.position = CGPoint(x: CGFloat(musicLabelX) * scale, y: CGFloat(musicLabelY) * scale)
-                    gravIcon.position = CGPoint(x: CGFloat(gravIconX) * scale, y: CGFloat(gravIconY) * scale)
+
                     
                     optionBackground.addChild(musicLabel)
-                    optionBackground.addChild(gravIcon)
+
                     
                     self.addChild(optionBackground)
                     
@@ -246,11 +237,7 @@ class MainMenuScene: SKScene{
                     musicNode.position = CGPoint(x: optionBackground.position.x + CGFloat(musicX) * scale,
                                                  y: optionBackground.position.y + CGFloat(musicY) * scale)
                     self.addChild(musicNode)
-                    
-                    doneNode.zPosition = 200
-                    doneNode.position = CGPoint(x: optionBackground.position.x + CGFloat(doneX) * scale,
-                                                y: optionBackground.position.y + CGFloat(doneY) * scale)
-                    self.addChild(doneNode)
+
                     
                     
                     SwiftEntryKit.dismiss()
@@ -258,8 +245,8 @@ class MainMenuScene: SKScene{
                 else{
                     optionBackground.removeAllChildren()
                     optionBackground.removeFromParent()
-                    //musicNode.removeFromParent()
-                    doneNode.removeFromParent()
+                    musicNode.removeFromParent()
+
                 }
                 
                 
