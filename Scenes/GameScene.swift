@@ -590,10 +590,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             let next = barriers[barrierCount]
             
-            if barrierCount <= 10{
+            if barrierCount < 10{
                 spawnNormalBarrier(count: next)
             }
-            else if barrierCount > 10 && barrierCount <= 20{
+            else if barrierCount >= 10 && barrierCount < 20{
                 spawnMovingBarrier(count: next)
             }
             else{
