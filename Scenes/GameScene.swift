@@ -640,7 +640,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
             let barrierSpaceNode = SKSpriteNode(texture: nil, color: UIColor.clear, size: size)
-            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2, y: self.size.height + CGFloat(barrierHeight) + CGFloat(barrierHeight))
+            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + CGFloat(barrierHeight))
             barrierSpaceNode.physicsBody = SKPhysicsBody(rectangleOf: barrierSpaceNode.size)
             barrierSpaceNode.physicsBody?.affectedByGravity = false
             barrierSpaceNode.physicsBody!.categoryBitMask = PhysicsCategories.BarrierGap
@@ -701,7 +701,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
         let barrierSpaceNode = SKSpriteNode(texture: nil, color: UIColor.clear, size: size)
-        barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2, y: self.size.height + CGFloat(barrierHeight) + CGFloat(barrierHeight))
+        barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + CGFloat(barrierHeight))
         barrierSpaceNode.physicsBody = SKPhysicsBody(rectangleOf: barrierSpaceNode.size)
         barrierSpaceNode.physicsBody?.affectedByGravity = false
         barrierSpaceNode.physicsBody!.categoryBitMask = PhysicsCategories.BarrierGap
