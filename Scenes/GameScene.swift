@@ -90,6 +90,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     // ui nodes
     private let exitLabel = SKSpriteNode(imageNamed: "exit")
     private let pauseLabel = SKSpriteNode(imageNamed: "pause")
+    private var middleIndicator = SKSpriteNode()
     private var startPanel: StartPanelNode? = nil
     private var gameOverPanel: GameOverPanelNode? = nil
     private var highScorePanel: HighScorePanelNode? = nil
@@ -286,6 +287,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         super.init(size: size)
         
 
+        // set up middle indicator stick
+        let size = CGSize(width: 2, height: self.size.height)
+        middleIndicator = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.4), size: size)
+        middleIndicator.zPosition = 1
+        middleIndicator.position = CGPoint(x: self.frame.midX, y: self.size.height/2)
+        
+        
 
         gameLogic.delegate = self
         
@@ -373,6 +381,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             self.addChild(background)
             
         }
+        
+        self.addChild(middleIndicator)
 
         //set up player ship
         
@@ -564,6 +574,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.thrustLeftEnded()
 
     }
+
     
     // MARK: - game logic delegate
     
