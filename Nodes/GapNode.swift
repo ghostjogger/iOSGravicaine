@@ -22,7 +22,7 @@ class GapNode:SKSpriteNode {
     
     init( size: CGSize) {
 
-        super.init(texture: nil, color: UIColor., size: size)
+        super.init(texture: nil, color: UIColor.clear, size: size)
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody!.affectedByGravity = false
         self.physicsBody!.categoryBitMask = PhysicsCategories.BarrierGap
