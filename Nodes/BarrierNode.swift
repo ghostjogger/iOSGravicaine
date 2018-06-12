@@ -58,19 +58,19 @@ class BarrierNode:SKSpriteNode {
         
         var deltaX = to.x - from.x
         var deltaY = to.y - from.y
-        if arc4random() % 2 == 1 {
-            deltaX = -deltaX
-            deltaY = -deltaY
-        }
+//        if arc4random() % 2 == 1 {
+//            deltaX = -deltaX
+//            deltaY = -deltaY
+//        }
         
-        let controlPoint0 = CGPoint(x: from.x + deltaX * 0.5, y: from.y)
-        let controlPoint1 = CGPoint(x: to.x, y: to.y - deltaY  * 0.5)
+        let controlPoint0 = CGPoint(x: from.x + deltaX * 0.95, y: from.y)
+        let controlPoint1 = CGPoint(x: to.x, y: to.y - deltaY  * 0.95)
         
         let bezierPath: UIBezierPath = UIBezierPath()
         bezierPath.move(to: from)
         bezierPath.addCurve(to: to, controlPoint1: controlPoint0, controlPoint2: controlPoint1)
         
-        return SKAction.follow(bezierPath.cgPath, asOffset: false, orientToPath: true, speed: barrierSpeed)
+        return SKAction.follow(bezierPath.cgPath, asOffset: false, orientToPath: false, speed: barrierSpeed)
     }
     
     func move(from: CGPoint, to: CGPoint, run: @escaping () -> Void = {}) {
