@@ -779,6 +779,117 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         }
     }
     
+    func spawnCurvyMovingBarrier(count: Int){
+        
+        var left:Bool
+        
+        if count < 5{
+            left = false
+        }
+        else{
+            left = true
+        }
+        
+        DispatchQueue.global().async {
+            
+            
+            let moveBarrierDown = SKAction.moveTo(y: CGFloat(-barrierHeight), duration: barrierSpeed)
+            
+            
+            
+            //setup left barrier
+            
+            let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongL")
+            let leftOffset = ((leftBarrier.size.width/20) * CGFloat(count))
+            leftBarrier.position = CGPoint(
+                x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
+                y: self.size.height + CGFloat(barrierHeight))
+            
+            //setup right barrier
+            
+            let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongR")
+            rightBarrier.position = (CGPoint(x: leftBarrier.position.x
+                + leftBarrier.size.width + (CGFloat(barrierGap) * self.scaleFactor),
+                                             y: self.size.height + CGFloat(barrierHeight)))
+            
+            
+            //setup score gap
+            
+            let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
+            let barrierSpaceNode = SKSpriteNode(texture: nil, color: UIColor.clear, size: size)
+            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + CGFloat(barrierHeight))
+            barrierSpaceNode.physicsBody = SKPhysicsBody(rectangleOf: barrierSpaceNode.size)
+            barrierSpaceNode.physicsBody?.affectedByGravity = false
+            barrierSpaceNode.physicsBody!.categoryBitMask = PhysicsCategories.BarrierGap
+            barrierSpaceNode.physicsBody!.collisionBitMask = PhysicsCategories.None
+            barrierSpaceNode.physicsBody!.contactTestBitMask = PhysicsCategories.Player
+            barrierSpaceNode.name = "barrierGap"
+            
+            //setup x movements
+            
+            //leftbarrier x movement
+            var leftBarrierXdestination :CGFloat
+            
+            if left{
+                leftBarrierXdestination = leftBarrier.position.x - CGFloat(barrierMovementX)
+            }
+            else{
+                leftBarrierXdestination = leftBarrier.position.x + CGFloat(barrierMovementX)
+            }
+            
+
+            
+            //let moveLeftBarrierAcross = SKAction.follow(bezierPath.cgPath, asOffset: false, orientToPath: true, speed: barrierSpeed)
+            
+            let moveLeftBarrierAcross = SKAction.moveTo(x: leftBarrierXdestination, duration: barrierSpeedAcross)
+            
+            //rightbarrier x movement
+            var rightBarrierXdestination :CGFloat
+            
+            if left{
+                rightBarrierXdestination = rightBarrier.position.x - CGFloat(barrierMovementX)
+            }
+            else{
+                rightBarrierXdestination = rightBarrier.position.x + CGFloat(barrierMovementX)
+            }
+            let moveRightBarrierAcross = SKAction.moveTo(x: rightBarrierXdestination, duration: barrierSpeedAcross)
+            
+            
+            //barrier gap x movement
+            var barrierGapXdestination: CGFloat
+            if left{
+                barrierGapXdestination = barrierSpaceNode.position.x - CGFloat(barrierMovementX)
+            }
+            else{
+                barrierGapXdestination = barrierSpaceNode.position.x + CGFloat(barrierMovementX)
+            }
+            let moveBarrierGapAcross = SKAction.moveTo(x: barrierGapXdestination, duration: barrierSpeedAcross)
+            
+            
+            DispatchQueue.main.async(execute: {
+                
+                self.addChild(leftBarrier)
+                self.addChild(rightBarrier)
+                self.addChild(barrierSpaceNode)
+                
+                leftBarrier.run(moveLeftBarrierAcross)
+                leftBarrier.run(moveBarrierDown){
+                    leftBarrier.removeFromParent()
+                }
+                rightBarrier.run(moveRightBarrierAcross)
+                rightBarrier.run(moveBarrierDown){
+                    rightBarrier.removeFromParent()
+                }
+                barrierSpaceNode.run(moveBarrierGapAcross)
+                barrierSpaceNode.run(moveBarrierDown){
+                    barrierSpaceNode.removeFromParent()
+                }
+            })
+            
+        }
+    }
+    
+    
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
  
         if !shieldActive {
