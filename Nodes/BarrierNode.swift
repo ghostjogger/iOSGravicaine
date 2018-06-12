@@ -17,7 +17,7 @@ enum BarrierMove {
 
 class BarrierNode:SKSpriteNode {
     
-    var barrierSpeed: CGFloat = 1000.0 // (speed is x px per second)
+    var barrierSpeed: CGFloat = 700.0 // (speed is x px per second)
     var move: BarrierMove = .Straight
 
     
@@ -54,26 +54,23 @@ class BarrierNode:SKSpriteNode {
         return SKAction.move(to: to, duration: TimeInterval(duration))
     }
     
-    private func curvyMove(from: CGPoint, to: CGPoint) -> SKAction {
+    private func curvyMove(from: CGPoint, to: CGPoint, control: Int) -> SKAction {
         
-        var deltaX = to.x - from.x
-        var deltaY = to.y - from.y
-//        if arc4random() % 2 == 1 {
-//            deltaX = -deltaX
-//            deltaY = -deltaY
-//        }
+        var deltaX = from.x + CGFloat(500 * control)
+        var deltaY = abs((from.y - to.y) / 2)
         
-        let controlPoint0 = CGPoint(x: from.x + deltaX * 0.95, y: from.y)
-        let controlPoint1 = CGPoint(x: to.x, y: to.y - deltaY  * 0.95)
+        
+        let controlPoint = CGPoint(x: CGFloat(deltaX), y: deltaY)
+        
         
         let bezierPath: UIBezierPath = UIBezierPath()
         bezierPath.move(to: from)
-        bezierPath.addCurve(to: to, controlPoint1: controlPoint0, controlPoint2: controlPoint1)
+        bezierPath.addQuadCurve(to: to, controlPoint: controlPoint)
         
         return SKAction.follow(bezierPath.cgPath, asOffset: false, orientToPath: false, speed: barrierSpeed)
     }
     
-    func move(from: CGPoint, to: CGPoint, run: @escaping () -> Void = {}) {
+    func move(from: CGPoint, to: CGPoint, control: Int, run: @escaping () -> Void = {}) {
         
         // set position
         self.position = from
@@ -88,7 +85,7 @@ class BarrierNode:SKSpriteNode {
             moveAction = self.straightMove(from: from, to: to)
             break
         case .Curvy:
-            moveAction = self.curvyMove(from: from, to: to)
+            moveAction = self.curvyMove(from: from, to: to, control: control)
             break
         }
         

@@ -601,10 +601,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             let next = barriers[barrierCount]
             
-            if barrierCount < 10{
+            if barrierCount < 20{
                 spawnNormalBarrier(count: next)
             }
-            else if barrierCount >= 10 && barrierCount < 20{
+            else if barrierCount >= 20 && barrierCount < 40{
                 spawnMovingBarrier(count: next)
             }
             else{
@@ -652,13 +652,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
                 self.addChild(barrierSpaceNode)
-                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), run: {
+                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, run: {
                     
                 })
-                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), run: {
+                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1,run: {
                     
                 })
-                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(-barrierHeight)), run: {
+                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(-barrierHeight)), control: 1,run: {
                     
                 })
                 
@@ -670,12 +670,15 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     func spawnMovingBarrier(count: Int){
         
         var left:Bool
+        var control:Int
         
         if count < 5{
             left = false
+            control = 1
         }
         else{
             left = true
+            control = -1
         }
         
         DispatchQueue.global().async {
@@ -745,13 +748,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
                 self.addChild(barrierSpaceNode)
-                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrierXdestination, y: CGFloat(-barrierHeight)), run: {
+                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrierXdestination, y: CGFloat(-barrierHeight)), control: control,run: {
                     
                 })
-                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrierXdestination, y: CGFloat(-barrierHeight)), run: {
+                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrierXdestination, y: CGFloat(-barrierHeight)), control:control, run: {
                     
                 })
-                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierGapXdestination, y: CGFloat(-barrierHeight)), run: {
+                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierGapXdestination, y: CGFloat(-barrierHeight)), control: control, run: {
                     
                 })
                 
@@ -764,98 +767,64 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     func spawnCurvyMovingBarrier(count: Int){
         
         var left:Bool
+        var control:Int
         
         if count < 5{
             left = false
+            control = 1
         }
         else{
             left = true
+            control = -1
         }
         
         DispatchQueue.global().async {
-          
+            
+            
             //setup left barrier
             
-            let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongL")
-            let leftOffset = ((leftBarrier.size.width/20) * CGFloat(count))
+            let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2LBig")
             leftBarrier.move = .Curvy
+            let leftOffset = ((leftBarrier.size.width/10) * CGFloat(count))
             leftBarrier.position = CGPoint(
                 x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
                 y: self.size.height + CGFloat(barrierHeight))
             
             //setup right barrier
             
-            let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongR")
+            let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2RBig")
             rightBarrier.move = .Curvy
             rightBarrier.position = (CGPoint(x: leftBarrier.position.x
                 + leftBarrier.size.width + (CGFloat(barrierGap) * self.scaleFactor),
                                              y: self.size.height + CGFloat(barrierHeight)))
+            
             
             //setup score gap
             
             let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
             let barrierSpaceNode = GapNode( size: size)
             barrierSpaceNode.move = .Curvy
-            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y:self.size.height + CGFloat(barrierHeight))
-            
-            //setup x movements
-            
-            //leftbarrier x movement
-            var leftBarrierXdestination :CGFloat
-            
-            if left{
-                leftBarrierXdestination = leftBarrier.position.x - CGFloat(barrierMovementX)
-            }
-            else{
-                leftBarrierXdestination = leftBarrier.position.x + CGFloat(barrierMovementX)
-            }
-            
+            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + CGFloat(barrierHeight))
 
-            
-            //rightbarrier x movement
-            var rightBarrierXdestination :CGFloat
-            
-            if left{
-                rightBarrierXdestination = rightBarrier.position.x - CGFloat(barrierMovementX)
-            }
-            else{
-                rightBarrierXdestination = rightBarrier.position.x + CGFloat(barrierMovementX)
-            }
-
-            
-            
-            //barrier gap x movement
-            var barrierGapXdestination: CGFloat
-            if left{
-                barrierGapXdestination = barrierSpaceNode.position.x - CGFloat(barrierMovementX)
-            }
-            else{
-                barrierGapXdestination = barrierSpaceNode.position.x + CGFloat(barrierMovementX)
-            }
-
-            
             
             DispatchQueue.main.async(execute: {
-                
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
                 self.addChild(barrierSpaceNode)
+                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control:control,run: {
+                    
+                })
+                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: control,run: {
+                    
+                })
+                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(-barrierHeight)),control: control, run: {
+                    
+                })
                 
-                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrierXdestination, y: CGFloat(-barrierHeight)), run: {
-                    
-                })
-                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrierXdestination, y: CGFloat(-barrierHeight)), run: {
-                    
-                })
-                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierGapXdestination, y: CGFloat(-barrierHeight)), run: {
-                    
-                })
-
             })
-            
         }
+        
     }
-    
     
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
  
