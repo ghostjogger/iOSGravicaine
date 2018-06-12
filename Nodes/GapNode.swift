@@ -67,7 +67,7 @@ class GapNode:SKSpriteNode {
         bezierPath.move(to: from)
         bezierPath.addCurve(to: to, controlPoint1: controlPoint0, controlPoint2: controlPoint1)
         
-        return SKAction.follow(bezierPath.cgPath, asOffset: false, orientToPath: true, speed: barrierSpeed)
+        return SKAction.follow(bezierPath.cgPath, asOffset: false, orientToPath: false, speed: barrierSpeed)
     }
     
     func move(from: CGPoint, to: CGPoint, run: @escaping () -> Void = {}) {
