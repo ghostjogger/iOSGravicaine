@@ -52,6 +52,7 @@
 		99B334D420BB44AC00AC5C59 /* sound62.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99B334D320BB44AC00AC5C59 /* sound62.wav */; };
 		99BB472E20C5D6CF00401887 /* bombs.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99BB472D20C5D6CF00401887 /* bombs.atlas */; };
 		99BB473020C5D74400401887 /* mines.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99BB472F20C5D74400401887 /* mines.atlas */; };
+		99D9DE9120D04ACD005D1CD0 /* GapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D9DE9020D04ACD005D1CD0 /* GapNode.swift */; };
 		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
 		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
 /* End PBXBuildFile section */
@@ -104,6 +105,7 @@
 		99B334D320BB44AC00AC5C59 /* sound62.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound62.wav; sourceTree = "<group>"; };
 		99BB472D20C5D6CF00401887 /* bombs.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bombs.atlas; sourceTree = "<group>"; };
 		99BB472F20C5D74400401887 /* mines.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = mines.atlas; sourceTree = "<group>"; };
+		99D9DE9020D04ACD005D1CD0 /* GapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GapNode.swift; sourceTree = "<group>"; };
 		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
 		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
 		A56FAA6595503966B1D24FFE /* Pods_Gravicaine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gravicaine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 				9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */,
 				993C7E4C20C2D9BC0095D78D /* SKNodeExplosion.swift */,
 				9938D3C520CD8D2100DE4604 /* BarrierNode.swift */,
+				99D9DE9020D04ACD005D1CD0 /* GapNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				990B01C820BC8D6000F2BA3F /* Constants.swift in Sources */,
 				99A357D92082160F00F86F84 /* StartPanelNode.swift in Sources */,
 				990B01C420BC583F00F2BA3F /* ShieldNode.swift in Sources */,
+				99D9DE9120D04ACD005D1CD0 /* GapNode.swift in Sources */,
 				99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */,
 				99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */,
 				99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */,

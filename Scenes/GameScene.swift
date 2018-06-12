@@ -602,7 +602,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let next = barriers[barrierCount]
             
             if barrierCount < 10{
-                spawnNormalBarrier(count: next)
+                spawnMovingBarrier(count: next)
             }
             else if barrierCount >= 10 && barrierCount < 20{
                 spawnMovingBarrier(count: next)
@@ -621,19 +621,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     func spawnNormalBarrier(count: Int){
         
         DispatchQueue.global().async {
-            
-            // two actions
-            let moveBarrier = SKAction.moveTo(y: CGFloat(-barrierHeight), duration: barrierSpeed)
-            let appearBarrier = SKAction.fadeAlpha(to: 1.0, duration: 0.15)
-            let barrierAnimation = SKAction.group([moveBarrier, appearBarrier])
-            let deleteBarrier = SKAction.removeFromParent()
-            
-            // sequence of actions
-            let barrierSequence = SKAction.sequence([ barrierAnimation, deleteBarrier])
+
          
             //setup left barrier
             
             let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2LBig")
+            leftBarrier.move = .Straight
             let leftOffset = ((leftBarrier.size.width/10) * CGFloat(count))
             leftBarrier.position = CGPoint(
                 x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
@@ -642,6 +635,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             //setup right barrier
             
             let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2RBig")
+            rightBarrier.move = .Straight
             rightBarrier.position = (CGPoint(x: leftBarrier.position.x
                 + leftBarrier.size.width + (CGFloat(barrierGap) * self.scaleFactor),
                                              y: self.size.height + CGFloat(barrierHeight)))
@@ -650,24 +644,23 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             //setup score gap
             
             let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
-            let barrierSpaceNode = SKSpriteNode(texture: nil, color: UIColor.clear, size: size)
+            let barrierSpaceNode = GapNode( size: size)
+            barrierSpaceNode.move = .Straight
             barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + CGFloat(barrierHeight))
-            barrierSpaceNode.physicsBody = SKPhysicsBody(rectangleOf: barrierSpaceNode.size)
-            barrierSpaceNode.physicsBody?.affectedByGravity = false
-            barrierSpaceNode.physicsBody!.categoryBitMask = PhysicsCategories.BarrierGap
-            barrierSpaceNode.physicsBody!.collisionBitMask = PhysicsCategories.None
-            barrierSpaceNode.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-            barrierSpaceNode.name = "barrierGap"
-            
-            
-            
+       
             DispatchQueue.main.async(execute: {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
                 self.addChild(barrierSpaceNode)
-                leftBarrier.run(barrierSequence, withKey: "moving")
-                rightBarrier.run(barrierSequence, withKey: "moving")
-                barrierSpaceNode.run(barrierSequence, withKey: "moving")
+                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), run: {
+                    
+                })
+                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), run: {
+                    
+                })
+                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(-barrierHeight)), run: {
+                    
+                })
                 
             })
         }
@@ -707,18 +700,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             + leftBarrier.size.width + (CGFloat(barrierGap) * self.scaleFactor),
                                          y: self.size.height + CGFloat(barrierHeight)))
         
-        
         //setup score gap
-        
+            
         let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
-        let barrierSpaceNode = SKSpriteNode(texture: nil, color: UIColor.clear, size: size)
-        barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + CGFloat(barrierHeight))
-        barrierSpaceNode.physicsBody = SKPhysicsBody(rectangleOf: barrierSpaceNode.size)
-        barrierSpaceNode.physicsBody?.affectedByGravity = false
-        barrierSpaceNode.physicsBody!.categoryBitMask = PhysicsCategories.BarrierGap
-        barrierSpaceNode.physicsBody!.collisionBitMask = PhysicsCategories.None
-        barrierSpaceNode.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-        barrierSpaceNode.name = "barrierGap"
+        let barrierSpaceNode = GapNode( size: size)
+        barrierSpaceNode.move = .Straight
+        barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y:self.size.height + CGFloat(barrierHeight))
         
         //setup x movements
             
@@ -731,7 +718,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         else{
             leftBarrierXdestination = leftBarrier.position.x + CGFloat(barrierMovementX)
         }
-        let moveLeftBarrierAcross = SKAction.moveTo(x: leftBarrierXdestination, duration: barrierSpeedAcross)
+
 
         //rightbarrier x movement
         var rightBarrierXdestination :CGFloat
@@ -742,7 +729,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         else{
             rightBarrierXdestination = rightBarrier.position.x + CGFloat(barrierMovementX)
         }
-        let moveRightBarrierAcross = SKAction.moveTo(x: rightBarrierXdestination, duration: barrierSpeedAcross)
+
 
             
         //barrier gap x movement
@@ -753,7 +740,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         else{
              barrierGapXdestination = barrierSpaceNode.position.x + CGFloat(barrierMovementX)
         }
-        let moveBarrierGapAcross = SKAction.moveTo(x: barrierGapXdestination, duration: barrierSpeedAcross)
+
 
             
             DispatchQueue.main.async(execute: {
@@ -761,19 +748,17 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
                 self.addChild(barrierSpaceNode)
+                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrierXdestination, y: CGFloat(-barrierHeight)), run: {
+                    
+                })
+                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrierXdestination, y: CGFloat(-barrierHeight)), run: {
+                    
+                })
+                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierGapXdestination, y: CGFloat(-barrierHeight)), run: {
+                    
+                })
                 
-                leftBarrier.run(moveLeftBarrierAcross)
-                leftBarrier.run(moveBarrierDown){
-                    leftBarrier.removeFromParent()
-                }
-                rightBarrier.run(moveRightBarrierAcross)
-                rightBarrier.run(moveBarrierDown){
-                    rightBarrier.removeFromParent()
-                }  
-                barrierSpaceNode.run(moveBarrierGapAcross)
-                barrierSpaceNode.run(moveBarrierDown){
-                    barrierSpaceNode.removeFromParent()
-                }
+
             })
         
         }
