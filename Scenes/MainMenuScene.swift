@@ -100,10 +100,10 @@ class MainMenuScene: SKScene{
         scorenotificationView = EKNotificationMessageView(with: scorenotificationMessage)
 
         
-        musicLabel.fontSize = 50.0 * scale
+        musicLabel.fontSize = 40.0 * scale
         musicLabel.fontName = FontName
-        musicLabel.horizontalAlignmentMode = .center
-        musicLabel.verticalAlignmentMode = .top
+        //musicLabel.horizontalAlignmentMode = .center
+        //musicLabel.verticalAlignmentMode = .top
        
 
         
@@ -225,17 +225,18 @@ class MainMenuScene: SKScene{
             else if optionLabel.contains(pointOfTouch){
 
                 if !self.children.contains(optionBackground){
-                    musicLabel.position = CGPoint(x: CGFloat(musicLabelX) * scale, y: CGFloat(musicLabelY) * scale)
+                    musicLabel.position = CGPoint(x: optionBackground.position.x,
+                                                   y: optionBackground.position.y + CGFloat(musicY) * scale)
 
-                    
-                    optionBackground.addChild(musicLabel)
+                    musicLabel.zPosition = 200
+                    self.addChild(musicLabel)
 
                     
                     self.addChild(optionBackground)
                     
                     musicNode.zPosition = 200
-                    musicNode.position = CGPoint(x: optionBackground.position.x + CGFloat(musicX) * scale,
-                                                 y: optionBackground.position.y + CGFloat(musicY) * scale)
+                    musicNode.position = CGPoint(x: optionBackground.position.x,
+                                                 y: optionBackground.position.y + CGFloat(musicY - 90) * scale)
                     self.addChild(musicNode)
 
                     
@@ -243,8 +244,9 @@ class MainMenuScene: SKScene{
                     SwiftEntryKit.dismiss()
                 }
                 else{
-                    optionBackground.removeAllChildren()
+                   
                     optionBackground.removeFromParent()
+                    musicLabel.removeFromParent()
                     musicNode.removeFromParent()
 
                 }
@@ -276,8 +278,8 @@ class MainMenuScene: SKScene{
             musicNode.zPosition = 200
             musicNode.size = CGSize(width: musicNode.size.width * scale,
                                     height: musicNode.size.height * scale)
-            musicNode.position = CGPoint(x: optionBackground.position.x + CGFloat(musicX) * scale,
-                                         y: optionBackground.position.y + CGFloat(musicY) * scale)
+            musicNode.position = CGPoint(x: optionBackground.position.x,
+                                         y: optionBackground.position.y + CGFloat(musicY - 90) * scale)
             self.addChild(musicNode)
             
         }
@@ -287,8 +289,8 @@ class MainMenuScene: SKScene{
             musicNode.zPosition = 200
             musicNode.size = CGSize(width: musicNode.size.width * scale,
                                     height: musicNode.size.height * scale)
-            musicNode.position = CGPoint(x: optionBackground.position.x + CGFloat(musicX) * scale,
-                                         y: optionBackground.position.y + CGFloat(musicY) * scale)
+            musicNode.position = CGPoint(x: optionBackground.position.x,
+                                         y: optionBackground.position.y + CGFloat(musicY - 90) * scale)
             self.addChild(musicNode)
             
         }

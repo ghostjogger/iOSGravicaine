@@ -16,7 +16,7 @@ enum GapMove {
 
 class GapNode:SKSpriteNode {
     
-    var barrierSpeed: CGFloat = 600.0 // (speed is x px per second)
+    var barrierSpeed: CGFloat = 550.0 // (speed is x px per second)
     var move: GapMove = .Straight
     
     
