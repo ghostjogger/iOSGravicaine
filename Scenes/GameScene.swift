@@ -41,7 +41,8 @@ extension SKAction {
     class func hudLabelBumpAction(duration: TimeInterval = 0.3) -> SKAction {
         let scale = SKAction.scale(to: 2.0, duration: duration / 2)
         let unscale = SKAction.scale(to: 1.0, duration: duration / 2)
-        return SKAction.sequence([scale, unscale])
+        let sound = SKAction.playSoundFileNamed("score.wav", waitForCompletion: false)
+        return SKAction.sequence([scale, unscale, sound])
     }
     
 }

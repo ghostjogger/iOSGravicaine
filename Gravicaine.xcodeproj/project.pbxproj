@@ -53,6 +53,7 @@
 		99BB472E20C5D6CF00401887 /* bombs.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99BB472D20C5D6CF00401887 /* bombs.atlas */; };
 		99BB473020C5D74400401887 /* mines.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99BB472F20C5D74400401887 /* mines.atlas */; };
 		99D9DE9120D04ACD005D1CD0 /* GapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D9DE9020D04ACD005D1CD0 /* GapNode.swift */; };
+		99D9DE9520D1C790005D1CD0 /* score.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99D9DE9420D1C790005D1CD0 /* score.wav */; };
 		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
 		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
 /* End PBXBuildFile section */
@@ -106,6 +107,7 @@
 		99BB472D20C5D6CF00401887 /* bombs.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bombs.atlas; sourceTree = "<group>"; };
 		99BB472F20C5D74400401887 /* mines.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = mines.atlas; sourceTree = "<group>"; };
 		99D9DE9020D04ACD005D1CD0 /* GapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GapNode.swift; sourceTree = "<group>"; };
+		99D9DE9420D1C790005D1CD0 /* score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score.wav; sourceTree = "<group>"; };
 		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
 		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
 		A56FAA6595503966B1D24FFE /* Pods_Gravicaine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gravicaine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +164,7 @@
 				9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */,
 				9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */,
 				993C7E4A20C1AFF30095D78D /* shieldFinish.wav */,
+				99D9DE9420D1C790005D1CD0 /* score.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
 				99A357C3207A595000F86F84 /* laser.mp3 in Resources */,
+				99D9DE9520D1C790005D1CD0 /* score.wav in Resources */,
 				993C7E5620C2EB8C0095D78D /* entityExplosion.atlas in Resources */,
 				99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */,
 				99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */,
