@@ -765,16 +765,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     }
     
     func spawnCurvyMovingBarrier(count: Int){
-        
-        var left:Bool
+
         var control:Int
         
         if count < 5{
-            left = false
             control = 1
         }
         else{
-            left = true
             control = -1
         }
         
