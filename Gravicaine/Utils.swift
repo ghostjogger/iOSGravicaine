@@ -12,26 +12,6 @@ import GameplayKit
 
 
 
-let GodMode: Bool = false
-let FontName: String = "Jellee-Roman"
-let HighScoreKey: String = "HighScore"
-let HighScoreName: String = "HighScoreName"
-
-
-struct PhysicsCategories {
-    static let None:    UInt32 = 0      // 0
-    static let Player:  UInt32 = 0b1    // 1
-    static let Bullet:  UInt32 = 0b10   // 2
-    static let Enemy:   UInt32 = 0b100  // 4
-    static let Barrier: UInt32 = 0b1000 // 8
-    static let Asteroid: UInt32 = 0b10000 // 16
-    static let PowerUp: UInt32 = 0b100000 //32
-    static let ShieldPower: UInt32 = 0b1000000 //64
-    static let Shield: UInt32 = 0b10000000 //128
-    static let BarrierGap: UInt32 = 0b100000000 //256
-    
-}
-
 func random() -> CGFloat {
     return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
 }

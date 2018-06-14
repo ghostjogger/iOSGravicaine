@@ -654,7 +654,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
             let barrierSpaceNode = GapNode( size: size)
             barrierSpaceNode.move = .Straight
-            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + CGFloat(barrierHeight) + CGFloat(barrierHeight))
+            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + (CGFloat(barrierHeight) * 1.75) )
        
             DispatchQueue.main.async(execute: {
                 self.addChild(leftBarrier)
@@ -713,7 +713,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
         let barrierSpaceNode = GapNode( size: size)
         barrierSpaceNode.move = .Diagonal
-        barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y:self.size.height + CGFloat(barrierHeight) + CGFloat(barrierHeight))
+        barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y:self.size.height + (CGFloat(barrierHeight) * 1.75))
         
         //setup x movements
             
@@ -809,7 +809,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
             let barrierSpaceNode = GapNode( size: size)
             barrierSpaceNode.move = .Curvy
-            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + CGFloat(barrierHeight) + CGFloat(barrierHeight))
+            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height +  (CGFloat(barrierHeight) * 1.75))
 
             
             DispatchQueue.main.async(execute: {
