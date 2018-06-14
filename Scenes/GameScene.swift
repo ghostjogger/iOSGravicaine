@@ -16,7 +16,6 @@ enum GameState {
     case waiting
     case inGame
     case gameOver
-    case paused
 }
 
 extension SKAction {
@@ -74,6 +73,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
 
     private var gameOverTransitioning = false
+    private var gamePaused = false
+
     private var wasHighScore = false
     private var highScoreValue = 0
     private var highScoreNameText = ""
@@ -98,7 +99,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private let scoreLabel: SKLabelNode?
 
 
-
     // game data
     
     private let gameLogic: GameLogic = GameLogic()
@@ -114,9 +114,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             case .gameOver:
                 self.setGameOverState()
                 break
-            case .paused:
-                self.setPausedState()
-                break
+
             default: break
             }
         }
@@ -130,7 +128,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     private func setPausedState(){
 
-        self.scene?.isPaused = true
     }
     
     
@@ -497,6 +494,14 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
             let pointOfTouch = touch.location(in: self)
             
+            if gamePaused{
+                gamePaused = false
+                self.startPanel?.removeFromParent()
+                self.startPanel = nil
+                self.scene?.isPaused = false                
+            }
+
+            
             if exitLabel.contains(pointOfTouch){
                 
                 gameLogic.gameDidStop()
@@ -509,12 +514,14 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             }
             
             if pauseLabel.contains(pointOfTouch){
-                if (self.scene?.isPaused)!{
-                    self.scene?.isPaused = false
-                }
-                else{
-                    self.scene?.isPaused = true
-                }
+                
+                gamePaused = true
+                startPanel?.removeFromParent()
+                startPanel = StartPanelNode(size: self.size)
+                startPanel?.zPosition = 50
+                self.addChild(startPanel!)
+                self.scene?.isPaused = true
+
             }
 
 
