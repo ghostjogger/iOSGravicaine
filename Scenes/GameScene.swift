@@ -49,6 +49,7 @@ extension SKAction {
 class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
    
     static let backgroundNodeNameObject = "background-node-0"
+
     
     //pop up message vars
     var attributes: EKAttributes
