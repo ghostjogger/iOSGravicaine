@@ -25,7 +25,7 @@ class PausePanelNode: SKSpriteNode {
         label.verticalAlignmentMode = .center
         label.text = "TAP TO RESTART"
         
-        var pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
+        let pos = CGPoint(x: size.width / 2, y: size.height * 0.66)
         label.position = pos
         
         super.init(texture: nil, color: UIColor.clear, size: size)

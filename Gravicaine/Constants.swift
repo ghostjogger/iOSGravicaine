@@ -14,7 +14,7 @@ let barrierGap = 350
 let barrierSpeed = 4.0
 let barrierSpeedAcross = 5.0
 let bseed = 2
-let barrierMovementX = 400
+let barrierMovementX = 80
 
 
 let playerBaseY = 0.2
@@ -42,7 +42,7 @@ let gravIconY = 585
 
 
 
-let GodMode: Bool = false
+let GodMode: Bool = true
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 let HighScoreName: String = "HighScoreName"

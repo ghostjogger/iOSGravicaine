@@ -54,10 +54,10 @@ class BarrierNode:SKSpriteNode {
         return SKAction.move(to: to, duration: TimeInterval(duration))
     }
     
-    private func curvyMove(from: CGPoint, to: CGPoint, control: Int) -> SKAction {
+    private func curvyMove(from: CGPoint, to: CGPoint, control: Int, cpoint: Int) -> SKAction {
         
-        var deltaX = from.x + CGFloat(500 * control)
-        var deltaY = abs((from.y - to.y) / 2)
+        let deltaX = from.x + CGFloat((100 * cpoint) * control)
+        let deltaY = abs((from.y - to.y) / 2)
         
         
         let controlPoint = CGPoint(x: CGFloat(deltaX), y: deltaY)
@@ -70,7 +70,7 @@ class BarrierNode:SKSpriteNode {
         return SKAction.follow(bezierPath.cgPath, asOffset: false, orientToPath: false, speed: barrierSpeed)
     }
     
-    func move(from: CGPoint, to: CGPoint, control: Int, run: @escaping () -> Void = {}) {
+    func move(from: CGPoint, to: CGPoint, control: Int, cpoint: Int, run: @escaping () -> Void = {}) {
         
         // set position
         self.position = from
@@ -85,7 +85,7 @@ class BarrierNode:SKSpriteNode {
             moveAction = self.straightMove(from: from, to: to)
             break
         case .Curvy:
-            moveAction = self.curvyMove(from: from, to: to, control: control)
+            moveAction = self.curvyMove(from: from, to: to, control: control, cpoint: cpoint)
             break
         }
         

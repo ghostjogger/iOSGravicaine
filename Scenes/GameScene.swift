@@ -87,6 +87,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     var leftBarrierNode: SKSpriteNode = SKSpriteNode()
     var rightBarrierNode: SKSpriteNode = SKSpriteNode()
     var barriers = [Int]()
+    var barrierCpoints = [Int]()
     var barrierCount = 0
    
     // ui nodes
@@ -366,6 +367,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         barrierCount = 0
         barriers = seedRandom(seed: UInt64(bseed), count: 500, low:1, high:8)
+        barrierCpoints = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 6)
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
@@ -661,13 +663,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
                 self.addChild(barrierSpaceNode)
-                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, run: {
+                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: self.barrierCpoints[self.barrierCount],  run: {
                     
                 })
-                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1,run: {
+                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: self.barrierCpoints[self.barrierCount], run: {
                     
                 })
-                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(0)), control: 1,run: {
+                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(0)), control: 1, cpoint: self.barrierCpoints[self.barrierCount], run: {
                     
                 })
                 
@@ -717,15 +719,16 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y:self.size.height + (CGFloat(barrierHeight) * 1.75))
         
         //setup x movements
+            let cpointX = self.barrierCpoints[self.barrierCount]
             
         //leftbarrier x movement
         var leftBarrierXdestination :CGFloat
             
         if left{
-            leftBarrierXdestination = leftBarrier.position.x - CGFloat(barrierMovementX)
+            leftBarrierXdestination = leftBarrier.position.x - CGFloat(barrierMovementX * cpointX)
         }
         else{
-            leftBarrierXdestination = leftBarrier.position.x + CGFloat(barrierMovementX)
+            leftBarrierXdestination = leftBarrier.position.x + CGFloat(barrierMovementX * cpointX)
         }
 
 
@@ -733,10 +736,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         var rightBarrierXdestination :CGFloat
             
         if left{
-            rightBarrierXdestination = rightBarrier.position.x - CGFloat(barrierMovementX)
+            rightBarrierXdestination = rightBarrier.position.x - CGFloat(barrierMovementX * cpointX)
         }
         else{
-            rightBarrierXdestination = rightBarrier.position.x + CGFloat(barrierMovementX)
+            rightBarrierXdestination = rightBarrier.position.x + CGFloat(barrierMovementX * cpointX)
         }
 
 
@@ -744,10 +747,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         //barrier gap x movement
         var barrierGapXdestination: CGFloat
         if left{
-            barrierGapXdestination = barrierSpaceNode.position.x - CGFloat(barrierMovementX)
+            barrierGapXdestination = barrierSpaceNode.position.x - CGFloat(barrierMovementX * cpointX)
         }
         else{
-             barrierGapXdestination = barrierSpaceNode.position.x + CGFloat(barrierMovementX)
+             barrierGapXdestination = barrierSpaceNode.position.x + CGFloat(barrierMovementX * cpointX)
         }
 
 
@@ -757,13 +760,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
                 self.addChild(barrierSpaceNode)
-                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrierXdestination, y: CGFloat(-barrierHeight)), control: control,run: {
+                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrierXdestination, y: CGFloat(-barrierHeight)), control: control, cpoint: self.barrierCpoints[self.barrierCount], run: {
                     
                 })
-                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrierXdestination, y: CGFloat(-barrierHeight)), control:control, run: {
+                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrierXdestination, y: CGFloat(-barrierHeight)), control:control, cpoint: self.barrierCpoints[self.barrierCount],  run: {
                     
                 })
-                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierGapXdestination, y: CGFloat(0)), control: control, run: {
+                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierGapXdestination, y: CGFloat(0)), control: control,  cpoint: self.barrierCpoints[self.barrierCount], run: {
                     
                 })
                 
@@ -817,13 +820,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 self.addChild(leftBarrier)
                 self.addChild(rightBarrier)
                 self.addChild(barrierSpaceNode)
-                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control:control,run: {
+                leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control: control, cpoint: self.barrierCpoints[self.barrierCount],  run: {
                     
                 })
-                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: control,run: {
+                rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: control,cpoint: self.barrierCpoints[self.barrierCount],run: {
                     
                 })
-                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(0)),control: control, run: {
+                barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(0)),control: control, cpoint: self.barrierCpoints[self.barrierCount],run: {
                     
                 })
                 
