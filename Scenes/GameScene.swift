@@ -96,6 +96,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var startPanel: StartPanelNode? = nil
     private var gameOverPanel: GameOverPanelNode? = nil
     private var highScorePanel: HighScorePanelNode? = nil
+    private var pausePanel:PausePanelNode? = nil
     private let scoreLabel: SKLabelNode?
 
 
@@ -496,8 +497,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             if gamePaused{
                 gamePaused = false
-                self.startPanel?.removeFromParent()
-                self.startPanel = nil
+                self.pausePanel?.removeFromParent()
+                self.pausePanel = nil
                 self.scene?.isPaused = false
             }
 
@@ -516,10 +517,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             if pauseLabel.contains(pointOfTouch){
                 
                 gamePaused = true
-                startPanel?.removeFromParent()
-                startPanel = StartPanelNode(size: self.size)
-                startPanel?.zPosition = 50
-                self.addChild(startPanel!)
+                pausePanel?.removeFromParent()
+                pausePanel = PausePanelNode(size: self.size)
+                pausePanel?.zPosition = 50
+                self.addChild(pausePanel!)
                 self.scene?.isPaused = true
 
             }
