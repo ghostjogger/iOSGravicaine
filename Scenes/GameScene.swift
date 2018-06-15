@@ -130,6 +130,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     // MARK: - game state
     
    @objc func setPausedState(){
+    
+    if gameState == .gameOver || startPanel != nil{
+        return
+    }
+ 
 
     if !gamePaused{
         
