@@ -131,7 +131,22 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
    @objc func setPausedState(){
 
-    print("paused")
+    if !gamePaused{
+        
+        gamePaused = true
+        pausePanel?.removeFromParent()
+        pausePanel = PausePanelNode(size: self.size)
+        pausePanel?.zPosition = 50
+        self.addChild(pausePanel!)
+        self.scene?.isPaused = true
+        
+    }
+    
+    else{
+        self.scene?.isPaused = true
+    }
+    
+    
     }
     
     
