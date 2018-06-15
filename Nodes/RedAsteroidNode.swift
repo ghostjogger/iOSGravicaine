@@ -43,7 +43,7 @@ class RedAsteroidNode: SKSpriteNode {
         
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody!.affectedByGravity = false
-        self.physicsBody!.categoryBitMask = PhysicsCategories.ShieldPower
+        self.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
         self.physicsBody!.collisionBitMask = PhysicsCategories.None
         self.physicsBody!.contactTestBitMask = PhysicsCategories.Player
         
