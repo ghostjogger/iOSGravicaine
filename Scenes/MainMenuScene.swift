@@ -340,7 +340,7 @@ class MainMenuScene: SKScene{
     func toggleTrans(){
         
         trans = !trans
-        UserDefaults.standard.set(music, forKey: "trans")
+        UserDefaults.standard.set(trans, forKey: "trans")
         
         if trans{
             
