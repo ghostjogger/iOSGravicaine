@@ -865,12 +865,42 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
     }
     
+    func spawnAsteroidBelt(){
+        var redAsteroids = [RedAsteroidNode]()
+        var greyAsteroids = [GreyAsteroidNode]()
+        
+        let size = CGSize(width: self.frame.width, height: 10.0)
+        let scoreNode = GapNode(size: size)
+        
+        let yStart = self.frame.maxY + CGFloat(75)
+        let minX = CGFloat(self.frame.minX + CGFloat(30))
+        let maxX = CGFloat(self.frame.maxX - CGFloat(30))
+        DispatchQueue.global().async {
+        for _ in 1...5 {
+            
+            let ra = RedAsteroidNode(scale: self.scaleFactor)
+            ra.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
+            redAsteroids.append(ra)
+            let ga = GreyAsteroidNode(scale: self.scaleFactor)
+            ga.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
+            greyAsteroids.append(ga)
+            }
+        scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + size.height)
+  
+            DispatchQueue.main.async(execute: {
+                
+                for node in redAsteroids{
+
+                }
+            })
+        }
+    }
+    
+    
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
  
         if !shieldActive {
-            
         self.removeAllActions()
- 
         gameOverTransitioning = true
         wasHighScore = isHighScore
         highScoreValue = highScore
@@ -878,13 +908,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         for node in self.children{
             node.removeAllActions()
         }
-            
-        
- 
         if self.children.contains(backgroundSound){
                 backgroundSound.removeFromParent()
         }
-        
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.removeAllChildren()
@@ -899,4 +925,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     }
        
 }
+
 }
+
+
+
