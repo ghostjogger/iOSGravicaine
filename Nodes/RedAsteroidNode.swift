@@ -1,46 +1,45 @@
 //
-//  shieldPowerNode.swift
+//  RedAsteroidNode.swift
 //  Gravicaine
 //
-//  Created by Stephen Ball on 30/05/2018.
+//  Created by stephen ball on 15/06/2018.
 //  Copyright © 2018 Stephen Ball. All rights reserved.
 //
+
 
 import SpriteKit
 import GameplayKit
 
-enum ShieldMove {
+enum RedAsteroidMove {
     case Straight
     case Curvy
 }
 
-class ShieldPowerNode: SKSpriteNode {
+class RedAsteroidNode: SKSpriteNode {
     
     
-    var shieldSpeed: CGFloat = 600.0 // (speed is x px per second)
-    var move: ShieldMove = .Straight
+    var RedAsteroidSpeed: CGFloat = 600.0 // (speed is x px per second)
+    var move: RedAsteroidMove = .Straight
     
     private var animationFrames: [SKTexture] = []
-    private let animatedAtlas = SKTextureAtlas(named: "bombs")
-    private var shieldFrames: [SKTexture] = []
+    private let animatedAtlas = SKTextureAtlas(named: "asteroid1")
     
     // MARK: init
     
     init(scale: CGFloat) {
         
-        let texture = SKTexture(imageNamed: "bomb1")
+        let texture = SKTexture(imageNamed: "a1")
         let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         super.init(texture: texture, color: UIColor.clear, size: size)
         
-        shieldSpeed = 600 * scale
+        RedAsteroidSpeed = 600 * scale
         
         //setup animation
         let numImages = animatedAtlas.textureNames.count
         for i in 1...numImages {
-            let shieldTextureName = "bomb\(i)"
-            shieldFrames.append(animatedAtlas.textureNamed(shieldTextureName))
+            let shieldTextureName = "a\(i)"
+            animationFrames.append(animatedAtlas.textureNamed(shieldTextureName))
         }
-        animationFrames = shieldFrames
         
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody!.affectedByGravity = false
@@ -62,7 +61,7 @@ class ShieldPowerNode: SKSpriteNode {
         let deltaY = to.y - from.y
         
         let distance = sqrt(pow(deltaX, 2.0) + pow(deltaY, 2.0))
-        let duration = distance / shieldSpeed
+        let duration = distance / RedAsteroidSpeed
         
         return SKAction.move(to: to, duration: TimeInterval(duration))
     }
@@ -83,7 +82,7 @@ class ShieldPowerNode: SKSpriteNode {
         bezierPath.move(to: from)
         bezierPath.addCurve(to: to, controlPoint1: controlPoint0, controlPoint2: controlPoint1)
         
-        return SKAction.follow(bezierPath.cgPath, asOffset: false, orientToPath: true, speed: shieldSpeed)
+        return SKAction.follow(bezierPath.cgPath, asOffset: false, orientToPath: true, speed: RedAsteroidSpeed)
     }
     
     func move(from: CGPoint, to: CGPoint, run: @escaping () -> Void = {}) {
@@ -108,7 +107,7 @@ class ShieldPowerNode: SKSpriteNode {
         }
         
         //let
-
+        
         let removeAction = SKAction.removeFromParent()
         let runAction = SKAction.run(run)
         let sequence = SKAction.sequence([moveAction!, removeAction, runAction])
@@ -123,5 +122,6 @@ class ShieldPowerNode: SKSpriteNode {
     }
     
 }
+
 
 

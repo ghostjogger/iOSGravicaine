@@ -1,39 +1,52 @@
 //
-//  AsteroidNode.swift
+//  GreyAsteroidNode.swift
 //  Gravicaine
 //
-//  Created by stephen ball on 27/05/2018.
+//  Created by stephen ball on 15/06/2018.
 //  Copyright © 2018 Stephen Ball. All rights reserved.
 //
+
 
 import SpriteKit
 import GameplayKit
 
-enum AsteroidMove {
+enum GreyAsteroidMove {
     case Straight
     case Curvy
 }
 
-class AsteroidNode: SKSpriteNode {
+class GreyAsteroidNode: SKSpriteNode {
     
-    var asteroidSpeed: CGFloat = 1000.0 // (speed is x px per second)
-    var move: AsteroidMove = .Straight
+    
+    var GreyAsteroidSpeed: CGFloat = 600.0 // (speed is x px per second)
+    var move: GreyAsteroidMove = .Straight
+    
+    private var animationFrames: [SKTexture] = []
+    private let animatedAtlas = SKTextureAtlas(named: "asteroid2")
+
     
     // MARK: init
     
     init(scale: CGFloat) {
-        let asteroidTextureChoice = Int(random(min: 1, max: 19))
-        let texture = SKTexture(imageNamed: "asteroid\(asteroidTextureChoice)")
+        
+        let texture = SKTexture(imageNamed: "b1")
         let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
-        
-        asteroidSpeed = 1000 * scale
-        
         super.init(texture: texture, color: UIColor.clear, size: size)
+        
+        GreyAsteroidSpeed = 600 * scale
+        
+        //setup animation
+        let numImages = animatedAtlas.textureNames.count
+        for i in 1...numImages {
+            let shieldTextureName = "b\(i)"
+            animationFrames.append(animatedAtlas.textureNamed(shieldTextureName))
+        }
+        
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody!.affectedByGravity = false
-        self.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
+        self.physicsBody!.categoryBitMask = PhysicsCategories.ShieldPower
         self.physicsBody!.collisionBitMask = PhysicsCategories.None
-        self.physicsBody!.contactTestBitMask = PhysicsCategories.Barrier | PhysicsCategories.Player
+        self.physicsBody!.contactTestBitMask = PhysicsCategories.Player
         
     }
     
@@ -49,7 +62,7 @@ class AsteroidNode: SKSpriteNode {
         let deltaY = to.y - from.y
         
         let distance = sqrt(pow(deltaX, 2.0) + pow(deltaY, 2.0))
-        let duration = distance / asteroidSpeed
+        let duration = distance / GreyAsteroidSpeed
         
         return SKAction.move(to: to, duration: TimeInterval(duration))
     }
@@ -70,7 +83,7 @@ class AsteroidNode: SKSpriteNode {
         bezierPath.move(to: from)
         bezierPath.addCurve(to: to, controlPoint1: controlPoint0, controlPoint2: controlPoint1)
         
-        return SKAction.follow(bezierPath.cgPath, asOffset: false, orientToPath: true, speed: asteroidSpeed)
+        return SKAction.follow(bezierPath.cgPath, asOffset: false, orientToPath: true, speed: GreyAsteroidSpeed)
     }
     
     func move(from: CGPoint, to: CGPoint, run: @escaping () -> Void = {}) {
@@ -95,6 +108,7 @@ class AsteroidNode: SKSpriteNode {
         }
         
         //let
+        
         let removeAction = SKAction.removeFromParent()
         let runAction = SKAction.run(run)
         let sequence = SKAction.sequence([moveAction!, removeAction, runAction])
@@ -102,5 +116,13 @@ class AsteroidNode: SKSpriteNode {
         
     }
     
+    func animate(){
+        let animateAction = SKAction.animate(with: animationFrames, timePerFrame: 0.1, resize: false, restore: true)
+        let animation = SKAction.repeatForever(animateAction)
+        self.run(animation)
+    }
+    
 }
+
+
 
