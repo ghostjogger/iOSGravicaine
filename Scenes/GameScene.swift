@@ -129,8 +129,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     // MARK: - game state
     
-    private func setPausedState(){
+   @objc func setPausedState(){
 
+    print("paused")
     }
     
     
@@ -335,6 +336,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        unregisterForPauseNotifications()
+    }
+    
     // Called by tapping return on the keyboard.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -365,6 +370,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
 
         self.physicsWorld.contactDelegate = gameLogic
+        
+        registerForPauseNotifications()
         
         barrierCount = 0
         barriers = seedRandom(seed: UInt64(bseed), count: 500, low:1, high:8)
