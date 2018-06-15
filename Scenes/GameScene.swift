@@ -877,7 +877,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         let minX = CGFloat(self.frame.minX + CGFloat(30))
         let maxX = CGFloat(self.frame.maxX - CGFloat(30))
         DispatchQueue.global().async {
-        for _ in 1...5 {
+        for _ in 1...2 {
             
             let ra = RedAsteroidNode(scale: self.scaleFactor)
             ra.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
