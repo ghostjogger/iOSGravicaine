@@ -136,6 +136,14 @@ class GameLogic: NSObject, SKPhysicsContactDelegate {
             self.barrierTouchesPlayer()
         }
         
+        //player hits asteroid
+                if      body1.categoryBitMask == PhysicsCategories.Player
+                    &&  body2.categoryBitMask == PhysicsCategories.Asteroid
+                {
+                    self.barrierTouchesPlayer()
+
+                }
+        
         
     }
         
