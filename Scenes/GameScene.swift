@@ -890,8 +890,43 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             DispatchQueue.main.async(execute: {
                 
                 for node in redAsteroids{
+                    
+                    self.addChild(node)
+                    node.animate()
+                    node.move(from: node.position,
+                              to: CGPoint(x: random(min: minX, max: maxX), y: self.frame.minY),
+                              control: 1,
+                              cpoint: 1,
+                              run: {
+                        
+                    })
 
                 }
+                
+                for node in greyAsteroids{
+                    
+                    self.addChild(node)
+                    node.animate()
+                    node.move(from: node.position,
+                              to: CGPoint(x: random(min: minX, max: maxX), y: self.frame.minY),
+                              control: 1,
+                              cpoint: 1,
+                              run: {
+                                
+                    })
+                    
+                }
+                
+                self.addChild(scoreNode)
+                scoreNode.move(from: scoreNode.position,
+                               to: CGPoint(x: self.frame.midX, y: self.frame.minY + scoreNode.size.height),
+                               control: 1,
+                               cpoint: 1,
+                               run: {
+                                
+                })
+                
+                
             })
         }
     }
