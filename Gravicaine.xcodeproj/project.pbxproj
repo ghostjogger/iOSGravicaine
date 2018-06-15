@@ -26,6 +26,8 @@
 		9959EF5720BF37C500B7F64C /* ShieldPowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */; };
 		9959EF5B20BF4A9E00B7F64C /* shieldSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */; };
 		99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99766E2F2084E58900AA937A /* GameOverPanelNode.swift */; };
+		9990F75420D43E7A0007F0CA /* asteroid2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9990F75220D43E770007F0CA /* asteroid2.atlas */; };
+		9990F75520D43E7A0007F0CA /* asteroid1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9990F75320D43E7A0007F0CA /* asteroid1.atlas */; };
 		999AC5B920C44BBB002B7852 /* newshield.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 999AC5B820C44BBB002B7852 /* newshield.atlas */; };
 		999AC5BC20C454BC002B7852 /* asteroidExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 999AC5BB20C454BC002B7852 /* asteroidExplosion.atlas */; };
 		99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357AE2079072400F86F84 /* MainMenuScene.swift */; };
@@ -80,6 +82,8 @@
 		9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldPowerNode.swift; sourceTree = "<group>"; };
 		9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shieldSound.wav; sourceTree = "<group>"; };
 		99766E2F2084E58900AA937A /* GameOverPanelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPanelNode.swift; sourceTree = "<group>"; };
+		9990F75220D43E770007F0CA /* asteroid2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = asteroid2.atlas; sourceTree = "<group>"; };
+		9990F75320D43E7A0007F0CA /* asteroid1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = asteroid1.atlas; sourceTree = "<group>"; };
 		999AC5B820C44BBB002B7852 /* newshield.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = newshield.atlas; sourceTree = "<group>"; };
 		999AC5BB20C454BC002B7852 /* asteroidExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = asteroidExplosion.atlas; sourceTree = "<group>"; };
 		99A357AE2079072400F86F84 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 		999AC5BA20C44F04002B7852 /* Texture Atlases */ = {
 			isa = PBXGroup;
 			children = (
+				9990F75320D43E7A0007F0CA /* asteroid1.atlas */,
+				9990F75220D43E770007F0CA /* asteroid2.atlas */,
 				99BB472F20C5D74400401887 /* mines.atlas */,
 				99BB472D20C5D6CF00401887 /* bombs.atlas */,
 				999AC5BB20C454BC002B7852 /* asteroidExplosion.atlas */,
@@ -346,8 +352,10 @@
 				99A357B820791BAE00F86F84 /* ship-fire.sks in Resources */,
 				9959EF5B20BF4A9E00B7F64C /* shieldSound.wav in Resources */,
 				99B334D420BB44AC00AC5C59 /* sound62.wav in Resources */,
+				9990F75420D43E7A0007F0CA /* asteroid2.atlas in Resources */,
 				9959EF5520BDFCF400B7F64C /* gameSoundtrack.mp3 in Resources */,
 				993C7E5220C2E6820095D78D /* redExplosion.atlas in Resources */,
+				9990F75520D43E7A0007F0CA /* asteroid1.atlas in Resources */,
 				99B334D220BB355A00AC5C59 /* sound43.wav in Resources */,
 				99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */,
 				99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */,
