@@ -405,8 +405,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             self.addChild(background)
             
         }
-        
-        self.addChild(middleIndicator)
+        if UserDefaults.standard.bool(forKey: "trans"){
+             self.addChild(middleIndicator)
+        }
+       
 
         //set up player ship
         

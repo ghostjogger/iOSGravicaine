@@ -48,8 +48,12 @@ class MainMenuScene: SKScene{
     
     var optionBackground = SKSpriteNode(imageNamed: "panelBackground")
     var musicLabel = SKLabelNode(text: "Game Music")
+    var transLabel = SKLabelNode(text: "Grav Transition Marker")
     var music: Bool
+    var trans: Bool
     var musicNode: SKSpriteNode = SKSpriteNode()
+    var transNode: SKSpriteNode = SKSpriteNode()
+    
 
     
     
@@ -75,11 +79,13 @@ class MainMenuScene: SKScene{
         if !UserDefaults.standard.bool(forKey: "firstTimeRun"){
             UserDefaults.standard.set(true, forKey: "firstTimeRun")
             UserDefaults.standard.set(true, forKey: "music")
+            UserDefaults.standard.set(true, forKey: "trans")
             UserDefaults.standard.set("", forKey: HighScoreName)
         }
         
         score = UserDefaults.standard.integer(forKey: HighScoreKey)
         music = UserDefaults.standard.bool(forKey: "music")
+        trans = UserDefaults.standard.bool(forKey: "trans")
         highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
 
         
@@ -104,6 +110,8 @@ class MainMenuScene: SKScene{
         musicLabel.fontName = FontName
         //musicLabel.horizontalAlignmentMode = .center
         //musicLabel.verticalAlignmentMode = .top
+        transLabel.fontSize = 40.0 * scale
+        transLabel.fontName = FontName
        
 
         
@@ -170,6 +178,17 @@ class MainMenuScene: SKScene{
                                     height: musicNode.size.height * scale)
         }
         
+        if trans{
+            transNode = SKSpriteNode(imageNamed: "on")
+            transNode.size = CGSize(width: transNode.size.width * scale,
+                                    height: transNode.size.height * scale)
+        }
+        else{
+            transNode = SKSpriteNode(imageNamed: "off")
+            transNode.size = CGSize(width: transNode.size.width * scale,
+                                    height: transNode.size.height * scale)
+        }
+        
         optionLabel.position = CGPoint(x: self.frame.width * 0.2, y: self.frame.height * 0.05)
         optionLabel.size = CGSize(width: optionLabel.size.width * scale, height: optionLabel.size.height * scale )
         self.addChild(optionLabel)
@@ -212,6 +231,13 @@ class MainMenuScene: SKScene{
  
             }
             
+            if self.children.contains(transNode){
+                if transNode.contains(pointOfTouch){
+                    toggleTrans()
+                }
+                
+            }
+            
             if startLabel.contains(pointOfTouch){
                 
                 let sceneToMoveTo = GameScene(size: self.size)
@@ -225,11 +251,17 @@ class MainMenuScene: SKScene{
             else if optionLabel.contains(pointOfTouch){
 
                 if !self.children.contains(optionBackground){
+                    
                     musicLabel.position = CGPoint(x: optionBackground.position.x,
                                                    y: optionBackground.position.y + CGFloat(musicY) * scale)
 
                     musicLabel.zPosition = 200
                     self.addChild(musicLabel)
+                    
+                    transLabel.position = CGPoint(x: optionBackground.position.x,
+                                                  y: optionBackground.position.y/2 + 60)
+                    transLabel.zPosition = 200
+                    self.addChild(transLabel)
 
                     
                     self.addChild(optionBackground)
@@ -238,6 +270,11 @@ class MainMenuScene: SKScene{
                     musicNode.position = CGPoint(x: optionBackground.position.x,
                                                  y: optionBackground.position.y + CGFloat(musicY - 90) * scale)
                     self.addChild(musicNode)
+                    
+                    transNode.zPosition = 200
+                    transNode.position = CGPoint(x: optionBackground.position.x,
+                                                 y: optionBackground.position.y/2)
+                    self.addChild(transNode)
 
                     
                     
@@ -248,6 +285,8 @@ class MainMenuScene: SKScene{
                     optionBackground.removeFromParent()
                     musicLabel.removeFromParent()
                     musicNode.removeFromParent()
+                    transLabel.removeFromParent()
+                    transNode.removeFromParent()
 
                 }
                 
@@ -292,6 +331,38 @@ class MainMenuScene: SKScene{
             musicNode.position = CGPoint(x: optionBackground.position.x,
                                          y: optionBackground.position.y + CGFloat(musicY - 90) * scale)
             self.addChild(musicNode)
+            
+        }
+        
+        
+    }
+    
+    func toggleTrans(){
+        
+        trans = !trans
+        UserDefaults.standard.set(music, forKey: "trans")
+        
+        if trans{
+            
+            transNode.removeFromParent()
+            transNode = SKSpriteNode(imageNamed: "on")
+            transNode.zPosition = 200
+            transNode.size = CGSize(width: transNode.size.width * scale,
+                                    height: transNode.size.height * scale)
+            transNode.position = CGPoint(x: optionBackground.position.x,
+                                         y: optionBackground.position.y/2)
+            self.addChild(transNode)
+            
+        }
+        else{
+            transNode.removeFromParent()
+            transNode = SKSpriteNode(imageNamed: "off")
+            transNode.zPosition = 200
+            transNode.size = CGSize(width: transNode.size.width * scale,
+                                    height: transNode.size.height * scale)
+            transNode.position = CGPoint(x: optionBackground.position.x,
+                                         y: optionBackground.position.y/2)
+            self.addChild(transNode)
             
         }
         
