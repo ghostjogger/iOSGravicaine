@@ -643,7 +643,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let next = barriers[barrierCount]
             
             if barrierCount < 20{
-                spawnNormalBarrier(count: next)
+                spawnAsteroidBelt()
+                //spawnNormalBarrier(count: next)
             }
             else if barrierCount >= 20 && barrierCount < 40{
                 spawnMovingBarrier(count: next)
@@ -885,7 +886,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             ga.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
             greyAsteroids.append(ga)
             }
-        scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + size.height)
+        scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
   
             DispatchQueue.main.async(execute: {
                 
@@ -919,7 +920,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 
                 self.addChild(scoreNode)
                 scoreNode.move(from: scoreNode.position,
-                               to: CGPoint(x: self.frame.midX, y: self.frame.minY + scoreNode.size.height),
+                               to: CGPoint(x: self.frame.midX, y: self.frame.minY + 120),
                                control: 1,
                                cpoint: 1,
                                run: {

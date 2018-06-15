@@ -18,7 +18,7 @@ enum RedAsteroidMove {
 class RedAsteroidNode: SKSpriteNode {
     
     
-    var RedAsteroidSpeed: CGFloat = 600.0 // (speed is x px per second)
+    var RedAsteroidSpeed: CGFloat = 550.0 // (speed is x px per second)
     var move: RedAsteroidMove = .Straight
     
     private var animationFrames: [SKTexture] = []
@@ -31,8 +31,7 @@ class RedAsteroidNode: SKSpriteNode {
         let texture = SKTexture(imageNamed: "a1")
         let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         super.init(texture: texture, color: UIColor.clear, size: size)
-        
-        RedAsteroidSpeed = 600 * scale
+
         
         //setup animation
         let numImages = animatedAtlas.textureNames.count
@@ -113,7 +112,7 @@ class RedAsteroidNode: SKSpriteNode {
     }
     
     func animate(){
-        let animateAction = SKAction.animate(with: animationFrames, timePerFrame: 0.1, resize: false, restore: true)
+        let animateAction = SKAction.animate(with: animationFrames, timePerFrame: 0.05, resize: false, restore: true)
         let animation = SKAction.repeatForever(animateAction)
         self.run(animation)
     }

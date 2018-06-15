@@ -18,7 +18,7 @@ enum GreyAsteroidMove {
 class GreyAsteroidNode: SKSpriteNode {
     
     
-    var GreyAsteroidSpeed: CGFloat = 600.0 // (speed is x px per second)
+    var GreyAsteroidSpeed: CGFloat = 550.0 // (speed is x px per second)
     var move: GreyAsteroidMove = .Straight
     
     private var animationFrames: [SKTexture] = []
@@ -32,8 +32,7 @@ class GreyAsteroidNode: SKSpriteNode {
         let texture = SKTexture(imageNamed: "b1")
         let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         super.init(texture: texture, color: UIColor.clear, size: size)
-        
-        GreyAsteroidSpeed = 600 * scale
+
         
         //setup animation
         let numImages = animatedAtlas.textureNames.count
@@ -114,7 +113,7 @@ class GreyAsteroidNode: SKSpriteNode {
     }
     
     func animate(){
-        let animateAction = SKAction.animate(with: animationFrames, timePerFrame: 0.1, resize: false, restore: true)
+        let animateAction = SKAction.animate(with: animationFrames, timePerFrame: 0.05, resize: false, restore: true)
         let animation = SKAction.repeatForever(animateAction)
         self.run(animation)
     }
