@@ -29,7 +29,7 @@ class RedAsteroidNode: SKSpriteNode {
     init(scale: CGFloat) {
         
         let texture = SKTexture(imageNamed: "a1")
-        let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
+        let size = CGSize(width: texture.size().width * scale * 0.85, height: texture.size().height * scale * 0.85)
         super.init(texture: texture, color: UIColor.clear, size: size)
 
         
