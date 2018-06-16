@@ -879,7 +879,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         let minX = CGFloat(self.frame.minX + CGFloat(30))
         let maxX = CGFloat(self.frame.maxX - CGFloat(30))
         DispatchQueue.global().async {
-        //for _ in 1...2 {
+        for _ in 1...2 {
             
             let ra = RedAsteroidNode(scale: self.scaleFactor)
             ra.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
@@ -887,7 +887,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let ga = GreyAsteroidNode(scale: self.scaleFactor)
             ga.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
             greyAsteroids.append(ga)
-        //    }
+            }
         scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
   
             DispatchQueue.main.async(execute: {
