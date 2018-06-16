@@ -210,6 +210,11 @@ class MainMenuScene: SKScene{
         titleImage.run(titleSequence){
      
  
+            let laser = LaserBeamNode(scale: self.scale)
+            laser.zPosition = 300
+            laser.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+            self.addChild(laser)
+            laser.animate()
             
         }
       

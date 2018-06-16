@@ -29,6 +29,7 @@
 		9990F75720D443500007F0CA /* asteroid2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9990F75620D443500007F0CA /* asteroid2.atlas */; };
 		9990F75920D444070007F0CA /* RedAsteroidNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990F75820D444070007F0CA /* RedAsteroidNode.swift */; };
 		9990F75B20D4441D0007F0CA /* GreyAsteroidNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990F75A20D4441D0007F0CA /* GreyAsteroidNode.swift */; };
+		9990F75D20D5B27D0007F0CA /* LaserBeamNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990F75C20D5B27D0007F0CA /* LaserBeamNode.swift */; };
 		999AC5B920C44BBB002B7852 /* newshield.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 999AC5B820C44BBB002B7852 /* newshield.atlas */; };
 		999AC5BC20C454BC002B7852 /* asteroidExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 999AC5BB20C454BC002B7852 /* asteroidExplosion.atlas */; };
 		99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357AE2079072400F86F84 /* MainMenuScene.swift */; };
@@ -87,6 +88,7 @@
 		9990F75620D443500007F0CA /* asteroid2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = asteroid2.atlas; sourceTree = "<group>"; };
 		9990F75820D444070007F0CA /* RedAsteroidNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedAsteroidNode.swift; sourceTree = "<group>"; };
 		9990F75A20D4441D0007F0CA /* GreyAsteroidNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreyAsteroidNode.swift; sourceTree = "<group>"; };
+		9990F75C20D5B27D0007F0CA /* LaserBeamNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserBeamNode.swift; sourceTree = "<group>"; };
 		999AC5B820C44BBB002B7852 /* newshield.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = newshield.atlas; sourceTree = "<group>"; };
 		999AC5BB20C454BC002B7852 /* asteroidExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = asteroidExplosion.atlas; sourceTree = "<group>"; };
 		99A357AE2079072400F86F84 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				99D9DE9020D04ACD005D1CD0 /* GapNode.swift */,
 				9990F75820D444070007F0CA /* RedAsteroidNode.swift */,
 				9990F75A20D4441D0007F0CA /* GreyAsteroidNode.swift */,
+				9990F75C20D5B27D0007F0CA /* LaserBeamNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				990B01C420BC583F00F2BA3F /* ShieldNode.swift in Sources */,
 				99D9DE9120D04ACD005D1CD0 /* GapNode.swift in Sources */,
 				99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */,
+				9990F75D20D5B27D0007F0CA /* LaserBeamNode.swift in Sources */,
 				99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */,
 				99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */,
 				99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */,
