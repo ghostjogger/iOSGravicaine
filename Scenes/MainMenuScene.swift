@@ -108,8 +108,7 @@ class MainMenuScene: SKScene{
         
         musicLabel.fontSize = 40.0 * scale
         musicLabel.fontName = FontName
-        //musicLabel.horizontalAlignmentMode = .center
-        //musicLabel.verticalAlignmentMode = .top
+
         transLabel.fontSize = 40.0 * scale
         transLabel.fontName = FontName
        
@@ -259,7 +258,7 @@ class MainMenuScene: SKScene{
                     self.addChild(musicLabel)
                     
                     transLabel.position = CGPoint(x: optionBackground.position.x,
-                                                  y: optionBackground.position.y/2 + 60)
+                                                  y: optionBackground.position.y/1.52)
                     transLabel.zPosition = 200
                     self.addChild(transLabel)
 
@@ -273,7 +272,7 @@ class MainMenuScene: SKScene{
                     
                     transNode.zPosition = 200
                     transNode.position = CGPoint(x: optionBackground.position.x,
-                                                 y: optionBackground.position.y/2)
+                                                 y: optionBackground.position.y/1.75)
                     self.addChild(transNode)
 
                     
@@ -350,7 +349,7 @@ class MainMenuScene: SKScene{
             transNode.size = CGSize(width: transNode.size.width * scale,
                                     height: transNode.size.height * scale)
             transNode.position = CGPoint(x: optionBackground.position.x,
-                                         y: optionBackground.position.y/2)
+                                         y: optionBackground.position.y/1.75)
             self.addChild(transNode)
             
         }
@@ -361,7 +360,7 @@ class MainMenuScene: SKScene{
             transNode.size = CGSize(width: transNode.size.width * scale,
                                     height: transNode.size.height * scale)
             transNode.position = CGPoint(x: optionBackground.position.x,
-                                         y: optionBackground.position.y/2)
+                                         y: optionBackground.position.y/1.75)
             self.addChild(transNode)
             
         }
