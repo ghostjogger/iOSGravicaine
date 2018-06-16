@@ -89,6 +89,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     var rightBarrierNode: SKSpriteNode = SKSpriteNode()
     var barriers = [Int]()
     var barrierCpoints = [Int]()
+    var barrierTypes = [Int]()
     var barrierCount = 0
    
     // ui nodes
@@ -396,6 +397,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         barrierCount = 0
         barriers = seedRandom(seed: UInt64(bseed), count: 500, low:1, high:8)
         barrierCpoints = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 6)
+        barrierTypes = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 5)
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
@@ -641,22 +643,46 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         if !gameOverTransitioning {
             
             let next = barriers[barrierCount]
+            let type = barrierTypes[barrierCount]
             
-            if barrierCount < 10{
+            switch type{
+                
+            case 1:
                 spawnNormalBarrier(count: next)
-            }
-            else if barrierCount >= 10 && barrierCount < 20{
+                break
+            case 2:
                 spawnAsteroidPair()
-            }
-            else if barrierCount >= 20 && barrierCount < 30{
-                spawnMovingBarrier(count: next)                
-            }
-            else if barrierCount >= 30 && barrierCount < 40{
+                break
+            case 3:
+                spawnMovingBarrier(count: next)
+                break
+            case 4:
                 spawnAsteroidBelt()
-            }
-            else{
+                break
+            case 5:
                 spawnCurvyMovingBarrier(count: next)
+                break
+            default:
+                break
+                
+                
             }
+//            
+//            if barrierCount < 10{
+//                spawnNormalBarrier(count: next)
+//            }
+//            else if barrierCount >= 10 && barrierCount < 20{
+//                spawnAsteroidPair()
+//            }
+//            else if barrierCount >= 20 && barrierCount < 30{
+//                spawnMovingBarrier(count: next)                
+//            }
+//            else if barrierCount >= 30 && barrierCount < 40{
+//                spawnAsteroidBelt()
+//            }
+//            else{
+//                spawnCurvyMovingBarrier(count: next)
+//            }
             
             barrierCount += 1
   
@@ -686,7 +712,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             rightBarrier.position = (CGPoint(x: leftBarrier.position.x
                 + leftBarrier.size.width + (CGFloat(barrierGap) * self.scaleFactor),
                                              y: self.size.height + CGFloat(barrierHeight)))
-
             
             //setup score gap
             
