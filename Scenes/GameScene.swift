@@ -957,9 +957,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         let scoreNode = GapNode(size: size)
         
         let yStart = self.frame.maxY + CGFloat(75)
-        let minX = CGFloat(self.frame.minX)
-        let maxX = CGFloat(self.frame.maxX)
-        let xGap = (self.frame.width)/4
         
         DispatchQueue.global().async {
                 let ra1 = RedAsteroidNode(scale: self.scaleFactor)
@@ -978,8 +975,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
             
             DispatchQueue.main.async(execute: {
-                
-                let playerX = self.player.position.x
+
                 
                 for node in redAsteroids{
                     
