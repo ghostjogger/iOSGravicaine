@@ -642,11 +642,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             let next = barriers[barrierCount]
             
-            if barrierCount < 20{
-                spawnAsteroidBelt()
-                //spawnNormalBarrier(count: next)
+            if barrierCount < 10{
+                spawnAsteroidPair()
             }
-            else if barrierCount >= 20 && barrierCount < 40{
+            else if barrierCount >= 10 && barrierCount < 20{
+                spawnNormalBarrier(count: next)
+            }
+            else if barrierCount >= 20 && barrierCount < 30{
                 spawnMovingBarrier(count: next)
             }
             else{
@@ -866,7 +868,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
     }
     
-    func spawnAsteroidBelt(){
+    func spawnAsteroidPair(){
         var redAsteroids = [RedAsteroidNode]()
         var greyAsteroids = [GreyAsteroidNode]()
         
@@ -877,7 +879,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         let minX = CGFloat(self.frame.minX + CGFloat(30))
         let maxX = CGFloat(self.frame.maxX - CGFloat(30))
         DispatchQueue.global().async {
-        for _ in 1...2 {
+        //for _ in 1...2 {
             
             let ra = RedAsteroidNode(scale: self.scaleFactor)
             ra.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
@@ -885,7 +887,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let ga = GreyAsteroidNode(scale: self.scaleFactor)
             ga.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
             greyAsteroids.append(ga)
-            }
+        //    }
         scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
   
             DispatchQueue.main.async(execute: {
