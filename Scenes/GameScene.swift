@@ -667,22 +667,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 
                 
             }
-//            
-//            if barrierCount < 10{
-//                spawnNormalBarrier(count: next)
-//            }
-//            else if barrierCount >= 10 && barrierCount < 20{
-//                spawnAsteroidPair()
-//            }
-//            else if barrierCount >= 20 && barrierCount < 30{
-//                spawnMovingBarrier(count: next)                
-//            }
-//            else if barrierCount >= 30 && barrierCount < 40{
-//                spawnAsteroidBelt()
-//            }
-//            else{
-//                spawnCurvyMovingBarrier(count: next)
-//            }
             
             barrierCount += 1
   
