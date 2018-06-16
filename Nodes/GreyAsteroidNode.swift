@@ -68,8 +68,10 @@ class GreyAsteroidNode: SKSpriteNode {
     
     private func curvyMove(from: CGPoint, to: CGPoint, control: Int, cpoint: Int) -> SKAction {
         
-        let deltaX = from.x + CGFloat((100 * cpoint) * control)
-        let deltaY = abs((from.y - to.y) / 2)
+        var deltaX = from.x + CGFloat((100 * cpoint) * control)
+        var deltaY = abs((from.y - to.y) / 2)
+        
+
         
         
         let controlPoint = CGPoint(x: CGFloat(deltaX), y: deltaY)

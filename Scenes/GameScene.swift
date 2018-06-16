@@ -649,6 +649,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 spawnNormalBarrier(count: next)
             }
             else if barrierCount >= 20 && barrierCount < 30{
+                spawnAsteroidBelt()
+            }
+            else if barrierCount >= 30 && barrierCount < 40{
                 spawnMovingBarrier(count: next)
             }
             else{
@@ -934,6 +937,87 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 
             })
         }
+    }
+    
+    func spawnAsteroidBelt(){
+        
+        var redAsteroids = [RedAsteroidNode]()
+        var greyAsteroids = [GreyAsteroidNode]()
+        
+        let size = CGSize(width: self.frame.width, height: 10.0)
+        let scoreNode = GapNode(size: size)
+        
+        let yStart = self.frame.maxY + CGFloat(75)
+        let minX = CGFloat(self.frame.minX)
+        let maxX = CGFloat(self.frame.maxX)
+        let xGap = (self.frame.width)/4
+        
+        DispatchQueue.global().async {
+            
+            for i in 0...1 {
+                
+                let ra1 = RedAsteroidNode(scale: self.scaleFactor)
+                ra1.position = CGPoint(x: self.frame.width * 0.05 , y: yStart)
+                redAsteroids.append(ra1)
+                let ra2 = RedAsteroidNode(scale: self.scaleFactor)
+                ra2.position = CGPoint(x: self.frame.width * 0.65, y: yStart)
+                redAsteroids.append(ra2)
+                let ga1 = GreyAsteroidNode(scale: self.scaleFactor)
+                ga1.position = CGPoint(x: self.frame.width * 0.35, y: yStart)
+                greyAsteroids.append(ga1)
+                let ga2 = GreyAsteroidNode(scale: self.scaleFactor)
+                ga2.position = CGPoint(x: self.frame.width * 0.95, y: yStart)
+                greyAsteroids.append(ga2)
+            }
+            scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
+            
+            DispatchQueue.main.async(execute: {
+                
+                let playerX = self.player.position.x
+                
+                for node in redAsteroids{
+                    
+                    self.addChild(node)
+                    node.animate()
+                    node.move(from: node.position,
+                              to: CGPoint(x: node.position.x, y: self.frame.minY),
+                              control: 1,
+                              cpoint: 1,
+                              run: {
+                                
+                    })
+                    
+                }
+                
+                for node in greyAsteroids{
+                    
+                    self.addChild(node)
+                    node.animate()
+                    node.move(from: node.position,
+                              to: CGPoint(x: node.position.x, y: self.frame.minY),
+                              control: 1,
+                              cpoint: 1,
+                              run: {
+                                
+                    })
+                    
+                }
+                
+                self.addChild(scoreNode)
+                scoreNode.move(from: scoreNode.position,
+                               to: CGPoint(x: self.frame.midX, y: self.frame.minY + 120),
+                               control: 1,
+                               cpoint: 1,
+                               run: {
+                                
+                })
+                
+                
+            })
+            
+        }
+        
+        
     }
     
     
