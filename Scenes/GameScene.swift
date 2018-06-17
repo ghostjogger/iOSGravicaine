@@ -1044,7 +1044,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         let waitAction = SKAction.wait(forDuration: 0.5)
         let animateExplosionAction = SKAction.animate(with: playerExplosionFrames, timePerFrame: 0.1, resize: false, restore: false)
         let playerExplosionSequence = SKAction.sequence([playerExplosionSound, animateExplosionAction,hideAction,waitAction])
+        for node in self.children{
+            node.removeAllActions()
+        }
         player.run(playerExplosionSequence, completion: {
+
              self.gameState = .gameOver
 })
         
