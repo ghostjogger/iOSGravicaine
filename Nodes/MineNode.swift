@@ -29,7 +29,7 @@ class MineNode: SKSpriteNode {
     init(scale: CGFloat) {
         
         let texture = SKTexture(imageNamed: "mine1")
-        let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
+        let size = CGSize(width: (texture.size().width * 0.7) * scale, height: (texture.size().height * 0.7) * scale)
         super.init(texture: texture, color: UIColor.clear, size: size)
         
         
