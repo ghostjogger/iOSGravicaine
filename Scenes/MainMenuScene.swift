@@ -164,7 +164,7 @@ class MainMenuScene: SKScene{
         optionBackground.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2
         )
         optionBackground.size = CGSize(width: 1000 * scale, height: 1300 * scale)
-        optionBackground.zPosition = 100
+        optionBackground.zPosition = 200
         
         if music{
             musicNode = SKSpriteNode(imageNamed: "on")
@@ -188,17 +188,7 @@ class MainMenuScene: SKScene{
                                     height: transNode.size.height * scale)
         }
         
-        optionLabel.position = CGPoint(x: self.frame.width * 0.2, y: self.frame.height * 0.05)
-        optionLabel.size = CGSize(width: optionLabel.size.width * scale, height: optionLabel.size.height * scale )
-        self.addChild(optionLabel)
-        
-        startLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.05)
-        startLabel.size = CGSize(width: startLabel.size.width * scale, height: startLabel.size.height * scale )
-        self.addChild(startLabel)
-        
-        scoresLabel.position = CGPoint(x: self.frame.width * 0.8, y: self.frame.height * 0.05)
-        scoresLabel.size = CGSize(width: scoresLabel.size.width * scale, height: scoresLabel.size.height * scale )
-        self.addChild(scoresLabel)
+
 
  
         titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.90)
@@ -210,11 +200,23 @@ class MainMenuScene: SKScene{
         titleImage.run(titleSequence){
      
  
-            let laser = LaserBeamNode(scale: self.scale)
-            laser.zPosition = 300
-            laser.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+            let laser = ShieldNode(scale: self.scale)
+            laser.zPosition = 100
+            laser.position = CGPoint(x: self.frame.midX, y: self.frame.height * 0.25)
             self.addChild(laser)
             laser.animate()
+            
+            self.optionLabel.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.25)
+            self.optionLabel.size = CGSize(width: self.optionLabel.size.width * self.scale, height: self.optionLabel.size.height * self.scale )
+            self.addChild(self.optionLabel)
+            
+            self.startLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.25)
+            self.startLabel.size = CGSize(width: self.startLabel.size.width * self.scale, height: self.startLabel.size.height * self.scale )
+            self.addChild(self.startLabel)
+            
+            self.scoresLabel.position = CGPoint(x: self.frame.width * 0.85, y: self.frame.height * 0.25)
+            self.scoresLabel.size = CGSize(width: self.scoresLabel.size.width * self.scale, height: self.scoresLabel.size.height * self.scale )
+            self.addChild(self.scoresLabel)
             
         }
       
@@ -259,12 +261,12 @@ class MainMenuScene: SKScene{
                     musicLabel.position = CGPoint(x: optionBackground.position.x,
                                                    y: optionBackground.position.y + CGFloat(musicY) * scale)
 
-                    musicLabel.zPosition = 200
+                    musicLabel.zPosition = 250
                     self.addChild(musicLabel)
                     
                     transLabel.position = CGPoint(x: optionBackground.position.x,
                                                   y: optionBackground.position.y/1.52)
-                    transLabel.zPosition = 200
+                    transLabel.zPosition = 250
                     self.addChild(transLabel)
 
                     
