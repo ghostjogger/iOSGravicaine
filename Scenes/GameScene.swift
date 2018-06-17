@@ -670,8 +670,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             }
             
             barrierCount += 1
-  
-
         
         }
     }
@@ -1032,6 +1030,14 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         }
         
     }
+    
+    func spawnMineField(){
+        
+        
+        
+    }
+    
+    
     
     
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
