@@ -66,8 +66,8 @@ class LaserBeamNode: SKSpriteNode {
     
     private func curvyMove(from: CGPoint, to: CGPoint, control: Int, cpoint: Int) -> SKAction {
         
-        var deltaX = from.x + CGFloat((100 * cpoint) * control)
-        var deltaY = abs((from.y - to.y) / 2)
+        let deltaX = from.x + CGFloat((100 * cpoint) * control)
+        let deltaY = abs((from.y - to.y) / 2)
         
         
         
@@ -113,7 +113,7 @@ class LaserBeamNode: SKSpriteNode {
     }
     
     func animate(){
-        let animateAction = SKAction.animate(with: animationFrames, timePerFrame: 0.07, resize: false, restore: false)
+        let animateAction = SKAction.animate(with: animationFrames, timePerFrame: 0.05, resize: false, restore: false)
         let animation = SKAction.repeatForever(animateAction)
         self.run(animation)
     }

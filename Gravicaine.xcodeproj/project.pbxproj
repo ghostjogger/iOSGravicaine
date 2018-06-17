@@ -60,7 +60,7 @@
 		99BB473020C5D74400401887 /* mines.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99BB472F20C5D74400401887 /* mines.atlas */; };
 		99D9DE9120D04ACD005D1CD0 /* GapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D9DE9020D04ACD005D1CD0 /* GapNode.swift */; };
 		99D9DE9520D1C790005D1CD0 /* score.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99D9DE9420D1C790005D1CD0 /* score.wav */; };
-		99E9D3FC20D5AC1500B98EBE /* beam.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D3FB20D5AC1500B98EBE /* beam.atlas */; };
+		99E9D3FE20D67B9D00B98EBE /* beam.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D3FD20D67B9D00B98EBE /* beam.atlas */; };
 		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
 		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
 /* End PBXBuildFile section */
@@ -121,7 +121,7 @@
 		99BB472F20C5D74400401887 /* mines.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = mines.atlas; sourceTree = "<group>"; };
 		99D9DE9020D04ACD005D1CD0 /* GapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GapNode.swift; sourceTree = "<group>"; };
 		99D9DE9420D1C790005D1CD0 /* score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score.wav; sourceTree = "<group>"; };
-		99E9D3FB20D5AC1500B98EBE /* beam.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = beam.atlas; sourceTree = "<group>"; };
+		99E9D3FD20D67B9D00B98EBE /* beam.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = beam.atlas; sourceTree = "<group>"; };
 		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
 		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
 		A56FAA6595503966B1D24FFE /* Pods_Gravicaine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gravicaine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +143,7 @@
 		999AC5BA20C44F04002B7852 /* Texture Atlases */ = {
 			isa = PBXGroup;
 			children = (
-				99E9D3FB20D5AC1500B98EBE /* beam.atlas */,
+				99E9D3FD20D67B9D00B98EBE /* beam.atlas */,
 				9990F75620D443500007F0CA /* asteroid2.atlas */,
 				9990F75320D43E7A0007F0CA /* asteroid1.atlas */,
 				99BB472F20C5D74400401887 /* mines.atlas */,
@@ -370,7 +370,7 @@
 				99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
 				99A357C3207A595000F86F84 /* laser.mp3 in Resources */,
-				99E9D3FC20D5AC1500B98EBE /* beam.atlas in Resources */,
+				99E9D3FE20D67B9D00B98EBE /* beam.atlas in Resources */,
 				99D9DE9520D1C790005D1CD0 /* score.wav in Resources */,
 				993C7E5620C2EB8C0095D78D /* entityExplosion.atlas in Resources */,
 				99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */,
