@@ -194,11 +194,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * CGFloat(playerBaseY), duration: 0.3)
-        let wait = SKAction.wait(forDuration: 1.8)
+        let wait = SKAction.wait(forDuration: 2.0)
         
         let spawn = SKAction.run({[unowned self] in
-            
-            self.shouldSpawn()
+            if !self.gameOverTransitioning{
+                self.shouldSpawn()
+            }
         })
         
         let spawnSequence = SKAction.sequence([spawn,wait])
@@ -677,6 +678,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     func spawnNormalBarrier(count: Int){
         
+        if !gameOverTransitioning{
+        
         DispatchQueue.global().async {
 
          
@@ -720,10 +723,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 
             })
         }
+        }
         
     }
     
     func spawnMovingBarrier(count: Int){
+        
+        if !gameOverTransitioning{
         
         var left:Bool
         var control:Int
@@ -817,11 +823,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 
 
             })
-        
+            }
         }
     }
     
     func spawnCurvyMovingBarrier(count: Int){
+        
+        if !gameOverTransitioning{
 
         var control:Int
         
@@ -877,10 +885,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 
             })
         }
-        
+        }
     }
     
     func spawnAsteroidPair(){
+        
+        if !gameOverTransitioning{
         var redAsteroids = [RedAsteroidNode]()
         var greyAsteroids = [GreyAsteroidNode]()
         
@@ -946,9 +956,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 
             })
         }
+        }
     }
     
     func spawnAsteroidBelt(){
+        
+        if !gameOverTransitioning{
         
         var redAsteroids = [RedAsteroidNode]()
         var greyAsteroids = [GreyAsteroidNode]()
@@ -959,18 +972,16 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         let yStart = self.frame.maxY + CGFloat(75)
         
         DispatchQueue.global().async {
-                let ra1 = RedAsteroidNode(scale: self.scaleFactor)
-                ra1.position = CGPoint(x: self.frame.width * 0.05 , y: yStart)
-                redAsteroids.append(ra1)
-                let ra2 = RedAsteroidNode(scale: self.scaleFactor)
-                ra2.position = CGPoint(x: self.frame.width * 0.65, y: yStart)
-                redAsteroids.append(ra2)
-                let ga1 = GreyAsteroidNode(scale: self.scaleFactor)
-                ga1.position = CGPoint(x: self.frame.width * 0.35, y: yStart)
-                greyAsteroids.append(ga1)
-                let ga2 = GreyAsteroidNode(scale: self.scaleFactor)
-                ga2.position = CGPoint(x: self.frame.width * 0.95, y: yStart)
-                greyAsteroids.append(ga2)
+
+            let ga1 = GreyAsteroidNode(scale: self.scaleFactor)
+            ga1.position = CGPoint(x: self.frame.width * 0.1, y: yStart)
+            greyAsteroids.append(ga1)
+            let ga2 = GreyAsteroidNode(scale: self.scaleFactor)
+            ga2.position = CGPoint(x: self.frame.width * 0.5, y: yStart)
+            greyAsteroids.append(ga2)
+            let ga3 = GreyAsteroidNode(scale: self.scaleFactor)
+            ga3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
+            greyAsteroids.append(ga3)
         
             scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
             
@@ -1018,7 +1029,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             })
             
         }
-        
+        }
         
     }
     
@@ -1026,14 +1037,16 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
  
         if !shieldActive {
-        self.removeAllActions()
         gameOverTransitioning = true
+            
+        self.removeAllActions()
         wasHighScore = isHighScore
         highScoreValue = highScore
-            
+       
         for node in self.children{
             node.removeAllActions()
         }
+
         if self.children.contains(backgroundSound){
                 backgroundSound.removeFromParent()
         }
@@ -1041,15 +1054,16 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.removeAllChildren()
         let hideAction = SKAction.hide()
-        let waitAction = SKAction.wait(forDuration: 0.5)
         let animateExplosionAction = SKAction.animate(with: playerExplosionFrames, timePerFrame: 0.1, resize: false, restore: false)
-        let playerExplosionSequence = SKAction.sequence([playerExplosionSound, animateExplosionAction,hideAction,waitAction])
-        for node in self.children{
-            node.removeAllActions()
-        }
+        let playerExplosionSequence = SKAction.sequence([playerExplosionSound, animateExplosionAction,hideAction])
         player.run(playerExplosionSequence, completion: {
 
-             self.gameState = .gameOver
+
+            self.gameState = .gameOver
+            for node in self.children{
+                node.removeAllActions()
+            }
+            
 })
         
     }
