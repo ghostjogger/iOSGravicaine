@@ -16,7 +16,7 @@ class SpaceShip: SKSpriteNode {
     private let leftThruster:SKSpriteNode = SKSpriteNode(imageNamed: "r_thruster_small")
     private let rightThruster:SKSpriteNode = SKSpriteNode(imageNamed: "l_thruster_small")
     private var fireEmitter: SKEmitterNode? = nil
-    private var shieldNode: ShieldNode = ShieldNode(scale: 1.0)
+    private var shieldNode: GreenShieldNode = GreenShieldNode(scale: 1.0)
     private var scale = CGFloat(0.0)
 
  
@@ -27,7 +27,7 @@ class SpaceShip: SKSpriteNode {
         let texture = SKTexture(imageNamed: "playerShip")
         self.scale = scale
         let size = CGSize(width: texture.size().width * self.scale, height: texture.size().height * self.scale)
-        self.shieldNode = ShieldNode(scale: self.scale)        
+        self.shieldNode = GreenShieldNode(scale: self.scale)        
         super.init(texture: texture, color: UIColor.clear, size: size)
         self.name = "player"
         self.zPosition = 2
@@ -145,7 +145,7 @@ class SpaceShip: SKSpriteNode {
     func setShield(){
         
         if !self.children.contains(shieldNode){
-            shieldNode = ShieldNode(scale: self.scale)
+            shieldNode = GreenShieldNode(scale: self.scale)
             shieldNode.animate()
             shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)!)
             self.addChild(shieldNode)
@@ -153,7 +153,7 @@ class SpaceShip: SKSpriteNode {
         else{
             shieldNode.removeAllActions()
             shieldNode.removeFromParent()
-            shieldNode = ShieldNode(scale: self.scale)
+            shieldNode = GreenShieldNode(scale: self.scale)
             shieldNode.animate()
             shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)!)
             self.addChild(shieldNode)
