@@ -163,7 +163,7 @@ class MainMenuScene: SKScene{
         
         optionBackground.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.58
         )
-        optionBackground.size = CGSize(width: 1000 * scale, height: 1300 * scale)
+        optionBackground.size = CGSize(width: self.frame.width * 0.8, height: self.frame.height * 0.5)
         optionBackground.zPosition = 200
         
         if music{
@@ -272,13 +272,13 @@ class MainMenuScene: SKScene{
                 if !self.children.contains(optionBackground){
                     
                     musicLabel.position = CGPoint(x: optionBackground.position.x,
-                                                   y: optionBackground.position.y + CGFloat(musicY) * scale)
+                                                   y: self.frame.height * 0.75)
 
                     musicLabel.zPosition = 250
                     self.addChild(musicLabel)
                     
                     transLabel.position = CGPoint(x: optionBackground.position.x,
-                                                  y: optionBackground.position.y/1.52)
+                                                  y: self.frame.height * 0.6)
                     transLabel.zPosition = 250
                     self.addChild(transLabel)
 
@@ -287,12 +287,12 @@ class MainMenuScene: SKScene{
                     
                     musicNode.zPosition = 200
                     musicNode.position = CGPoint(x: optionBackground.position.x,
-                                                 y: optionBackground.position.y + CGFloat(musicY - 90) * scale)
+                                                 y: self.frame.height * 0.70)
                     self.addChild(musicNode)
                     
                     transNode.zPosition = 200
                     transNode.position = CGPoint(x: optionBackground.position.x,
-                                                 y: optionBackground.position.y/1.65)
+                                                 y: self.frame.height * 0.55)
                     self.addChild(transNode)
 
                     
@@ -337,7 +337,7 @@ class MainMenuScene: SKScene{
             musicNode.size = CGSize(width: musicNode.size.width * scale,
                                     height: musicNode.size.height * scale)
             musicNode.position = CGPoint(x: optionBackground.position.x,
-                                         y: optionBackground.position.y + CGFloat(musicY - 90) * scale)
+                                         y: self.frame.height * 0.70)
             self.addChild(musicNode)
             
         }
@@ -348,7 +348,7 @@ class MainMenuScene: SKScene{
             musicNode.size = CGSize(width: musicNode.size.width * scale,
                                     height: musicNode.size.height * scale)
             musicNode.position = CGPoint(x: optionBackground.position.x,
-                                         y: optionBackground.position.y + CGFloat(musicY - 90) * scale)
+                                         y: self.frame.height * 0.70)
             self.addChild(musicNode)
             
         }
@@ -369,7 +369,7 @@ class MainMenuScene: SKScene{
             transNode.size = CGSize(width: transNode.size.width * scale,
                                     height: transNode.size.height * scale)
             transNode.position = CGPoint(x: optionBackground.position.x,
-                                         y: optionBackground.position.y/1.75)
+                                         y: self.frame.height * 0.55)
             self.addChild(transNode)
             
         }
@@ -380,7 +380,7 @@ class MainMenuScene: SKScene{
             transNode.size = CGSize(width: transNode.size.width * scale,
                                     height: transNode.size.height * scale)
             transNode.position = CGPoint(x: optionBackground.position.x,
-                                         y: optionBackground.position.y/1.75)
+                                         y: self.frame.height * 0.55)
             self.addChild(transNode)
             
         }
