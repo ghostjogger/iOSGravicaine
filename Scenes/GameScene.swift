@@ -194,7 +194,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * CGFloat(playerBaseY), duration: 0.3)
-        let wait = SKAction.wait(forDuration: 2.0)
+        let wait = SKAction.wait(forDuration: spawnInterval)
         
         let spawn = SKAction.run({[unowned self] in
             if !self.gameOverTransitioning{
@@ -709,7 +709,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
             let barrierSpaceNode = GapNode( size: size)
             barrierSpaceNode.move = .Straight
-            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + (CGFloat(barrierHeight) * 1.75) )
+            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + (CGFloat(barrierHeight) * 2.0) )
        
             DispatchQueue.main.async(execute: {
                 self.addChild(leftBarrier)
@@ -771,7 +771,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
         let barrierSpaceNode = GapNode( size: size)
         barrierSpaceNode.move = .Diagonal
-        barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y:self.size.height + (CGFloat(barrierHeight) * 1.75))
+        barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y:self.size.height + (CGFloat(barrierHeight) * 2.0))
         
         //setup x movements
             let cpointX = self.barrierCpoints[self.barrierCount]
@@ -870,7 +870,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
             let barrierSpaceNode = GapNode( size: size)
             barrierSpaceNode.move = .Curvy
-            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height +  (CGFloat(barrierHeight) * 1.75))
+            barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height +  (CGFloat(barrierHeight) * 2.0))
 
             
             DispatchQueue.main.async(execute: {
@@ -966,8 +966,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     func spawnAsteroidBelt(){
         
         if !gameOverTransitioning{
-        
-        var redAsteroids = [RedAsteroidNode]()
+
         var greyAsteroids = [GreyAsteroidNode]()
         
         let size = CGSize(width: self.frame.width, height: 10.0)
@@ -992,20 +991,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             DispatchQueue.main.async(execute: {
 
                 
-                for node in redAsteroids{
-                    
-                    self.addChild(node)
-                    node.animate()
-                    node.move(from: node.position,
-                              to: CGPoint(x: node.position.x, y: self.frame.minY),
-                              control: 1,
-                              cpoint: 1,
-                              run: {
-                                
-                    })
-                    
-                }
-                
                 for node in greyAsteroids{
                     
                     self.addChild(node)
@@ -1028,10 +1013,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                                run: {
                                 
                 })
-                
-                
             })
-            
         }
         }
         
@@ -1041,8 +1023,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         if !gameOverTransitioning{
  
-
             var mines = [MineNode]()
+            let size = CGSize(width: self.frame.width, height: 10.0)
+            let scoreNode = GapNode(size: size)
      
             DispatchQueue.global().async {
                 
@@ -1083,14 +1066,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                     mine3.zPosition = 200
                     mine3.position = CGPoint(x: self.frame.width * 0.9, y: self.frame.maxY + mine1.size.height)
                     mines.append(mine3)
-                    
-                    
-                    
+       
                 }
+                
+                scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
 
                 DispatchQueue.main.async(execute: {
 
-                
                     for mine in mines{
                         
                         mine.move = .Straight
@@ -1099,23 +1081,15 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                         mine.move(from: mine.position, to: CGPoint(x: mine.position.x, y: self.frame.minY), control: 1, cpoint: 1, run: {
                             
                         })
-
-                        
                     }
-                   
-                
-                
+                    
+                    self.addChild(scoreNode)
+                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 200), control: 1, cpoint: 1, run: {
+                        
+                    })
                 })
-            
-            
-            
-            
             }
-        
-        
-        
         }
-    
     }
     
     

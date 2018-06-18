@@ -21,6 +21,7 @@ let mineVerticalSpacing = 150
 let playerBaseY = 0.2
 let playerMass = 0.3
 
+let spawnInterval = 2.0
 
 let thrustPower = 350
 let gravity = 2.2
@@ -43,7 +44,7 @@ let gravIconY = 585
 
 
 
-let GodMode: Bool = true
+let GodMode: Bool = false
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 let HighScoreName: String = "HighScoreName"

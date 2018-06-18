@@ -189,45 +189,45 @@ class MainMenuScene: SKScene{
         }
         
 
-        let mine = MineNode(scale: scale)
-        mine.zPosition = 200
-        mine.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-        self.addChild(mine)
-        mine.animate()
-        
-        let bomb1 = BombNode(scale: scale)
-        bomb1.zPosition = 200
-        bomb1.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.6)
-        self.addChild(bomb1)
-        bomb1.animate()
-        
-        let beam = LaserBeamNode(scale: scale)
-        beam.zPosition = 200
-        beam.position = CGPoint(x: bomb1.position.x + (bomb1.size.width/2 + beam.size.width/2),
-                                y: self.frame.height * 0.6)
-        self.addChild(beam)
-        beam.animate()
-        
-        let beam1 = LaserBeamNode(scale: scale)
-        beam1.zPosition = 200
-        beam1.position = CGPoint(x: beam.position.x + beam.size.width,
-                                y: self.frame.height * 0.6)
-        self.addChild(beam1)
-        beam1.animate()
-        
-        let beam2 = LaserBeamNode(scale: scale)
-        beam2.zPosition = 200
-        beam2.position = CGPoint(x: beam1.position.x + beam.size.width,
-                                 y: self.frame.height * 0.6)
-        self.addChild(beam2)
-        beam2.animate()
-        
-        let bomb2 = BombNode(scale: scale)
-        bomb2.zPosition = 200
-        bomb2.position = CGPoint(x: beam2.position.x + (beam.size.width/2 + bomb2.size.width/2),
-            y: self.frame.height * 0.6)
-        self.addChild(bomb2)
-        bomb2.animate()
+//        let mine = MineNode(scale: scale)
+//        mine.zPosition = 200
+//        mine.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
+//        self.addChild(mine)
+//        mine.animate()
+//        
+//        let bomb1 = BombNode(scale: scale)
+//        bomb1.zPosition = 200
+//        bomb1.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.6)
+//        self.addChild(bomb1)
+//        bomb1.animate()
+//        
+//        let beam = LaserBeamNode(scale: scale)
+//        beam.zPosition = 200
+//        beam.position = CGPoint(x: bomb1.position.x + (bomb1.size.width/2 + beam.size.width/2),
+//                                y: self.frame.height * 0.6)
+//        self.addChild(beam)
+//        beam.animate()
+//        
+//        let beam1 = LaserBeamNode(scale: scale)
+//        beam1.zPosition = 200
+//        beam1.position = CGPoint(x: beam.position.x + beam.size.width,
+//                                y: self.frame.height * 0.6)
+//        self.addChild(beam1)
+//        beam1.animate()
+//        
+//        let beam2 = LaserBeamNode(scale: scale)
+//        beam2.zPosition = 200
+//        beam2.position = CGPoint(x: beam1.position.x + beam.size.width,
+//                                 y: self.frame.height * 0.6)
+//        self.addChild(beam2)
+//        beam2.animate()
+//        
+//        let bomb2 = BombNode(scale: scale)
+//        bomb2.zPosition = 200
+//        bomb2.position = CGPoint(x: beam2.position.x + (beam.size.width/2 + bomb2.size.width/2),
+//            y: self.frame.height * 0.6)
+//        self.addChild(bomb2)
+//        bomb2.animate()
         
         
 
