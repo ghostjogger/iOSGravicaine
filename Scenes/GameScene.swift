@@ -1039,12 +1039,14 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             var leftAligned = [MineNode]()
             var rightAligned = [MineNode]()
             var mineNodes = [MineNode]()
+
             
             
             // left aligned mines
             let mine1 = MineNode(scale: self.scaleFactor)
             mine1.zPosition = 200
             mine1.position = CGPoint(x: self.frame.width * 0.1, y: 0)
+            var mineHeight = mine1.size.height
             leftAligned.append(mine1)
             
             let mine2 = MineNode(scale: self.scaleFactor)
@@ -1143,13 +1145,30 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             DispatchQueue.global().async {
 
-                
+                DispatchQueue.main.async(execute: {
+                    
+                    let yStartBase = self.frame.maxY + mineHeight
+                    let yEndBase = self.frame.minY - CGFloat(( 2 * mineVerticalSpacing))
         
+                    for node in mineNodes{
+                        
+                        self.addChild(node)
+                        node.animate()
+                        node.move(from: node.position,
+                                  to: CGPoint(x: node.position.x,
+                                              y: yEndBase + (node.position.y - yStartBase)),
+                                  control: 1,
+                                  cpoint: 1,
+                                  run: {
+                                    
+                        })
 
+                        
+                    }
                 
                 
                 
-            }
+                })
             
             
             
@@ -1160,7 +1179,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
     }
     
-    
+    }
     
     
     func barrierTouchesPlayer(isHighScore: Bool, highScore: Int){
