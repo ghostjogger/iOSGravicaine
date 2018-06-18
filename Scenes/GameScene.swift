@@ -1040,138 +1040,69 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     func spawnMineField(isLeftAligned: Bool){
         
         if !gameOverTransitioning{
-            
-            
-            var leftAligned = [MineNode]()
-            var rightAligned = [MineNode]()
-            var mineNodes = [MineNode]()
+ 
 
-            
-            
-            // left aligned mines
-            let mine1 = MineNode(scale: self.scaleFactor)
-            mine1.zPosition = 200
-            mine1.position = CGPoint(x: self.frame.width * 0.1, y: 0)
-            var mineHeight = mine1.size.height
-            leftAligned.append(mine1)
-            
-            let mine2 = MineNode(scale: self.scaleFactor)
-            mine2.zPosition = 200
-            mine2.position = CGPoint(x: self.frame.width * 0.4, y: 0)
-            leftAligned.append(mine2)
-            
-            let mine3 = MineNode(scale: self.scaleFactor)
-            mine3.zPosition = 200
-            mine3.position = CGPoint(x: self.frame.width * 0.7, y: 0)
-            leftAligned.append(mine3)
-            
-            //right aligned mines
-            let mine4 = MineNode(scale: self.scaleFactor)
-            mine4.zPosition = 200
-            mine4.position = CGPoint(x: self.frame.width * 0.3, y: 0)
-            leftAligned.append(mine4)
-            
-            let mine5 = MineNode(scale: self.scaleFactor)
-            mine5.zPosition = 200
-            mine5.position = CGPoint(x: self.frame.width * 0.6, y: 0)
-            leftAligned.append(mine5)
-            
-            let mine6 = MineNode(scale: self.scaleFactor)
-            mine6.zPosition = 200
-            mine6.position = CGPoint(x: self.frame.width * 0.9, y: 0)
-            leftAligned.append(mine6)
-            
-            
-            // set up sequence
-            
-            if isLeftAligned {
-                
-                var count = 0
-                
-                for node in leftAligned{
-                    
-                    node.position.y = self.frame.height + node.size.height + CGFloat((count * mineVerticalSpacing))
-                    mineNodes.append(node)
-                    
-                
-                }
-                
-                count += 1
-                
-                for node in rightAligned{
-                    
-                    node.position.y = self.frame.height + node.size.height + CGFloat((count * mineVerticalSpacing))
-                    mineNodes.append(node)
-                    
-                }
-                
-                count += 1
-                
-                for node in leftAligned{
-                    
-                    node.position.y = self.frame.height + node.size.height + CGFloat((count * mineVerticalSpacing))
-                    mineNodes.append(node)
-                    
-                }
-                
-                
-            }
-            
-            else{
-                
-                
-                var count = 0
-                
-                for node in rightAligned{
-                    
-                    node.position.y = self.frame.height + node.size.height + CGFloat((count * mineVerticalSpacing))
-                    mineNodes.append(node)
-                    
-                }
-                
-                count += 1
-                
-                for node in leftAligned{
-                    
-                    node.position.y = self.frame.height + node.size.height + CGFloat((count * mineVerticalSpacing))
-                    mineNodes.append(node)
-                    
-                }
-                
-                count += 1
-                
-                for node in rightAligned{
-                    
-                    node.position.y = self.frame.height + node.size.height + CGFloat((count * mineVerticalSpacing))
-                    mineNodes.append(node)
-                }
-                
-                
-            }
-            
+            var mines = [MineNode]()
+     
             DispatchQueue.global().async {
+                
+                
+                if isLeftAligned{
+                    // left aligned mines
+                    let mine1 = MineNode(scale: self.scaleFactor)
+                    mine1.zPosition = 200
+                    mine1.position = CGPoint(x: self.frame.width * 0.1, y: self.frame.maxY + mine1.size.height)
+                    mines.append(mine1)
+                    
+                    
+                    let mine2 = MineNode(scale: self.scaleFactor)
+                    mine2.zPosition = 200
+                    mine2.position = CGPoint(x: self.frame.width * 0.4, y: self.frame.maxY + mine1.size.height)
+                    mines.append(mine2)
+                    
+                    let mine3 = MineNode(scale: self.scaleFactor)
+                    mine3.zPosition = 200
+                    mine3.position = CGPoint(x: self.frame.width * 0.7, y: self.frame.maxY + mine1.size.height)
+                    mines.append(mine3)
+                }
+                else{
+                    
+                    //right aligned mines
+                    let mine1 = MineNode(scale: self.scaleFactor)
+                    mine1.zPosition = 200
+                    mine1.position = CGPoint(x: self.frame.width * 0.3, y: self.frame.maxY + mine1.size.height)
+                    mines.append(mine1)
+                    
+                    
+                    let mine2 = MineNode(scale: self.scaleFactor)
+                    mine2.zPosition = 200
+                    mine2.position = CGPoint(x: self.frame.width * 0.6, y: self.frame.maxY + mine1.size.height)
+                    mines.append(mine2)
+                    
+                    let mine3 = MineNode(scale: self.scaleFactor)
+                    mine3.zPosition = 200
+                    mine3.position = CGPoint(x: self.frame.width * 0.9, y: self.frame.maxY + mine1.size.height)
+                    mines.append(mine3)
+                    
+                    
+                    
+                }
 
                 DispatchQueue.main.async(execute: {
-                    
-                    let yStartBase = self.frame.maxY + mineHeight
-                    let yEndBase = self.frame.minY - CGFloat(( 2 * mineVerticalSpacing))
-        
-                    for node in mineNodes{
+
+                
+                    for mine in mines{
                         
-                        self.addChild(node)
-                        node.animate()
-                        node.move(from: node.position,
-                                  to: CGPoint(x: node.position.x,
-                                              y: yEndBase + (node.position.y - yStartBase)),
-                                  control: 1,
-                                  cpoint: 1,
-                                  run: {
-                                    
+                        mine.move = .Straight
+                        self.addChild(mine)
+                        mine.animate()
+                        mine.move(from: mine.position, to: CGPoint(x: mine.position.x, y: self.frame.minY), control: 1, cpoint: 1, run: {
+                            
                         })
 
                         
                     }
-                
+                   
                 
                 
                 })
@@ -1179,11 +1110,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             
             
+            }
+        
+        
+        
         }
-        
-        
-        
-    }
     
     }
     
