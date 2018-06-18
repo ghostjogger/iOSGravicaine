@@ -16,6 +16,7 @@ let barrierSpeedAcross = 5.0
 let bseed = 2
 let barrierMovementX = 80
 
+let mineVerticalSpacing = 150
 
 let playerBaseY = 0.2
 let playerMass = 0.3
