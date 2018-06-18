@@ -284,20 +284,6 @@ class MainMenuScene: SKScene{
             
             let pointOfTouch = touch.location(in: self)
             
-            if self.children.contains(musicNode){
-                if musicNode.contains(pointOfTouch){
-                    toggleMusic()
-                }
- 
-            }
-            
-            if self.children.contains(transNode){
-                if transNode.contains(pointOfTouch){
-                    toggleTrans()
-                }
-                
-            }
-            
             if startLabel.contains(pointOfTouch){
                 
                 let sceneToMoveTo = GameScene(size: self.size)
@@ -306,61 +292,79 @@ class MainMenuScene: SKScene{
                 SwiftEntryKit.dismiss()
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
             }
-                
-                
-            else if optionLabel.contains(pointOfTouch){
+            
+            
+            
+//            if self.children.contains(musicNode){
+//                if musicNode.contains(pointOfTouch){
+//                    toggleMusic()
+//                }
+//
+//            }
+//
+//            if self.children.contains(transNode){
+//                if transNode.contains(pointOfTouch){
+//                    toggleTrans()
+//                }
+//
+//            }
+            
 
-                if !self.children.contains(optionBackground){
-                    
-                    musicLabel.position = CGPoint(x: optionBackground.position.x,
-                                                   y: self.frame.height * 0.75)
-
-                    musicLabel.zPosition = 250
-                    self.addChild(musicLabel)
-                    
-                    transLabel.position = CGPoint(x: optionBackground.position.x,
-                                                  y: self.frame.height * 0.6)
-                    transLabel.zPosition = 250
-                    self.addChild(transLabel)
-
-                    
-                    self.addChild(optionBackground)
-                    
-                    musicNode.zPosition = 200
-                    musicNode.position = CGPoint(x: optionBackground.position.x,
-                                                 y: self.frame.height * 0.70)
-                    self.addChild(musicNode)
-                    
-                    transNode.zPosition = 200
-                    transNode.position = CGPoint(x: optionBackground.position.x,
-                                                 y: self.frame.height * 0.55)
-                    self.addChild(transNode)
-
-                    
-                    
-                    SwiftEntryKit.dismiss()
-                }
-                else{
-                   
-                    optionBackground.removeFromParent()
-                    musicLabel.removeFromParent()
-                    musicNode.removeFromParent()
-                    transLabel.removeFromParent()
-                    transNode.removeFromParent()
-
-                }
                 
                 
-            }
+//            else if optionLabel.contains(pointOfTouch){
+//
+//                if !self.children.contains(optionBackground){
+//
+//                    musicLabel.position = CGPoint(x: optionBackground.position.x,
+//                                                   y: self.frame.height * 0.75)
+//
+//                    musicLabel.zPosition = 250
+//                    self.addChild(musicLabel)
+//
+//                    transLabel.position = CGPoint(x: optionBackground.position.x,
+//                                                  y: self.frame.height * 0.6)
+//                    transLabel.zPosition = 250
+//                    self.addChild(transLabel)
+//
+//
+//                    self.addChild(optionBackground)
+//
+//                    musicNode.zPosition = 200
+//                    musicNode.position = CGPoint(x: optionBackground.position.x,
+//                                                 y: self.frame.height * 0.70)
+//                    self.addChild(musicNode)
+//
+//                    transNode.zPosition = 200
+//                    transNode.position = CGPoint(x: optionBackground.position.x,
+//                                                 y: self.frame.height * 0.55)
+//                    self.addChild(transNode)
+//
+//
+//
+//                    SwiftEntryKit.dismiss()
+//                }
+//                else{
+//
+//                    optionBackground.removeFromParent()
+//                    musicLabel.removeFromParent()
+//                    musicNode.removeFromParent()
+//                    transLabel.removeFromParent()
+//                    transNode.removeFromParent()
+//
+//                }
+//
+//
+//            }
                 
-            else if scoresLabel.contains(pointOfTouch){
-                
-                if score != 0 && !self.children.contains(optionBackground){
-                    SwiftEntryKit.display(entry: self.scorenotificationView, using: self.scoreattributes)
-                }
-               
-            }
-                
+//            else if scoresLabel.contains(pointOfTouch){
+//
+//                if score != 0 && !self.children.contains(optionBackground){
+//                    SwiftEntryKit.display(entry: self.scorenotificationView, using: self.scoreattributes)
+//                }
+//
+//            }
+            
             
         }
     }
