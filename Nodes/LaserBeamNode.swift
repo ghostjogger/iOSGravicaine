@@ -40,7 +40,7 @@ class LaserBeamNode: SKSpriteNode {
         }
         
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
-        self.physicsBody!.affectedByGravity = false
+        self.physicsBody!.affectedByGravity = true
         self.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
         self.physicsBody!.collisionBitMask = PhysicsCategories.None
         self.physicsBody!.contactTestBitMask = PhysicsCategories.Player

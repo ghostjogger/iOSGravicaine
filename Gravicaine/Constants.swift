@@ -13,13 +13,14 @@ let barrierWidth = 800
 let barrierGap = 400
 let barrierSpeed = 4.0
 let barrierSpeedAcross = 5.0
-let bseed = 10
+let bseed = 23
 let barrierMovementX = 80
 
 let mineVerticalSpacing = 150
 
 let playerBaseY = 0.2
 let playerMass = 0.3
+let laserMass = 5
 
 let spawnInterval = 1.5
 
@@ -44,7 +45,7 @@ let gravIconY = 585
 
 
 
-let GodMode: Bool = true
+let GodMode: Bool = false
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 let HighScoreName: String = "HighScoreName"

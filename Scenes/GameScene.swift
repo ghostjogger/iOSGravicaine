@@ -1112,8 +1112,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             var laser = LaserBeamNode(scale: self.scaleFactor)
             laser.size.width = self.frame.width * 0.4
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
+            laser.physicsBody!.affectedByGravity = false
+            laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
+            laser.physicsBody!.collisionBitMask = PhysicsCategories.None
+            laser.physicsBody!.contactTestBitMask = PhysicsCategories.Player
             laser.position = CGPoint(x: self.frame.width/2, y: self.frame.maxY + 150)
             laser.zPosition = 200
+            
             
             let size = CGSize(width: self.frame.width, height: 10.0)
             let scoreNode = GapNode(size: size)
