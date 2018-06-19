@@ -21,7 +21,7 @@ let mineVerticalSpacing = 150
 let playerBaseY = 0.2
 let playerMass = 0.3
 
-let spawnInterval = 2.0
+let spawnInterval = 1.5
 
 let thrustPower = 350
 let gravity = 2.2

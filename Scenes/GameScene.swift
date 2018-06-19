@@ -645,7 +645,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             let next = barriers[barrierCount]
             let type = barrierTypes[barrierCount]
-            
+            print(type)
             switch type{
                 
             case 1:
@@ -990,9 +990,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             DispatchQueue.main.async(execute: {
 
-                
+
                 for node in greyAsteroids{
-                    
+
                     self.addChild(node)
                     node.animate()
                     node.move(from: node.position,
@@ -1000,18 +1000,18 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                               control: 1,
                               cpoint: 1,
                               run: {
-                                
+
                     })
-                    
+
                 }
-                
+
                 self.addChild(scoreNode)
                 scoreNode.move(from: scoreNode.position,
                                to: CGPoint(x: self.frame.midX, y: self.frame.minY + 120),
                                control: 1,
                                cpoint: 1,
                                run: {
-                                
+
                 })
             })
         }
