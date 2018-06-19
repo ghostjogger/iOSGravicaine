@@ -395,10 +395,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         registerForPauseNotifications()
         
+        
+        // MARK int arrays
         barrierCount = 0
         barriers = seedRandom(seed: UInt64(bseed), count: 500, low:1, high:8)
         barrierCpoints = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 6)
-        barrierTypes = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 7)
+        barrierTypes = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 8)
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
@@ -668,6 +670,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 break
             case 7:
                 spawnMineField(isLeftAligned: false)
+                break
+            case 8:
+                spawnLaserBattery()
                 break
             default:
                 break
@@ -1090,6 +1095,79 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 })
             }
         }
+    }
+    
+    func spawnLaserBattery(){
+        
+        if !gameOverTransitioning{
+            
+            var leftPlatform = BombNode(scale: self.scaleFactor)
+            leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.maxY + 150)
+            leftPlatform.zPosition = 200
+            
+            var rightPlatform = BombNode(scale: self.scaleFactor)
+            rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.maxY + 150)
+            rightPlatform.zPosition = 200
+            
+            var laser = LaserBeamNode(scale: self.scaleFactor)
+            laser.size.width = self.frame.width * 0.4
+            laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
+            laser.position = CGPoint(x: self.frame.width/2, y: self.frame.maxY + 150)
+            laser.zPosition = 200
+            
+            let size = CGSize(width: self.frame.width, height: 10.0)
+            let scoreNode = GapNode(size: size)
+            scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
+            
+            DispatchQueue.global().async {
+                
+                
+                DispatchQueue.main.async(execute: {
+                    
+                    self.addChild(leftPlatform)
+                    leftPlatform.animate()
+                    leftPlatform.move(from: leftPlatform.position,
+                                      to: CGPoint(x: leftPlatform.position.x, y: self.frame.minY - 50),
+                                      control: 1,
+                                      cpoint: 1,
+                                      run: {
+                                        
+                    })
+                    
+                    self.addChild(rightPlatform)
+                    rightPlatform.animate()
+                    rightPlatform.move(from: rightPlatform.position,
+                                      to: CGPoint(x: rightPlatform.position.x, y: self.frame.minY - 50),
+                                      control: 1,
+                                      cpoint: 1,
+                                      run: {
+                                        
+                    })
+                    
+                    self.addChild(laser)
+                    laser.animate()
+                    laser.move(from: laser.position,
+                                       to: CGPoint(x: laser.position.x, y: self.frame.minY - 50),
+                                       control: 1,
+                                       cpoint: 1,
+                                       run: {
+                                        
+                    })
+
+                    
+                    self.addChild(scoreNode)
+                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 200), control: 1, cpoint: 1, run: {
+                        
+                    })
+                })
+                
+                
+            }
+            
+            
+        }
+        
+        
     }
     
     
