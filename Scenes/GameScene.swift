@@ -1113,15 +1113,16 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.removeAllChildren()
         let hideAction = SKAction.hide()
-        let animateExplosionAction = SKAction.animate(with: playerExplosionFrames, timePerFrame: 0.1, resize: false, restore: false)
+        let animateExplosionAction = SKAction.animate(with: playerExplosionFrames, timePerFrame: 0.05, resize: false, restore: false)
         let playerExplosionSequence = SKAction.sequence([playerExplosionSound, animateExplosionAction,hideAction])
         player.run(playerExplosionSequence, completion: {
 
 
-            self.gameState = .gameOver
             for node in self.children{
                 node.removeAllActions()
             }
+            self.gameState = .gameOver
+
             
 })
         
