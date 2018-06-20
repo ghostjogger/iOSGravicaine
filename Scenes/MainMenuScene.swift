@@ -17,6 +17,7 @@ class MainMenuScene: SKScene{
     let startLabel = SKSpriteNode(imageNamed: "play")
     let optionLabel = SKSpriteNode(imageNamed: "options")
     let scoresLabel = SKSpriteNode(imageNamed: "score")
+    let creditLabel = SKSpriteNode(imageNamed: "credits")
     let signatureLabel = SKLabelNode(text: "Stephen Ball's")
     let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
@@ -207,9 +208,17 @@ class MainMenuScene: SKScene{
         self.startLabel.size = CGSize(width: self.startLabel.size.width * self.scale, height: self.startLabel.size.height * self.scale )
         self.addChild(self.startLabel)
         
-        self.optionLabel.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.2)
+        self.optionLabel.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.8)
         self.optionLabel.size = CGSize(width: self.optionLabel.size.width * self.scale, height: self.optionLabel.size.height * self.scale )
         self.addChild(self.optionLabel)
+        
+        self.creditLabel.position = CGPoint(x: self.frame.width * 0.50, y: self.frame.height * 0.8)
+        self.creditLabel.size = CGSize(width: self.creditLabel.size.width * self.scale, height: self.creditLabel.size.height * self.scale )
+        self.addChild(self.creditLabel)
+        
+        self.scoresLabel.position = CGPoint(x: self.frame.width * 0.85, y: self.frame.height * 0.8)
+        self.scoresLabel.size = CGSize(width: self.scoresLabel.size.width * self.scale, height: self.scoresLabel.size.height * self.scale )
+        self.addChild(self.scoresLabel)
         
         
     }
@@ -238,8 +247,16 @@ class MainMenuScene: SKScene{
                 let myTransition = SKTransition.moveIn(with: SKTransitionDirection.left, duration: 0.5)
                 SwiftEntryKit.dismiss()
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+  
+            }
+            
+            if scoresLabel.contains(pointOfTouch){
                 
-                
+                let sceneToMoveTo = ScoreScene(size: self.size)
+                sceneToMoveTo.scaleMode = self.scaleMode
+                let myTransition = SKTransition.moveIn(with: SKTransitionDirection.right, duration: 0.5)
+                SwiftEntryKit.dismiss()
+                self.view!.presentScene(sceneToMoveTo, transition:myTransition)
                 
             }
             

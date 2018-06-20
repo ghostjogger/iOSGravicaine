@@ -1,14 +1,14 @@
 //
-//  OptionScene.swift
+//  ScoreScene.swift
 //  Gravicaine
 //
-//  Created by stephen ball on 20/06/2018.
+//  Created by Stephen Ball on 20/06/2018.
 //  Copyright © 2018 Stephen Ball. All rights reserved.
 //
 import SpriteKit
 import GameplayKit
 
-class OptionScene: SKScene{
+class ScoreScene: SKScene{
     
     let backgroundImage = SKSpriteNode(imageNamed: "panelBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
@@ -69,7 +69,7 @@ class OptionScene: SKScene{
                 
                 let sceneToMoveTo = MainMenuScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
-                let myTransition = SKTransition.moveIn(with: SKTransitionDirection.right, duration: 0.5)
+                let myTransition = SKTransition.moveIn(with: SKTransitionDirection.left, duration: 0.5)
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
                 
             }
@@ -78,4 +78,5 @@ class OptionScene: SKScene{
     }
     
 }
+
 
