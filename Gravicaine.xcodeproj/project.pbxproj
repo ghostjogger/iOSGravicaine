@@ -68,6 +68,7 @@
 		99E9D40220D6827900B98EBE /* BlueShieldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D40120D6827900B98EBE /* BlueShieldNode.swift */; };
 		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
 		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
+		99FFA63620DAE23000DE0331 /* OptionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA63520DAE23000DE0331 /* OptionScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +135,7 @@
 		99E9D40120D6827900B98EBE /* BlueShieldNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueShieldNode.swift; sourceTree = "<group>"; };
 		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
 		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
+		99FFA63520DAE23000DE0331 /* OptionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionScene.swift; sourceTree = "<group>"; };
 		A56FAA6595503966B1D24FFE /* Pods_Gravicaine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gravicaine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAFDDEF2560244D4BAE4666B /* Pods-Gravicaine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gravicaine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gravicaine/Pods-Gravicaine.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,6 +179,7 @@
 				99A357AE2079072400F86F84 /* MainMenuScene.swift */,
 				99A357B02079073400F86F84 /* GameOverScene.swift */,
 				991AEE1C20D3BC050041FC24 /* GameScene+Pause.swift */,
+				99FFA63520DAE23000DE0331 /* OptionScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				99A357D92082160F00F86F84 /* StartPanelNode.swift in Sources */,
 				990B01C420BC583F00F2BA3F /* GreenShieldNode.swift in Sources */,
 				99D9DE9120D04ACD005D1CD0 /* GapNode.swift in Sources */,
+				99FFA63620DAE23000DE0331 /* OptionScene.swift in Sources */,
 				99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */,
 				9990F75D20D5B27D0007F0CA /* LaserBeamNode.swift in Sources */,
 				99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */,
