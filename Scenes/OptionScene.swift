@@ -49,7 +49,7 @@ class OptionScene: SKScene{
         titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.90)
         titleImage.zPosition = 10
         titleImage.setScale(CGFloat(titleScaleFactor))
-        self.addChild(titleImage)
+        //self.addChild(titleImage)
         
         backLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.2)
         backLabel.zPosition = 20
@@ -67,7 +67,7 @@ class OptionScene: SKScene{
                 
                 let sceneToMoveTo = MainMenuScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
-                let myTransition = SKTransition.fade(withDuration: 1.0)
+                let myTransition = SKTransition.moveIn(with: SKTransitionDirection.right, duration: 0.5)
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
                 
             }

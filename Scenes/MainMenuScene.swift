@@ -235,7 +235,7 @@ class MainMenuScene: SKScene{
                 
                 let sceneToMoveTo = OptionScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
-                let myTransition = SKTransition.fade(withDuration: 1.0)
+                let myTransition = SKTransition.moveIn(with: SKTransitionDirection.left, duration: 0.5)
                 SwiftEntryKit.dismiss()
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
                 
