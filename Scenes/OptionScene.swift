@@ -53,6 +53,8 @@ class OptionScene: SKScene{
         
         backLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.2)
         backLabel.zPosition = 20
+        backLabel.size = CGSize(width: backLabel.size.width * self.scale,
+                                height: backLabel.size.height * self.scale)
         self.addChild(backLabel)
         
         
