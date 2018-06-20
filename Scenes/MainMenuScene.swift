@@ -30,8 +30,8 @@ class MainMenuScene: SKScene{
     let titleSound = SKAction.playSoundFileNamed("sound43.wav", waitForCompletion: false)
     let titleEndSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
     var titleScaleFactor = 1.0
-
-
+    
+    
     var scale:CGFloat = 1.0
     
     var score:Int
@@ -44,7 +44,7 @@ class MainMenuScene: SKScene{
     var scorenotificationView: EKNotificationMessageView
     
     //options panel setup
-
+    
     
     var optionBackground = SKSpriteNode(imageNamed: "panelBackground")
     var musicLabel = SKLabelNode(text: "Game Music")
@@ -54,7 +54,7 @@ class MainMenuScene: SKScene{
     var musicNode: SKSpriteNode = SKSpriteNode()
     var transNode: SKSpriteNode = SKSpriteNode()
     
-
+    
     
     
     private var highScorePanel: HighScoreNamePanel? = nil
@@ -87,7 +87,7 @@ class MainMenuScene: SKScene{
         music = UserDefaults.standard.bool(forKey: "music")
         trans = UserDefaults.standard.bool(forKey: "trans")
         highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
-
+        
         
         // score panel
         scoreattributes = EKAttributes.centerFloat
@@ -97,24 +97,24 @@ class MainMenuScene: SKScene{
         scoreattributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
         scoreattributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
         scoremessage = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
-                                  title: EKProperty.LabelContent(text: "Highest Score",
-                                                                 style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
-                                  description: EKProperty.LabelContent(text: "\(highScoreName!) \n\n   \(score)",
-                                    style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+                                       title: EKProperty.LabelContent(text: "Highest Score",
+                                                                      style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
+                                       description: EKProperty.LabelContent(text: "\(highScoreName!) \n\n   \(score)",
+                                        style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
         
         scorenotificationMessage = EKNotificationMessage(simpleMessage: scoremessage)
         scorenotificationView = EKNotificationMessageView(with: scorenotificationMessage)
-
+        
         
         musicLabel.fontSize = 40.0 * scale
         musicLabel.fontName = FontName
-
+        
         transLabel.fontSize = 40.0 * scale
         transLabel.fontName = FontName
-       
-
         
-
+        
+        
+        
         super.init(size: size)
         
         
@@ -188,98 +188,30 @@ class MainMenuScene: SKScene{
                                     height: transNode.size.height * scale)
         }
         
-
-//        let mine = MineNode(scale: scale)
-//        mine.zPosition = 200
-//        mine.position = CGPoint(x: self.frame.width/2, y: self.frame.height/2)
-//        self.addChild(mine)
-//        mine.animate()
-//        
-//        let bomb1 = BombNode(scale: scale)
-//        bomb1.zPosition = 200
-//        bomb1.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.6)
-//        self.addChild(bomb1)
-//        bomb1.animate()
-//        
-//        let beam = LaserBeamNode(scale: scale)
-//        beam.zPosition = 200
-//        beam.position = CGPoint(x: bomb1.position.x + (bomb1.size.width/2 + beam.size.width/2),
-//                                y: self.frame.height * 0.6)
-//        self.addChild(beam)
-//        beam.animate()
-//        
-//        let beam1 = LaserBeamNode(scale: scale)
-//        beam1.zPosition = 200
-//        beam1.position = CGPoint(x: beam.position.x + beam.size.width,
-//                                y: self.frame.height * 0.6)
-//        self.addChild(beam1)
-//        beam1.animate()
-//        
-//        let beam2 = LaserBeamNode(scale: scale)
-//        beam2.zPosition = 200
-//        beam2.position = CGPoint(x: beam1.position.x + beam.size.width,
-//                                 y: self.frame.height * 0.6)
-//        self.addChild(beam2)
-//        beam2.animate()
-//        
-//        let bomb2 = BombNode(scale: scale)
-//        bomb2.zPosition = 200
-//        bomb2.position = CGPoint(x: beam2.position.x + (beam.size.width/2 + bomb2.size.width/2),
-//            y: self.frame.height * 0.6)
-//        self.addChild(bomb2)
-//        bomb2.animate()
         
         
-
- 
+        
+        
         titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.90)
         titleImage.zPosition = 10
-        titleImage.setScale(5.0)
+        titleImage.setScale(CGFloat(titleScaleFactor))
         addChild(titleImage)
-        let titleAction = SKAction.scale(to: CGFloat(titleScaleFactor), duration: 1.4)
-        let titleSequence = SKAction.sequence([titleSound, titleAction,titleEndSound])
-        titleImage.run(titleSequence){
-     
- 
+        
         let laser = GreenShieldNode(scale: self.scale)
         laser.zPosition = 100
         laser.position = CGPoint(x: self.frame.midX, y: self.frame.height * 0.2)
         self.addChild(laser)
         laser.animate()
-            
+        
         self.startLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.2)
         self.startLabel.size = CGSize(width: self.startLabel.size.width * self.scale, height: self.startLabel.size.height * self.scale )
         self.addChild(self.startLabel)
-           
-            if self.score > 0{
-                SwiftEntryKit.display(entry: self.scorenotificationView, using: self.scoreattributes)
-            }
-            
-//            let laser1 = BlueShieldNode(scale: self.scale)
-//            laser1.zPosition = 100
-//            laser1.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.2)
-//            self.addChild(laser1)
-//            laser1.animate()
-//
-//            let laser2 = BlueShieldNode(scale: self.scale)
-//            laser2.zPosition = 100
-//            laser2.position = CGPoint(x: self.frame.width * 0.85, y: self.frame.height * 0.2)
-//            self.addChild(laser2)
-//            laser2.animate()
-            
-            
-//            self.optionLabel.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.2)
-//            self.optionLabel.size = CGSize(width: self.optionLabel.size.width * self.scale, height: self.optionLabel.size.height * self.scale )
-//            self.addChild(self.optionLabel)
-            
-
-            
-//            self.scoresLabel.position = CGPoint(x: self.frame.width * 0.85, y: self.frame.height * 0.2)
-//            self.scoresLabel.size = CGSize(width: self.scoresLabel.size.width * self.scale, height: self.scoresLabel.size.height * self.scale )
-//            self.addChild(self.scoresLabel)
-            
-        }
-      
+        
+        self.optionLabel.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.2)
+        self.optionLabel.size = CGSize(width: self.optionLabel.size.width * self.scale, height: self.optionLabel.size.height * self.scale )
+        self.addChild(self.optionLabel)
+        
+        
     }
     
     
@@ -299,78 +231,17 @@ class MainMenuScene: SKScene{
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
             }
             
-            
-            
-//            if self.children.contains(musicNode){
-//                if musicNode.contains(pointOfTouch){
-//                    toggleMusic()
-//                }
-//
-//            }
-//
-//            if self.children.contains(transNode){
-//                if transNode.contains(pointOfTouch){
-//                    toggleTrans()
-//                }
-//
-//            }
-            
-
+            if optionLabel.contains(pointOfTouch){
+                
+                let sceneToMoveTo = OptionScene(size: self.size)
+                sceneToMoveTo.scaleMode = self.scaleMode
+                let myTransition = SKTransition.fade(withDuration: 1.0)
+                SwiftEntryKit.dismiss()
+                self.view!.presentScene(sceneToMoveTo, transition:myTransition)
                 
                 
-//            else if optionLabel.contains(pointOfTouch){
-//
-//                if !self.children.contains(optionBackground){
-//
-//                    musicLabel.position = CGPoint(x: optionBackground.position.x,
-//                                                   y: self.frame.height * 0.75)
-//
-//                    musicLabel.zPosition = 250
-//                    self.addChild(musicLabel)
-//
-//                    transLabel.position = CGPoint(x: optionBackground.position.x,
-//                                                  y: self.frame.height * 0.6)
-//                    transLabel.zPosition = 250
-//                    self.addChild(transLabel)
-//
-//
-//                    self.addChild(optionBackground)
-//
-//                    musicNode.zPosition = 200
-//                    musicNode.position = CGPoint(x: optionBackground.position.x,
-//                                                 y: self.frame.height * 0.70)
-//                    self.addChild(musicNode)
-//
-//                    transNode.zPosition = 200
-//                    transNode.position = CGPoint(x: optionBackground.position.x,
-//                                                 y: self.frame.height * 0.55)
-//                    self.addChild(transNode)
-//
-//
-//
-//                    SwiftEntryKit.dismiss()
-//                }
-//                else{
-//
-//                    optionBackground.removeFromParent()
-//                    musicLabel.removeFromParent()
-//                    musicNode.removeFromParent()
-//                    transLabel.removeFromParent()
-//                    transNode.removeFromParent()
-//
-//                }
-//
-//
-//            }
                 
-//            else if scoresLabel.contains(pointOfTouch){
-//
-//                if score != 0 && !self.children.contains(optionBackground){
-//                    SwiftEntryKit.display(entry: self.scorenotificationView, using: self.scoreattributes)
-//                }
-//
-//            }
-            
+            }
             
         }
     }
