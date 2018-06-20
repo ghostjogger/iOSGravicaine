@@ -553,12 +553,14 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             if pauseLabel.contains(pointOfTouch){
                 
-                gamePaused = true
-                pausePanel?.removeFromParent()
-                pausePanel = PausePanelNode(size: self.size)
-                pausePanel?.zPosition = 50
-                self.addChild(pausePanel!)
-                self.scene?.isPaused = true
+                if !self.children.contains(startPanel!){
+                    gamePaused = true
+                    pausePanel?.removeFromParent()
+                    pausePanel = PausePanelNode(size: self.size)
+                    pausePanel?.zPosition = 50
+                    self.addChild(pausePanel!)
+                    self.scene?.isPaused = true
+                }
 
             }
 
