@@ -400,7 +400,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         barrierCount = 0
         barriers = seedRandom(seed: UInt64(bseed), count: 500, low:1, high:8)
         barrierCpoints = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 6)
-        barrierTypes = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 8)
+        barrierTypes = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 5)
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
