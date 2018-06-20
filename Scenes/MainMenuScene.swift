@@ -92,15 +92,15 @@ class MainMenuScene: SKScene{
         
         // score panel
         scoreattributes = EKAttributes.centerFloat
-        scoreattributes.displayDuration = 3.0
+        scoreattributes.displayDuration = .infinity
         scoreattributes.entryInteraction = .dismiss
         scoreattributes.entryBackground = .image(image: UIImage(named: "panelBackground")!)
         scoreattributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
         scoreattributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
         scoremessage = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
-                                       title: EKProperty.LabelContent(text: "Highest Score",
+                                       title: EKProperty.LabelContent(text: "Credits:",
                                                                       style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
-                                       description: EKProperty.LabelContent(text: "\(highScoreName!) \n\n   \(score)",
+                                       description: EKProperty.LabelContent(text: "Stephen \n\n  Ball \n\n Is \n\n The Greatest",
                                         style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
         
         scorenotificationMessage = EKNotificationMessage(simpleMessage: scoremessage)
@@ -257,6 +257,12 @@ class MainMenuScene: SKScene{
                 let myTransition = SKTransition.moveIn(with: SKTransitionDirection.right, duration: 0.5)
                 SwiftEntryKit.dismiss()
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+                
+            }
+            
+            if creditLabel.contains(pointOfTouch){
+                
+                SwiftEntryKit.display(entry: scorenotificationView, using: scoreattributes)
                 
             }
             
