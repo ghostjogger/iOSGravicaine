@@ -553,7 +553,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             if pauseLabel.contains(pointOfTouch){
                 
-                if !self.children.contains(startPanel!){
+                if startPanel == nil && self.gameState != .gameOver {
                     gamePaused = true
                     pausePanel?.removeFromParent()
                     pausePanel = PausePanelNode(size: self.size)
