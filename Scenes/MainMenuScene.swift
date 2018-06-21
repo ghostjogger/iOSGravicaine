@@ -50,7 +50,7 @@ class MainMenuScene: SKScene{
         if !UserDefaults.standard.bool(forKey: "firstTimeRun"){
             UserDefaults.standard.set(true, forKey: "firstTimeRun")
             UserDefaults.standard.set(true, forKey: "music")
-            UserDefaults.standard.set(true, forKey: "trans")
+            UserDefaults.standard.set(false, forKey: "trans")
             UserDefaults.standard.set("", forKey: HighScoreName)
         }
 
