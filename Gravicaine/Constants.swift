@@ -13,7 +13,7 @@ let barrierWidth = 800
 let barrierGap = 400
 let barrierSpeed = 4.0
 let barrierSpeedAcross = 5.0
-let bseed = 1500
+let bseed = 1
 let barrierMovementX = 80
 
 let mineVerticalSpacing = 150
