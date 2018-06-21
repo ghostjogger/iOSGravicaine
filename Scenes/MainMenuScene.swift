@@ -18,48 +18,18 @@ class MainMenuScene: SKScene{
     let optionLabel = SKSpriteNode(imageNamed: "options")
     let scoresLabel = SKSpriteNode(imageNamed: "score")
     let creditLabel = SKSpriteNode(imageNamed: "credits")
-    let signatureLabel = SKLabelNode(text: "Stephen Ball's")
     let backgroundImage = SKSpriteNode(imageNamed: "titleBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
-    
-    let highScoreLabel = SKLabelNode(text: "High Score")
-    let highScoreNameLabel = SKLabelNode(text: "")
-    let highScoreScoreLabel = SKLabelNode(text: "")
-    
-    var titleTextures = [SKTexture]()
-    
-    let titleSound = SKAction.playSoundFileNamed("sound43.wav", waitForCompletion: false)
-    let titleEndSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
+
     var titleScaleFactor = 1.0
-    
-    
     var scale:CGFloat = 1.0
-    
-    var score:Int
-    var highScoreName: String?
-    
-    //score panel setup
+
+    //credit panel setup
     var scoreattributes: EKAttributes
     var scoremessage: EKSimpleMessage
     var scorenotificationMessage: EKNotificationMessage
     var scorenotificationView: EKNotificationMessageView
-    
-    //options panel setup
-    
-    
-    var optionBackground = SKSpriteNode(imageNamed: "panelBackground")
-    var musicLabel = SKLabelNode(text: "Game Music")
-    var transLabel = SKLabelNode(text: "Grav Transition Marker")
-    var music: Bool
-    var trans: Bool
-    var musicNode: SKSpriteNode = SKSpriteNode()
-    var transNode: SKSpriteNode = SKSpriteNode()
-    
-    
-    
-    
-    private var highScorePanel: HighScoreNamePanel? = nil
-    
+
     //star animation variables
     
     private var protonStarFrames: [SKTexture] = []
@@ -83,14 +53,9 @@ class MainMenuScene: SKScene{
             UserDefaults.standard.set(true, forKey: "trans")
             UserDefaults.standard.set("", forKey: HighScoreName)
         }
+
         
-        score = UserDefaults.standard.integer(forKey: HighScoreKey)
-        music = UserDefaults.standard.bool(forKey: "music")
-        trans = UserDefaults.standard.bool(forKey: "trans")
-        highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
-        
-        
-        // score panel
+        // credits pop-up
         scoreattributes = EKAttributes.centerFloat
         scoreattributes.displayDuration = .infinity
         scoreattributes.entryInteraction = .dismiss
@@ -105,22 +70,9 @@ class MainMenuScene: SKScene{
         
         scorenotificationMessage = EKNotificationMessage(simpleMessage: scoremessage)
         scorenotificationView = EKNotificationMessageView(with: scorenotificationMessage)
-        
-        
-        musicLabel.fontSize = 40.0 * scale
-        musicLabel.fontName = FontName
-        
-        transLabel.fontSize = 40.0 * scale
-        transLabel.fontName = FontName
-        
-        
-        
-        
+
         super.init(size: size)
-        
-        
-        
-        
+     
         titleScaleFactor = (Double(self.frame.width) / Double(maxDeviceScreenWidth)) * 0.85
         scale = CGFloat(self.frame.width / CGFloat(maxDeviceScreenWidth))
         
@@ -129,7 +81,6 @@ class MainMenuScene: SKScene{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     var lastUpdateTime:TimeInterval = 0
     var deltaFrameTime:TimeInterval = 0
@@ -161,18 +112,8 @@ class MainMenuScene: SKScene{
         backgroundImage.size = self.size
         backgroundImage.zPosition = 0
         self.addChild(backgroundImage)
-        
-        optionBackground.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.58
-        )
-        optionBackground.size = CGSize(width: self.frame.width * 0.8, height: self.frame.height * 0.5)
-        optionBackground.zPosition = 200
-        
 
-        
-        
-        
-        
-        
+   
         titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.90)
         titleImage.zPosition = 10
         titleImage.setScale(CGFloat(titleScaleFactor))
@@ -248,70 +189,7 @@ class MainMenuScene: SKScene{
             
         }
     }
-    
-    func toggleMusic(){
-        
-        music = !music
-        UserDefaults.standard.set(music, forKey: "music")
-        
-        if music{
-            
-            musicNode.removeFromParent()
-            musicNode = SKSpriteNode(imageNamed: "on")
-            musicNode.zPosition = 200
-            musicNode.size = CGSize(width: musicNode.size.width * scale,
-                                    height: musicNode.size.height * scale)
-            musicNode.position = CGPoint(x: optionBackground.position.x,
-                                         y: self.frame.height * 0.70)
-            self.addChild(musicNode)
-            
-        }
-        else{
-            musicNode.removeFromParent()
-            musicNode = SKSpriteNode(imageNamed: "off")
-            musicNode.zPosition = 200
-            musicNode.size = CGSize(width: musicNode.size.width * scale,
-                                    height: musicNode.size.height * scale)
-            musicNode.position = CGPoint(x: optionBackground.position.x,
-                                         y: self.frame.height * 0.70)
-            self.addChild(musicNode)
-            
-        }
-        
-        
-    }
-    
-    func toggleTrans(){
-        
-        trans = !trans
-        UserDefaults.standard.set(trans, forKey: "trans")
-        
-        if trans{
-            
-            transNode.removeFromParent()
-            transNode = SKSpriteNode(imageNamed: "on")
-            transNode.zPosition = 200
-            transNode.size = CGSize(width: transNode.size.width * scale,
-                                    height: transNode.size.height * scale)
-            transNode.position = CGPoint(x: optionBackground.position.x,
-                                         y: self.frame.height * 0.55)
-            self.addChild(transNode)
-            
-        }
-        else{
-            transNode.removeFromParent()
-            transNode = SKSpriteNode(imageNamed: "off")
-            transNode.zPosition = 200
-            transNode.size = CGSize(width: transNode.size.width * scale,
-                                    height: transNode.size.height * scale)
-            transNode.position = CGPoint(x: optionBackground.position.x,
-                                         y: self.frame.height * 0.55)
-            self.addChild(transNode)
-            
-        }
-        
-        
-    }
+
     
     
     func spawnAnimation(){
