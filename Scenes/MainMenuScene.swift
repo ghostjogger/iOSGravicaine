@@ -189,8 +189,6 @@ class MainMenuScene: SKScene{
             
         }
     }
-
-    
     
     func spawnAnimation(){
         
