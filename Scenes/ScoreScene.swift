@@ -11,16 +11,25 @@ import GameplayKit
 class ScoreScene: SKScene{
     
     let backgroundImage = SKSpriteNode(imageNamed: "panelBackground")
-    let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
+    let titleLabel = SKLabelNode(text: "Highest Score:")
+    var highNameLabel = SKLabelNode(text: "")
+    var highScoreLabel = SKLabelNode(text: "")
     
     let backLabel = SKSpriteNode(imageNamed: "back")
     
     var titleScaleFactor = 1.0
     var scale:CGFloat = 1.0
     
+    var score:Int
+    var highScoreName: String?
     
     override init(size: CGSize) {
         
+        score = UserDefaults.standard.integer(forKey: HighScoreKey)
+        highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
+        
+        highNameLabel.text = highScoreName
+        highScoreLabel.text = "\(score)"
         
 
         
@@ -44,11 +53,25 @@ class ScoreScene: SKScene{
         backgroundImage.zPosition = 0
         self.addChild(backgroundImage)
         
+        titleLabel.fontName = FontName
+        titleLabel.fontSize = 60 * scale
+        titleLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.9)
+        self.addChild(titleLabel)
         
-        titleImage.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.90)
-        titleImage.zPosition = 10
-        titleImage.setScale(CGFloat(titleScaleFactor))
-        //self.addChild(titleImage)
+        highNameLabel.fontName = FontName
+        highNameLabel.fontSize = 70 * scale
+        highNameLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.75)
+        
+        highScoreLabel.fontName = FontName
+        highScoreLabel.fontSize = 80 * scale
+        highScoreLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.65)
+        
+        if self.score > 0{
+            self.addChild(highNameLabel)
+            self.addChild(highScoreLabel)
+        }
+        
+
         
         backLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.1)
         backLabel.zPosition = 20
