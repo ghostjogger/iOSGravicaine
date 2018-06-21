@@ -22,8 +22,7 @@ class ScoreScene: SKScene{
     override init(size: CGSize) {
         
         
-        
-        
+
         
         super.init(size: size)
         

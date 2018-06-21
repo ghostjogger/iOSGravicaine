@@ -18,17 +18,37 @@ class OptionScene: SKScene{
     var titleScaleFactor = 1.0
     var scale:CGFloat = 1.0
     
+    var score:Int
+    var highScoreName: String?
+    
+    var musicLabel = SKLabelNode(text: "Game Music")
+    var transLabel = SKLabelNode(text: "Grav Transition Marker")
+    var music: Bool
+    var trans: Bool
+    var musicNode: SKSpriteNode = SKSpriteNode()
+    var transNode: SKSpriteNode = SKSpriteNode()
+    
     
     override init(size: CGSize) {
         
+        score = UserDefaults.standard.integer(forKey: HighScoreKey)
+        music = UserDefaults.standard.bool(forKey: "music")
+        trans = UserDefaults.standard.bool(forKey: "trans")
+        highScoreName = UserDefaults.standard.string(forKey: HighScoreName)
         
         
+        musicLabel.fontSize = 30.0 * scale
+        musicLabel.fontName = FontName
         
+        transLabel.fontSize = 30.0 * scale
+        transLabel.fontName = FontName
         
         super.init(size: size)
         
         titleScaleFactor = (Double(self.frame.width) / Double(maxDeviceScreenWidth)) * 0.85
         scale = CGFloat(self.frame.width / CGFloat(maxDeviceScreenWidth))
+        
+
         
         
     }
@@ -57,6 +77,43 @@ class OptionScene: SKScene{
                                 height: backLabel.size.height * self.scale)
         self.addChild(backLabel)
         
+        musicLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height * 0.8)
+        self.addChild(musicLabel)
+        
+        transLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height * 0.6)
+        self.addChild(transLabel)
+        
+        if music{
+            musicNode = SKSpriteNode(imageNamed: "on")
+            musicNode.size = CGSize(width: musicNode.size.width * scale,
+                                    height: musicNode.size.height * scale)
+        }
+        else{
+            musicNode = SKSpriteNode(imageNamed: "off")
+            musicNode.size = CGSize(width: musicNode.size.width * scale,
+                                    height: musicNode.size.height * scale)
+        }
+        
+        if trans{
+            transNode = SKSpriteNode(imageNamed: "on")
+            transNode.size = CGSize(width: transNode.size.width * scale,
+                                    height: transNode.size.height * scale)
+        }
+        else{
+            transNode = SKSpriteNode(imageNamed: "off")
+            transNode.size = CGSize(width: transNode.size.width * scale,
+                                    height: transNode.size.height * scale)
+        }
+        
+        musicNode.zPosition = 200
+        musicNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.75)
+        self.addChild(musicNode)
+        
+        transNode.zPosition = 200
+        transNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.55)
+        self.addChild(transNode)
+        
+        
         
     }
     
@@ -74,7 +131,76 @@ class OptionScene: SKScene{
                 
             }
             
+            if musicNode.contains(pointOfTouch){
+                toggleMusic()
+            }
+            
+            if transNode.contains(pointOfTouch){
+                toggleTrans()
+            }
+            
         }
+    }
+    
+    
+    func toggleMusic(){
+        
+        music = !music
+        UserDefaults.standard.set(music, forKey: "music")
+        
+        if music{
+            
+            musicNode.removeFromParent()
+            musicNode = SKSpriteNode(imageNamed: "on")
+            musicNode.zPosition = 200
+            musicNode.size = CGSize(width: musicNode.size.width * scale,
+                                    height: musicNode.size.height * scale)
+                    musicNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.75)
+            self.addChild(musicNode)
+            
+        }
+        else{
+            musicNode.removeFromParent()
+            musicNode = SKSpriteNode(imageNamed: "off")
+            musicNode.zPosition = 200
+            musicNode.size = CGSize(width: musicNode.size.width * scale,
+                                    height: musicNode.size.height * scale)
+                    musicNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.75)
+            self.addChild(musicNode)
+            
+        }
+        
+        
+    }
+    
+    func toggleTrans(){
+        
+        trans = !trans
+        UserDefaults.standard.set(trans, forKey: "trans")
+        
+        if trans{
+            
+            transNode.removeFromParent()
+            transNode = SKSpriteNode(imageNamed: "on")
+            transNode.zPosition = 200
+            transNode.size = CGSize(width: transNode.size.width * scale,
+                                    height: transNode.size.height * scale)
+                    transNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.55)
+            self.addChild(transNode)
+            
+        }
+        else{
+            transNode.removeFromParent()
+            transNode = SKSpriteNode(imageNamed: "off")
+            transNode.zPosition = 200
+            transNode.size = CGSize(width: transNode.size.width * scale,
+                                    height: transNode.size.height * scale)
+                    transNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.55)
+            self.addChild(transNode)
+            
+        }
+        
+        
     }
     
 }

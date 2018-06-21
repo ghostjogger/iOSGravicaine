@@ -167,27 +167,7 @@ class MainMenuScene: SKScene{
         optionBackground.size = CGSize(width: self.frame.width * 0.8, height: self.frame.height * 0.5)
         optionBackground.zPosition = 200
         
-        if music{
-            musicNode = SKSpriteNode(imageNamed: "on")
-            musicNode.size = CGSize(width: musicNode.size.width * scale,
-                                    height: musicNode.size.height * scale)
-        }
-        else{
-            musicNode = SKSpriteNode(imageNamed: "off")
-            musicNode.size = CGSize(width: musicNode.size.width * scale,
-                                    height: musicNode.size.height * scale)
-        }
-        
-        if trans{
-            transNode = SKSpriteNode(imageNamed: "on")
-            transNode.size = CGSize(width: transNode.size.width * scale,
-                                    height: transNode.size.height * scale)
-        }
-        else{
-            transNode = SKSpriteNode(imageNamed: "off")
-            transNode.size = CGSize(width: transNode.size.width * scale,
-                                    height: transNode.size.height * scale)
-        }
+
         
         
         
