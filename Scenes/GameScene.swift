@@ -66,6 +66,28 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var shieldTransitionTimer = Timer()
     private var leftTouchActive = false
     private var rightTouchActive = false
+    
+    
+    //joystick
+    var joystickStickImageEnabled = true {
+        didSet {
+            let image = joystickStickImageEnabled ? UIImage(named: "jStick") : nil
+            moveAnalogStick.stick.image = image
+
+
+        }
+    }
+    
+    var joystickSubstrateImageEnabled = true {
+        didSet {
+            let image = joystickSubstrateImageEnabled ? UIImage(named: "jSubstrate") : nil
+            moveAnalogStick.substrate.image = image
+
+        }
+    }
+
+    let moveAnalogStick = AnalogJoystick(diameter: 250)
+
 
     
     //gravity
@@ -424,6 +446,31 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         self.gameState = .waiting
         self.addChild(player)
+        
+        
+        //setup joystick position
+        moveAnalogStick.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.075)
+        moveAnalogStick.zPosition = 300
+        moveAnalogStick.diameter = moveAnalogStick.diameter * scaleFactor
+        moveAnalogStick.stick.image = UIImage(named: "jStick")
+        moveAnalogStick.substrate.image = UIImage(named: "jSubstrate")
+        addChild(moveAnalogStick)
+        
+        
+        //MARK: Joystick Handlers begin
+        moveAnalogStick.beginHandler = { [unowned self] in
+
+        }
+        
+        moveAnalogStick.trackingHandler = { [unowned self] data in
+            
+
+        }
+        
+        moveAnalogStick.stopHandler = { [unowned self] in
+            
+
+        }
     
         // score label prep work
         
