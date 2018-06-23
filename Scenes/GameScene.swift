@@ -463,12 +463,47 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         }
         
         moveAnalogStick.trackingHandler = { [unowned self] data in
+            print(self.moveAnalogStick.description)
             
+            if data.velocity.x < 0 {
+                
+                if self.gameState == .inGame && !self.gameOverTransitioning{
+                    
+                    
+                    self.leftTouchActive = true
+                    
+                    
+                }
+            }
+            
+            else if data.velocity.x > 0{
+                
+                if self.gameState == .inGame && !self.gameOverTransitioning{
+                    
+                    
+                    self.rightTouchActive = true
+                    
+                    
+                }
+                
+            }
+            else{
+             
+                self.leftTouchActive = false
+                self.rightTouchActive = false
+                self.player.thrustRightEnded()
+                self.player.thrustLeftEnded()
+                
+            }
 
         }
         
         moveAnalogStick.stopHandler = { [unowned self] in
             
+            self.leftTouchActive = false
+            self.rightTouchActive = false
+            self.player.thrustRightEnded()
+            self.player.thrustLeftEnded()
 
         }
     
