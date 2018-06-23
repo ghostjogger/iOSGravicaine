@@ -546,7 +546,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 let sceneToMoveTo = MainMenuScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
                 self.removeAllActions()
-                self.view?.presentScene(sceneToMoveTo)
+                let myTransition = SKTransition.fade(withDuration: 1.0)
+                self.view?.presentScene(sceneToMoveTo, transition:myTransition)
             }
             
             if pauseLabel.contains(pointOfTouch){
