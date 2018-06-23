@@ -53,7 +53,6 @@
 		99A40D4E20754BE0000D5DD9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A40D4D20754BE0000D5DD9 /* GameScene.swift */; };
 		99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A40D4F20754BE0000D5DD9 /* GameViewController.swift */; };
 		99A40D5320754BE0000D5DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5120754BE0000D5DD9 /* Main.storyboard */; };
-		99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5420754BE1000D5DD9 /* Assets.xcassets */; };
 		99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */; };
 		99B334D020B5E99D00AC5C59 /* HighScorePanelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B334CF20B5E99D00AC5C59 /* HighScorePanelNode.swift */; };
 		99B334D220BB355A00AC5C59 /* sound43.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99B334D120BB355A00AC5C59 /* sound43.wav */; };
@@ -67,6 +66,7 @@
 		99E9D40220D6827900B98EBE /* BlueShieldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D40120D6827900B98EBE /* BlueShieldNode.swift */; };
 		99E9D40420DAED0700B98EBE /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D40320DAED0700B98EBE /* ScoreScene.swift */; };
 		99E9D40920DCD12E00B98EBE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40820DCD12E00B98EBE /* README.md */; };
+		99E9D40B20DE62CD00B98EBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40A20DE62CD00B98EBE /* Assets.xcassets */; };
 		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
 		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
 		99FFA63620DAE23000DE0331 /* OptionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA63520DAE23000DE0331 /* OptionScene.swift */; };
@@ -120,7 +120,6 @@
 		99A40D4D20754BE0000D5DD9 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		99A40D4F20754BE0000D5DD9 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		99A40D5220754BE0000D5DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		99A40D5420754BE1000D5DD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99A40D5720754BE1000D5DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99A40D5920754BE1000D5DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99B334CF20B5E99D00AC5C59 /* HighScorePanelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScorePanelNode.swift; sourceTree = "<group>"; };
@@ -135,6 +134,7 @@
 		99E9D40120D6827900B98EBE /* BlueShieldNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueShieldNode.swift; sourceTree = "<group>"; };
 		99E9D40320DAED0700B98EBE /* ScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
 		99E9D40820DCD12E00B98EBE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		99E9D40A20DE62CD00B98EBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
 		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
 		99FFA63520DAE23000DE0331 /* OptionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionScene.swift; sourceTree = "<group>"; };
@@ -268,12 +268,12 @@
 				99A40D4B20754BE0000D5DD9 /* Actions.sks */,
 				99A40D4F20754BE0000D5DD9 /* GameViewController.swift */,
 				99A40D5120754BE0000D5DD9 /* Main.storyboard */,
-				99A40D5420754BE1000D5DD9 /* Assets.xcassets */,
 				99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */,
 				99A40D5920754BE1000D5DD9 /* Info.plist */,
 				990B01C720BC8D6000F2BA3F /* Constants.swift */,
 				993C7E4E20C2E0B90095D78D /* GameAssets.swift */,
 				99E9D40820DCD12E00B98EBE /* README.md */,
+				99E9D40A20DE62CD00B98EBE /* Assets.xcassets */,
 			);
 			path = Gravicaine;
 			sourceTree = "<group>";
@@ -388,7 +388,6 @@
 				993C7E5220C2E6820095D78D /* redExplosion.atlas in Resources */,
 				9990F75520D43E7A0007F0CA /* asteroid1.atlas in Resources */,
 				99B334D220BB355A00AC5C59 /* sound43.wav in Resources */,
-				99A40D5520754BE1000D5DD9 /* Assets.xcassets in Resources */,
 				99E9D40920DCD12E00B98EBE /* README.md in Resources */,
 				99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
@@ -398,6 +397,7 @@
 				993C7E5620C2EB8C0095D78D /* entityExplosion.atlas in Resources */,
 				99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */,
 				99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */,
+				99E9D40B20DE62CD00B98EBE /* Assets.xcassets in Resources */,
 				993C7E4B20C1AFF30095D78D /* shieldFinish.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
