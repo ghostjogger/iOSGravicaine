@@ -59,11 +59,11 @@ class ScoreScene: SKScene{
         self.addChild(titleLabel)
         
         highNameLabel.fontName = FontName
-        highNameLabel.fontSize = 70 * scale
+        highNameLabel.fontSize = 55 * scale
         highNameLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.75)
         
         highScoreLabel.fontName = FontName
-        highScoreLabel.fontSize = 80 * scale
+        highScoreLabel.fontSize = 70 * scale
         highScoreLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.65)
         
         if self.score > 0{
