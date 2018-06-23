@@ -67,29 +67,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var leftTouchActive = false
     private var rightTouchActive = false
     
-    
-    //joystick
-    var joystickStickImageEnabled = true {
-        didSet {
-            let image = joystickStickImageEnabled ? UIImage(named: "jStick") : nil
-            moveAnalogStick.stick.image = image
-
-
-        }
-    }
-    
-    var joystickSubstrateImageEnabled = true {
-        didSet {
-            let image = joystickSubstrateImageEnabled ? UIImage(named: "jSubstrate") : nil
-            moveAnalogStick.substrate.image = image
-
-        }
-    }
-
-    let moveAnalogStick = AnalogJoystick(diameter: 250)
-
-
-    
     //gravity
     private var gravityNode: SKSpriteNode = SKSpriteNode()
     private var gravityNodeLabel: SKLabelNode = SKLabelNode(text: "G")
@@ -146,9 +123,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         }
         
     }
-
-
-   
     
     // MARK: - game state
     
@@ -447,65 +421,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         self.gameState = .waiting
         self.addChild(player)
         
-        
-        //setup joystick position
-        moveAnalogStick.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.075)
-        moveAnalogStick.zPosition = 300
-        moveAnalogStick.diameter = moveAnalogStick.diameter * scaleFactor
-        moveAnalogStick.stick.image = UIImage(named: "jStick")
-        moveAnalogStick.substrate.image = UIImage(named: "jSubstrate")
-        addChild(moveAnalogStick)
-        
-        
-        //MARK: Joystick Handlers begin
-        moveAnalogStick.beginHandler = { [unowned self] in
 
-        }
-        
-        moveAnalogStick.trackingHandler = { [unowned self] data in
-            print(self.moveAnalogStick.description)
-            
-            if data.velocity.x < 0 {
-                
-                if self.gameState == .inGame && !self.gameOverTransitioning{
-                    
-                    
-                    self.leftTouchActive = true
-                    
-                    
-                }
-            }
-            
-            else if data.velocity.x > 0{
-                
-                if self.gameState == .inGame && !self.gameOverTransitioning{
-                    
-                    
-                    self.rightTouchActive = true
-                    
-                    
-                }
-                
-            }
-            else{
-             
-                self.leftTouchActive = false
-                self.rightTouchActive = false
-                self.player.thrustRightEnded()
-                self.player.thrustLeftEnded()
-                
-            }
-
-        }
-        
-        moveAnalogStick.stopHandler = { [unowned self] in
-            
-            self.leftTouchActive = false
-            self.rightTouchActive = false
-            self.player.thrustRightEnded()
-            self.player.thrustLeftEnded()
-
-        }
     
         // score label prep work
         

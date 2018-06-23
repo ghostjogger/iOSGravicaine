@@ -66,7 +66,6 @@
 		99E9D40020D67D2100B98EBE /* greenShield.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D3FF20D67D2100B98EBE /* greenShield.atlas */; };
 		99E9D40220D6827900B98EBE /* BlueShieldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D40120D6827900B98EBE /* BlueShieldNode.swift */; };
 		99E9D40420DAED0700B98EBE /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D40320DAED0700B98EBE /* ScoreScene.swift */; };
-		99E9D40720DCD11800B98EBE /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D40620DCD11800B98EBE /* AnalogJoystick.swift */; };
 		99E9D40920DCD12E00B98EBE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40820DCD12E00B98EBE /* README.md */; };
 		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
 		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
@@ -135,7 +134,6 @@
 		99E9D3FF20D67D2100B98EBE /* greenShield.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = greenShield.atlas; sourceTree = "<group>"; };
 		99E9D40120D6827900B98EBE /* BlueShieldNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueShieldNode.swift; sourceTree = "<group>"; };
 		99E9D40320DAED0700B98EBE /* ScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
-		99E9D40620DCD11800B98EBE /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		99E9D40820DCD12E00B98EBE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
 		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
@@ -239,7 +237,6 @@
 		99A40D3B20754BE0000D5DD9 = {
 			isa = PBXGroup;
 			children = (
-				99E9D40520DCD0FB00B98EBE /* Controller */,
 				999AC5BA20C44F04002B7852 /* Texture Atlases */,
 				99A357BF207A585500F86F84 /* Nodes */,
 				99A357B620791B9900F86F84 /* Particles */,
@@ -291,14 +288,6 @@
 				991AEE1A20D2E16A0041FC24 /* PausePanelNode.swift */,
 			);
 			path = Panels;
-			sourceTree = "<group>";
-		};
-		99E9D40520DCD0FB00B98EBE /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				99E9D40620DCD11800B98EBE /* AnalogJoystick.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		A3762E0876A50ED7AFA3655A /* Frameworks */ = {
@@ -475,7 +464,6 @@
 				99B334D020B5E99D00AC5C59 /* HighScorePanelNode.swift in Sources */,
 				99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */,
 				991AEE1D20D3BC050041FC24 /* GameScene+Pause.swift in Sources */,
-				99E9D40720DCD11800B98EBE /* AnalogJoystick.swift in Sources */,
 				990B01C820BC8D6000F2BA3F /* Constants.swift in Sources */,
 				9990F75920D444070007F0CA /* RedAsteroidNode.swift in Sources */,
 				99A357D92082160F00F86F84 /* StartPanelNode.swift in Sources */,
