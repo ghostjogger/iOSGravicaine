@@ -396,7 +396,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         barrierCount = 0
         barriers = seedRandom(seed: UInt64(bseed), count: 500, low:1, high:8)
         barrierCpoints = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 6)
-        barrierTypes = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 5)
+        barrierTypes = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 3)
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
@@ -654,16 +654,17 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 spawnNormalBarrier(count: next)
                 break
             case 2:
-                spawnAsteroidPair()
+                spawnMovingBarrier(count: next)
+                
                 break
             case 3:
-                spawnMovingBarrier(count: next)
+                spawnCurvyMovingBarrier(count: next)
                 break
             case 4:
                 spawnAsteroidBelt()
                 break
             case 5:
-                spawnCurvyMovingBarrier(count: next)
+                spawnAsteroidPair()
                 break
             case 6:
                 spawnMineField(isLeftAligned: true)
