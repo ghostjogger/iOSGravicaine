@@ -121,23 +121,23 @@ class MainMenuScene: SKScene{
         
         let laser = GreenShieldNode(scale: self.scale)
         laser.zPosition = 100
-        laser.position = CGPoint(x: self.frame.midX, y: self.frame.height * 0.2)
+        laser.position = CGPoint(x: self.frame.width * 0.6, y: self.frame.height * 0.2)
         self.addChild(laser)
         laser.animate()
         
-        self.startLabel.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.2)
+        self.startLabel.position = CGPoint(x: self.frame.width * 0.6, y: self.frame.height * 0.2)
         self.startLabel.size = CGSize(width: self.startLabel.size.width * self.scale, height: self.startLabel.size.height * self.scale )
         self.addChild(self.startLabel)
         
-        self.optionLabel.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.8)
+        self.optionLabel.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.30)
         self.optionLabel.size = CGSize(width: self.optionLabel.size.width * self.scale, height: self.optionLabel.size.height * self.scale )
         self.addChild(self.optionLabel)
         
-        self.creditLabel.position = CGPoint(x: self.frame.width * 0.50, y: self.frame.height * 0.8)
+        self.creditLabel.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.20)
         self.creditLabel.size = CGSize(width: self.creditLabel.size.width * self.scale, height: self.creditLabel.size.height * self.scale )
         self.addChild(self.creditLabel)
         
-        self.scoresLabel.position = CGPoint(x: self.frame.width * 0.85, y: self.frame.height * 0.8)
+        self.scoresLabel.position = CGPoint(x: self.frame.width * 0.15, y: self.frame.height * 0.10)
         self.scoresLabel.size = CGSize(width: self.scoresLabel.size.width * self.scale, height: self.scoresLabel.size.height * self.scale )
         self.addChild(self.scoresLabel)
         
