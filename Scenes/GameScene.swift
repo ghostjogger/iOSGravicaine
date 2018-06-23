@@ -244,7 +244,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
             highScoreText?.borderStyle = UITextBorderStyle.roundedRect
             highScoreText?.textColor = SKColor.black
-            highScoreText?.placeholder = "Enter your name (max 12 chars)"
+            highScoreText?.placeholder = "Please enter your name!"
             highScoreText?.backgroundColor = SKColor.white
 
 
@@ -361,7 +361,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     // Called by tapping return on the keyboard.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if textField.text! == "" || (textField.text?.count)! > 12{
+        if textField.text! == ""{
             return false
         }
         
