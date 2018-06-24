@@ -180,7 +180,7 @@ class MainMenuScene: SKScene{
         self.scoresLabel.size = CGSize(width: self.scoresLabel.size.width * self.scale, height: self.scoresLabel.size.height * self.scale )
         self.addChild(self.scoresLabel)
         
-        musicLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height * 0.8)
+        musicLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height * 0.75)
         self.addChild(musicLabel)
         
         transLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height * 0.6)
@@ -209,7 +209,7 @@ class MainMenuScene: SKScene{
         }
         
         musicNode.zPosition = 200
-        musicNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.75)
+        musicNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.70)
         self.addChild(musicNode)
         
         transNode.zPosition = 200
@@ -237,7 +237,7 @@ class MainMenuScene: SKScene{
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.fade(withDuration: 0.5)
                 SwiftEntryKit.dismiss()
-                let action = SKAction.changeVolume(to: 0, duration: 1.0)
+                let action = SKAction.changeVolume(to: 0, duration: 0.5)
                 let removeAction = SKAction.removeFromParent()
                 let sequence = SKAction.sequence([action,removeAction])
                 menuBackgroundSound.run(sequence) {
@@ -302,7 +302,7 @@ class MainMenuScene: SKScene{
             musicNode.zPosition = 200
             musicNode.size = CGSize(width: musicNode.size.width * scale,
                                     height: musicNode.size.height * scale)
-            musicNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.75)
+            musicNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.70)
             self.addChild(musicNode)
             
         }
@@ -312,7 +312,7 @@ class MainMenuScene: SKScene{
             musicNode.zPosition = 200
             musicNode.size = CGSize(width: musicNode.size.width * scale,
                                     height: musicNode.size.height * scale)
-            musicNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.75)
+            musicNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.70)
             self.addChild(musicNode)
             
         }
