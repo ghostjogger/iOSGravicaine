@@ -60,7 +60,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
  
     // player
     
-    private var player: SpaceShip
+    var player: SpaceShip
     private var shieldActive: Bool = false
     private var shieldTimer = Timer()
     private var shieldTransitionTimer = Timer()
@@ -314,6 +314,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         middleIndicator.position = CGPoint(x: self.frame.midX, y: self.size.height/2)
         
         
+        // MARK int arrays
+        barriers = seedRandom(seed: UInt64(bseed), count: 1000, low:1, high:8)
+        barrierCpoints = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 6)
+        barrierTypes = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 3)
 
         gameLogic.delegate = self
         
@@ -392,11 +396,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         registerForPauseNotifications()
         
         
-        // MARK int arrays
+ 
         barrierCount = 0
-        barriers = seedRandom(seed: UInt64(bseed), count: 500, low:1, high:8)
-        barrierCpoints = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 6)
-        barrierTypes = seedRandom(seed: UInt64(bseed), count: 500, low: 1, high: 3)
+
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{
