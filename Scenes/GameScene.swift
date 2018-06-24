@@ -16,6 +16,7 @@ enum GameState {
     case waiting
     case inGame
     case gameOver
+    case gameWon
 }
 
 extension SKAction {
@@ -116,6 +117,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 break
             case .gameOver:
                 self.setGameOverState()
+                break
+            case .gameWon:
+                self.setGameWonState()
                 break
 
             default: break
@@ -262,6 +266,25 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
     }
     
+    private func setGameWonState(){
+        
+        self.removeAllActions()
+        player.physicsBody?.affectedByGravity = false
+        let centraliseAction = SKAction.moveTo(x: self.frame.width/2, duration: 0.5)
+        let expandAction = SKAction.scale(to: 4.0, duration: 3.0)
+        let zoomAction = SKAction.moveTo(y: self.frame.maxY + 500, duration: 1.3)
+        let endSequence = SKAction.sequence([centraliseAction,expandAction,playerZoomSound,zoomAction])
+        player.run(endSequence) {
+            let sceneToMoveTo = MainMenuScene(size: self.size)
+            sceneToMoveTo.scaleMode = self.scaleMode
+            self.removeAllActions()
+            let myTransition = SKTransition.fade(withDuration: 1.0)
+            self.view?.presentScene(sceneToMoveTo, transition:myTransition)
+        }
+        
+        
+    }
+    
     override init(size:CGSize) {
         
         //setup screen area
@@ -315,9 +338,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         
         // MARK int arrays
-        barriers = seedRandom(seed: UInt64(bseed), count: 1000, low:1, high:8)
-        barrierCpoints = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 6)
-        barrierTypes = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 3)
+        barriers = seedRandom(seed: UInt64(bseed), count: 10, low:1, high:8)
+        barrierCpoints = seedRandom(seed: UInt64(bseed), count: 10, low: 1, high: 6)
+        barrierTypes = seedRandom(seed: UInt64(bseed), count: 10, low: 1, high: 3)
 
         gameLogic.delegate = self
         
@@ -640,13 +663,16 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         score.text = text
         score.run(SKAction.hudLabelBumpAction())
+        if text == "10"{
+            gameState = .gameWon
+        }
         
         
     }
     
     func shouldSpawn(){
         
-        if !gameOverTransitioning {
+        if !gameOverTransitioning && barrierCount <= barriers.count{
             
             let next = barriers[barrierCount]
             let type = barrierTypes[barrierCount]
@@ -685,6 +711,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             }
             
             barrierCount += 1
+            
         
         }
     }

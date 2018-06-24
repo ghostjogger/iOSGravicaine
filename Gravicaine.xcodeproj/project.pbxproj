@@ -55,7 +55,7 @@
 		99A40D5320754BE0000D5DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5120754BE0000D5DD9 /* Main.storyboard */; };
 		99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */; };
 		99B334D020B5E99D00AC5C59 /* HighScorePanelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B334CF20B5E99D00AC5C59 /* HighScorePanelNode.swift */; };
-		99B334D220BB355A00AC5C59 /* sound43.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99B334D120BB355A00AC5C59 /* sound43.wav */; };
+		99B334D220BB355A00AC5C59 /* zoom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99B334D120BB355A00AC5C59 /* zoom.wav */; };
 		99B334D420BB44AC00AC5C59 /* sound62.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99B334D320BB44AC00AC5C59 /* sound62.wav */; };
 		99BB472E20C5D6CF00401887 /* bombs.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99BB472D20C5D6CF00401887 /* bombs.atlas */; };
 		99BB473020C5D74400401887 /* mines.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99BB472F20C5D74400401887 /* mines.atlas */; };
@@ -127,7 +127,7 @@
 		99A40D5720754BE1000D5DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99A40D5920754BE1000D5DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99B334CF20B5E99D00AC5C59 /* HighScorePanelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScorePanelNode.swift; sourceTree = "<group>"; };
-		99B334D120BB355A00AC5C59 /* sound43.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound43.wav; sourceTree = "<group>"; };
+		99B334D120BB355A00AC5C59 /* zoom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = zoom.wav; sourceTree = "<group>"; };
 		99B334D320BB44AC00AC5C59 /* sound62.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound62.wav; sourceTree = "<group>"; };
 		99BB472D20C5D6CF00401887 /* bombs.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bombs.atlas; sourceTree = "<group>"; };
 		99BB472F20C5D74400401887 /* mines.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = mines.atlas; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 				99A357C2207A595000F86F84 /* laser.mp3 */,
 				99A357B42079088E00F86F84 /* explosion.wav */,
 				99FB2C8820B1C108003C7510 /* Powerup.wav */,
-				99B334D120BB355A00AC5C59 /* sound43.wav */,
+				99B334D120BB355A00AC5C59 /* zoom.wav */,
 				99B334D320BB44AC00AC5C59 /* sound62.wav */,
 				9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */,
 				9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */,
@@ -399,7 +399,7 @@
 				99E9D40020D67D2100B98EBE /* greenShield.atlas in Resources */,
 				993C7E5220C2E6820095D78D /* redExplosion.atlas in Resources */,
 				9990F75520D43E7A0007F0CA /* asteroid1.atlas in Resources */,
-				99B334D220BB355A00AC5C59 /* sound43.wav in Resources */,
+				99B334D220BB355A00AC5C59 /* zoom.wav in Resources */,
 				99E9D40920DCD12E00B98EBE /* README.md in Resources */,
 				99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */,
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,

@@ -46,3 +46,5 @@ let shieldFinishSound: SKAction = SKAction.playSoundFileNamed("shieldFinish.wav"
 //sound
 let backgroundSound = SKAudioNode(fileNamed: "gameMusic.mp3")
 let menuBackgroundSound = SKAudioNode(fileNamed: "Theme.mp3")
+
+let playerZoomSound:SKAction = SKAction.playSoundFileNamed("zoom.wav", waitForCompletion: false)
