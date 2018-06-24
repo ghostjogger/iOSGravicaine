@@ -12,7 +12,7 @@ extension GameScene{
     
     func spawnNormalBarrier(count: Int){
         
-        if !gameOverTransitioning{
+        if !gameOverTransitioning && barrierCount <= barriers.count - 1{
             
             DispatchQueue.global().async {
                 
@@ -63,7 +63,7 @@ extension GameScene{
     
     func spawnMovingBarrier(count: Int){
         
-        if !gameOverTransitioning{
+        if !gameOverTransitioning && barrierCount <= barriers.count - 1{
             
             var left:Bool
             var control:Int
@@ -164,7 +164,7 @@ extension GameScene{
     
     func spawnCurvyMovingBarrier(count: Int){
         
-        if !gameOverTransitioning{
+        if !gameOverTransitioning && barrierCount <= barriers.count - 1{
             
             var control:Int
             

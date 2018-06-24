@@ -338,9 +338,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         
         // MARK int arrays
-        barriers = seedRandom(seed: UInt64(bseed), count: 10, low:1, high:8)
-        barrierCpoints = seedRandom(seed: UInt64(bseed), count: 10, low: 1, high: 6)
-        barrierTypes = seedRandom(seed: UInt64(bseed), count: 10, low: 1, high: 3)
+        barriers = seedRandom(seed: UInt64(bseed), count: 1000, low:1, high:8)
+        barrierCpoints = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 6)
+        barrierTypes = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 3)
 
         gameLogic.delegate = self
         
@@ -663,7 +663,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         score.text = text
         score.run(SKAction.hudLabelBumpAction())
-        if text == "10"{
+        if text == "999"{
             gameState = .gameWon
         }
         
@@ -671,12 +671,14 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     }
     
     func shouldSpawn(){
+
+
+        print(barrierCount)
         
-        if !gameOverTransitioning && barrierCount <= barriers.count{
+        if !gameOverTransitioning && barrierCount < barriers.count - 1{
             
             let next = barriers[barrierCount]
             let type = barrierTypes[barrierCount]
-            print(type)
             switch type{
                 
             case 1:
@@ -709,11 +711,19 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 
                 
             }
-            
+
             barrierCount += 1
+            
+            if barrierCount == barriers.count{
+                barrierCount = barriers.count - 1
+            }
+
+           
+
             
         
         }
+
     }
     
 
