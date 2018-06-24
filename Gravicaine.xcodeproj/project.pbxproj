@@ -64,14 +64,12 @@
 		99E9D3FE20D67B9D00B98EBE /* beam.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D3FD20D67B9D00B98EBE /* beam.atlas */; };
 		99E9D40020D67D2100B98EBE /* greenShield.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D3FF20D67D2100B98EBE /* greenShield.atlas */; };
 		99E9D40220D6827900B98EBE /* BlueShieldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D40120D6827900B98EBE /* BlueShieldNode.swift */; };
-		99E9D40420DAED0700B98EBE /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D40320DAED0700B98EBE /* ScoreScene.swift */; };
 		99E9D40920DCD12E00B98EBE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40820DCD12E00B98EBE /* README.md */; };
 		99E9D40B20DE62CD00B98EBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40A20DE62CD00B98EBE /* Assets.xcassets */; };
 		99E9D40D20DFA1E100B98EBE /* Theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40C20DFA1E100B98EBE /* Theme.mp3 */; };
 		99E9D40F20DFA21200B98EBE /* gameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40E20DFA21200B98EBE /* gameMusic.mp3 */; };
 		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
 		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
-		99FFA63620DAE23000DE0331 /* OptionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA63520DAE23000DE0331 /* OptionScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,14 +132,12 @@
 		99E9D3FD20D67B9D00B98EBE /* beam.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = beam.atlas; sourceTree = "<group>"; };
 		99E9D3FF20D67D2100B98EBE /* greenShield.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = greenShield.atlas; sourceTree = "<group>"; };
 		99E9D40120D6827900B98EBE /* BlueShieldNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueShieldNode.swift; sourceTree = "<group>"; };
-		99E9D40320DAED0700B98EBE /* ScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
 		99E9D40820DCD12E00B98EBE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		99E9D40A20DE62CD00B98EBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99E9D40C20DFA1E100B98EBE /* Theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Theme.mp3; sourceTree = "<group>"; };
 		99E9D40E20DFA21200B98EBE /* gameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic.mp3; sourceTree = "<group>"; };
 		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
 		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
-		99FFA63520DAE23000DE0331 /* OptionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionScene.swift; sourceTree = "<group>"; };
 		A56FAA6595503966B1D24FFE /* Pods_Gravicaine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gravicaine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAFDDEF2560244D4BAE4666B /* Pods-Gravicaine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gravicaine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gravicaine/Pods-Gravicaine.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,8 +181,6 @@
 				99A357AE2079072400F86F84 /* MainMenuScene.swift */,
 				99A357B02079073400F86F84 /* GameOverScene.swift */,
 				991AEE1C20D3BC050041FC24 /* GameScene+Pause.swift */,
-				99FFA63520DAE23000DE0331 /* OptionScene.swift */,
-				99E9D40320DAED0700B98EBE /* ScoreScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -467,7 +461,6 @@
 				99A357C5207A75A000F86F84 /* GameLogic.swift in Sources */,
 				99A357C1207A587700F86F84 /* SpaceShip.swift in Sources */,
 				9990F75B20D4441D0007F0CA /* GreyAsteroidNode.swift in Sources */,
-				99E9D40420DAED0700B98EBE /* ScoreScene.swift in Sources */,
 				9959EF5720BF37C500B7F64C /* ShieldPowerNode.swift in Sources */,
 				99B334D020B5E99D00AC5C59 /* HighScorePanelNode.swift in Sources */,
 				99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */,
@@ -477,7 +470,6 @@
 				99A357D92082160F00F86F84 /* StartPanelNode.swift in Sources */,
 				990B01C420BC583F00F2BA3F /* GreenShieldNode.swift in Sources */,
 				99D9DE9120D04ACD005D1CD0 /* GapNode.swift in Sources */,
-				99FFA63620DAE23000DE0331 /* OptionScene.swift in Sources */,
 				99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */,
 				9990F75D20D5B27D0007F0CA /* LaserBeamNode.swift in Sources */,
 				99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */,
