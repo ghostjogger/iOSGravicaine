@@ -221,10 +221,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
         if !wasHighScore{
             message = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
-                                      title: EKProperty.LabelContent(text: "Game Over! \nTap to try again!!",
-                                                                     style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
+                                      title: EKProperty.LabelContent(text: "Game Over! \n Tap to Continue \n",
+                                                                     style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
                                       description: EKProperty.LabelContent(text: "You scored :   \(gameLogic.score)",
-                                        style: EKProperty.Label(font: UIFont(name: FontName, size: 12.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+                                        style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
             
             notificationMessage = EKNotificationMessage(simpleMessage: message)
             notificationView = EKNotificationMessageView(with: notificationMessage)
@@ -319,10 +319,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
         attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
         message = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
-                                  title: EKProperty.LabelContent(text: "Game Over! \nTap to try again!!",
-                                                                 style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
+                                  title: EKProperty.LabelContent(text: "Game Over! \n Tap to Continue \n",
+                                                                 style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
                                   description: EKProperty.LabelContent(text: "You scored :   \(gameLogic.score)",
-                                    style: EKProperty.Label(font: UIFont(name: FontName, size: 12.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+                                    style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
         
         notificationMessage = EKNotificationMessage(simpleMessage: message)
         notificationView = EKNotificationMessageView(with: notificationMessage)
@@ -737,6 +737,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         self.removeAllActions()
         wasHighScore = isHighScore
         highScoreValue = highScore
+            
+            
+        exitLabel.removeFromParent()
+        pauseLabel.removeFromParent()
        
         for node in self.children{
             node.removeAllActions()
