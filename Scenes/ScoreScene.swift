@@ -80,6 +80,7 @@ class ScoreScene: SKScene{
         self.addChild(backLabel)
         
         self.addChild(menuBackgroundSound)
+        menuBackgroundSound.run(SKAction.changeVolume(to: 5, duration: 0.1))
         
         
     }
@@ -94,8 +95,12 @@ class ScoreScene: SKScene{
                 let sceneToMoveTo = MainMenuScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.moveIn(with: SKTransitionDirection.left, duration: 0.5)
-                menuBackgroundSound.removeFromParent()
-                self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+                let action = SKAction.changeVolume(to: 0, duration: 1.0)
+                let removeAction = SKAction.removeFromParent()
+                let sequence = SKAction.sequence([action,removeAction])
+                menuBackgroundSound.run(sequence) {
+                    self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+                }
                 
             }
             

@@ -142,6 +142,7 @@ class MainMenuScene: SKScene{
         self.addChild(self.scoresLabel)
         
         self.addChild(menuBackgroundSound)
+        menuBackgroundSound.run(SKAction.changeVolume(to: 5, duration: 0.1))
         
         
     }
@@ -160,7 +161,12 @@ class MainMenuScene: SKScene{
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.fade(withDuration: 0.5)
                 SwiftEntryKit.dismiss()
-                self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+                let action = SKAction.changeVolume(to: 0, duration: 1.0)
+                let removeAction = SKAction.removeFromParent()
+                let sequence = SKAction.sequence([action,removeAction])
+                menuBackgroundSound.run(sequence) {
+                    self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+                }
             }
             
             if optionLabel.contains(pointOfTouch){
@@ -169,8 +175,12 @@ class MainMenuScene: SKScene{
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.moveIn(with: SKTransitionDirection.left, duration: 0.5)
                 SwiftEntryKit.dismiss()
-                menuBackgroundSound.removeFromParent()
-                self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+                let action = SKAction.changeVolume(to: 0, duration: 1.0)
+                let removeAction = SKAction.removeFromParent()
+                let sequence = SKAction.sequence([action,removeAction])
+                menuBackgroundSound.run(sequence) {
+                    self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+                }
   
             }
             
@@ -180,8 +190,13 @@ class MainMenuScene: SKScene{
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.moveIn(with: SKTransitionDirection.right, duration: 0.5)
                 SwiftEntryKit.dismiss()
-                menuBackgroundSound.removeFromParent()
-                self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+                let action = SKAction.changeVolume(to: 0, duration: 1.0)
+                let removeAction = SKAction.removeFromParent()
+                let sequence = SKAction.sequence([action,removeAction])
+                menuBackgroundSound.run(sequence) {
+                    self.view!.presentScene(sceneToMoveTo, transition:myTransition)
+                }
+                
                 
             }
             
