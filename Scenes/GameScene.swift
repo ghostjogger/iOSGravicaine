@@ -470,7 +470,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         //pause label
         pauseLabel.zPosition = 50
         pauseLabel.size = CGSize(width: pauseLabel.size.width * scaleFactor, height: pauseLabel.size.height * scaleFactor)
-        pauseLabel.position = CGPoint(x: self.frame.width * 0.9, y: self.frame.height * 0.95)
+        pauseLabel.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.05)
         self.addChild(pauseLabel)
 
         if GodMode {
@@ -740,7 +740,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             
         exitLabel.removeFromParent()
-        pauseLabel.removeFromParent()
        
         for node in self.children{
             node.removeAllActions()
