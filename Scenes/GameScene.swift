@@ -672,8 +672,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     func shouldSpawn(){
 
-
-        print(barrierCount)
         
         if !gameOverTransitioning && barrierCount < barriers.count - 1{
             
