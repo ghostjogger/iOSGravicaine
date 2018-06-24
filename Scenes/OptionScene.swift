@@ -113,6 +113,8 @@ class OptionScene: SKScene{
         transNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.55)
         self.addChild(transNode)
         
+        self.addChild(menuBackgroundSound)
+        
         
         
     }
@@ -127,6 +129,7 @@ class OptionScene: SKScene{
                 let sceneToMoveTo = MainMenuScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.moveIn(with: SKTransitionDirection.right, duration: 0.5)
+                menuBackgroundSound.removeFromParent()
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
                 
             }

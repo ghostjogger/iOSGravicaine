@@ -67,6 +67,8 @@
 		99E9D40420DAED0700B98EBE /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D40320DAED0700B98EBE /* ScoreScene.swift */; };
 		99E9D40920DCD12E00B98EBE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40820DCD12E00B98EBE /* README.md */; };
 		99E9D40B20DE62CD00B98EBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40A20DE62CD00B98EBE /* Assets.xcassets */; };
+		99E9D40D20DFA1E100B98EBE /* Theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40C20DFA1E100B98EBE /* Theme.mp3 */; };
+		99E9D40F20DFA21200B98EBE /* gameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40E20DFA21200B98EBE /* gameMusic.mp3 */; };
 		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
 		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
 		99FFA63620DAE23000DE0331 /* OptionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA63520DAE23000DE0331 /* OptionScene.swift */; };
@@ -135,6 +137,8 @@
 		99E9D40320DAED0700B98EBE /* ScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
 		99E9D40820DCD12E00B98EBE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		99E9D40A20DE62CD00B98EBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		99E9D40C20DFA1E100B98EBE /* Theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Theme.mp3; sourceTree = "<group>"; };
+		99E9D40E20DFA21200B98EBE /* gameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic.mp3; sourceTree = "<group>"; };
 		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
 		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
 		99FFA63520DAE23000DE0331 /* OptionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionScene.swift; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 				9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */,
 				993C7E4A20C1AFF30095D78D /* shieldFinish.wav */,
 				99D9DE9420D1C790005D1CD0 /* score.wav */,
+				99E9D40C20DFA1E100B98EBE /* Theme.mp3 */,
+				99E9D40E20DFA21200B98EBE /* gameMusic.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -393,7 +399,9 @@
 				99A40D5820754BE1000D5DD9 /* LaunchScreen.storyboard in Resources */,
 				99A357C3207A595000F86F84 /* laser.mp3 in Resources */,
 				99E9D3FE20D67B9D00B98EBE /* beam.atlas in Resources */,
+				99E9D40F20DFA21200B98EBE /* gameMusic.mp3 in Resources */,
 				99D9DE9520D1C790005D1CD0 /* score.wav in Resources */,
+				99E9D40D20DFA1E100B98EBE /* Theme.mp3 in Resources */,
 				993C7E5620C2EB8C0095D78D /* entityExplosion.atlas in Resources */,
 				99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */,
 				99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */,

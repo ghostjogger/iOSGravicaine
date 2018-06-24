@@ -79,6 +79,8 @@ class ScoreScene: SKScene{
                                 height: backLabel.size.height * self.scale)
         self.addChild(backLabel)
         
+        self.addChild(menuBackgroundSound)
+        
         
     }
     
@@ -92,6 +94,7 @@ class ScoreScene: SKScene{
                 let sceneToMoveTo = MainMenuScene(size: self.size)
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.moveIn(with: SKTransitionDirection.left, duration: 0.5)
+                menuBackgroundSound.removeFromParent()
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
                 
             }

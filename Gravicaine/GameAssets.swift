@@ -44,4 +44,5 @@ let shieldPowerSound: SKAction = SKAction.playSoundFileNamed("shieldSound.wav", 
 let shieldFinishSound: SKAction = SKAction.playSoundFileNamed("shieldFinish.wav", waitForCompletion: false)
 
 //sound
-let backgroundSound = SKAudioNode(fileNamed: "gameSoundtrack.mp3")
+let backgroundSound = SKAudioNode(fileNamed: "gameMusic.mp3")
+let menuBackgroundSound = SKAudioNode(fileNamed: "Theme.mp3")

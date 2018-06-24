@@ -141,6 +141,8 @@ class MainMenuScene: SKScene{
         self.scoresLabel.size = CGSize(width: self.scoresLabel.size.width * self.scale, height: self.scoresLabel.size.height * self.scale )
         self.addChild(self.scoresLabel)
         
+        self.addChild(menuBackgroundSound)
+        
         
     }
     
@@ -167,6 +169,7 @@ class MainMenuScene: SKScene{
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.moveIn(with: SKTransitionDirection.left, duration: 0.5)
                 SwiftEntryKit.dismiss()
+                menuBackgroundSound.removeFromParent()
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
   
             }
@@ -177,6 +180,7 @@ class MainMenuScene: SKScene{
                 sceneToMoveTo.scaleMode = self.scaleMode
                 let myTransition = SKTransition.moveIn(with: SKTransitionDirection.right, duration: 0.5)
                 SwiftEntryKit.dismiss()
+                menuBackgroundSound.removeFromParent()
                 self.view!.presentScene(sceneToMoveTo, transition:myTransition)
                 
             }
