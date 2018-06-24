@@ -68,6 +68,10 @@
 		99E9D40B20DE62CD00B98EBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40A20DE62CD00B98EBE /* Assets.xcassets */; };
 		99E9D40D20DFA1E100B98EBE /* Theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40C20DFA1E100B98EBE /* Theme.mp3 */; };
 		99E9D40F20DFA21200B98EBE /* gameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D40E20DFA21200B98EBE /* gameMusic.mp3 */; };
+		99E9D41320DFF7B400B98EBE /* GameScene+Barriers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D41220DFF7B400B98EBE /* GameScene+Barriers.swift */; };
+		99E9D41520DFF89900B98EBE /* GameScene+Asteroids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D41420DFF89900B98EBE /* GameScene+Asteroids.swift */; };
+		99E9D41720DFF8DE00B98EBE /* GameScene+Mines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D41620DFF8DE00B98EBE /* GameScene+Mines.swift */; };
+		99E9D41920DFF91500B98EBE /* GameScene+Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D41820DFF91500B98EBE /* GameScene+Laser.swift */; };
 		99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB2C8620B1B458003C7510 /* PowerUpNode.swift */; };
 		99FB2C8920B1C108003C7510 /* Powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99FB2C8820B1C108003C7510 /* Powerup.wav */; };
 /* End PBXBuildFile section */
@@ -136,6 +140,10 @@
 		99E9D40A20DE62CD00B98EBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99E9D40C20DFA1E100B98EBE /* Theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Theme.mp3; sourceTree = "<group>"; };
 		99E9D40E20DFA21200B98EBE /* gameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic.mp3; sourceTree = "<group>"; };
+		99E9D41220DFF7B400B98EBE /* GameScene+Barriers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Barriers.swift"; sourceTree = "<group>"; };
+		99E9D41420DFF89900B98EBE /* GameScene+Asteroids.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Asteroids.swift"; sourceTree = "<group>"; };
+		99E9D41620DFF8DE00B98EBE /* GameScene+Mines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Mines.swift"; sourceTree = "<group>"; };
+		99E9D41820DFF91500B98EBE /* GameScene+Laser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Laser.swift"; sourceTree = "<group>"; };
 		99FB2C8620B1B458003C7510 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
 		99FB2C8820B1C108003C7510 /* Powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Powerup.wav; sourceTree = "<group>"; };
 		A56FAA6595503966B1D24FFE /* Pods_Gravicaine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gravicaine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,9 +186,13 @@
 			isa = PBXGroup;
 			children = (
 				99A40D4D20754BE0000D5DD9 /* GameScene.swift */,
+				99E9D41820DFF91500B98EBE /* GameScene+Laser.swift */,
 				99A357AE2079072400F86F84 /* MainMenuScene.swift */,
 				99A357B02079073400F86F84 /* GameOverScene.swift */,
 				991AEE1C20D3BC050041FC24 /* GameScene+Pause.swift */,
+				99E9D41220DFF7B400B98EBE /* GameScene+Barriers.swift */,
+				99E9D41420DFF89900B98EBE /* GameScene+Asteroids.swift */,
+				99E9D41620DFF8DE00B98EBE /* GameScene+Mines.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -465,7 +477,9 @@
 				99B334D020B5E99D00AC5C59 /* HighScorePanelNode.swift in Sources */,
 				99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */,
 				991AEE1D20D3BC050041FC24 /* GameScene+Pause.swift in Sources */,
+				99E9D41320DFF7B400B98EBE /* GameScene+Barriers.swift in Sources */,
 				990B01C820BC8D6000F2BA3F /* Constants.swift in Sources */,
+				99E9D41720DFF8DE00B98EBE /* GameScene+Mines.swift in Sources */,
 				9990F75920D444070007F0CA /* RedAsteroidNode.swift in Sources */,
 				99A357D92082160F00F86F84 /* StartPanelNode.swift in Sources */,
 				990B01C420BC583F00F2BA3F /* GreenShieldNode.swift in Sources */,
@@ -474,7 +488,9 @@
 				9990F75D20D5B27D0007F0CA /* LaserBeamNode.swift in Sources */,
 				99FB2C8720B1B458003C7510 /* PowerUpNode.swift in Sources */,
 				99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */,
+				99E9D41520DFF89900B98EBE /* GameScene+Asteroids.swift in Sources */,
 				99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */,
+				99E9D41920DFF91500B98EBE /* GameScene+Laser.swift in Sources */,
 				993C7E4D20C2D9BD0095D78D /* SKNodeExplosion.swift in Sources */,
 				990B01CA20BDF03900F2BA3F /* HighScoreNamePanel.swift in Sources */,
 				99A357BE207A578700F86F84 /* Utils.swift in Sources */,
