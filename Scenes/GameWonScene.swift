@@ -30,6 +30,8 @@ class GameWonScene: SKScene {
     let sNode = SKSpriteNode(imageNamed: "C_15")
     let excNode = SKSpriteNode(imageNamed: "C_16")
     
+    let maxScoreNode = SKSpriteNode(imageNamed: "max_score")
+    
     var titleScaleFactor = 1.0
     var scale:CGFloat = 1.0
     
@@ -153,7 +155,7 @@ class GameWonScene: SKScene {
         self.addChild(excNode)
         
         
-        let waitAction = SKAction.wait(forDuration: 0.5)
+        var waitAction = SKAction.wait(forDuration: 0.5)
         let thudSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
         let moveSpeed: TimeInterval = 1.4
         let cHeight: CGFloat = 0.75
@@ -210,6 +212,15 @@ class GameWonScene: SKScene {
         sNode.run(SKAction.sequence([waitAction,move15,thudSound]))
         excNode.run(SKAction.sequence([waitAction,move16,thudSound]))
         
+        
+        maxScoreNode.position = CGPoint(x: self.frame.width / 2, y: self.frame.height * 0.65)
+        maxScoreNode.setScale(5.0)
+        maxScoreNode.alpha = 0
+        let shrinkAction = SKAction.scale(to: 1.0 * CGFloat(titleScaleFactor), duration: 1.4)
+        let fadeInAction = SKAction.fadeAlpha(to: 1.0, duration: 0.5)
+        waitAction = SKAction.wait(forDuration: 2.3)
+        self.addChild(maxScoreNode)
+        maxScoreNode.run(SKAction.sequence([waitAction, fadeInAction, playerZoomSound, shrinkAction, thudSound]))
         
         
         
