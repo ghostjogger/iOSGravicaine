@@ -32,6 +32,10 @@ class GameWonScene: SKScene {
     
     let maxScoreNode = SKSpriteNode(imageNamed: "max_score")
     
+    let nineNode1 = SKSpriteNode(imageNamed: "nine")
+    let nineNode2 = SKSpriteNode(imageNamed: "nine")
+    let nineNode3 = SKSpriteNode(imageNamed: "nine")
+    
     var titleScaleFactor = 1.0
     var scale:CGFloat = 1.0
     
