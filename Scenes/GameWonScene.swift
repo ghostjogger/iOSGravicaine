@@ -277,7 +277,7 @@ class GameWonScene: SKScene, UITextFieldDelegate {
         nineNode1.run(SKAction.sequence([waitAction, fadeInAction, playerZoomSound, shrinkAction, thudSound]))
         nineNode2.run(SKAction.sequence([waitAction, fadeInAction,  shrinkAction, thudSound]))
         
-        nineNode3.run(SKAction.sequence([waitAction, fadeInAction,  shrinkAction, thudSound])) {
+        nineNode3.run(SKAction.sequence([waitAction, fadeInAction,  shrinkAction, thudSound, waitAction])) {
             
             self.globalScorePanel?.removeFromParent()
             self.globalScorePanel = GlobalScorePanelNode(size: self.size)
