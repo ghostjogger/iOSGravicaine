@@ -10,7 +10,7 @@ import Foundation
 
 let barrierHeight = 336
 let barrierWidth = 800
-let barrierGap = 400
+let barrierGap = 500
 let barrierSpeed = 4.0
 let barrierSpeedAcross = 5.0
 let bseed = 1

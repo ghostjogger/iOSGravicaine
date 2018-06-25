@@ -275,7 +275,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         let zoomAction = SKAction.moveTo(y: self.frame.maxY + 500, duration: 1.3)
         let endSequence = SKAction.sequence([centraliseAction,expandAction,playerZoomSound,zoomAction])
         player.run(endSequence) {
-            let sceneToMoveTo = MainMenuScene(size: self.size)
+            let sceneToMoveTo = GameWonScene(size: self.size)
             sceneToMoveTo.scaleMode = self.scaleMode
             self.removeAllActions()
             let myTransition = SKTransition.fade(withDuration: 1.0)
@@ -338,9 +338,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         
         // MARK int arrays
-        barriers = seedRandom(seed: UInt64(bseed), count: 1000, low:1, high:8)
-        barrierCpoints = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 6)
-        barrierTypes = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 3)
+        barriers = seedRandom(seed: UInt64(bseed), count: 100, low:1, high:8)
+        barrierCpoints = seedRandom(seed: UInt64(bseed), count: 100, low: 1, high: 6)
+        barrierTypes = seedRandom(seed: UInt64(bseed), count: 100, low: 1, high: 3)
 
         gameLogic.delegate = self
         
@@ -663,7 +663,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         score.text = text
         score.run(SKAction.hudLabelBumpAction())
-        if text == "999"{
+        if text == "99"{
             gameState = .gameWon
         }
         
