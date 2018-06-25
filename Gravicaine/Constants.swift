@@ -49,6 +49,7 @@ let GodMode: Bool = false
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 let HighScoreName: String = "HighScoreName"
+let GlobalScoreName: String = "GlobalScoreName"
 
 
 struct PhysicsCategories {

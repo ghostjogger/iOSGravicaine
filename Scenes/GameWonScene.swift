@@ -104,7 +104,11 @@ class GameWonScene: SKScene, UITextFieldDelegate {
             return false
         }
         
-        var highScoreNameText = textField.text!
+        let highScoreNameText = textField.text!
+        
+        UserDefaults.standard.set(highScoreNameText, forKey: GlobalScoreName)
+        
+        
         
         // Hides the keyboard
         
@@ -285,7 +289,7 @@ class GameWonScene: SKScene, UITextFieldDelegate {
             //name entry textfield
             self.highScoreText = UITextField(frame: CGRect(
                 x: ((view.bounds.width) / 2) - 160,
-                y: ((view.bounds.height) / 2) + 240,
+                y: ((view.bounds.height) / 2) - 110,
                 width: 320,
                 height: 40))
             

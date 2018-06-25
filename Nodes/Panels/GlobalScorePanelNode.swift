@@ -26,21 +26,21 @@ class GlobalScorePanelNode: SKSpriteNode {
         scoreLabel.fontName = FontName
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.verticalAlignmentMode = .center
-        scoreLabel.text = "Congratulations new HIGH SCORE!"
+        scoreLabel.text = "Global Max Score!"
         
         label.fontSize = 70.0 * scale
         label.fontName = FontName
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center
-        label.text = "Enter your name below"
+        label.text = "Enter your name below:"
         
         background.size = CGSize(width: background.size.width * scale,
                                  height: background.size.height * scale)
-        var pos = CGPoint(x: size.width / 2, y: size.height * 0.20)
+        var pos = CGPoint(x: size.width / 2, y: size.height * 0.70)
         background.position = pos
         
         
-        pos = CGPoint(x: size.width / 2, y: size.height * 0.25)
+        pos = CGPoint(x: size.width / 2, y: size.height * 0.75)
         scoreLabel.position = pos
         pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
         label.position = pos
