@@ -227,7 +227,7 @@ class GameWonScene: SKScene {
         let action = SKAction.animate(with: protonFrames, timePerFrame: 0.1, resize: false, restore: false)
         let deleteAction = SKAction.removeFromParent()
         let sequence = SKAction.sequence([action,deleteAction])
-        node.zPosition = 5
+        node.zPosition = 1
         node.position = CGPoint(x: random(min: (self.frame.midX) - self.frame.width/2, max: (self.frame.midX) + self.frame.width/2),
                                 y: random(min: (self.frame.midY) - self.frame.height, max: (self.frame.midY)) + self.frame.height/2)
         
