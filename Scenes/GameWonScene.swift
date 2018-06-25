@@ -155,7 +155,7 @@ class GameWonScene: SKScene {
         
         let waitAction = SKAction.wait(forDuration: 0.5)
         let thudSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
-        let moveSpeed: TimeInterval = 1.0
+        let moveSpeed: TimeInterval = 1.4
         let cHeight: CGFloat = 0.75
         
         
@@ -176,7 +176,7 @@ class GameWonScene: SKScene {
         let move15 = SKAction.move(to: CGPoint(x: self.frame.width * 0.842, y: self.frame.height * cHeight), duration: moveSpeed)
         let move16 = SKAction.move(to: CGPoint(x: self.frame.width * 0.9, y: self.frame.height * cHeight), duration: moveSpeed)
         
-        cNode.run(SKAction.sequence([waitAction,move1,thudSound]))
+        cNode.run(SKAction.sequence([waitAction,playerZoomSound,move1,thudSound]))
         oNode.run(SKAction.sequence([waitAction,move2,thudSound]))
         nNode.run(SKAction.sequence([waitAction,move3,thudSound]))
         gNode.run(SKAction.sequence([waitAction,move4,thudSound]))
