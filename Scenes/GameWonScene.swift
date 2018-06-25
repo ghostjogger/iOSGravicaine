@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameWonScene: SKScene {
+class GameWonScene: SKScene, UITextFieldDelegate {
     
     let backgroundImage = SKSpriteNode(imageNamed: "starBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
@@ -44,6 +44,9 @@ class GameWonScene: SKScene {
     private var protonStarFrames: [SKTexture] = []
     let protonStarAnimatedAtlas = SKTextureAtlas(named: "star")
     var protonFrames: [SKTexture] = []
+    
+    private var highScoreText: UITextField? = nil
+    private var globalScorePanel: GlobalScorePanelNode? = nil
     
     override init(size: CGSize) {
         
@@ -91,6 +94,30 @@ class GameWonScene: SKScene {
             spawnAnimation()
             animationTimer = 0
         }
+    }
+    
+    
+    // Called by tapping return on the keyboard.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField.text! == "" || (textField.text?.count)! > 20{
+            return false
+        }
+        
+        var highScoreNameText = textField.text!
+        
+        // Hides the keyboard
+        
+        textField.resignFirstResponder()
+        highScoreText?.removeFromSuperview()
+        globalScorePanel?.removeFromParent()
+        globalScorePanel?.fadeOut()
+        
+        let sceneToMoveTo = MainMenuScene(size: self.size)
+        sceneToMoveTo.scaleMode = self.scaleMode
+        self.removeAllActions()
+        self.view?.presentScene(sceneToMoveTo)
+        return true
     }
     
     
@@ -247,7 +274,32 @@ class GameWonScene: SKScene {
         nineNode2.run(SKAction.sequence([waitAction, fadeInAction,  shrinkAction, thudSound]))
         nineNode3.run(SKAction.sequence([waitAction, fadeInAction,  shrinkAction, thudSound]))
         
+        globalScorePanel?.removeFromParent()
+        globalScorePanel = GlobalScorePanelNode(size: self.size)
+        globalScorePanel?.zPosition = 50
+        self.addChild(globalScorePanel!)
+        //fadein
+        globalScorePanel?.fadeIn()
         
+        //name entry textfield
+        highScoreText = UITextField(frame: CGRect(
+            x: ((view.bounds.width) / 2) - 160,
+            y: ((view.bounds.height) / 2) + 240,
+            width: 320,
+            height: 40))
+        
+        highScoreText?.borderStyle = UITextBorderStyle.roundedRect
+        highScoreText?.textColor = SKColor.black
+        highScoreText?.placeholder = "Enter your name (max 20 chars)"
+        highScoreText?.backgroundColor = SKColor.white
+        
+        
+        // add the UITextField to the GameScene's view
+        view.addSubview(highScoreText!)
+        
+        // add the gamescene as the UITextField delegate.
+        // delegate funtion called is textFieldShouldReturn:
+        highScoreText?.delegate = self
         
         
         

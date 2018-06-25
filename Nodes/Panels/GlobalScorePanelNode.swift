@@ -36,11 +36,11 @@ class GlobalScorePanelNode: SKSpriteNode {
         
         background.size = CGSize(width: background.size.width * scale,
                                  height: background.size.height * scale)
-        var pos = CGPoint(x: size.width / 2, y: size.height * 0.40)
+        var pos = CGPoint(x: size.width / 2, y: size.height * 0.20)
         background.position = pos
         
         
-        pos = CGPoint(x: size.width / 2, y: size.height * 0.45)
+        pos = CGPoint(x: size.width / 2, y: size.height * 0.25)
         scoreLabel.position = pos
         pos.y -= scoreLabel.frame.size.height + (CGFloat(labelVerticalSeparation) * scale)
         label.position = pos
