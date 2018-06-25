@@ -229,14 +229,17 @@ class GameWonScene: SKScene {
         nineNode1.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.5)
         nineNode1.setScale(4.0)
         nineNode1.alpha = 0
+        nineNode1.zPosition = 200
         self.addChild(nineNode1)
         nineNode2.position = CGPoint(x: self.frame.width * 0.50, y: self.frame.height * 0.5)
         nineNode2.setScale(4.0)
         nineNode2.alpha = 0
+        nineNode2.zPosition = 200
         self.addChild(nineNode2)
         nineNode3.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height * 0.5)
         nineNode3.setScale(4.0)
         nineNode3.alpha = 0
+        nineNode3.zPosition = 200
         self.addChild(nineNode3)
         
         waitAction = SKAction.wait(forDuration: 4.6)
