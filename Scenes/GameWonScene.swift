@@ -239,6 +239,12 @@ class GameWonScene: SKScene {
         nineNode3.alpha = 0
         self.addChild(nineNode3)
         
+        waitAction = SKAction.wait(forDuration: 4.6)
+        nineNode1.run(SKAction.sequence([waitAction, fadeInAction, playerZoomSound, shrinkAction, thudSound]))
+        nineNode2.run(SKAction.sequence([waitAction, fadeInAction,  shrinkAction, thudSound]))
+        nineNode3.run(SKAction.sequence([waitAction, fadeInAction,  shrinkAction, thudSound]))
+        
+        
         
         
         
