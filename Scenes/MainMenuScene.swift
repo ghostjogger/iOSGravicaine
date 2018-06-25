@@ -88,11 +88,24 @@ class MainMenuScene: SKScene{
         scoreattributes.entryBackground = .image(image: UIImage(named: "panelBackground")!)
         scoreattributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
         scoreattributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
-        scoremessage = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
-                                       title: EKProperty.LabelContent(text: "Highest Score:",
-                                                                      style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
-                                       description: EKProperty.LabelContent(text: "\n \(highScoreName!) \n \n  \(score)",
-                                        style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+        
+        if UserDefaults.standard.string(forKey: GlobalScoreName) == nil {
+            scoremessage = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
+                                           title: EKProperty.LabelContent(text: "Highest Score:",
+                                                                          style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
+                                           description: EKProperty.LabelContent(text: "\n \(highScoreName!) \n \n  \(score)",
+                                            style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+        }
+        
+        else{
+            var name = UserDefaults.standard.string(forKey: GlobalScoreName)
+            scoremessage = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
+                                           title: EKProperty.LabelContent(text: "Highest Score:",
+                                                                          style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
+                                           description: EKProperty.LabelContent(text: "\n \(name!) \n \n  999",
+                                            style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+            
+        }
         
         scorenotificationMessage = EKNotificationMessage(simpleMessage: scoremessage)
         scorenotificationView = EKNotificationMessageView(with: scorenotificationMessage)
