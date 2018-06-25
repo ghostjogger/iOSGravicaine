@@ -157,24 +157,41 @@ class GameWonScene: SKScene {
         let thudSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
         let moveSpeed: TimeInterval = 1.4
         let cHeight: CGFloat = 0.75
+        let xStart: CGFloat = 0.04
+        let xIncrement: CGFloat = 0.062
+        var xGap: CGFloat = 0
         
-        
-        let move1 = SKAction.move(to: CGPoint(x: self.frame.width * 0.1, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move2 = SKAction.move(to: CGPoint(x: self.frame.width * 0.153, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move3 = SKAction.move(to: CGPoint(x: self.frame.width * 0.206, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move4 = SKAction.move(to: CGPoint(x: self.frame.width * 0.259, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move5 = SKAction.move(to: CGPoint(x: self.frame.width * 0.312, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move6 = SKAction.move(to: CGPoint(x: self.frame.width * 0.365, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move7 = SKAction.move(to: CGPoint(x: self.frame.width * 0.418, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move8 = SKAction.move(to: CGPoint(x: self.frame.width * 0.471, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move9 = SKAction.move(to: CGPoint(x: self.frame.width * 0.524, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move10 = SKAction.move(to: CGPoint(x: self.frame.width * 0.577, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move11 = SKAction.move(to: CGPoint(x: self.frame.width * 0.63, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move12 = SKAction.move(to: CGPoint(x: self.frame.width * 0.683, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move13 = SKAction.move(to: CGPoint(x: self.frame.width * 0.736, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move14 = SKAction.move(to: CGPoint(x: self.frame.width * 0.789, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move15 = SKAction.move(to: CGPoint(x: self.frame.width * 0.842, y: self.frame.height * cHeight), duration: moveSpeed)
-        let move16 = SKAction.move(to: CGPoint(x: self.frame.width * 0.9, y: self.frame.height * cHeight), duration: moveSpeed)
+        let move1 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move2 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move3 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move4 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move5 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move6 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move7 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move8 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move9 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move10 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move11 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move12 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move13 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move14 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move15 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
+        xGap += xIncrement
+        let move16 = SKAction.move(to: CGPoint(x: self.frame.width * (xStart + xGap), y: self.frame.height * cHeight), duration: moveSpeed)
         
         cNode.run(SKAction.sequence([waitAction,playerZoomSound,move1,thudSound]))
         oNode.run(SKAction.sequence([waitAction,move2,thudSound]))
