@@ -15,6 +15,7 @@
 		990D6B18208548B800429C9D /* star.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B17208548B800429C9D /* star.atlas */; };
 		991AEE1B20D2E16A0041FC24 /* PausePanelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AEE1A20D2E16A0041FC24 /* PausePanelNode.swift */; };
 		991AEE1D20D3BC050041FC24 /* GameScene+Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991AEE1C20D3BC050041FC24 /* GameScene+Pause.swift */; };
+		992E508920E0DE850046C54D /* GameWonScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992E508820E0DE850046C54D /* GameWonScene.swift */; };
 		9938D3C620CD8D2100DE4604 /* BarrierNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9938D3C520CD8D2100DE4604 /* BarrierNode.swift */; };
 		993C7E4B20C1AFF30095D78D /* shieldFinish.wav in Resources */ = {isa = PBXBuildFile; fileRef = 993C7E4A20C1AFF30095D78D /* shieldFinish.wav */; };
 		993C7E4D20C2D9BD0095D78D /* SKNodeExplosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993C7E4C20C2D9BC0095D78D /* SKNodeExplosion.swift */; };
@@ -85,6 +86,7 @@
 		990D6B17208548B800429C9D /* star.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = star.atlas; sourceTree = "<group>"; };
 		991AEE1A20D2E16A0041FC24 /* PausePanelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePanelNode.swift; sourceTree = "<group>"; };
 		991AEE1C20D3BC050041FC24 /* GameScene+Pause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Pause.swift"; sourceTree = "<group>"; };
+		992E508820E0DE850046C54D /* GameWonScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWonScene.swift; sourceTree = "<group>"; };
 		9938D3C520CD8D2100DE4604 /* BarrierNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrierNode.swift; sourceTree = "<group>"; };
 		993C7E4A20C1AFF30095D78D /* shieldFinish.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shieldFinish.wav; sourceTree = "<group>"; };
 		993C7E4C20C2D9BC0095D78D /* SKNodeExplosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNodeExplosion.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				99E9D41220DFF7B400B98EBE /* GameScene+Barriers.swift */,
 				99E9D41420DFF89900B98EBE /* GameScene+Asteroids.swift */,
 				99E9D41620DFF8DE00B98EBE /* GameScene+Mines.swift */,
+				992E508820E0DE850046C54D /* GameWonScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				998ADBA420D6F64700EE7FEF /* MineNode.swift in Sources */,
 				99A357B12079073400F86F84 /* GameOverScene.swift in Sources */,
 				9938D3C620CD8D2100DE4604 /* BarrierNode.swift in Sources */,
+				992E508920E0DE850046C54D /* GameWonScene.swift in Sources */,
 				99A40D4E20754BE0000D5DD9 /* GameScene.swift in Sources */,
 				991AEE1B20D2E16A0041FC24 /* PausePanelNode.swift in Sources */,
 				99E9D40220D6827900B98EBE /* BlueShieldNode.swift in Sources */,

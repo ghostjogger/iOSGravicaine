@@ -715,11 +715,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             if barrierCount == barriers.count{
                 barrierCount = barriers.count - 1
             }
-
-           
-
-            
-        
+      
         }
 
     }
