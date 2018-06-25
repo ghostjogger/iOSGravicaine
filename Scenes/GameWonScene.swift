@@ -157,7 +157,7 @@ class GameWonScene: SKScene {
         let thudSound = SKAction.playSoundFileNamed("sound62.wav", waitForCompletion: false)
         let moveSpeed: TimeInterval = 1.4
         let cHeight: CGFloat = 0.75
-        let xStart: CGFloat = 0.12
+        let xStart: CGFloat = 0.125
         let xIncrement: CGFloat = 65 * CGFloat(titleScaleFactor)
         var xGap: CGFloat = 0
         
