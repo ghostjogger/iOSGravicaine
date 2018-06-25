@@ -42,7 +42,7 @@ extension SKAction {
         let scale = SKAction.scale(to: 2.0, duration: duration / 2)
         let unscale = SKAction.scale(to: 1.0, duration: duration / 2)
         let sound = SKAction.playSoundFileNamed("score.wav", waitForCompletion: false)
-        return SKAction.sequence([scale, unscale, sound])
+        return SKAction.sequence([scale, unscale])
     }
     
 }
