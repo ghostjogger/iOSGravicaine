@@ -103,7 +103,7 @@ class MainMenuScene: SKScene{
                                            title: EKProperty.LabelContent(text: "Highest Score:",
                                                                           style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
                                            description: EKProperty.LabelContent(text: "\n \(name!) \n \n  999",
-                                            style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+                                            style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.red, alignment: NSTextAlignment.center)))
             
         }
         
