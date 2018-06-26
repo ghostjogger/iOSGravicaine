@@ -333,8 +333,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         // set up middle indicator stick
         let size = CGSize(width: 2, height: self.size.height)
         middleIndicator = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.4), size: size)
-        middleIndicator.zPosition = 1
+        middleIndicator.zPosition = 0
         middleIndicator.position = CGPoint(x: self.frame.midX, y: self.size.height/2)
+
         
         
         // MARK int arrays
