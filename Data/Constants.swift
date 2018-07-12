@@ -24,7 +24,7 @@ let laserMass = 5
 
 let spawnInterval = 1.4
 
-let impulse = 80
+let impulse = 82
 let thrustPower = 350
 let gravity = 2.2
 
@@ -46,7 +46,7 @@ let gravIconY = 585
 
 
 
-let GodMode: Bool = true
+let GodMode: Bool = false
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 let HighScoreName: String = "HighScoreName"
