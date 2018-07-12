@@ -495,15 +495,17 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         }
             //player thrust
             
-            if leftTouchActive{
-                player.physicsBody?.applyForce(CGVector(dx: -thrustPower, dy: 0))
-                player.thrustLeft()
-            }
-            
-            if rightTouchActive{
-                player.physicsBody?.applyForce(CGVector(dx: thrustPower, dy: 0))
-                player.thrustRight()
-            }
+//            if leftTouchActive{
+//                //player.physicsBody?.applyForce(CGVector(dx: -thrustPower, dy: 0))
+//                player.physicsBody?.applyImpulse(CGVector(dx: impulse, dy: 0))
+//                player.thrustLeft()
+//            }
+//
+//            if rightTouchActive{
+//                //player.physicsBody?.applyForce(CGVector(dx: thrustPower, dy: 0))
+//                player.physicsBody?.applyImpulse(CGVector(dx: -impulse, dy: 0))
+//                player.thrustRight()
+//            }
 
             
             if player.position.x < self.size.width/2{
@@ -520,14 +522,14 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             if player.position.x > self.frame.maxX - player.size.width/2
             {
                 player.position.x = self.frame.maxX - player.size.width/2
-                player.physicsBody?.velocity = CGVector(dx: -1, dy: 0)
+
               
             }
             
             if player.position.x < self.frame.minX + player.size.width/2
             {
                 player.position.x = self.frame.minX + player.size.width/2
-                player.physicsBody?.velocity = CGVector(dx: 1, dy: 0)
+
          
             }
         
@@ -590,7 +592,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             if pointOfTouch.x < self.size.width / 2{
                 if self.gameState == .inGame && !gameOverTransitioning{
 
-
+                                    player.physicsBody?.applyImpulse(CGVector(dx: impulse, dy: 0))
+                                    player.thrustRight()
                     leftTouchActive = true
 
                     
@@ -599,7 +602,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             else if pointOfTouch.x >= self.size.width / 2{
                 if self.gameState == .inGame && !gameOverTransitioning{
 
-                    
+                                    player.physicsBody?.applyImpulse(CGVector(dx: -impulse, dy: 0))
+                                    player.thrustLeft()
                     rightTouchActive = true
                     
                 }
@@ -628,20 +632,20 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 
-        leftTouchActive = false
-        rightTouchActive = false
-        player.thrustRightEnded()
-        player.thrustLeftEnded()
+//        leftTouchActive = false
+//        rightTouchActive = false
+//        player.thrustRightEnded()
+//        player.thrustLeftEnded()
 
         
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
 
-        leftTouchActive = false
-        rightTouchActive = false
-        player.thrustRightEnded()
-        player.thrustLeftEnded()
+//        leftTouchActive = false
+//        rightTouchActive = false
+//        player.thrustRightEnded()
+//        player.thrustLeftEnded()
 
     }
 
