@@ -7,13 +7,14 @@
 //
 
 // barrier curve control points , from 1 to 6 inclusive
+// determine the amount of curve - higher number = more curvy
 
 import Foundation
 
 var barrierCpoints:[Int] = [
                             1,1,1,1,1,1,1,1,1,1,
-                            1,1,1,1,1,1,1,1,1,1,
-                            1,1,1,1,1,1,1,1,1,1,
+                            6,6,6,6,6,6,6,6,6,6,
+                            6,6,6,6,6,6,6,6,6,6,
                             1,1,1,1,1,1,1,1,1,1,
                             1,1,1,1,1,1,1,1,1,1,
                             1,1,1,1,1,1,1,1,1,1,
