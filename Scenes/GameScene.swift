@@ -89,7 +89,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     var rightBarrierNode: SKSpriteNode = SKSpriteNode()
     var barriers = [Int]()
     var barrierCpoints = [Int]()
-    var barrierTypes = [Int]()
+    //var barrierTypes = [Int]()
     var barrierCount = 0
    
     // ui nodes
@@ -341,7 +341,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         // MARK int arrays
         barriers = seedRandom(seed: UInt64(bseed), count: 1000, low:1, high:8)
         barrierCpoints = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 6)
-        barrierTypes = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 3)
+        //barrierTypes = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 3)
 
         gameLogic.delegate = self
         
@@ -423,6 +423,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
  
         barrierCount = 0
 
+        print(barrierTypes.count)
         
         //set up 2 star backgrounds to scroll
         for i in 0...1{

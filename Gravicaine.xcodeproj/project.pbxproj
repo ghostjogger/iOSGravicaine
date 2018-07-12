@@ -61,6 +61,7 @@
 		99B334D420BB44AC00AC5C59 /* sound62.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99B334D320BB44AC00AC5C59 /* sound62.wav */; };
 		99BB472E20C5D6CF00401887 /* bombs.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99BB472D20C5D6CF00401887 /* bombs.atlas */; };
 		99BB473020C5D74400401887 /* mines.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99BB472F20C5D74400401887 /* mines.atlas */; };
+		99BE2F3220F7635E00BC2F42 /* BarrierTypesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE2F3120F7635E00BC2F42 /* BarrierTypesData.swift */; };
 		99D9DE9120D04ACD005D1CD0 /* GapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D9DE9020D04ACD005D1CD0 /* GapNode.swift */; };
 		99D9DE9520D1C790005D1CD0 /* score.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99D9DE9420D1C790005D1CD0 /* score.wav */; };
 		99E9D3FE20D67B9D00B98EBE /* beam.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D3FD20D67B9D00B98EBE /* beam.atlas */; };
@@ -135,6 +136,7 @@
 		99B334D320BB44AC00AC5C59 /* sound62.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound62.wav; sourceTree = "<group>"; };
 		99BB472D20C5D6CF00401887 /* bombs.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bombs.atlas; sourceTree = "<group>"; };
 		99BB472F20C5D74400401887 /* mines.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = mines.atlas; sourceTree = "<group>"; };
+		99BE2F3120F7635E00BC2F42 /* BarrierTypesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrierTypesData.swift; sourceTree = "<group>"; };
 		99D9DE9020D04ACD005D1CD0 /* GapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GapNode.swift; sourceTree = "<group>"; };
 		99D9DE9420D1C790005D1CD0 /* score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score.wav; sourceTree = "<group>"; };
 		99E9D3FD20D67B9D00B98EBE /* beam.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = beam.atlas; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				993C7E4E20C2E0B90095D78D /* GameAssets.swift */,
 				99E9D40820DCD12E00B98EBE /* README.md */,
 				99E9D40A20DE62CD00B98EBE /* Assets.xcassets */,
+				99BE2F3120F7635E00BC2F42 /* BarrierTypesData.swift */,
 			);
 			path = Gravicaine;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				9990F75920D444070007F0CA /* RedAsteroidNode.swift in Sources */,
 				99A357D92082160F00F86F84 /* StartPanelNode.swift in Sources */,
 				990B01C420BC583F00F2BA3F /* GreenShieldNode.swift in Sources */,
+				99BE2F3220F7635E00BC2F42 /* BarrierTypesData.swift in Sources */,
 				99D9DE9120D04ACD005D1CD0 /* GapNode.swift in Sources */,
 				99766E302084E58900AA937A /* GameOverPanelNode.swift in Sources */,
 				9990F75D20D5B27D0007F0CA /* LaserBeamNode.swift in Sources */,
