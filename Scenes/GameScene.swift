@@ -596,8 +596,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             if pointOfTouch.x < self.size.width / 2{
                 if self.gameState == .inGame && !gameOverTransitioning{
 
-                                    player.physicsBody?.applyImpulse(CGVector(dx: impulse, dy: 0))
-                                    player.thrustRight()
+                                    player.physicsBody?.applyImpulse(CGVector(dx: -impulse, dy: 0))
+                                    player.thrustLeft()
                     leftTouchActive = true
 
                     
@@ -606,8 +606,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             else if pointOfTouch.x >= self.size.width / 2{
                 if self.gameState == .inGame && !gameOverTransitioning{
 
-                                    player.physicsBody?.applyImpulse(CGVector(dx: -impulse, dy: 0))
-                                    player.thrustLeft()
+                                    player.physicsBody?.applyImpulse(CGVector(dx: impulse, dy: 0))
+                                    player.thrustRight()
                     rightTouchActive = true
                     
                 }
