@@ -172,6 +172,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		990F74AE20F77F97004A7793 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				990B01C720BC8D6000F2BA3F /* Constants.swift */,
+				99BE2F3120F7635E00BC2F42 /* BarrierTypesData.swift */,
+				99BE2F3320F7669100BC2F42 /* BarrierCPointsData.swift */,
+				99BE2F3520F7681300BC2F42 /* BarrierGapPositionData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		999AC5BA20C44F04002B7852 /* Texture Atlases */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +271,7 @@
 		99A40D3B20754BE0000D5DD9 = {
 			isa = PBXGroup;
 			children = (
+				990F74AE20F77F97004A7793 /* Data */,
 				999AC5BA20C44F04002B7852 /* Texture Atlases */,
 				99A357BF207A585500F86F84 /* Nodes */,
 				99A357B620791B9900F86F84 /* Particles */,
@@ -293,13 +305,9 @@
 				99A40D5120754BE0000D5DD9 /* Main.storyboard */,
 				99A40D5620754BE1000D5DD9 /* LaunchScreen.storyboard */,
 				99A40D5920754BE1000D5DD9 /* Info.plist */,
-				990B01C720BC8D6000F2BA3F /* Constants.swift */,
 				993C7E4E20C2E0B90095D78D /* GameAssets.swift */,
 				99E9D40820DCD12E00B98EBE /* README.md */,
 				99E9D40A20DE62CD00B98EBE /* Assets.xcassets */,
-				99BE2F3120F7635E00BC2F42 /* BarrierTypesData.swift */,
-				99BE2F3320F7669100BC2F42 /* BarrierCPointsData.swift */,
-				99BE2F3520F7681300BC2F42 /* BarrierGapPositionData.swift */,
 			);
 			path = Gravicaine;
 			sourceTree = "<group>";
