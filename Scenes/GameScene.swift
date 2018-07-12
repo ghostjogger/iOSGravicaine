@@ -692,10 +692,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 spawnCurvyMovingBarrier(count: next)
                 break
             case 4:
-                spawnAsteroidBelt()
+                spawnAsteroidPair()
                 break
             case 5:
-                spawnAsteroidPair()
+                spawnAsteroidBelt()
                 break
             case 6:
                 spawnMineField(isLeftAligned: true)
