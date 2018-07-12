@@ -7,6 +7,9 @@
 //
 
 // types of barrier from 1 to 3 inclusive
+// 1 vertical straight movement
+// 2 diagonal straight movement
+// 3 curvy movement
 
 import Foundation
 
