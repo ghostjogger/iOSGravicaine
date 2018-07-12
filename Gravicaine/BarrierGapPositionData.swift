@@ -6,12 +6,12 @@
 //  Copyright © 2018 Stephen Ball. All rights reserved.
 //
 
-// from 1 to 8 inclusive
+// X position of gaps, lower the number, the further left on screen, from 1 to 8 inclusive
 
 import Foundation
 
 var barriers:[Int] = [
-                        1,1,1,1,1,1,1,1,1,1,
+                        1,8,1,8,1,8,1,8,1,8,
                         1,1,1,1,1,1,1,1,1,1,
                         1,1,1,1,1,1,1,1,1,1,
                         1,1,1,1,1,1,1,1,1,1,
