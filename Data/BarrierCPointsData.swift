@@ -11,6 +11,9 @@
 
 import Foundation
 
+
+
+
 var barrierCpoints:[Int] = [
                             1,1,1,1,1,1,1,1,1,1,
                             1,1,1,1,1,1,1,1,1,1,
