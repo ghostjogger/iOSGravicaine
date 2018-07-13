@@ -22,11 +22,11 @@ let playerBaseY = 0.2
 let playerMass = 0.3
 let laserMass = 5
 
-let spawnInterval = 1.6
+let spawnInterval = 1.5
 
-let impulse = 70
+let impulse = 120
 let thrustPower = 350
-let gravity = 2.2
+let gravity = 5.0
 
 let shieldActivationTime = 6.0
 
@@ -46,7 +46,7 @@ let gravIconY = 585
 
 
 
-let GodMode: Bool = true
+let GodMode: Bool = false
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 let HighScoreName: String = "HighScoreName"
