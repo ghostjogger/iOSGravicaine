@@ -686,6 +686,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             switch type{
                 
             case 1:
+                
                 spawnNormalBarrier(count: next)
                 break
             case 2:
@@ -699,7 +700,8 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 spawnAsteroidPair()
                 break
             case 5:
-                spawnAsteroidBelt()
+                spawnLaserBattery()
+                //spawnAsteroidBelt()
                 break
             case 6:
                 spawnMineField(isLeftAligned: true)
