@@ -269,7 +269,7 @@ extension GameScene{
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
             laser.physicsBody!.collisionBitMask = PhysicsCategories.None
             laser.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-            laser.position = CGPoint(x: self.frame.width * 0.2, y: self.frame.maxY + 150)
+            laser.position = CGPoint(x: self.frame.width * 0.3, y: self.frame.maxY + 150)
             laser.zPosition = 200
             
             
@@ -346,7 +346,7 @@ extension GameScene{
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
             laser.physicsBody!.collisionBitMask = PhysicsCategories.None
             laser.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-            laser.position = CGPoint(x: self.frame.width * 0.8, y: self.frame.maxY + 150)
+            laser.position = CGPoint(x: self.frame.width * 0.7, y: self.frame.maxY + 150)
             laser.zPosition = 200
             
             

@@ -26,7 +26,7 @@ let spawnInterval = 1.5
 
 let impulse = 100
 let thrustPower = 350
-let gravity = 5.0
+let gravity = 4.5
 
 let shieldActivationTime = 6.0
 

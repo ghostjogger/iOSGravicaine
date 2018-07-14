@@ -704,12 +704,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 //spawnAsteroidBelt()
                 break
             case 6:
-                spawnLaserBatteryLeft()
+                spawnLaserBatteryStaticLeft()
                 //spawnLaserBatteryLeft()
                 //spawnMineField(isLeftAligned: true)
                 break
             case 7:
-                spawnLaserBatteryRight()
+                spawnLaserBatteryStaticRight()
                 //spawnMineField(isLeftAligned: false)
                 break
             case 8:
