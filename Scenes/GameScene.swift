@@ -300,11 +300,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         scoreLabel?.verticalAlignmentMode = .top
         
         
-        //gravity indicators
-        gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: 75 * scaleFactor, height: 150 * scaleFactor))
-        gravityNodeLabel.fontName = FontName
-        gravityNodeLabel.fontSize = 50.0 * scaleFactor
-        gravityNodeLabel.fontColor = UIColor.green
+
         
         //player init
         player = SpaceShip(scale: scaleFactor)
@@ -325,6 +321,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         notificationView = EKNotificationMessageView(with: notificationMessage)
         
         super.init(size: size)
+        
+        //gravity indicators
+        gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: self.frame.width * 0.02, height: self.frame.height))
+        gravityNodeLabel.fontName = FontName
+        gravityNodeLabel.fontSize = 50.0 * scaleFactor
+        gravityNodeLabel.fontColor = UIColor.green
         
 
         // set up middle indicator stick
@@ -460,7 +462,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         //gravity nodes
         gravityNode.position.x = -1000
-        gravityNode.addChild(gravityNodeLabel)
+        //gravityNode.addChild(gravityNodeLabel)
         self.addChild(gravityNode)
         
         //exit label
@@ -514,13 +516,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             if player.position.x < self.size.width/2{
                 self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
-                gravityNode.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.height * 0.04)
-                gravityNode.zPosition = 100
+                gravityNode.position = CGPoint(x: self.frame.width * 0.01, y: self.frame.height * 0.5)
+                gravityNode.zPosition = 0
             }
             else{
                 self.physicsWorld.gravity = CGVector(dx: gravity, dy: 0)
-                gravityNode.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.height * 0.04)
-                gravityNode.zPosition = 100
+                gravityNode.position = CGPoint(x: self.frame.width * 0.99, y: self.frame.height * 0.5)
+                gravityNode.zPosition = 0
             }
 
             if player.position.x > self.frame.maxX - player.size.width/2
