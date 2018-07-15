@@ -516,12 +516,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             if player.position.x < self.size.width/2{
                 self.physicsWorld.gravity = CGVector(dx: -gravity, dy: 0)
-                gravityNode.position = CGPoint(x: self.frame.width * 0.01, y: self.frame.height * 0.5)
+                gravityNode.position = CGPoint(x: self.frame.width * 0.005, y: self.frame.height * 0.5)
                 gravityNode.zPosition = 0
             }
             else{
                 self.physicsWorld.gravity = CGVector(dx: gravity, dy: 0)
-                gravityNode.position = CGPoint(x: self.frame.width * 0.99, y: self.frame.height * 0.5)
+                gravityNode.position = CGPoint(x: self.frame.width * 0.995, y: self.frame.height * 0.5)
                 gravityNode.zPosition = 0
             }
 
