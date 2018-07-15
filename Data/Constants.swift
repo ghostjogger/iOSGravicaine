@@ -26,7 +26,7 @@ let spawnInterval = 1.5
 
 let impulse = 40
 let thrustPower = 350
-let gravity = 0.5
+let gravity = 0.8
 
 let shieldActivationTime = 6.0
 
@@ -46,7 +46,7 @@ let gravIconY = 585
 
 
 
-let GodMode: Bool = true
+let GodMode: Bool = false
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 let HighScoreName: String = "HighScoreName"
