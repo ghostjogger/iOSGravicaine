@@ -691,7 +691,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 break
             case 2:
                 spawnMovingBarrier(count: next)
-                
                 break
             case 3:
                 spawnCurvyMovingBarrier(count: next)
@@ -704,15 +703,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 break
             case 6:
                 spawnLaserBatteryStaticLeft()
-                //spawnLaserBatteryLeft()
-                //spawnMineField(isLeftAligned: true)
                 break
             case 7:
-                spawnLaserBatteryStaticRight()
-                //spawnMineField(isLeftAligned: false)
+                spawnLaserBatteryStatic()
                 break
             case 8:
-                //spawnLaserBattery()
+                spawnLaserBatteryStaticRight()
                 break
             default:
                 break
