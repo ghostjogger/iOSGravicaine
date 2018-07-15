@@ -11,7 +11,7 @@
 // 2 diagonal straight movement
 // 3 curvy movement
 // 4 asteroid cluster
-// 5 asteroid belt
+// 5 asteroid belt vertical
 // 6,7,8 static laser batteries left,centre,right respectively
 
 import Foundation
