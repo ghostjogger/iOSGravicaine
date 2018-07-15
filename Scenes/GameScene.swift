@@ -189,8 +189,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         player.physicsBody?.mass = CGFloat(playerMass)
         player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
+        player.setScale(3.0)
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * CGFloat(playerBaseY), duration: 0.3)
+        let playerShrinkScale = SKAction.scale(to: 1.0, duration: 0.5)
         let wait = SKAction.wait(forDuration: spawnInterval)
         
         let spawn = SKAction.run({[unowned self] in
@@ -200,7 +202,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         })
         
         let spawnSequence = SKAction.sequence([spawn,wait])
-        let sequence = SKAction.sequence([playerAppear])
+        let sequence = SKAction.sequence([playerAppear, playerAppearSound, playerShrinkScale])
         self.player.run(sequence){
             if UserDefaults.standard.bool(forKey: "music"){
             self.addChild(backgroundSound)

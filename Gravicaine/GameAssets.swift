@@ -48,3 +48,4 @@ let backgroundSound = SKAudioNode(fileNamed: "gameMusic.mp3")
 let menuBackgroundSound = SKAudioNode(fileNamed: "Theme.mp3")
 
 let playerZoomSound:SKAction = SKAction.playSoundFileNamed("zoom.wav", waitForCompletion: false)
+let playerAppearSound:SKAction = SKAction.playSoundFileNamed("sound0.wav", waitForCompletion: false)
