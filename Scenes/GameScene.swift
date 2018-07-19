@@ -83,6 +83,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     let gameArea: CGRect
     var scaleFactor:CGFloat = 0
+    var verticalScale:CGFloat = 0.0
     
     //barriers
     var leftBarrierNode: SKSpriteNode = SKSpriteNode()
@@ -293,6 +294,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         gameArea = CGRect(x: margin, y: 0, width: playableWidth, height: size.height)
 
         scaleFactor = size.width / CGFloat(maxDeviceScreenWidth)
+        verticalScale = size.height / CGFloat(maxDeviceScreenHeight)
         
         // label
         scoreLabel = SKLabelNode()

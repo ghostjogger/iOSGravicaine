@@ -19,7 +19,7 @@ extension GameScene{
                 
                 //setup left barrier
                 
-                let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2LBig")
+                let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2LBig", speed: self.verticalScale)
                 leftBarrier.move = .Straight
                 let leftOffset = ((leftBarrier.size.width/10) * CGFloat(count))
                 leftBarrier.position = CGPoint(
@@ -28,7 +28,7 @@ extension GameScene{
                 
                 //setup right barrier
                 
-                let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2RBig")
+                let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2RBig", speed: self.verticalScale)
                 rightBarrier.move = .Straight
                 rightBarrier.position = (CGPoint(x: leftBarrier.position.x
                     + leftBarrier.size.width + (CGFloat(barrierGap) * self.scaleFactor),
@@ -81,7 +81,7 @@ extension GameScene{
                 
                 //setup left barrier
                 
-                let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongL")
+                let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongL", speed: self.verticalScale)
                 let leftOffset = ((leftBarrier.size.width/20) * CGFloat(count))
                 leftBarrier.move = .Diagonal
                 leftBarrier.position = CGPoint(
@@ -90,7 +90,7 @@ extension GameScene{
                 
                 //setup right barrier
                 
-                let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongR")
+                let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongR", speed: self.verticalScale)
                 rightBarrier.move = .Diagonal
                 rightBarrier.position = (CGPoint(x: leftBarrier.position.x
                     + leftBarrier.size.width + (CGFloat(barrierGap) * self.scaleFactor),
@@ -180,7 +180,7 @@ extension GameScene{
                 
                 //setup left barrier
                 
-                let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2LBig")
+                let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2LBig", speed: self.verticalScale)
                 leftBarrier.move = .Curvy
                 let leftOffset = ((leftBarrier.size.width/10) * CGFloat(count))
                 leftBarrier.position = CGPoint(
@@ -189,7 +189,7 @@ extension GameScene{
                 
                 //setup right barrier
                 
-                let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2RBig")
+                let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "Barrier2RBig", speed: self.verticalScale)
                 rightBarrier.move = .Curvy
                 rightBarrier.position = (CGPoint(x: leftBarrier.position.x
                     + leftBarrier.size.width + (CGFloat(barrierGap) * self.scaleFactor),

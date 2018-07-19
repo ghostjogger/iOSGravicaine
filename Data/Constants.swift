@@ -11,7 +11,7 @@ import Foundation
 let barrierHeight = 336
 let barrierWidth = 800
 let barrierGap = 400
-let barrierSpeed = 4.0
+let obstacleVerticalSpeed = 1000.0
 let barrierSpeedAcross = 5.0
 let bseed = 1
 let barrierMovementX = 80
@@ -32,6 +32,7 @@ let shieldActivationTime = 6.0
 
 // iphone X screen width
 let maxDeviceScreenWidth = 1125
+let maxDeviceScreenHeight = 2436
 
 
 //option positioning

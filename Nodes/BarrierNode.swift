@@ -21,7 +21,7 @@ class BarrierNode:SKSpriteNode {
     var move: BarrierMove = .Straight
 
     
-    init(scale: CGFloat, name: String) {
+    init(scale: CGFloat, name: String, speed: CGFloat) {
         let texture = SKTexture(imageNamed: name)
         let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         super.init(texture: texture, color: UIColor.clear, size: size)
@@ -32,6 +32,7 @@ class BarrierNode:SKSpriteNode {
         self.physicsBody!.collisionBitMask = PhysicsCategories.None
         self.physicsBody!.contactTestBitMask = PhysicsCategories.Player
         self.name = "barrier"
+        self.barrierSpeed = CGFloat(obstacleVerticalSpeed) * speed
         
         
     }
