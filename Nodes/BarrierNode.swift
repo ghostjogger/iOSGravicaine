@@ -17,7 +17,7 @@ enum BarrierMove {
 
 class BarrierNode:SKSpriteNode {
     
-    var barrierSpeed: CGFloat = 550.0 // (speed is x px per second)
+    var barrierSpeed: CGFloat = 0 // (speed is x px per second)
     var move: BarrierMove = .Straight
 
     

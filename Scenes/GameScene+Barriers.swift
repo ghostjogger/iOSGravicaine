@@ -37,7 +37,7 @@ extension GameScene{
                 //setup score gap
                 
                 let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
-                let barrierSpaceNode = GapNode( size: size)
+                let barrierSpaceNode = GapNode( size: size, speed: self.verticalScale)
                 barrierSpaceNode.move = .Straight
                 barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + (CGFloat(barrierHeight) * 2.0) )
                 
@@ -99,7 +99,7 @@ extension GameScene{
                 //setup score gap
                 
                 let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
-                let barrierSpaceNode = GapNode( size: size)
+                let barrierSpaceNode = GapNode( size: size, speed: self.verticalScale)
                 barrierSpaceNode.move = .Diagonal
                 barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y:self.size.height + (CGFloat(barrierHeight) * 2.0))
                 
@@ -199,7 +199,7 @@ extension GameScene{
                 //setup score gap
                 
                 let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
-                let barrierSpaceNode = GapNode( size: size)
+                let barrierSpaceNode = GapNode( size: size, speed: self.verticalScale)
                 barrierSpaceNode.move = .Curvy
                 barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height +  (CGFloat(barrierHeight) * 2.0))
                 

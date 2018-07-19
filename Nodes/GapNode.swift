@@ -16,11 +16,11 @@ enum GapMove {
 
 class GapNode:SKSpriteNode {
     
-    var barrierSpeed: CGFloat = 550.0 // (speed is x px per second)
+    var barrierSpeed: CGFloat = 0 // (speed is x px per second)
     var move: GapMove = .Straight
     
     
-    init( size: CGSize) {
+    init( size: CGSize, speed: CGFloat) {
 
         super.init(texture: nil, color: UIColor.clear, size: size)
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
@@ -29,6 +29,7 @@ class GapNode:SKSpriteNode {
         self.physicsBody!.collisionBitMask = PhysicsCategories.None
         self.physicsBody!.contactTestBitMask = PhysicsCategories.Player
         self.name = "barrierGap"
+        self.barrierSpeed = CGFloat(obstacleVerticalSpeed) * speed
         
         
     }

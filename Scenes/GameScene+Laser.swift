@@ -34,7 +34,7 @@ extension GameScene{
             
             
             let size = CGSize(width: self.frame.width, height: 10.0)
-            let scoreNode = GapNode(size: size)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
             scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
             
             DispatchQueue.global().async {
@@ -116,7 +116,7 @@ extension GameScene{
             
             
             let size = CGSize(width: self.frame.width, height: 10.0)
-            let scoreNode = GapNode(size: size)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
             scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
             
             DispatchQueue.global().async {
@@ -197,7 +197,7 @@ extension GameScene{
             
             
             let size = CGSize(width: self.frame.width, height: 10.0)
-            let scoreNode = GapNode(size: size)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
             scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
             
             DispatchQueue.global().async {
@@ -274,7 +274,7 @@ extension GameScene{
             
             
             let size = CGSize(width: self.frame.width, height: 10.0)
-            let scoreNode = GapNode(size: size)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
             scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
             
             DispatchQueue.global().async {
@@ -351,7 +351,7 @@ extension GameScene{
             
             
             let size = CGSize(width: self.frame.width, height: 10.0)
-            let scoreNode = GapNode(size: size)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
             scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
             
             DispatchQueue.global().async {

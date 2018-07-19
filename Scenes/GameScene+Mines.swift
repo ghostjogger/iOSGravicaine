@@ -17,7 +17,7 @@ extension GameScene{
             
             var mines = [MineNode]()
             let size = CGSize(width: self.frame.width, height: 10.0)
-            let scoreNode = GapNode(size: size)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
             
             DispatchQueue.global().async {
                 

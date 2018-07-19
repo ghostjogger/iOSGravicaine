@@ -18,7 +18,7 @@ extension GameScene{
             var greyAsteroids = [GreyAsteroidNode]()
             
             let size = CGSize(width: self.frame.width, height: 10.0)
-            let scoreNode = GapNode(size: size)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
             
             let yStart = self.frame.maxY + CGFloat(75)
             let minX = CGFloat(self.frame.minX + CGFloat(30))
@@ -89,7 +89,7 @@ extension GameScene{
             var greyAsteroids = [GreyAsteroidNode]()
             
             let size = CGSize(width: self.frame.width, height: 10.0)
-            let scoreNode = GapNode(size: size)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
             
             let yStart = self.frame.maxY + CGFloat(75)
             
@@ -145,7 +145,7 @@ extension GameScene{
             var greyAsteroids = [RedAsteroidNode]()
             
             let size = CGSize(width: self.frame.width, height: 10.0)
-            let scoreNode = GapNode(size: size)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
             
             let yStart = self.frame.maxY + CGFloat(75)
             
@@ -204,7 +204,7 @@ extension GameScene{
             var greyAsteroids = [RedAsteroidNode]()
             
             let size = CGSize(width: self.frame.width, height: 10.0)
-            let scoreNode = GapNode(size: size)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
             
             let yStart = self.frame.maxY + CGFloat(75)
             
