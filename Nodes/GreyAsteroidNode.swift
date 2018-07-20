@@ -27,11 +27,12 @@ class GreyAsteroidNode: SKSpriteNode {
     
     // MARK: init
     
-    init(scale: CGFloat) {
+    init(scale: CGFloat, speed: CGFloat) {
         
         let texture = SKTexture(imageNamed: "b1")
         let size = CGSize(width: texture.size().width * scale * 0.85, height: texture.size().height * scale * 0.85)
         super.init(texture: texture, color: UIColor.clear, size: size)
+        self.GreyAsteroidSpeed = CGFloat(obstacleVerticalSpeed) * speed
 
         
         //setup animation

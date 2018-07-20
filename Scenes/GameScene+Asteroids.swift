@@ -26,10 +26,10 @@ extension GameScene{
             DispatchQueue.global().async {
                 for _ in 1...2 {
                     
-                    let ra = RedAsteroidNode(scale: self.scaleFactor)
+                    let ra = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                     ra.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
                     redAsteroids.append(ra)
-                    let ga = GreyAsteroidNode(scale: self.scaleFactor)
+                    let ga = GreyAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                     ga.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
                     greyAsteroids.append(ga)
                 }
@@ -95,13 +95,13 @@ extension GameScene{
             
             DispatchQueue.global().async {
                 
-                let ga1 = GreyAsteroidNode(scale: self.scaleFactor)
+                let ga1 = GreyAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga1.position = CGPoint(x: self.frame.width * 0.1, y: yStart)
                 greyAsteroids.append(ga1)
-                let ga2 = GreyAsteroidNode(scale: self.scaleFactor)
+                let ga2 = GreyAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga2.position = CGPoint(x: self.frame.width * 0.5, y: yStart)
                 greyAsteroids.append(ga2)
-                let ga3 = GreyAsteroidNode(scale: self.scaleFactor)
+                let ga3 = GreyAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
                 greyAsteroids.append(ga3)
                 
@@ -151,15 +151,15 @@ extension GameScene{
             
             DispatchQueue.global().async {
                 
-                let ga1 = RedAsteroidNode(scale: self.scaleFactor)
+                let ga1 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga1.move = .Curvy
                 ga1.position = CGPoint(x: self.frame.width * 0.1, y: yStart)
                 greyAsteroids.append(ga1)
-                let ga2 = RedAsteroidNode(scale: self.scaleFactor)
+                let ga2 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga2.move = .Curvy
                 ga2.position = CGPoint(x: self.frame.width * 0.5, y: yStart)
                 greyAsteroids.append(ga2)
-                let ga3 = RedAsteroidNode(scale: self.scaleFactor)
+                let ga3 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga3.move = .Curvy
                 ga3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
                 greyAsteroids.append(ga3)
@@ -210,15 +210,15 @@ extension GameScene{
             
             DispatchQueue.global().async {
                 
-                let ga1 = RedAsteroidNode(scale: self.scaleFactor)
+                let ga1 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga1.move = .Curvy
                 ga1.position = CGPoint(x: self.frame.width * 0.1, y: yStart)
                 greyAsteroids.append(ga1)
-                let ga2 = RedAsteroidNode(scale: self.scaleFactor)
+                let ga2 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga2.move = .Curvy
                 ga2.position = CGPoint(x: self.frame.width * 0.5, y: yStart)
                 greyAsteroids.append(ga2)
-                let ga3 = RedAsteroidNode(scale: self.scaleFactor)
+                let ga3 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga3.move = .Curvy
                 ga3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
                 greyAsteroids.append(ga3)

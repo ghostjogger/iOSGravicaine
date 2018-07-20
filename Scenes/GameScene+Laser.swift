@@ -14,15 +14,15 @@ extension GameScene{
         
         if !gameOverTransitioning{
             
-            var leftPlatform = BombNode(scale: self.scaleFactor)
+            var leftPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
             leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.maxY + 150)
             leftPlatform.zPosition = 200
             
-            var rightPlatform = BombNode(scale: self.scaleFactor)
+            var rightPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
             rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.maxY + 150)
             rightPlatform.zPosition = 200
             
-            var laser = LaserBeamNode(scale: self.scaleFactor)
+            var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
             laser.size.width = self.frame.width * 0.4
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
             laser.physicsBody!.affectedByGravity = false
@@ -96,15 +96,15 @@ extension GameScene{
         
         if !gameOverTransitioning{
             
-            var leftPlatform = BombNode(scale: self.scaleFactor)
+            var leftPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
             leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.maxY + 150)
             leftPlatform.zPosition = 200
             
-            var rightPlatform = BombNode(scale: self.scaleFactor)
+            var rightPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
             rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.maxY + 150)
             rightPlatform.zPosition = 200
             
-            var laser = LaserBeamNode(scale: self.scaleFactor)
+            var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
             laser.size.width = self.frame.width * 0.4
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
             laser.physicsBody!.affectedByGravity = false
@@ -177,15 +177,15 @@ extension GameScene{
         
         if !gameOverTransitioning{
             
-            var leftPlatform = BombNode(scale: self.scaleFactor)
+            var leftPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
             leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.maxY + 150)
             leftPlatform.zPosition = 200
             
-            var rightPlatform = BombNode(scale: self.scaleFactor)
+            var rightPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
             rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.maxY + 150)
             rightPlatform.zPosition = 200
             
-            var laser = LaserBeamNode(scale: self.scaleFactor)
+            var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
             laser.size.width = self.frame.width * 0.4
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
             laser.physicsBody!.affectedByGravity = false
@@ -254,15 +254,15 @@ extension GameScene{
         
         if !gameOverTransitioning{
             
-            var leftPlatform = BombNode(scale: self.scaleFactor)
+            var leftPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
             leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.maxY + 150)
             leftPlatform.zPosition = 200
             
-            var rightPlatform = BombNode(scale: self.scaleFactor)
+            var rightPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
             rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.maxY + 150)
             rightPlatform.zPosition = 200
             
-            var laser = LaserBeamNode(scale: self.scaleFactor)
+            var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
             laser.size.width = self.frame.width * 0.4
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
             laser.physicsBody!.affectedByGravity = false
@@ -331,15 +331,15 @@ extension GameScene{
         
         if !gameOverTransitioning{
             
-            var leftPlatform = BombNode(scale: self.scaleFactor)
+            var leftPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
             leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.maxY + 150)
             leftPlatform.zPosition = 200
             
-            var rightPlatform = BombNode(scale: self.scaleFactor)
+            var rightPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
             rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.maxY + 150)
             rightPlatform.zPosition = 200
             
-            var laser = LaserBeamNode(scale: self.scaleFactor)
+            var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
             laser.size.width = self.frame.width * 0.4
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
             laser.physicsBody!.affectedByGravity = false

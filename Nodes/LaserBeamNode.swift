@@ -25,11 +25,12 @@ class LaserBeamNode: SKSpriteNode {
     
     // MARK: init
     
-    init(scale: CGFloat) {
+    init(scale: CGFloat, speed: CGFloat) {
         
         let texture = SKTexture(imageNamed: "laser1")
         let size = CGSize(width: texture.size().width * scale, height: texture.size().height * scale)
         super.init(texture: texture, color: UIColor.clear, size: size)
+        self.laserBeamSpeed = CGFloat(obstacleVerticalSpeed) * speed
         
         
         //setup animation
