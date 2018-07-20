@@ -22,7 +22,7 @@ let playerBaseY = 0.2
 let playerMass = 0.3
 let laserMass = 5
 
-let spawnInterval = 2.0
+let spawnInterval = 1.7
 
 let impulse = 40
 let thrustPower = 350
