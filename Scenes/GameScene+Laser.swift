@@ -263,7 +263,7 @@ extension GameScene{
             rightPlatform.zPosition = 200
             
             var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
-            laser.size.width = self.frame.width * 0.4
+            laser.size.width = self.frame.width * 0.6
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
             laser.physicsBody!.affectedByGravity = false
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
@@ -340,7 +340,7 @@ extension GameScene{
             rightPlatform.zPosition = 200
             
             var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
-            laser.size.width = self.frame.width * 0.4
+            laser.size.width = self.frame.width * 0.6
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
             laser.physicsBody!.affectedByGravity = false
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
