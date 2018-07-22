@@ -20,7 +20,7 @@ extension GameScene{
             let size = CGSize(width: self.frame.width, height: 10.0)
             let scoreNode = GapNode(size: size, speed: self.verticalScale)
             
-            let yStart = self.frame.maxY + CGFloat(75)
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
             let minX = CGFloat(self.frame.minX + CGFloat(30))
             let maxX = CGFloat(self.frame.maxX - CGFloat(30))
             DispatchQueue.global().async {
@@ -33,7 +33,7 @@ extension GameScene{
                     ga.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
                     greyAsteroids.append(ga)
                 }
-                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart +  120)
                 
                 DispatchQueue.main.async(execute: {
                     
@@ -91,7 +91,7 @@ extension GameScene{
             let size = CGSize(width: self.frame.width, height: 10.0)
             let scoreNode = GapNode(size: size, speed: self.verticalScale)
             
-            let yStart = self.frame.maxY + CGFloat(75)
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
             
             DispatchQueue.global().async {
                 
@@ -147,7 +147,7 @@ extension GameScene{
             let size = CGSize(width: self.frame.width, height: 10.0)
             let scoreNode = GapNode(size: size, speed: self.verticalScale)
             
-            let yStart = self.frame.maxY + CGFloat(75)
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
             
             DispatchQueue.global().async {
                 
@@ -206,7 +206,7 @@ extension GameScene{
             let size = CGSize(width: self.frame.width, height: 10.0)
             let scoreNode = GapNode(size: size, speed: self.verticalScale)
             
-            let yStart = self.frame.maxY + CGFloat(75)
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
             
             DispatchQueue.global().async {
                 
