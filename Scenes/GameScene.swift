@@ -689,6 +689,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             let next = barriers[barrierCount]
             let type = barrierTypes[barrierCount]
+            let cp = barrierCpoints[barrierCount]
+            
+            print("type:  \(type)  number:  \(next) cpoint: \(cp)") 
+            
             switch type{
                 
             case 1:
