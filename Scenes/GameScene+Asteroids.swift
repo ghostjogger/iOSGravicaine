@@ -24,7 +24,7 @@ extension GameScene{
             let minX = CGFloat(self.frame.minX + CGFloat(30))
             let maxX = CGFloat(self.frame.maxX - CGFloat(30))
             DispatchQueue.global().async {
-                for _ in 1...2 {
+                for _ in 1...3 {
                     
                     let ra = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                     ra.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
