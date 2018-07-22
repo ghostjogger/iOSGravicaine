@@ -11,12 +11,16 @@ import Foundation
 let barrierHeight = 336
 let barrierWidth = 800
 let barrierGap = 400
+let barrierVerticalSpacing = 600
+let barrierHOverlap = 100
 let obstacleVerticalSpeed = 1000.0
 let barrierSpeedAcross = 5.0
 let bseed = 1
 let barrierMovementX = 80
 
+
 let mineVerticalSpacing = 150
+
 
 let playerBaseY = 0.2
 let playerMass = 0.3

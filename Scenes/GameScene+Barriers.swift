@@ -223,6 +223,110 @@ extension GameScene{
         }
     }
     
+    func spawnVerticalGapBarrierLeftLower(count: Int){
+        
+        if !gameOverTransitioning && barrierCount <= barriers.count - 1{
+            
+            DispatchQueue.global().async {
+                
+                
+                //setup left barrier
+                
+                let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongL", speed: self.verticalScale)
+                leftBarrier.move = .Straight
+                let leftOffset = ((leftBarrier.size.width/20) * CGFloat(count))
+                leftBarrier.position = CGPoint(
+                    x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
+                    y: self.size.height + CGFloat(barrierHeight))
+                
+                //setup right barrier
+                
+                let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongR", speed: self.verticalScale)
+                rightBarrier.move = .Straight
+                rightBarrier.position = (CGPoint(x: leftBarrier.position.x
+                    + leftBarrier.size.width - CGFloat(barrierHOverlap),
+                                                 y: self.size.height + CGFloat(barrierHeight) + (CGFloat(barrierVerticalSpacing) * self.verticalScale)))
+                
+                //setup score gap
+                
+                let size = CGSize(width: self.size.width, height: 20)
+                let barrierSpaceNode = GapNode( size: size, speed: self.verticalScale)
+                barrierSpaceNode.move = .Straight
+                barrierSpaceNode.position = CGPoint(x: self.size.width/2, y: rightBarrier.position.y + rightBarrier.size.height/2 + barrierSpaceNode.size.height/2 )
+                
+                DispatchQueue.main.async(execute: {
+                    self.addChild(leftBarrier)
+                    self.addChild(rightBarrier)
+                    self.addChild(barrierSpaceNode)
+                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight) - CGFloat(barrierVerticalSpacing)), control: 1, cpoint: barrierCpoints[self.barrierCount],  run: {
+                        
+                    })
+                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: barrierCpoints[self.barrierCount], run: {
+                        
+                    })
+                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(barrierSpaceNode.size.height/2)), control: 1, cpoint: barrierCpoints[self.barrierCount], run: {
+                        
+                    })
+                    
+                })
+            }
+        }
+        
+        
+    }
+    
+    func spawnVerticalGapBarrierRightLower(count: Int){
+        
+        if !gameOverTransitioning && barrierCount <= barriers.count - 1{
+            
+            DispatchQueue.global().async {
+                
+                
+                //setup left barrier
+                
+                let leftBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongL", speed: self.verticalScale)
+                leftBarrier.move = .Straight
+                let leftOffset = ((leftBarrier.size.width/20) * CGFloat(count))
+                leftBarrier.position = CGPoint(
+                    x: (self.frame.minX - leftBarrier.size.width/2) + leftOffset,
+                    y: self.size.height + CGFloat(barrierHeight) + (CGFloat(barrierVerticalSpacing) * self.verticalScale))
+                
+                //setup right barrier
+                
+                let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongR", speed: self.verticalScale)
+                rightBarrier.move = .Straight
+                rightBarrier.position = (CGPoint(x: leftBarrier.position.x
+                    + leftBarrier.size.width - CGFloat(barrierHOverlap),
+                                                 y: self.size.height + CGFloat(barrierHeight)))
+                
+                //setup score gap
+                
+                let size = CGSize(width: self.size.width, height: 20)
+                let barrierSpaceNode = GapNode( size: size, speed: self.verticalScale)
+                barrierSpaceNode.move = .Straight
+                barrierSpaceNode.position = CGPoint(x: self.size.width/2, y: leftBarrier.position.y + leftBarrier.size.height/2 + barrierSpaceNode.size.height/2 )
+                
+                DispatchQueue.main.async(execute: {
+                    self.addChild(leftBarrier)
+                    self.addChild(rightBarrier)
+                    self.addChild(barrierSpaceNode)
+                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: barrierCpoints[self.barrierCount],  run: {
+                        
+                    })
+                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight) - CGFloat(barrierVerticalSpacing)), control: 1, cpoint: barrierCpoints[self.barrierCount], run: {
+                        
+                    })
+                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(barrierSpaceNode.size.height/2)), control: 1, cpoint: barrierCpoints[self.barrierCount], run: {
+                        
+                    })
+                    
+                })
+            }
+        }
+        
+        
+    }
+    
     
     
     
