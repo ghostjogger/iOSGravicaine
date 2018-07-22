@@ -244,7 +244,7 @@ extension GameScene{
                 let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongR", speed: self.verticalScale)
                 rightBarrier.move = .Straight
                 rightBarrier.position = (CGPoint(x: leftBarrier.position.x
-                    + leftBarrier.size.width - CGFloat(barrierHOverlap),
+                    + leftBarrier.size.width - (CGFloat(barrierHOverlap) * self.scaleFactor) ,
                                                  y: self.size.height + CGFloat(barrierHeight) + (CGFloat(barrierVerticalSpacing) * self.verticalScale)))
                 
                 //setup score gap
@@ -296,7 +296,7 @@ extension GameScene{
                 let rightBarrier = BarrierNode(scale: self.scaleFactor, name: "BarrierLongR", speed: self.verticalScale)
                 rightBarrier.move = .Straight
                 rightBarrier.position = (CGPoint(x: leftBarrier.position.x
-                    + leftBarrier.size.width - CGFloat(barrierHOverlap),
+                    + leftBarrier.size.width - (CGFloat(barrierHOverlap) * self.scaleFactor),
                                                  y: self.size.height + CGFloat(barrierHeight)))
                 
                 //setup score gap

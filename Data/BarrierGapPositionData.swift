@@ -6,7 +6,7 @@
 //  Copyright © 2018 Stephen Ball. All rights reserved.
 //
 
-// X position of gaps, lower the number, the further left on screen, from 1 to 8 inclusive
+// X position of gaps, lower the number, the further left on screen, from 1 to 8 inclusive ; 3 to 10 inclusive for vertically overlapping barriers
 
 import Foundation
 

@@ -696,11 +696,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             switch type{
                 
             case 1:
-                spawnVerticalGapBarrierRightLower(count: next)
-                //spawnNormalBarrier(count: next)
+                spawnNormalBarrier(count: next)
                 break
             case 2:
-                //spawnMovingBarrier(count: next)
+                spawnMovingBarrier(count: next)
                 break
             case 3:
                 spawnCurvyMovingBarrier(count: next)
