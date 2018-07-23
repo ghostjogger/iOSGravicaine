@@ -37,6 +37,8 @@
 		9990F75D20D5B27D0007F0CA /* LaserBeamNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990F75C20D5B27D0007F0CA /* LaserBeamNode.swift */; };
 		999AC5B920C44BBB002B7852 /* blueShield.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 999AC5B820C44BBB002B7852 /* blueShield.atlas */; };
 		999AC5BC20C454BC002B7852 /* asteroidExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 999AC5BB20C454BC002B7852 /* asteroidExplosion.atlas */; };
+		999B79B72105F19500B4BA02 /* testData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999B79B62105F19500B4BA02 /* testData.swift */; };
+		999B79B92105F29400B4BA02 /* testDataGaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999B79B82105F29400B4BA02 /* testDataGaps.swift */; };
 		99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357AE2079072400F86F84 /* MainMenuScene.swift */; };
 		99A357B12079073400F86F84 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357B02079073400F86F84 /* GameOverScene.swift */; };
 		99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99A357B22079082F00F86F84 /* introGravicaine.wav */; };
@@ -113,6 +115,8 @@
 		9990F75C20D5B27D0007F0CA /* LaserBeamNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserBeamNode.swift; sourceTree = "<group>"; };
 		999AC5B820C44BBB002B7852 /* blueShield.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blueShield.atlas; sourceTree = "<group>"; };
 		999AC5BB20C454BC002B7852 /* asteroidExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = asteroidExplosion.atlas; sourceTree = "<group>"; };
+		999B79B62105F19500B4BA02 /* testData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testData.swift; sourceTree = "<group>"; };
+		999B79B82105F29400B4BA02 /* testDataGaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testDataGaps.swift; sourceTree = "<group>"; };
 		99A357AE2079072400F86F84 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		99A357B02079073400F86F84 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		99A357B22079082F00F86F84 /* introGravicaine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = introGravicaine.wav; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 				99BE2F3120F7635E00BC2F42 /* BarrierTypesData.swift */,
 				99BE2F3320F7669100BC2F42 /* BarrierCPointsData.swift */,
 				99BE2F3520F7681300BC2F42 /* BarrierGapPositionData.swift */,
+				999B79B62105F19500B4BA02 /* testData.swift */,
+				999B79B82105F29400B4BA02 /* testDataGaps.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -507,6 +513,7 @@
 				99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */,
 				991AEE1D20D3BC050041FC24 /* GameScene+Pause.swift in Sources */,
 				99E9D41320DFF7B400B98EBE /* GameScene+Barriers.swift in Sources */,
+				999B79B92105F29400B4BA02 /* testDataGaps.swift in Sources */,
 				990B01C820BC8D6000F2BA3F /* Constants.swift in Sources */,
 				99E9D41720DFF8DE00B98EBE /* GameScene+Mines.swift in Sources */,
 				9990F75920D444070007F0CA /* RedAsteroidNode.swift in Sources */,
@@ -522,6 +529,7 @@
 				99BE2F3420F7669100BC2F42 /* BarrierCPointsData.swift in Sources */,
 				99A40D4820754BE0000D5DD9 /* AppDelegate.swift in Sources */,
 				99E9D41920DFF91500B98EBE /* GameScene+Laser.swift in Sources */,
+				999B79B72105F19500B4BA02 /* testData.swift in Sources */,
 				993C7E4D20C2D9BD0095D78D /* SKNodeExplosion.swift in Sources */,
 				990B01CA20BDF03900F2BA3F /* HighScoreNamePanel.swift in Sources */,
 				99A357BE207A578700F86F84 /* Utils.swift in Sources */,
