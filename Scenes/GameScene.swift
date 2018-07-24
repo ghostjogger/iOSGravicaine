@@ -72,6 +72,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     private var gravityNode: SKSpriteNode = SKSpriteNode()
     private var gravityNodeLabel: SKLabelNode = SKLabelNode(text: "G")
     
+    //power
+    private var powerNode: SKSpriteNode = SKSpriteNode()
+    
 
     var gameOverTransitioning = false
     private var gamePaused = false
@@ -191,6 +194,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         player.physicsBody?.mass = CGFloat(playerMass)
         player.position = CGPoint(x: self.size.width/2, y: -player.size.height)
         player.setScale(3.0)
+        player.power = playerPower
         self.player.isHidden = false
         let playerAppear = SKAction.moveTo(y: self.size.height * CGFloat(playerBaseY), duration: 0.3)
         let playerShrinkScale = SKAction.scale(to: 1.0, duration: 0.5)
@@ -338,6 +342,14 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         middleIndicator = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.4), size: size)
         middleIndicator.zPosition = 0
         middleIndicator.position = CGPoint(x: self.frame.midX, y: self.size.height/2)
+        
+        // set up power node indicator
+        powerNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.90),
+                                 size: CGSize(width: self.frame.width * 0.5 ,
+                                 height: self.frame.height * 0.02))
+        powerNode.anchorPoint = CGPoint.zero
+        powerNode.zPosition = 2000
+        powerNode.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.1)
 
         
         
@@ -469,6 +481,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         //gravityNode.addChild(gravityNodeLabel)
         self.addChild(gravityNode)
         
+        //powernode
+        self.addChild(powerNode)
+        
         //exit label
         exitLabel.zPosition = 50
         exitLabel.size = CGSize(width: exitLabel.size.width * scaleFactor, height: exitLabel.size.height * scaleFactor)
@@ -503,6 +518,16 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             deltaFrameTime = currentTime - lastUpdateTime
             lastUpdateTime = currentTime
         }
+            
+            player.power -= 0.05
+            
+            if player.power <= 0{
+                player.power = 0
+            }
+            
+            print(player.power)
+            powerNode.size = CGSize(width: self.frame.width * CGFloat((0.5 * (player.power/100))) ,
+                                    height: self.frame.height * 0.02)
 
             
             if player.position.x < self.size.width/2{

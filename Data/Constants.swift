@@ -24,6 +24,7 @@ let mineVerticalSpacing = 150
 
 let playerBaseY = 0.2
 let playerMass = 0.3
+let playerPower = 100.0
 let laserMass = 5
 
 let spawnInterval = 1.7
