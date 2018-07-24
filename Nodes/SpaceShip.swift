@@ -19,9 +19,6 @@ class SpaceShip: SKSpriteNode {
     private var shieldNode: GreenShieldNode = GreenShieldNode(scale: 1.0)
     private var scale = CGFloat(0.0)
 
- 
-    
-    
     
     init(scale: CGFloat) {
         let texture = SKTexture(imageNamed: "playerShip")
