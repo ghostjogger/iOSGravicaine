@@ -74,6 +74,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     
     //power
     private var powerNode: SKSpriteNode = SKSpriteNode()
+    private var powerNodeBackground: SKSpriteNode = SKSpriteNode()
     
 
     var gameOverTransitioning = false
@@ -343,13 +344,20 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         middleIndicator.zPosition = 0
         middleIndicator.position = CGPoint(x: self.frame.midX, y: self.size.height/2)
         
-        // set up power node indicator
+        // set up power node indicator and background
         powerNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.90),
                                  size: CGSize(width: self.frame.width * 0.5 ,
                                  height: self.frame.height * 0.02))
         powerNode.anchorPoint = CGPoint.zero
         powerNode.zPosition = 2000
         powerNode.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.1)
+        
+        powerNodeBackground = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.40),
+                                 size: CGSize(width: self.frame.width * 0.5 ,
+                                              height: self.frame.height * 0.02))
+        powerNodeBackground.anchorPoint = CGPoint.zero
+        powerNodeBackground.zPosition = 1000
+        powerNodeBackground.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.1)
 
         
         
@@ -483,6 +491,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         //powernode
         self.addChild(powerNode)
+        self.addChild(powerNodeBackground)
         
         //exit label
         exitLabel.zPosition = 50
