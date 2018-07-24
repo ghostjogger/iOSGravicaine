@@ -28,9 +28,9 @@ let laserMass = 5
 
 let spawnInterval = 1.7
 
-let impulse = 40
+let impulse = 45
 let thrustPower = 350
-let gravity = 0.8
+let gravity = 1.0
 
 let shieldActivationTime = 6.0
 
