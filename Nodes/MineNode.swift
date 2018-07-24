@@ -26,11 +26,12 @@ class MineNode: SKSpriteNode {
     
     // MARK: init
     
-    init(scale: CGFloat) {
+    init(scale: CGFloat, speed: CGFloat) {
         
         let texture = SKTexture(imageNamed: "mine1")
         let size = CGSize(width: (texture.size().width * 0.7) * scale, height: (texture.size().height * 0.7) * scale)
         super.init(texture: texture, color: UIColor.clear, size: size)
+        self.mineSpeed = CGFloat(obstacleVerticalSpeed) * speed
         
         
         //setup animation
