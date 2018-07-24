@@ -528,7 +528,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             lastUpdateTime = currentTime
         }
             
-            player.power -= 0.05
+            player.power -= 0.01
             
             if player.power <= 0{
                 player.power = 0
