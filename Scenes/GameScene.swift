@@ -361,6 +361,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         powerNodeBackground.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.1)
         
         powerIcon = SKSpriteNode(imageNamed: "powerIcon")
+        powerIcon.size = CGSize(width: powerIcon.size.width * self.scaleFactor, height: powerIcon.size.height * self.scaleFactor)
         powerIcon.zPosition = 1000
         powerIcon.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.0875)
 
@@ -508,7 +509,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         //pause label
         pauseLabel.zPosition = 50
         pauseLabel.size = CGSize(width: pauseLabel.size.width * scaleFactor, height: pauseLabel.size.height * scaleFactor)
-        pauseLabel.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.05)
+        pauseLabel.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.04)
         self.addChild(pauseLabel)
 
         if GodMode {
