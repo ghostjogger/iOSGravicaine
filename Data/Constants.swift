@@ -30,7 +30,7 @@ let laserMass = 5
 
 let spawnInterval = 1.7
 
-let impulse = 45
+let impulse = 50
 let thrustPower = 350
 let gravity = 1.0
 

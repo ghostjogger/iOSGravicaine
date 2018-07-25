@@ -534,7 +534,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             lastUpdateTime = currentTime
         }
             
-            player.power -= powerDecrement * deltaFrameTime
+            //player.power -= powerDecrement * deltaFrameTime
             
             if player.power <= 0{
                 player.power = 0
