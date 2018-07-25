@@ -75,6 +75,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     //power
     private var powerNode: SKSpriteNode = SKSpriteNode()
     private var powerNodeBackground: SKSpriteNode = SKSpriteNode()
+    private var powerIcon: SKSpriteNode = SKSpriteNode()
     
 
     var gameOverTransitioning = false
@@ -347,17 +348,21 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         // set up power node indicator and background
         powerNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.90),
                                  size: CGSize(width: self.frame.width * 0.5 ,
-                                 height: self.frame.height * 0.02))
+                                 height: self.frame.height * 0.01))
         powerNode.anchorPoint = CGPoint.zero
         powerNode.zPosition = 2000
         powerNode.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.1)
         
         powerNodeBackground = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.40),
                                  size: CGSize(width: self.frame.width * 0.5 ,
-                                              height: self.frame.height * 0.02))
+                                              height: self.frame.height * 0.01))
         powerNodeBackground.anchorPoint = CGPoint.zero
         powerNodeBackground.zPosition = 1000
         powerNodeBackground.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.1)
+        
+        powerIcon = SKSpriteNode(imageNamed: "powerIcon")
+        powerIcon.zPosition = 1000
+        powerIcon.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.0875)
 
         
         
@@ -492,6 +497,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         //powernode
         self.addChild(powerNode)
         self.addChild(powerNodeBackground)
+        self.addChild(powerIcon)
         
         //exit label
         exitLabel.zPosition = 50
@@ -536,7 +542,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             
             print(player.power)
             powerNode.size = CGSize(width: self.frame.width * CGFloat((0.5 * (player.power/100))) ,
-                                    height: self.frame.height * 0.02)
+                                    height: self.frame.height * 0.01)
 
             
             if player.position.x < self.size.width/2{
