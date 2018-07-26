@@ -751,6 +751,11 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
             case 8:
                 spawnLaserBatteryStaticRight()
                 break
+            case 9:
+                spawnVerticalGapBarrierLeftLower(count: next)
+                break
+            case 10:
+                spawnVerticalGapBarrierRightLower(count: next)
             default:
                 break
                 
