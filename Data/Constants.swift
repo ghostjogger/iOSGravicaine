@@ -11,8 +11,8 @@ import Foundation
 let barrierHeight = 336
 let barrierWidth = 800
 let barrierGap = 400
-let barrierVerticalSpacing = 1000
-let barrierHOverlap = -50
+let barrierVerticalSpacing = 900
+let barrierHOverlap = 0
 let obstacleVerticalSpeed = 900.0
 let barrierSpeedAcross = 5.0
 let bseed = 1
@@ -30,7 +30,7 @@ let laserMass = 5
 
 let spawnInterval = 1.7
 
-let impulse = 60
+let impulse = 70
 let thrustPower = 350
 let gravity = 1.0
 
