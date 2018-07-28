@@ -153,15 +153,15 @@ extension GameScene{
                 
                 let ga1 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga1.move = .Curvy
-                ga1.position = CGPoint(x: self.frame.width * 0.1, y: yStart)
+                ga1.position = CGPoint(x: self.frame.minX - (self.frame.width * 0.2), y: yStart)
                 greyAsteroids.append(ga1)
                 let ga2 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga2.move = .Curvy
-                ga2.position = CGPoint(x: self.frame.width * 0.5, y: yStart)
+                ga2.position = CGPoint(x: self.frame.width * 0.2, y: yStart)
                 greyAsteroids.append(ga2)
                 let ga3 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga3.move = .Curvy
-                ga3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
+                ga3.position = CGPoint(x: self.frame.width * 0.6, y: yStart)
                 greyAsteroids.append(ga3)
                 
                 scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
@@ -176,7 +176,7 @@ extension GameScene{
                         node.move(from: node.position,
                                   to: CGPoint(x: node.position.x, y: self.frame.minY),
                                   control: 1,
-                                  cpoint: 4,
+                                  cpoint:6,
                                   run: {
                                     
                         })
@@ -212,15 +212,15 @@ extension GameScene{
                 
                 let ga1 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga1.move = .Curvy
-                ga1.position = CGPoint(x: self.frame.width * 0.1, y: yStart)
+                ga1.position = CGPoint(x: self.frame.width * 0.4, y: yStart)
                 greyAsteroids.append(ga1)
                 let ga2 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga2.move = .Curvy
-                ga2.position = CGPoint(x: self.frame.width * 0.5, y: yStart)
+                ga2.position = CGPoint(x: self.frame.width * 0.8, y: yStart)
                 greyAsteroids.append(ga2)
                 let ga3 = RedAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
                 ga3.move = .Curvy
-                ga3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
+                ga3.position = CGPoint(x: self.frame.width * 1.2, y: yStart)
                 greyAsteroids.append(ga3)
                 
                 scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
@@ -235,7 +235,7 @@ extension GameScene{
                         node.move(from: node.position,
                                   to: CGPoint(x: node.position.x, y: self.frame.minY),
                                   control: -1,
-                                  cpoint: 4,
+                                  cpoint: 6,
                                   run: {
                                     
                         })
@@ -256,8 +256,124 @@ extension GameScene{
         
     }
     
+    func spawnAsteroidBeltLeftOscillate(){
+        
+        if !gameOverTransitioning{
+            
+            var greyAsteroids = [GreyAsteroidNode]()
+            
+            let size = CGSize(width: self.frame.width, height: 10.0)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
+            
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
+            
+            DispatchQueue.global().async {
+                
+                let ga1 = GreyAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
+                ga1.position = CGPoint(x: self.frame.width * 0.1, y: yStart)
+                greyAsteroids.append(ga1)
+                let ga2 = GreyAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
+                ga2.position = CGPoint(x: self.frame.width * 0.5, y: yStart)
+                greyAsteroids.append(ga2)
+                let ga3 = GreyAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
+                ga3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
+                greyAsteroids.append(ga3)
+                
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
+                
+                DispatchQueue.main.async(execute: {
+                    
+                    
+                    for node in greyAsteroids{
+                        
+                        self.addChild(node)
+                        node.animate()
+                        node.move(from: node.position,
+                                  to: CGPoint(x: node.position.x, y: self.frame.minY),
+                                  control: 1,
+                                  cpoint: 1,
+                                  run: {
+                                    
+                        })
+                        
+                        node.oscillate(toX1: node.position.x - self.frame.width * 0.3,
+                                       toX2: node.position.x + self.frame.width * 0.3,
+                                       toX3: node.position.x - self.frame.width * 0.3)
+                        
+                    }
+                    
+                    self.addChild(scoreNode)
+                    scoreNode.move(from: scoreNode.position,
+                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 120),
+                                   control: 1,
+                                   cpoint: 1,
+                                   run: {
+                                    
+                    })
+                })
+            }
+        }
+        
+    }
     
-    
+    func spawnAsteroidBeltRightOscillate(){
+        
+        if !gameOverTransitioning{
+            
+            var greyAsteroids = [GreyAsteroidNode]()
+            
+            let size = CGSize(width: self.frame.width, height: 10.0)
+            let scoreNode = GapNode(size: size, speed: self.verticalScale)
+            
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
+            
+            DispatchQueue.global().async {
+                
+                let ga1 = GreyAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
+                ga1.position = CGPoint(x: self.frame.width * 0.1, y: yStart)
+                greyAsteroids.append(ga1)
+                let ga2 = GreyAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
+                ga2.position = CGPoint(x: self.frame.width * 0.5, y: yStart)
+                greyAsteroids.append(ga2)
+                let ga3 = GreyAsteroidNode(scale: self.scaleFactor, speed: self.verticalScale)
+                ga3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
+                greyAsteroids.append(ga3)
+                
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
+                
+                DispatchQueue.main.async(execute: {
+                    
+                    
+                    for node in greyAsteroids{
+                        
+                        self.addChild(node)
+                        node.animate()
+                        node.move(from: node.position,
+                                  to: CGPoint(x: node.position.x, y: self.frame.minY),
+                                  control: 1,
+                                  cpoint: 1,
+                                  run: {
+                                    
+                        })
+                        node.oscillate(toX1: node.position.x + self.frame.width * 0.3,
+                                       toX2: node.position.x - self.frame.width * 0.3,
+                                       toX3: node.position.x + self.frame.width * 0.3)
+                        
+                    }
+                    
+                    self.addChild(scoreNode)
+                    scoreNode.move(from: scoreNode.position,
+                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 120),
+                                   control: 1,
+                                   cpoint: 1,
+                                   run: {
+                                    
+                    })
+                })
+            }
+        }
+        
+    }
     
     
 }
