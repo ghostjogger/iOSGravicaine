@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scenes/GameScene.swift"
-            timestampString = "554556732.647696"
+            timestampString = "554581483.670177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "setInGameState()"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "setWaitingGameState()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scenes/GameScene.swift"
-            timestampString = "554556732.647797"
+            timestampString = "554581483.6706229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "init(size:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Scenes/GameScene.swift"
-            timestampString = "554556732.647861"
+            timestampString = "554581483.670945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
             landmarkName = "init(size:)"
             landmarkType = "7">
          </BreakpointContent>
