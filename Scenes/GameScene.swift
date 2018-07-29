@@ -450,7 +450,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         
  
-        barrierCount = 340
+        barrierCount = 420
         
         print(barrierTypes.count)
         print(barriers.count)
@@ -768,6 +768,18 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 break
             case 14:
                 spawnAsteroidBeltRightOscillate()
+                break
+            case 15:
+                spawnMineField(isLeftAligned: true)
+                break
+            case 16:
+                spawnMineField(isLeftAligned: false)
+                break
+            case 17:
+                spawnMineFieldOscillateLeft(isLeftAligned: false)
+                break
+            case 18:
+                spawnMineFieldOscillateRight(isLeftAligned: true)
                 break
             default:
                 break
