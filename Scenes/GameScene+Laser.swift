@@ -23,7 +23,7 @@ extension GameScene{
             rightPlatform.zPosition = 200
             
             var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
-            laser.size.width = self.frame.width * 0.4
+            laser.size.width = self.frame.width * 0.35
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
             laser.physicsBody!.affectedByGravity = false
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
@@ -105,7 +105,7 @@ extension GameScene{
             rightPlatform.zPosition = 200
             
             var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
-            laser.size.width = self.frame.width * 0.4
+            laser.size.width = self.frame.width * 0.35
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
             laser.physicsBody!.affectedByGravity = false
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
@@ -263,13 +263,13 @@ extension GameScene{
             rightPlatform.zPosition = 200
             
             var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
-            laser.size.width = self.frame.width * 0.6
+            laser.size.width = self.frame.width * 0.5
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
             laser.physicsBody!.affectedByGravity = false
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
             laser.physicsBody!.collisionBitMask = PhysicsCategories.None
             laser.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-            laser.position = CGPoint(x: self.frame.width * 0.4, y: self.frame.maxY + 150)
+            laser.position = CGPoint(x: self.frame.width * 0.35, y: self.frame.maxY + 150)
             laser.zPosition = 200
             
             
@@ -340,13 +340,13 @@ extension GameScene{
             rightPlatform.zPosition = 200
             
             var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
-            laser.size.width = self.frame.width * 0.6
+            laser.size.width = self.frame.width * 0.5
             laser.physicsBody = SKPhysicsBody(rectangleOf: laser.size)
             laser.physicsBody!.affectedByGravity = false
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
             laser.physicsBody!.collisionBitMask = PhysicsCategories.None
             laser.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-            laser.position = CGPoint(x: self.frame.width * 0.6, y: self.frame.maxY + 150)
+            laser.position = CGPoint(x: self.frame.width * 0.65, y: self.frame.maxY + 150)
             laser.zPosition = 200
             
             

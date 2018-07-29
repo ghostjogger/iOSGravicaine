@@ -121,9 +121,9 @@ class LaserBeamNode: SKSpriteNode {
     
     func oscillate(toX1: CGFloat, toX2: CGFloat, toX3: CGFloat){
         
-        let action1 = SKAction.moveTo(x: toX1, duration: 1.0)
-        let action2 = SKAction.moveTo(x: toX2, duration: 1.0)
-        let action3 = SKAction.moveTo(x: toX3, duration: 1.0)
+        let action1 = SKAction.moveTo(x: toX1, duration: 1.5)
+        let action2 = SKAction.moveTo(x: toX2, duration: 1.5)
+        let action3 = SKAction.moveTo(x: toX3, duration: 1.5)
         
         self.run(action1) {
             self.run(action2, completion: {
