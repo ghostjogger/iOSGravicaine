@@ -33,7 +33,7 @@ extension GameScene{
                     ga.position = CGPoint(x: random(min: minX, max: maxX), y: yStart)
                     greyAsteroids.append(ga)
                 }
-                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart +  120)
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart +  100)
                 
                 DispatchQueue.main.async(execute: {
                     
@@ -69,7 +69,7 @@ extension GameScene{
                     
                     self.addChild(scoreNode)
                     scoreNode.move(from: scoreNode.position,
-                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 120),
+                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 100),
                                    control: 1,
                                    cpoint: 1,
                                    run: {
@@ -105,7 +105,7 @@ extension GameScene{
                 ga3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
                 greyAsteroids.append(ga3)
                 
-                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 100)
                 
                 DispatchQueue.main.async(execute: {
                     
@@ -126,7 +126,7 @@ extension GameScene{
                     
                     self.addChild(scoreNode)
                     scoreNode.move(from: scoreNode.position,
-                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 120),
+                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 100),
                                    control: 1,
                                    cpoint: 1,
                                    run: {
@@ -164,7 +164,7 @@ extension GameScene{
                 ga3.position = CGPoint(x: self.frame.width * 0.6, y: yStart)
                 greyAsteroids.append(ga3)
                 
-                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 150)
                 
                 DispatchQueue.main.async(execute: {
                     
@@ -185,7 +185,7 @@ extension GameScene{
                     
                     self.addChild(scoreNode)
                     scoreNode.move(from: scoreNode.position,
-                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 120),
+                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 150),
                                    control: 1,
                                    cpoint: 1,
                                    run: {
@@ -223,7 +223,7 @@ extension GameScene{
                 ga3.position = CGPoint(x: self.frame.width * 1.2, y: yStart)
                 greyAsteroids.append(ga3)
                 
-                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 150)
                 
                 DispatchQueue.main.async(execute: {
                     
@@ -244,7 +244,7 @@ extension GameScene{
                     
                     self.addChild(scoreNode)
                     scoreNode.move(from: scoreNode.position,
-                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 120),
+                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 150),
                                    control: 1,
                                    cpoint: 1,
                                    run: {
@@ -279,7 +279,7 @@ extension GameScene{
                 ga3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
                 greyAsteroids.append(ga3)
                 
-                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 100)
                 
                 DispatchQueue.main.async(execute: {
                     
@@ -304,7 +304,7 @@ extension GameScene{
                     
                     self.addChild(scoreNode)
                     scoreNode.move(from: scoreNode.position,
-                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 120),
+                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 100),
                                    control: 1,
                                    cpoint: 1,
                                    run: {
@@ -339,7 +339,7 @@ extension GameScene{
                 ga3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
                 greyAsteroids.append(ga3)
                 
-                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 120)
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 100)
                 
                 DispatchQueue.main.async(execute: {
                     
@@ -363,7 +363,7 @@ extension GameScene{
                     
                     self.addChild(scoreNode)
                     scoreNode.move(from: scoreNode.position,
-                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 120),
+                                   to: CGPoint(x: self.frame.midX, y: self.frame.minY + 100),
                                    control: 1,
                                    cpoint: 1,
                                    run: {

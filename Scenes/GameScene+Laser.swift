@@ -14,12 +14,14 @@ extension GameScene{
         
         if !gameOverTransitioning{
             
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
+            
             var leftPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
-            leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.maxY + 150)
+            leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: yStart)
             leftPlatform.zPosition = 200
             
             var rightPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
-            rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.maxY + 150)
+            rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: yStart)
             rightPlatform.zPosition = 200
             
             var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
@@ -29,13 +31,13 @@ extension GameScene{
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
             laser.physicsBody!.collisionBitMask = PhysicsCategories.None
             laser.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-            laser.position = CGPoint(x: self.frame.width * 0.2, y: self.frame.maxY + 150)
+            laser.position = CGPoint(x: self.frame.width * 0.2, y: yStart)
             laser.zPosition = 200
             
             
             let size = CGSize(width: self.frame.width, height: 10.0)
             let scoreNode = GapNode(size: size, speed: self.verticalScale)
-            scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
+            scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 100)
             
             DispatchQueue.global().async {
                 
@@ -77,7 +79,7 @@ extension GameScene{
                     
                     
                     self.addChild(scoreNode)
-                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 200), control: 1, cpoint: 1, run: {
+                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 100), control: 1, cpoint: 1, run: {
                         
                     })
                 })
@@ -96,12 +98,14 @@ extension GameScene{
         
         if !gameOverTransitioning{
             
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
+            
             var leftPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
-            leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.maxY + 150)
+            leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: yStart)
             leftPlatform.zPosition = 200
             
             var rightPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
-            rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.maxY + 150)
+            rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: yStart)
             rightPlatform.zPosition = 200
             
             var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
@@ -111,13 +115,13 @@ extension GameScene{
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
             laser.physicsBody!.collisionBitMask = PhysicsCategories.None
             laser.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-            laser.position = CGPoint(x: self.frame.width * 0.8, y: self.frame.maxY + 150)
+            laser.position = CGPoint(x: self.frame.width * 0.8, y: yStart)
             laser.zPosition = 200
             
             
             let size = CGSize(width: self.frame.width, height: 10.0)
             let scoreNode = GapNode(size: size, speed: self.verticalScale)
-            scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
+            scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 100)
             
             DispatchQueue.global().async {
                 
@@ -159,7 +163,7 @@ extension GameScene{
                     
                     
                     self.addChild(scoreNode)
-                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 200), control: 1, cpoint: 1, run: {
+                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 100), control: 1, cpoint: 1, run: {
                         
                     })
                 })
@@ -177,12 +181,14 @@ extension GameScene{
         
         if !gameOverTransitioning{
             
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
+            
             var leftPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
-            leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.maxY + 150)
+            leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: yStart)
             leftPlatform.zPosition = 200
             
             var rightPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
-            rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.maxY + 150)
+            rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: yStart)
             rightPlatform.zPosition = 200
             
             var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
@@ -192,13 +198,13 @@ extension GameScene{
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
             laser.physicsBody!.collisionBitMask = PhysicsCategories.None
             laser.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-            laser.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.maxY + 150)
+            laser.position = CGPoint(x: self.frame.width * 0.5, y: yStart)
             laser.zPosition = 200
             
             
             let size = CGSize(width: self.frame.width, height: 10.0)
             let scoreNode = GapNode(size: size, speed: self.verticalScale)
-            scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
+            scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 100)
             
             DispatchQueue.global().async {
                 
@@ -236,7 +242,7 @@ extension GameScene{
                     })
                     
                     self.addChild(scoreNode)
-                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 200), control: 1, cpoint: 1, run: {
+                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 100), control: 1, cpoint: 1, run: {
                         
                     })
                 })
@@ -254,12 +260,14 @@ extension GameScene{
         
         if !gameOverTransitioning{
             
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
+            
             var leftPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
-            leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.maxY + 150)
+            leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: yStart)
             leftPlatform.zPosition = 200
             
             var rightPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
-            rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.maxY + 150)
+            rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: yStart)
             rightPlatform.zPosition = 200
             
             var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
@@ -269,13 +277,13 @@ extension GameScene{
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
             laser.physicsBody!.collisionBitMask = PhysicsCategories.None
             laser.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-            laser.position = CGPoint(x: self.frame.width * 0.35, y: self.frame.maxY + 150)
+            laser.position = CGPoint(x: self.frame.width * 0.35, y: yStart)
             laser.zPosition = 200
             
             
             let size = CGSize(width: self.frame.width, height: 10.0)
             let scoreNode = GapNode(size: size, speed: self.verticalScale)
-            scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
+            scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 100)
             
             DispatchQueue.global().async {
                 
@@ -313,7 +321,7 @@ extension GameScene{
                     })
                     
                     self.addChild(scoreNode)
-                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 200), control: 1, cpoint: 1, run: {
+                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 100), control: 1, cpoint: 1, run: {
                         
                     })
                 })
@@ -331,12 +339,14 @@ extension GameScene{
         
         if !gameOverTransitioning{
             
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
+            
             var leftPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
-            leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: self.frame.maxY + 150)
+            leftPlatform.position = CGPoint(x: self.frame.width * 0.05, y: yStart)
             leftPlatform.zPosition = 200
             
             var rightPlatform = BombNode(scale: self.scaleFactor, speed: self.verticalScale)
-            rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: self.frame.maxY + 150)
+            rightPlatform.position = CGPoint(x: self.frame.width * 0.95, y: yStart)
             rightPlatform.zPosition = 200
             
             var laser = LaserBeamNode(scale: self.scaleFactor, speed: self.verticalScale)
@@ -346,13 +356,13 @@ extension GameScene{
             laser.physicsBody!.categoryBitMask = PhysicsCategories.Asteroid
             laser.physicsBody!.collisionBitMask = PhysicsCategories.None
             laser.physicsBody!.contactTestBitMask = PhysicsCategories.Player
-            laser.position = CGPoint(x: self.frame.width * 0.65, y: self.frame.maxY + 150)
+            laser.position = CGPoint(x: self.frame.width * 0.65, y: yStart)
             laser.zPosition = 200
             
             
             let size = CGSize(width: self.frame.width, height: 10.0)
             let scoreNode = GapNode(size: size, speed: self.verticalScale)
-            scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
+            scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 100)
             
             DispatchQueue.global().async {
                 
@@ -390,7 +400,7 @@ extension GameScene{
                     })
                     
                     self.addChild(scoreNode)
-                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 200), control: 1, cpoint: 1, run: {
+                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 100), control: 1, cpoint: 1, run: {
                         
                     })
                 })

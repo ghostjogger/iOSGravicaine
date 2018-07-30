@@ -15,6 +15,8 @@ extension GameScene{
         
         if !gameOverTransitioning{
             
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
+            
             var mines = [MineNode]()
             let size = CGSize(width: self.frame.width, height: 10.0)
             let scoreNode = GapNode(size: size, speed: self.verticalScale)
@@ -26,18 +28,18 @@ extension GameScene{
                     // left aligned mines
                     let mine1 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine1.zPosition = 200
-                    mine1.position = CGPoint(x: self.frame.width * 0.1, y: self.frame.maxY + mine1.size.height)
+                    mine1.position = CGPoint(x: self.frame.width * 0.1, y: yStart)
                     mines.append(mine1)
                     
                     
                     let mine2 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine2.zPosition = 200
-                    mine2.position = CGPoint(x: self.frame.width * 0.4, y: self.frame.maxY + mine1.size.height)
+                    mine2.position = CGPoint(x: self.frame.width * 0.4, y: yStart)
                     mines.append(mine2)
                     
                     let mine3 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine3.zPosition = 200
-                    mine3.position = CGPoint(x: self.frame.width * 0.7, y: self.frame.maxY + mine1.size.height)
+                    mine3.position = CGPoint(x: self.frame.width * 0.7, y: yStart)
                     mines.append(mine3)
                 }
                 else{
@@ -45,23 +47,23 @@ extension GameScene{
                     //right aligned mines
                     let mine1 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine1.zPosition = 200
-                    mine1.position = CGPoint(x: self.frame.width * 0.3, y: self.frame.maxY + mine1.size.height)
+                    mine1.position = CGPoint(x: self.frame.width * 0.3, y: yStart)
                     mines.append(mine1)
                     
                     
                     let mine2 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine2.zPosition = 200
-                    mine2.position = CGPoint(x: self.frame.width * 0.6, y: self.frame.maxY + mine1.size.height)
+                    mine2.position = CGPoint(x: self.frame.width * 0.6, y: yStart)
                     mines.append(mine2)
                     
                     let mine3 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine3.zPosition = 200
-                    mine3.position = CGPoint(x: self.frame.width * 0.9, y: self.frame.maxY + mine1.size.height)
+                    mine3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
                     mines.append(mine3)
                     
                 }
                 
-                scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 100)
                 
                 DispatchQueue.main.async(execute: {
                     
@@ -76,7 +78,7 @@ extension GameScene{
                     }
                     
                     self.addChild(scoreNode)
-                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 200), control: 1, cpoint: 1, run: {
+                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 100), control: 1, cpoint: 1, run: {
                         
                     })
                 })
@@ -87,6 +89,8 @@ extension GameScene{
     func spawnMineFieldOscillateLeft(isLeftAligned: Bool){
         
         if !gameOverTransitioning{
+            
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
             
             var mines = [MineNode]()
             let size = CGSize(width: self.frame.width, height: 10.0)
@@ -99,18 +103,18 @@ extension GameScene{
                     // left aligned mines
                     let mine1 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine1.zPosition = 200
-                    mine1.position = CGPoint(x: self.frame.width * 0.1, y: self.frame.maxY + mine1.size.height)
+                    mine1.position = CGPoint(x: self.frame.width * 0.1, y: yStart)
                     mines.append(mine1)
                     
                     
                     let mine2 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine2.zPosition = 200
-                    mine2.position = CGPoint(x: self.frame.width * 0.4, y: self.frame.maxY + mine1.size.height)
+                    mine2.position = CGPoint(x: self.frame.width * 0.4, y: yStart)
                     mines.append(mine2)
                     
                     let mine3 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine3.zPosition = 200
-                    mine3.position = CGPoint(x: self.frame.width * 0.7, y: self.frame.maxY + mine1.size.height)
+                    mine3.position = CGPoint(x: self.frame.width * 0.7, y: yStart)
                     mines.append(mine3)
                 }
                 else{
@@ -118,23 +122,23 @@ extension GameScene{
                     //right aligned mines
                     let mine1 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine1.zPosition = 200
-                    mine1.position = CGPoint(x: self.frame.width * 0.3, y: self.frame.maxY + mine1.size.height)
+                    mine1.position = CGPoint(x: self.frame.width * 0.3, y: yStart)
                     mines.append(mine1)
                     
                     
                     let mine2 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine2.zPosition = 200
-                    mine2.position = CGPoint(x: self.frame.width * 0.6, y: self.frame.maxY + mine1.size.height)
+                    mine2.position = CGPoint(x: self.frame.width * 0.6, y: yStart)
                     mines.append(mine2)
                     
                     let mine3 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine3.zPosition = 200
-                    mine3.position = CGPoint(x: self.frame.width * 0.9, y: self.frame.maxY + mine1.size.height)
+                    mine3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
                     mines.append(mine3)
                     
                 }
                 
-                scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 100)
                 
                 DispatchQueue.main.async(execute: {
                     
@@ -153,7 +157,7 @@ extension GameScene{
                     }
                     
                     self.addChild(scoreNode)
-                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 200), control: 1, cpoint: 1, run: {
+                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 100), control: 1, cpoint: 1, run: {
                         
                     })
                 })
@@ -164,6 +168,8 @@ extension GameScene{
     func spawnMineFieldOscillateRight(isLeftAligned: Bool){
         
         if !gameOverTransitioning{
+            
+            let yStart = self.frame.maxY + CGFloat(barrierHeight)
             
             var mines = [MineNode]()
             let size = CGSize(width: self.frame.width, height: 10.0)
@@ -176,18 +182,18 @@ extension GameScene{
                     // left aligned mines
                     let mine1 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine1.zPosition = 200
-                    mine1.position = CGPoint(x: self.frame.width * 0.1, y: self.frame.maxY + mine1.size.height)
+                    mine1.position = CGPoint(x: self.frame.width * 0.1, y: yStart)
                     mines.append(mine1)
                     
                     
                     let mine2 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine2.zPosition = 200
-                    mine2.position = CGPoint(x: self.frame.width * 0.4, y: self.frame.maxY + mine1.size.height)
+                    mine2.position = CGPoint(x: self.frame.width * 0.4, y: yStart)
                     mines.append(mine2)
                     
                     let mine3 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine3.zPosition = 200
-                    mine3.position = CGPoint(x: self.frame.width * 0.7, y: self.frame.maxY + mine1.size.height)
+                    mine3.position = CGPoint(x: self.frame.width * 0.7, y: yStart)
                     mines.append(mine3)
                 }
                 else{
@@ -195,23 +201,23 @@ extension GameScene{
                     //right aligned mines
                     let mine1 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine1.zPosition = 200
-                    mine1.position = CGPoint(x: self.frame.width * 0.3, y: self.frame.maxY + mine1.size.height)
+                    mine1.position = CGPoint(x: self.frame.width * 0.3, y: yStart)
                     mines.append(mine1)
                     
                     
                     let mine2 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine2.zPosition = 200
-                    mine2.position = CGPoint(x: self.frame.width * 0.6, y: self.frame.maxY + mine1.size.height)
+                    mine2.position = CGPoint(x: self.frame.width * 0.6, y: yStart)
                     mines.append(mine2)
                     
                     let mine3 = MineNode(scale: self.scaleFactor, speed: self.verticalScale)
                     mine3.zPosition = 200
-                    mine3.position = CGPoint(x: self.frame.width * 0.9, y: self.frame.maxY + mine1.size.height)
+                    mine3.position = CGPoint(x: self.frame.width * 0.9, y: yStart)
                     mines.append(mine3)
                     
                 }
                 
-                scoreNode.position = CGPoint(x: self.frame.midX, y: self.frame.maxY + 200)
+                scoreNode.position = CGPoint(x: self.frame.midX, y: yStart + 100)
                 
                 DispatchQueue.main.async(execute: {
                     
@@ -230,7 +236,7 @@ extension GameScene{
                     }
                     
                     self.addChild(scoreNode)
-                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 200), control: 1, cpoint: 1, run: {
+                    scoreNode.move(from: scoreNode.position, to: CGPoint(x: scoreNode.position.x, y: self.frame.minY + 100), control: 1, cpoint: 1, run: {
                         
                     })
                 })
