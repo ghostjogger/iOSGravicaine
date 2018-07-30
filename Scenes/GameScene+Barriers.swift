@@ -39,7 +39,7 @@ extension GameScene{
                 let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
                 let barrierSpaceNode = GapNode( size: size, speed: self.verticalScale)
                 barrierSpaceNode.move = .Straight
-                barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + (CGFloat(barrierHeight) * 2.0) )
+                barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height + (CGFloat(barrierHeight) * 1.70) )
                 
                 DispatchQueue.main.async(execute: {
                     self.addChild(leftBarrier)
@@ -101,7 +101,7 @@ extension GameScene{
                 let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
                 let barrierSpaceNode = GapNode( size: size, speed: self.verticalScale)
                 barrierSpaceNode.move = .Diagonal
-                barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y:self.size.height + (CGFloat(barrierHeight) * 2.0))
+                barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y:self.size.height + (CGFloat(barrierHeight) * 1.7))
                 
                 //setup x movements
                 let cpointX = barrierCpoints[self.barrierCount]
@@ -201,7 +201,7 @@ extension GameScene{
                 let size = CGSize(width: (CGFloat(barrierGap) * self.scaleFactor), height: leftBarrier.size.height)
                 let barrierSpaceNode = GapNode( size: size, speed: self.verticalScale)
                 barrierSpaceNode.move = .Curvy
-                barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height +  (CGFloat(barrierHeight) * 2.0))
+                barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y: self.size.height +  (CGFloat(barrierHeight) * 1.7))
                 
                 
                 DispatchQueue.main.async(execute: {
