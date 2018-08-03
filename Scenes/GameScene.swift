@@ -479,8 +479,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         self.gameState = .waiting
         self.addChild(player)
-        
-
     
         // score label prep work
         
