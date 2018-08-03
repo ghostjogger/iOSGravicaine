@@ -450,7 +450,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         
  
-        barrierCount = 290
+        barrierCount = 0
         
         print(barrierTypes.count)
         print(barriers.count)
@@ -479,8 +479,6 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         self.gameState = .waiting
         self.addChild(player)
-        
-
     
         // score label prep work
         
