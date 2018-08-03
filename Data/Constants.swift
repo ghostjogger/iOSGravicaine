@@ -12,8 +12,8 @@ let barrierHeight = 336
 let barrierWidth = 800
 let barrierGap = 400
 let barrierVerticalSpacing = 900
-let barrierHOverlap = 50
-let obstacleVerticalSpeed = 1000.0
+let barrierHOverlap = -100
+let obstacleVerticalSpeed = 900.0
 let barrierSpeedAcross = 5.0
 let bseed = 1
 let barrierMovementX = 80
@@ -30,7 +30,7 @@ let laserMass = 5
 
 let spawnInterval = 2.0
 
-let impulse = 100
+let impulse = 85
 let thrustPower = 350
 let gravity = 1.0
 
@@ -53,7 +53,7 @@ let gravIconY = 585
 
 
 
-let GodMode: Bool = true
+let GodMode: Bool = false
 let FontName: String = "Jellee-Roman"
 let HighScoreKey: String = "HighScore"
 let HighScoreName: String = "HighScoreName"
