@@ -16,7 +16,7 @@ class SpaceShip: SKSpriteNode {
     private let leftThruster:SKSpriteNode = SKSpriteNode(imageNamed: "r_thruster_small")
     private let rightThruster:SKSpriteNode = SKSpriteNode(imageNamed: "l_thruster_small")
     private var fireEmitter: SKEmitterNode? = nil
-    private var shieldNode: GreenShieldNode = GreenShieldNode(scale: 1.0)
+    private var shieldNode: BlueShieldNode = BlueShieldNode(scale: 1.0)
     private var scale = CGFloat(0.0)
     var power: Double
 
@@ -25,7 +25,7 @@ class SpaceShip: SKSpriteNode {
         let texture = SKTexture(imageNamed: "playerShip")
         self.scale = scale
         let size = CGSize(width: texture.size().width * self.scale, height: texture.size().height * self.scale)
-        self.shieldNode = GreenShieldNode(scale: self.scale)
+        self.shieldNode = BlueShieldNode(scale: self.scale)
         self.power = playerPower
         super.init(texture: texture, color: UIColor.clear, size: size)
         self.name = "player"
@@ -144,7 +144,7 @@ class SpaceShip: SKSpriteNode {
     func setShield(){
         
         if !self.children.contains(shieldNode){
-            shieldNode = GreenShieldNode(scale: self.scale)
+            shieldNode = BlueShieldNode(scale: self.scale)
             shieldNode.animate()
             shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)!)
             self.addChild(shieldNode)
@@ -152,7 +152,7 @@ class SpaceShip: SKSpriteNode {
         else{
             shieldNode.removeAllActions()
             shieldNode.removeFromParent()
-            shieldNode = GreenShieldNode(scale: self.scale)
+            shieldNode = BlueShieldNode(scale: self.scale)
             shieldNode.animate()
             shieldNode.position = CGPoint(x: (self.scene?.position.x)!, y: (self.scene?.position.y)!)
             self.addChild(shieldNode)
@@ -163,8 +163,8 @@ class SpaceShip: SKSpriteNode {
     func removeShield(){
         
         if self.children.contains(shieldNode){
-            let reddenShield = SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.5)
-            let disappearShield = SKAction.fadeAlpha(to: 0, duration: 3.5)
+            let reddenShield = SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.25)
+            let disappearShield = SKAction.fadeAlpha(to: 0, duration: 0.25)
             let deleteShield = SKAction.removeFromParent()
             let removeShieldSequence = SKAction.sequence([reddenShield,disappearShield,deleteShield])
             
