@@ -68,6 +68,7 @@
 		99BE2F3220F7635E00BC2F42 /* BarrierTypesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE2F3120F7635E00BC2F42 /* BarrierTypesData.swift */; };
 		99BE2F3420F7669100BC2F42 /* BarrierCPointsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE2F3320F7669100BC2F42 /* BarrierCPointsData.swift */; };
 		99BE2F3620F7681300BC2F42 /* BarrierGapPositionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BE2F3520F7681300BC2F42 /* BarrierGapPositionData.swift */; };
+		99D04C5A21149168000E8979 /* GameScene+RedBarriers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D04C5921149168000E8979 /* GameScene+RedBarriers.swift */; };
 		99D9DE9120D04ACD005D1CD0 /* GapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D9DE9020D04ACD005D1CD0 /* GapNode.swift */; };
 		99D9DE9520D1C790005D1CD0 /* score.wav in Resources */ = {isa = PBXBuildFile; fileRef = 99D9DE9420D1C790005D1CD0 /* score.wav */; };
 		99E9D3FE20D67B9D00B98EBE /* beam.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 99E9D3FD20D67B9D00B98EBE /* beam.atlas */; };
@@ -148,6 +149,7 @@
 		99BE2F3120F7635E00BC2F42 /* BarrierTypesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrierTypesData.swift; sourceTree = "<group>"; };
 		99BE2F3320F7669100BC2F42 /* BarrierCPointsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrierCPointsData.swift; sourceTree = "<group>"; };
 		99BE2F3520F7681300BC2F42 /* BarrierGapPositionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrierGapPositionData.swift; sourceTree = "<group>"; };
+		99D04C5921149168000E8979 /* GameScene+RedBarriers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+RedBarriers.swift"; sourceTree = "<group>"; };
 		99D9DE9020D04ACD005D1CD0 /* GapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GapNode.swift; sourceTree = "<group>"; };
 		99D9DE9420D1C790005D1CD0 /* score.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = score.wav; sourceTree = "<group>"; };
 		99E9D3FD20D67B9D00B98EBE /* beam.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = beam.atlas; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				99E9D41420DFF89900B98EBE /* GameScene+Asteroids.swift */,
 				99E9D41620DFF8DE00B98EBE /* GameScene+Mines.swift */,
 				992E508820E0DE850046C54D /* GameWonScene.swift */,
+				99D04C5921149168000E8979 /* GameScene+RedBarriers.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				9959EF5720BF37C500B7F64C /* ShieldPowerNode.swift in Sources */,
 				99B334D020B5E99D00AC5C59 /* HighScorePanelNode.swift in Sources */,
 				99A40D5020754BE0000D5DD9 /* GameViewController.swift in Sources */,
+				99D04C5A21149168000E8979 /* GameScene+RedBarriers.swift in Sources */,
 				991AEE1D20D3BC050041FC24 /* GameScene+Pause.swift in Sources */,
 				99E9D41320DFF7B400B98EBE /* GameScene+Barriers.swift in Sources */,
 				999B79B92105F29400B4BA02 /* testDataGaps.swift in Sources */,
