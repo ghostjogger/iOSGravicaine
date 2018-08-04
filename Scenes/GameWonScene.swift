@@ -108,7 +108,7 @@ class GameWonScene: SKScene, UITextFieldDelegate, Alertable {
         }
         if (textField.text?.count)! > 20{
             
-            showAlert(withTitle: "Name more than 20 characters", message: "Please try again")
+            showAlert(withTitle: "Name more than 20 characters!", message: "Please try again")
             return false
         }
         
