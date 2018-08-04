@@ -120,8 +120,8 @@ class MainMenuScene: SKScene{
         creditmessage = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
                                        title: EKProperty.LabelContent(text: "Credits:",
                                                                       style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
-                                       description: EKProperty.LabelContent(text: "\n Stephen Ball \n \n  is \n brilliant!!!",
-                                        style: EKProperty.Label(font: UIFont(name: FontName, size: 15.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
+                                       description: EKProperty.LabelContent(text: "Skorpio (sci-fi effects) CC-BY 3.0, Gobusto CC-BY 3.0,\n Telaron CC-BY 3.0",
+                                        style: EKProperty.Label(font: UIFont(name: FontName, size: 12.0)!, color: UIColor.white, alignment: NSTextAlignment.center)))
         
         creditnotificationMessage = EKNotificationMessage(simpleMessage: creditmessage)
         creditnotificationView = EKNotificationMessageView(with: creditnotificationMessage)
