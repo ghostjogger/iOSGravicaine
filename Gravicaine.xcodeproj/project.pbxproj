@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4A035864AE54CF6BD778EDCF /* Pods_Gravicaine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56FAA6595503966B1D24FFE /* Pods_Gravicaine.framework */; };
 		990B01C420BC583F00F2BA3F /* GreenShieldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B01C320BC583F00F2BA3F /* GreenShieldNode.swift */; };
-		990B01C620BC5B2700F2BA3F /* shield.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990B01C520BC5B2700F2BA3F /* shield.atlas */; };
 		990B01C820BC8D6000F2BA3F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B01C720BC8D6000F2BA3F /* Constants.swift */; };
 		990B01CA20BDF03900F2BA3F /* HighScoreNamePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990B01C920BDF03900F2BA3F /* HighScoreNamePanel.swift */; };
 		990D6B18208548B800429C9D /* star.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 990D6B17208548B800429C9D /* star.atlas */; };
@@ -22,8 +21,6 @@
 		993C7E4B20C1AFF30095D78D /* shieldFinish.wav in Resources */ = {isa = PBXBuildFile; fileRef = 993C7E4A20C1AFF30095D78D /* shieldFinish.wav */; };
 		993C7E4D20C2D9BD0095D78D /* SKNodeExplosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993C7E4C20C2D9BC0095D78D /* SKNodeExplosion.swift */; };
 		993C7E4F20C2E0B90095D78D /* GameAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993C7E4E20C2E0B90095D78D /* GameAssets.swift */; };
-		993C7E5220C2E6820095D78D /* redExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 993C7E5120C2E6820095D78D /* redExplosion.atlas */; };
-		993C7E5620C2EB8C0095D78D /* entityExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 993C7E5520C2EB8C0095D78D /* entityExplosion.atlas */; };
 		9959EF5520BDFCF400B7F64C /* gameSoundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */; };
 		9959EF5720BF37C500B7F64C /* ShieldPowerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */; };
 		9959EF5B20BF4A9E00B7F64C /* shieldSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */; };
@@ -37,7 +34,6 @@
 		9990F75B20D4441D0007F0CA /* GreyAsteroidNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990F75A20D4441D0007F0CA /* GreyAsteroidNode.swift */; };
 		9990F75D20D5B27D0007F0CA /* LaserBeamNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990F75C20D5B27D0007F0CA /* LaserBeamNode.swift */; };
 		999AC5B920C44BBB002B7852 /* blueShield.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 999AC5B820C44BBB002B7852 /* blueShield.atlas */; };
-		999AC5BC20C454BC002B7852 /* asteroidExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 999AC5BB20C454BC002B7852 /* asteroidExplosion.atlas */; };
 		999B79B72105F19500B4BA02 /* testData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999B79B62105F19500B4BA02 /* testData.swift */; };
 		999B79B92105F29400B4BA02 /* testDataGaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999B79B82105F29400B4BA02 /* testDataGaps.swift */; };
 		99A357AF2079072400F86F84 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A357AE2079072400F86F84 /* MainMenuScene.swift */; };
@@ -89,7 +85,6 @@
 /* Begin PBXFileReference section */
 		815AF9BCFF81C29FF9F618E2 /* Pods-Gravicaine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gravicaine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gravicaine/Pods-Gravicaine.debug.xcconfig"; sourceTree = "<group>"; };
 		990B01C320BC583F00F2BA3F /* GreenShieldNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenShieldNode.swift; sourceTree = "<group>"; };
-		990B01C520BC5B2700F2BA3F /* shield.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shield.atlas; sourceTree = "<group>"; };
 		990B01C720BC8D6000F2BA3F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		990B01C920BDF03900F2BA3F /* HighScoreNamePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreNamePanel.swift; sourceTree = "<group>"; };
 		990D6B17208548B800429C9D /* star.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = star.atlas; sourceTree = "<group>"; };
@@ -102,8 +97,6 @@
 		993C7E4A20C1AFF30095D78D /* shieldFinish.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shieldFinish.wav; sourceTree = "<group>"; };
 		993C7E4C20C2D9BC0095D78D /* SKNodeExplosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNodeExplosion.swift; sourceTree = "<group>"; };
 		993C7E4E20C2E0B90095D78D /* GameAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAssets.swift; sourceTree = "<group>"; };
-		993C7E5120C2E6820095D78D /* redExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = redExplosion.atlas; sourceTree = "<group>"; };
-		993C7E5520C2EB8C0095D78D /* entityExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = entityExplosion.atlas; sourceTree = "<group>"; };
 		9959EF5420BDFCF400B7F64C /* gameSoundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameSoundtrack.mp3; sourceTree = "<group>"; };
 		9959EF5620BF37C500B7F64C /* ShieldPowerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldPowerNode.swift; sourceTree = "<group>"; };
 		9959EF5A20BF4A9E00B7F64C /* shieldSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shieldSound.wav; sourceTree = "<group>"; };
@@ -117,7 +110,6 @@
 		9990F75A20D4441D0007F0CA /* GreyAsteroidNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreyAsteroidNode.swift; sourceTree = "<group>"; };
 		9990F75C20D5B27D0007F0CA /* LaserBeamNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserBeamNode.swift; sourceTree = "<group>"; };
 		999AC5B820C44BBB002B7852 /* blueShield.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blueShield.atlas; sourceTree = "<group>"; };
-		999AC5BB20C454BC002B7852 /* asteroidExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = asteroidExplosion.atlas; sourceTree = "<group>"; };
 		999B79B62105F19500B4BA02 /* testData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testData.swift; sourceTree = "<group>"; };
 		999B79B82105F29400B4BA02 /* testDataGaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testDataGaps.swift; sourceTree = "<group>"; };
 		99A357AE2079072400F86F84 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
@@ -204,12 +196,8 @@
 				9990F75320D43E7A0007F0CA /* asteroid1.atlas */,
 				99BB472F20C5D74400401887 /* mines.atlas */,
 				99BB472D20C5D6CF00401887 /* bombs.atlas */,
-				999AC5BB20C454BC002B7852 /* asteroidExplosion.atlas */,
 				99A357D420813F2B00F86F84 /* playerExplosion.atlas */,
 				990D6B17208548B800429C9D /* star.atlas */,
-				990B01C520BC5B2700F2BA3F /* shield.atlas */,
-				993C7E5120C2E6820095D78D /* redExplosion.atlas */,
-				993C7E5520C2EB8C0095D78D /* entityExplosion.atlas */,
 				999AC5B820C44BBB002B7852 /* blueShield.atlas */,
 			);
 			path = "Texture Atlases";
@@ -424,17 +412,14 @@
 				99A357BA20791F4000F86F84 /* spark.png in Resources */,
 				99A40D4A20754BE0000D5DD9 /* GameScene.sks in Resources */,
 				99BB472E20C5D6CF00401887 /* bombs.atlas in Resources */,
-				999AC5BC20C454BC002B7852 /* asteroidExplosion.atlas in Resources */,
 				99BB473020C5D74400401887 /* mines.atlas in Resources */,
 				99A357B52079088E00F86F84 /* explosion.wav in Resources */,
-				990B01C620BC5B2700F2BA3F /* shield.atlas in Resources */,
 				9990F75720D443500007F0CA /* asteroid2.atlas in Resources */,
 				999AC5B920C44BBB002B7852 /* blueShield.atlas in Resources */,
 				99A357B820791BAE00F86F84 /* ship-fire.sks in Resources */,
 				9959EF5B20BF4A9E00B7F64C /* shieldSound.wav in Resources */,
 				99B334D420BB44AC00AC5C59 /* sound62.wav in Resources */,
 				9959EF5520BDFCF400B7F64C /* gameSoundtrack.mp3 in Resources */,
-				993C7E5220C2E6820095D78D /* redExplosion.atlas in Resources */,
 				9990F75520D43E7A0007F0CA /* asteroid1.atlas in Resources */,
 				9961B8F820FB65220028AE2E /* sound0.wav in Resources */,
 				99B334D220BB355A00AC5C59 /* zoom.wav in Resources */,
@@ -447,7 +432,6 @@
 				99E9D40F20DFA21200B98EBE /* gameMusic.mp3 in Resources */,
 				99D9DE9520D1C790005D1CD0 /* score.wav in Resources */,
 				99E9D40D20DFA1E100B98EBE /* Theme.mp3 in Resources */,
-				993C7E5620C2EB8C0095D78D /* entityExplosion.atlas in Resources */,
 				99A40D4C20754BE0000D5DD9 /* Actions.sks in Resources */,
 				99A357B32079082F00F86F84 /* introGravicaine.wav in Resources */,
 				99E9D40B20DE62CD00B98EBE /* Assets.xcassets in Resources */,

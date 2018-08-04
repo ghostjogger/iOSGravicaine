@@ -378,32 +378,13 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
         if playerExplosionFrames.count == 0 {
         
             //setup player explosion animation
-            var numImages = playerExplosionAnimatedAtlas.textureNames.count
+            let numImages = playerExplosionAnimatedAtlas.textureNames.count
             for i in 1...numImages {
                 let explosionTextureName = "explosion\(i)"
                 playerExplosionFrames.append(playerExplosionAnimatedAtlas.textureNamed(explosionTextureName))
             }
-            
-            //setup entity explosion animation
-            numImages = entityExplosionAnimatedAtlas.textureNames.count
-            for i in 1...numImages {
-                let explosionTextureName = "entity\(i)"
-                entityExplosionFrames.append(entityExplosionAnimatedAtlas.textureNamed(explosionTextureName))
-            }
-            
-            //setup red explosion animation
-            numImages = redExplosionAnimatedAtlas.textureNames.count
-            for i in 1...numImages {
-                let explosionTextureName = "redExplosion\(i)"
-                redExplosionFrames.append(redExplosionAnimatedAtlas.textureNamed(explosionTextureName))
-            }
-            
-            //setup asteroid explosion animation
-            numImages = asteroidExplosionAnimatedAtlas.textureNames.count
-            for i in 1...numImages {
-                let explosionTextureName = "newexplosion\(i)"
-                asteroidExplosionFrames.append(asteroidExplosionAnimatedAtlas.textureNamed(explosionTextureName))
-            }
+
+
         }
 
     }
