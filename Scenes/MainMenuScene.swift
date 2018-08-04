@@ -98,7 +98,7 @@ class MainMenuScene: SKScene{
         }
         
         else{
-            var name = UserDefaults.standard.string(forKey: GlobalScoreName)
+            let name = UserDefaults.standard.string(forKey: GlobalScoreName)
             scoremessage = EKSimpleMessage(image: EKProperty.ImageContent(imageName: "gravicaineIcon32"),
                                            title: EKProperty.LabelContent(text: "Highest Score:",
                                                                           style: EKProperty.Label(font: UIFont(name: FontName, size: 20.0)!, color: UIColor.white, alignment: NSTextAlignment.center)),
