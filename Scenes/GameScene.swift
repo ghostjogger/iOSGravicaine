@@ -450,7 +450,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         
  
-        barrierCount = 0
+        barrierCount = 980
         
         print(barrierTypes.count)
         print(barriers.count)
@@ -799,6 +799,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
                 break
             case 25:
                 spawnVerticalGapRedBarrierRightLower(count: next)
+                break
+            case 26:
+                spawnAsteroidBeltHard()
                 break
             default:
                 break
