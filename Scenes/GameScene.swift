@@ -450,7 +450,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         
         
  
-        barrierCount = 980
+        barrierCount = 990
         
         print(barrierTypes.count)
         print(barriers.count)
