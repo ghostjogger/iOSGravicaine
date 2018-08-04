@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameWonScene: SKScene, UITextFieldDelegate {
+class GameWonScene: SKScene, UITextFieldDelegate, Alertable {
     
     let backgroundImage = SKSpriteNode(imageNamed: "starBackground")
     let titleImage = SKSpriteNode(imageNamed: "gravicaineTitle")
@@ -100,7 +100,15 @@ class GameWonScene: SKScene, UITextFieldDelegate {
     // Called by tapping return on the keyboard.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if textField.text! == "" || (textField.text?.count)! > 20{
+        if textField.text! == "" {
+            
+            showAlert(withTitle: "Name cannot be blank!", message: "Please try again")
+            return false
+            
+        }
+        if (textField.text?.count)! > 20{
+            
+            showAlert(withTitle: "Name more than 20 characters", message: "Please try again")
             return false
         }
         
