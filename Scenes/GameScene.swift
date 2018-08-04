@@ -461,9 +461,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
  
         barrierCount = 0
         
-        print(barrierTypes.count)
-        print(barriers.count)
-        print(barrierCpoints.count)
+//        print(barrierTypes.count)
+//        print(barriers.count)
+//        print(barrierCpoints.count)
 
         
         //set up 2 star backgrounds to scroll
@@ -548,7 +548,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
                 player.power = 0
             }
             
-            print(player.power)
+
             powerNode.size = CGSize(width: self.frame.width * CGFloat((0.5 * (player.power/100))) ,
                                     height: self.frame.height * 0.01)
 
@@ -730,7 +730,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
             let type = barrierTypes[barrierCount]
             let cp = barrierCpoints[barrierCount]
             
-            print("type:  \(type)  number:  \(next) cpoint: \(cp)") 
+            //print("type:  \(type)  number:  \(next) cpoint: \(cp)") 
             
             switch type{
                 
