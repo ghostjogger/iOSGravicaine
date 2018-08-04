@@ -7,5 +7,6 @@ target 'Gravicaine' do
 
   # Pods for Gravicaine
    pod 'SwiftEntryKit'
+   pod 'Google-Mobile-Ads-SDK'
 	
 end

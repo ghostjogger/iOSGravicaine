@@ -1,6 +1,10 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## Google-Mobile-Ads-SDK
+
+Copyright 2018 Google
+
 ## QuickLayout
 
 Copyright (c) 2017 huri000@gmail.com <huri000@gmail.com>

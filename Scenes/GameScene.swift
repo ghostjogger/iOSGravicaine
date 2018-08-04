@@ -345,25 +345,25 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         middleIndicator.zPosition = 0
         middleIndicator.position = CGPoint(x: self.frame.midX, y: self.size.height/2)
         
-        // set up power node indicator and background
-        powerNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.90),
-                                 size: CGSize(width: self.frame.width * 0.5 ,
-                                 height: self.frame.height * 0.01))
-        powerNode.anchorPoint = CGPoint.zero
-        powerNode.zPosition = 2000
-        powerNode.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.1)
-        
-        powerNodeBackground = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.40),
-                                 size: CGSize(width: self.frame.width * 0.5 ,
-                                              height: self.frame.height * 0.01))
-        powerNodeBackground.anchorPoint = CGPoint.zero
-        powerNodeBackground.zPosition = 1000
-        powerNodeBackground.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.1)
-        
-        powerIcon = SKSpriteNode(imageNamed: "powerIcon")
-        powerIcon.size = CGSize(width: powerIcon.size.width * self.scaleFactor, height: powerIcon.size.height * self.scaleFactor)
-        powerIcon.zPosition = 1000
-        powerIcon.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.0875)
+//        // set up power node indicator and background
+//        powerNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.90),
+//                                 size: CGSize(width: self.frame.width * 0.5 ,
+//                                 height: self.frame.height * 0.01))
+//        powerNode.anchorPoint = CGPoint.zero
+//        powerNode.zPosition = 2000
+//        powerNode.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.1)
+//
+//        powerNodeBackground = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.40),
+//                                 size: CGSize(width: self.frame.width * 0.5 ,
+//                                              height: self.frame.height * 0.01))
+//        powerNodeBackground.anchorPoint = CGPoint.zero
+//        powerNodeBackground.zPosition = 1000
+//        powerNodeBackground.position = CGPoint(x: self.frame.width * 0.25, y: self.frame.height * 0.1)
+//
+//        powerIcon = SKSpriteNode(imageNamed: "powerIcon")
+//        powerIcon.size = CGSize(width: powerIcon.size.width * self.scaleFactor, height: powerIcon.size.height * self.scaleFactor)
+//        powerIcon.zPosition = 1000
+//        powerIcon.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.0875)
 
         
         
@@ -507,7 +507,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         //pause label
         pauseLabel.zPosition = 50
         pauseLabel.size = CGSize(width: pauseLabel.size.width * scaleFactor, height: pauseLabel.size.height * scaleFactor)
-        pauseLabel.position = CGPoint(x: self.frame.width * 0.5, y: self.frame.height * 0.04)
+        pauseLabel.position = CGPoint(x: self.frame.width * 0.9, y: self.frame.height * 0.95)
         self.addChild(pauseLabel)
 
         if GodMode {

@@ -9,18 +9,31 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GoogleMobileAds
 
 
 
-
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GADBannerViewDelegate {
+    
+    var bannerView: GADBannerView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // In this case, we instantiate the banner with desired ad size.
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        
+        addBannerViewToView(bannerView)
+        
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        
+        bannerView.delegate = self
         
         let deviceWidth =  UIScreen.main.nativeBounds.width
         let deviceHeight = UIScreen.main.nativeBounds.height
+        
+        bannerView.load(GADRequest())
         
         let scene = MainMenuScene(size: CGSize(width: deviceWidth, height: deviceHeight))
 
@@ -33,6 +46,27 @@ class GameViewController: UIViewController {
         scene.scaleMode = .aspectFill
         view.presentScene(scene)
 
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
     }
 
     override var shouldAutorotate: Bool {
