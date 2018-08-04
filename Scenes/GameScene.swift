@@ -47,7 +47,7 @@ extension SKAction {
     
 }
 
-class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
+class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
    
     static let backgroundNodeNameObject = "background-node-0"
 
@@ -418,7 +418,15 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
     // Called by tapping return on the keyboard.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if textField.text! == "" || (textField.text?.count)! > 20{
+        if textField.text! == "" {
+            
+            showAlert(withTitle: "Name cannot be blank!", message: "Please try again")
+            return false
+            
+        }
+        if (textField.text?.count)! > 20{
+            
+            showAlert(withTitle: "Name more than 20 characters", message: "Please try again")
             return false
         }
         

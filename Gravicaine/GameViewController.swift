@@ -33,7 +33,7 @@ class GameViewController: UIViewController, GADBannerViewDelegate {
         let deviceWidth =  UIScreen.main.nativeBounds.width
         let deviceHeight = UIScreen.main.nativeBounds.height
         
-        bannerView.load(GADRequest())
+        //bannerView.load(GADRequest())
         
         let scene = MainMenuScene(size: CGSize(width: deviceWidth, height: deviceHeight))
 
