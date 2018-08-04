@@ -494,9 +494,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate {
         self.addChild(gravityNode)
         
         //powernode
-        self.addChild(powerNode)
-        self.addChild(powerNodeBackground)
-        self.addChild(powerIcon)
+//        self.addChild(powerNode)
+//        self.addChild(powerNodeBackground)
+//        self.addChild(powerIcon)
         
         //exit label
         exitLabel.zPosition = 50
