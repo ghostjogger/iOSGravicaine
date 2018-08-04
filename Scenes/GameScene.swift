@@ -256,6 +256,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
             highScoreText?.textColor = SKColor.black
             highScoreText?.placeholder = "Enter your name (max 20 chars)"
             highScoreText?.backgroundColor = SKColor.white
+            highScoreText?.autocorrectionType = .no
 
 
             // add the UITextField to the GameScene's view
