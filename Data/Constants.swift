@@ -37,8 +37,8 @@ let gravity = 1.0
 let shieldActivationTime = 6.0
 
 // iphone X screen width
-let maxDeviceScreenWidth = 1125
-let maxDeviceScreenHeight = 2436
+let maxDeviceScreenWidth = 1242
+let maxDeviceScreenHeight = 2688
 
 
 //option positioning
