@@ -440,7 +440,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
         
         
  
-        barrierCount = 0
+        barrierCount = 910
         
 //        print(barrierTypes.count)
 //        print(barriers.count)
@@ -787,10 +787,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
                 spawnCurvyMovingRedBarrier(count: next)
                 break
             case 24:
-                spawnVerticalGapRedBarrierLeftLower(count: next)
+                spawnNormalRedBarrier(count: next)
+                //spawnVerticalGapRedBarrierLeftLower(count: next)
                 break
             case 25:
-                spawnVerticalGapRedBarrierRightLower(count: next)
+                spawnNormalRedBarrier(count: next)
+                //spawnVerticalGapRedBarrierRightLower(count: next)
                 break
             case 26:
                 spawnAsteroidBeltHard()
