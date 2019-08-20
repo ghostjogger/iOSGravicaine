@@ -740,10 +740,12 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
                 spawnLaserBatteryStaticRight()
                 break
             case 9:
-                spawnVerticalGapBarrierLeftLower(count: next)
+                spawnNormalBarrier(count: next)
+                //spawnVerticalGapBarrierLeftLower(count: next)
                 break
             case 10:
-                spawnVerticalGapBarrierRightLower(count: next)
+                spawnNormalBarrier(count: next)
+                //spawnVerticalGapBarrierRightLower(count: next)
                 break
             case 11:
                 spawnAsteroidBeltLeftCurve()
