@@ -440,7 +440,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
         
         
  
-        barrierCount = 910
+        barrierCount = 0
         
 //        print(barrierTypes.count)
 //        print(barriers.count)
@@ -804,6 +804,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
             }
 
             barrierCount += 1
+            print (barrierCount)
             
             if barrierCount == barriers.count{
                 barrierCount = barriers.count - 1
