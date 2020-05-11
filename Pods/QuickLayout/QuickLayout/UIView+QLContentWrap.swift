@@ -14,7 +14,7 @@ public extension UIView {
      Force hugging and compression resistance for the given axes, using variadic parameter.
      - parameter axes: The axes
      */
-    public func forceContentWrap(_ axes: QLAxis...) {
+    func forceContentWrap(_ axes: QLAxis...) {
         if axes.contains(.vertically) {
             verticalHuggingPriority = .required
             verticalCompressionResistancePriority = .required
@@ -28,7 +28,7 @@ public extension UIView {
     /**
      Force hugging and compression resistance vertically and horizontally.
      */
-    public func forceContentWrap() {
+    public func rceContentWrap() {
         contentHuggingPriority = .required
         contentCompressionResistancePriority = .required
     }
@@ -36,7 +36,7 @@ public extension UIView {
     /**
      Vertical hugging priority
      */
-    public var verticalHuggingPriority: UILayoutPriority {
+    public  var verticalHuggingPriority: UILayoutPriority {
         set {
             setContentHuggingPriority(newValue, for: .vertical)
         }
