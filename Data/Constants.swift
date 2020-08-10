@@ -28,7 +28,7 @@ let playerPower = 100.0
 let powerDecrement = 0.5
 let laserMass = 5
 
-let spawnInterval = 1.3
+let spawnInterval = 1.4
 
 let impulse = 90
 let thrustPower = 350
