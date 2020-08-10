@@ -196,8 +196,8 @@ class MainMenuScene: SKScene{
         musicLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height * 0.75)
         self.addChild(musicLabel)
         
-        transLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height * 0.6)
-        self.addChild(transLabel)
+        //transLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height * 0.6)
+        //self.addChild(transLabel)
         
         if music{
             musicNode = SKSpriteNode(imageNamed: "on")
@@ -225,9 +225,9 @@ class MainMenuScene: SKScene{
         musicNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.70)
         self.addChild(musicNode)
         
-        transNode.zPosition = 200
-        transNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.55)
-        self.addChild(transNode)
+        //transNode.zPosition = 200
+        //transNode.position = CGPoint(x: self.frame.width/2, y: self.frame.height * 0.55)
+        //self.addChild(transNode)
         
         
         self.addChild(menuBackgroundSound)

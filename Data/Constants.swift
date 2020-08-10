@@ -15,7 +15,7 @@ let barrierVerticalSpacing = 925
 let barrierHOverlap = -125
 let obstacleVerticalSpeed = 900.0
 let barrierSpeedAcross = 5.0
-let bseed = 1
+let bseed = 2
 let barrierMovementX = 80
 
 
@@ -32,11 +32,11 @@ let spawnInterval = 1.3
 
 let impulse = 90
 let thrustPower = 350
-let gravity = 1.0
+let gravity = 0
 
 let shieldActivationTime = 6.0
 
-// iphone X screen width
+// iphone maximum screen resolutions
 let maxDeviceScreenWidth = 1242
 let maxDeviceScreenHeight = 2688
 

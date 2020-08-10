@@ -45,13 +45,13 @@ extension GameScene{
                     self.addChild(leftBarrier)
                     self.addChild(rightBarrier)
                     self.addChild(barrierSpaceNode)
-                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: barrierCpoints[self.barrierCount],  run: {
+                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: self.barrierCpoints[self.barrierCount],  run: {
                         
                     })
-                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: barrierCpoints[self.barrierCount], run: {
+                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: self.barrierCpoints[self.barrierCount], run: {
                         
                     })
-                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(0)), control: 1, cpoint: barrierCpoints[self.barrierCount], run: {
+                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(0)), control: 1, cpoint: self.barrierCpoints[self.barrierCount], run: {
                         
                     })
                     
@@ -104,7 +104,7 @@ extension GameScene{
                 barrierSpaceNode.position = CGPoint(x: leftBarrier.position.x + leftBarrier.size.width/2 + size.width/2, y:self.size.height + (CGFloat(barrierHeight) * 1.7))
                 
                 //setup x movements
-                let cpointX = barrierCpoints[self.barrierCount]
+                let cpointX = self.barrierCpoints[self.barrierCount]
                 
                 //leftbarrier x movement
                 var leftBarrierXdestination :CGFloat
@@ -145,13 +145,13 @@ extension GameScene{
                     self.addChild(leftBarrier)
                     self.addChild(rightBarrier)
                     self.addChild(barrierSpaceNode)
-                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrierXdestination, y: CGFloat(-barrierHeight)), control: control, cpoint: barrierCpoints[self.barrierCount], run: {
+                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrierXdestination, y: CGFloat(-barrierHeight)), control: control, cpoint: self.barrierCpoints[self.barrierCount], run: {
                         
                     })
-                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrierXdestination, y: CGFloat(-barrierHeight)), control:control, cpoint: barrierCpoints[self.barrierCount],  run: {
+                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrierXdestination, y: CGFloat(-barrierHeight)), control:control, cpoint: self.barrierCpoints[self.barrierCount],  run: {
                         
                     })
-                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierGapXdestination, y: CGFloat(0)), control: control,  cpoint: barrierCpoints[self.barrierCount], run: {
+                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierGapXdestination, y: CGFloat(0)), control: control,  cpoint: self.barrierCpoints[self.barrierCount], run: {
                         
                     })
                     
@@ -208,13 +208,13 @@ extension GameScene{
                     self.addChild(leftBarrier)
                     self.addChild(rightBarrier)
                     self.addChild(barrierSpaceNode)
-                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control: control, cpoint: barrierCpoints[self.barrierCount],  run: {
+                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control: control, cpoint: self.barrierCpoints[self.barrierCount],  run: {
                         
                     })
-                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: control,cpoint: barrierCpoints[self.barrierCount],run: {
+                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: control,cpoint: self.barrierCpoints[self.barrierCount],run: {
                         
                     })
-                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(0)),control: control, cpoint: barrierCpoints[self.barrierCount],run: {
+                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(0)),control: control, cpoint: self.barrierCpoints[self.barrierCount],run: {
                         
                     })
                     
@@ -258,13 +258,13 @@ extension GameScene{
                     self.addChild(leftBarrier)
                     self.addChild(rightBarrier)
                     self.addChild(barrierSpaceNode)
-                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight) - CGFloat(barrierVerticalSpacing)), control: 1, cpoint: barrierCpoints[self.barrierCount],  run: {
+                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight) - CGFloat(barrierVerticalSpacing)), control: 1, cpoint: self.barrierCpoints[self.barrierCount],  run: {
                         
                     })
-                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: barrierCpoints[self.barrierCount], run: {
+                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: self.barrierCpoints[self.barrierCount], run: {
                         
                     })
-                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(barrierSpaceNode.size.height/2)), control: 1, cpoint: barrierCpoints[self.barrierCount], run: {
+                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(barrierSpaceNode.size.height/2)), control: 1, cpoint: self.barrierCpoints[self.barrierCount], run: {
                         
                     })
                     
@@ -310,13 +310,13 @@ extension GameScene{
                     self.addChild(leftBarrier)
                     self.addChild(rightBarrier)
                     self.addChild(barrierSpaceNode)
-                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: barrierCpoints[self.barrierCount],  run: {
+                    leftBarrier.move(from: CGPoint(x: leftBarrier.position.x, y: leftBarrier.position.y), to: CGPoint(x: leftBarrier.position.x, y: CGFloat(-barrierHeight)), control: 1, cpoint: self.barrierCpoints[self.barrierCount],  run: {
                         
                     })
-                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight) - CGFloat(barrierVerticalSpacing)), control: 1, cpoint: barrierCpoints[self.barrierCount], run: {
+                    rightBarrier.move(from: CGPoint(x: rightBarrier.position.x, y: rightBarrier.position.y), to: CGPoint(x: rightBarrier.position.x, y: CGFloat(-barrierHeight) - CGFloat(barrierVerticalSpacing)), control: 1, cpoint: self.barrierCpoints[self.barrierCount], run: {
                         
                     })
-                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(barrierSpaceNode.size.height/2)), control: 1, cpoint: barrierCpoints[self.barrierCount], run: {
+                    barrierSpaceNode.move(from: CGPoint(x: barrierSpaceNode.position.x, y: barrierSpaceNode.position.y), to: CGPoint(x: barrierSpaceNode.position.x, y: CGFloat(barrierSpaceNode.size.height/2)), control: 1, cpoint: self.barrierCpoints[self.barrierCount], run: {
                         
                     })
                     

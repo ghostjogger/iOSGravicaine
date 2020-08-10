@@ -85,9 +85,9 @@ class EKContentView: UIView {
     private func setupInitialPosition() {
         
         // Determine the layout entrance type according to the entry type
-        let messageInAnchor: NSLayoutAttribute
-        let screenOutAnchor: NSLayoutAttribute
-        let messageOutAnchor: NSLayoutAttribute
+        let messageInAnchor: NSLayoutConstraint.Attribute
+        let screenOutAnchor: NSLayoutConstraint.Attribute
+        let messageOutAnchor: NSLayoutConstraint.Attribute
         inOffset = 0
         var outOffset: CGFloat = 0
         
@@ -376,7 +376,7 @@ class EKContentView: UIView {
     
     // Perform animation - translate / scale / fade
     private func performAnimation(with animation: EKAnimation, preAction: @escaping () -> () = {}, action: @escaping () -> ()) {
-        let options: UIViewAnimationOptions = [.curveEaseOut, .beginFromCurrentState]
+        let options: UIView.AnimationOptions = [.curveEaseOut, .beginFromCurrentState]
         preAction()
         if let spring = animation.spring {
             UIView.animate(withDuration: animation.duration, delay: animation.delay, usingSpringWithDamping: spring.damping, initialSpringVelocity: spring.initialVelocity, options: options, animations: {
@@ -537,7 +537,7 @@ extension EKContentView {
         }
     }
     
-    private func handleExitDelayIfNeeded(byPanState state: UIGestureRecognizerState) {
+    private func handleExitDelayIfNeeded(byPanState state: UIGestureRecognizer.State) {
         guard attributes.entryInteraction.isDelayExit && attributes.displayDuration.isFinite else {
             return
         }

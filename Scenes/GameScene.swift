@@ -76,7 +76,10 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
     private var powerNode: SKSpriteNode = SKSpriteNode()
     private var powerNodeBackground: SKSpriteNode = SKSpriteNode()
     private var powerIcon: SKSpriteNode = SKSpriteNode()
-    
+    // MARK int arrays
+    var barriers = seedRandom(seed: UInt64(bseed), count: 1000, low:1, high:8)
+    var barrierCpoints = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 6)
+    var barrierTypes = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 3)
 
     var gameOverTransitioning = false
     private var gamePaused = false
@@ -252,7 +255,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
                 width: 320,
                 height: 40))
 
-            highScoreText?.borderStyle = UITextBorderStyle.roundedRect
+            highScoreText?.borderStyle = UITextField.BorderStyle.roundedRect
             highScoreText?.textColor = SKColor.black
             highScoreText?.placeholder = "Enter your name (max 20 chars)"
             highScoreText?.backgroundColor = SKColor.white
@@ -334,17 +337,17 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
         super.init(size: size)
         
         //gravity indicators
-        gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: self.frame.width * 0.02, height: self.frame.height))
-        gravityNodeLabel.fontName = FontName
-        gravityNodeLabel.fontSize = 50.0 * scaleFactor
-        gravityNodeLabel.fontColor = UIColor.green
+//        gravityNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.40), size: CGSize(width: self.frame.width * 0.02, height: self.frame.height))
+//        gravityNodeLabel.fontName = FontName
+//        gravityNodeLabel.fontSize = 50.0 * scaleFactor
+//        gravityNodeLabel.fontColor = UIColor.green
         
 
         // set up middle indicator stick
-        let size = CGSize(width: 2, height: self.size.height)
-        middleIndicator = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.4), size: size)
-        middleIndicator.zPosition = 0
-        middleIndicator.position = CGPoint(x: self.frame.midX, y: self.size.height/2)
+//        let size = CGSize(width: 2, height: self.size.height)
+//        middleIndicator = SKSpriteNode(texture: nil, color: UIColor.red.withAlphaComponent(0.4), size: size)
+//        middleIndicator.zPosition = 0
+//        middleIndicator.position = CGPoint(x: self.frame.midX, y: self.size.height/2)
         
 //        // set up power node indicator and background
 //        powerNode = SKSpriteNode(texture: nil, color: UIColor.green.withAlphaComponent(0.90),
@@ -368,10 +371,7 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
 
         
         
-        // MARK int arrays
-        //barriers = seedRandom(seed: UInt64(bseed), count: 1000, low:1, high:8)
-        //barrierCpoints = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 6)
-        //barrierTypes = seedRandom(seed: UInt64(bseed), count: 1000, low: 1, high: 3)
+
 
         gameLogic.delegate = self
         
@@ -479,9 +479,9 @@ class GameScene: SKScene, GameLogicDelegate, UITextFieldDelegate, Alertable {
 
         
         //gravity nodes
-        gravityNode.position.x = -1000
+        //gravityNode.position.x = -1000
         //gravityNode.addChild(gravityNodeLabel)
-        self.addChild(gravityNode)
+        //self.addChild(gravityNode)
         
         //powernode
 //        self.addChild(powerNode)
