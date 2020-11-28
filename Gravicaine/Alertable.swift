@@ -31,9 +31,9 @@ extension Alertable where Self: SKScene {
         
         let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
             
-            guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
             if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url)
+                
             } else {
                 UIApplication.shared.openURL(url)
             }
@@ -42,4 +42,9 @@ extension Alertable where Self: SKScene {
         
         view?.window?.rootViewController?.present(alertController, animated: true)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

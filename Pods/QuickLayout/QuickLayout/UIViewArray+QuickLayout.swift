@@ -19,7 +19,7 @@ extension Array where Element: UIView {
      - returns: The instance of the constraint that was applied (discardable).
      */
     @discardableResult
-    public func set(_ edge: NSLayoutAttribute, of value: CGFloat, priority: UILayoutPriority = .required) -> [NSLayoutConstraint]? {
+    public func set(_ edge: NSLayoutConstraint.Attribute, of value: CGFloat, priority: UILayoutPriority = .required) -> [NSLayoutConstraint]? {
         var constraints: [NSLayoutConstraint] = []
         for view in self {
             let constraint = view.set(edge, of: value)
@@ -36,7 +36,7 @@ extension Array where Element: UIView {
      - returns: The instance of the constraint that was applied (discardable).
      */
     @discardableResult
-    public func set(_ edges: NSLayoutAttribute..., of value: CGFloat, priority: UILayoutPriority = .required) -> [QLMultipleConstraints] {
+    public func set(_ edges: NSLayoutConstraint.Attribute..., of value: CGFloat, priority: UILayoutPriority = .required) -> [QLMultipleConstraints] {
         var constraintsArray: [QLMultipleConstraints] = []
         for view in self {
             let constraints = view.set(edges, to: value, priority: priority)
@@ -114,7 +114,7 @@ extension Array where Element: UIView {
      - returns: Array of applied constraints - see definition (discardable)
      */
     @discardableResult
-    public func layoutToSuperview(_ edge: NSLayoutAttribute, ratio: CGFloat = 1, offset: CGFloat = 0, priority: UILayoutPriority = .required) -> [NSLayoutConstraint]? {
+    public func layoutToSuperview(_ edge: NSLayoutConstraint.Attribute, ratio: CGFloat = 1, offset: CGFloat = 0, priority: UILayoutPriority = .required) -> [NSLayoutConstraint]? {
         guard isValidForQuickLayout else {
             return nil
         }
@@ -132,12 +132,12 @@ extension Array where Element: UIView {
      - returns: Array of applied constraints - see definition (discardable)
      */
     @discardableResult
-    public func layout(_ firstEdge: NSLayoutAttribute? = nil, to anchorEdge: NSLayoutAttribute, of anchorView: UIView, ratio: CGFloat = 1, offset: CGFloat = 0, priority: UILayoutPriority = .required) -> [NSLayoutConstraint]? {
+    public func layout(_ firstEdge: NSLayoutConstraint.Attribute? = nil, to anchorEdge: NSLayoutConstraint.Attribute, of anchorView: UIView, ratio: CGFloat = 1, offset: CGFloat = 0, priority: UILayoutPriority = .required) -> [NSLayoutConstraint]? {
         guard isValidForQuickLayout else {
             return nil
         }
         
-        let edge: NSLayoutAttribute
+        let edge: NSLayoutConstraint.Attribute
         if let firstEdge = firstEdge {
             edge = firstEdge
         } else {
@@ -162,7 +162,7 @@ extension Array where Element: UIView {
      - returns: Array of applied constraints, each element is of type QLMultipleConstraints - see definition (discardable)
      */
     @discardableResult
-    public func layout(_ edges: NSLayoutAttribute..., to anchorView: UIView, ratio: CGFloat = 1, offset: CGFloat = 0, priority: UILayoutPriority = .required) -> [QLMultipleConstraints]? {
+    public func layout(_ edges: NSLayoutConstraint.Attribute..., to anchorView: UIView, ratio: CGFloat = 1, offset: CGFloat = 0, priority: UILayoutPriority = .required) -> [QLMultipleConstraints]? {
         guard !edges.isEmpty && isValidForQuickLayout else {
             return nil
         }

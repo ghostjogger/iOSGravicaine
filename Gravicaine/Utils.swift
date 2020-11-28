@@ -31,7 +31,7 @@ func seedRandom(seed: UInt64) -> [Int]{
     let rd = GKRandomDistribution(randomSource: rs, lowestValue: 0, highestValue: 9)
     
     // Now generate 100 numbers in the range 0...9:
-    for _ in 1...100 {
+    for _ in 1...1000 {
         let i = rd.nextInt()
         randomArray.append(i)
     }

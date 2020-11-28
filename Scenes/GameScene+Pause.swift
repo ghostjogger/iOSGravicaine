@@ -35,8 +35,8 @@ extension GameScene {
         ]
         #else
         return [
-            NSNotification.Name.UIApplicationWillResignActive,
-            NSNotification.Name.UIApplicationDidBecomeActive
+            UIApplication.willResignActiveNotification,
+            UIApplication.didBecomeActiveNotification
         ]
         #endif
     }
